@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://dhb710u43w4l"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_8xsaa"]
-radius = 23.0
+[ext_resource type="Script" uid="uid://txpkjvrook4q" path="res://Scripts/playerMovement.gd" id="1_n36lv"]
+[ext_resource type="Script" uid="uid://csxnwhwiii8af" path="res://Scripts/ballLogic.gd" id="2_kpgf4"]
 
-[sub_resource type="SphereMesh" id="SphereMesh_4wpvp"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1ah7"]
+size = Vector2(22, 163)
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e7v3h"]
-friction = 0.2
-bounce = 1.85
+[sub_resource type="BoxMesh" id="BoxMesh_kpgf4"]
+size = Vector3(0.5, 4, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_lhf37"]
 
@@ -20,6 +20,9 @@ size = Vector2(1920, 50)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmho0"]
 size = Vector2(50, 1080)
 
+[sub_resource type="LabelSettings" id="LabelSettings_8xsaa"]
+font_size = 120
+
 [node name="Court" type="Node2D" unique_id=430284900]
 
 [node name="background" type="ColorRect" parent="." unique_id=1777050252]
@@ -30,30 +33,35 @@ offset_bottom = 1139.0
 color = Color(0.15711999, 0.1312, 0.16, 1)
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1238354561]
-position = Vector2(200, 540)
+position = Vector2(30, 540)
 scale = Vector2(2, 2)
+script = ExtResource("1_n36lv")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Player" unique_id=1496796032]
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1529861037]
-shape = SubResource("CircleShape2D_8xsaa")
+shape = SubResource("RectangleShape2D_h1ah7")
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Player" unique_id=783247313]
 scale = Vector2(40, 40)
-mesh = SubResource("SphereMesh_4wpvp")
+mesh = SubResource("BoxMesh_kpgf4")
 
-[node name="Ball" type="RigidBody2D" parent="." unique_id=1292003268]
-position = Vector2(960, 540)
-mass = 0.001
-physics_material_override = SubResource("PhysicsMaterial_e7v3h")
+[node name="Ball" type="CharacterBody2D" parent="." unique_id=554946885 node_paths=PackedStringArray("score_lable")]
+position = Vector2(1.5258789e-05, 6.1035156e-05)
+scale = Vector2(0.99999994, 0.99999994)
+script = ExtResource("2_kpgf4")
+score_lable = NodePath("../Score")
+speedStep = 5.0
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="Ball" unique_id=1796895758]
-modulate = Color(1.92523e-06, 0.8103359, 0.76702076, 1)
+modulate = Color(1, 0, 0.05000019, 1)
+position = Vector2(960, 540)
 scale = Vector2(50, 50)
 mesh = SubResource("SphereMesh_lhf37")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball" unique_id=2104348753]
+position = Vector2(960, 540)
 shape = SubResource("CircleShape2D_4wpvp")
 
 [node name="Walls" type="StaticBody2D" parent="." unique_id=691731058]
@@ -73,3 +81,14 @@ shape = SubResource("RectangleShape2D_xmho0")
 [node name="right" type="CollisionShape2D" parent="Walls" unique_id=1779990559]
 position = Vector2(1945, 540)
 shape = SubResource("RectangleShape2D_xmho0")
+
+[node name="Score" type="Label" parent="." unique_id=67169919]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 935.0
+offset_right = 1004.0
+offset_bottom = 165.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_8xsaa")

@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://dhb710u43w4l"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8xsaa"]
+radius = 23.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_4wpvp"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e7v3h"]
+friction = 0.2
+bounce = 1.85
+
+[sub_resource type="SphereMesh" id="SphereMesh_lhf37"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4wpvp"]
+radius = 28.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhf37"]
+size = Vector2(1920, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xmho0"]
+size = Vector2(50, 1080)
+
+[node name="Court" type="Node2D" unique_id=430284900]
+
+[node name="background" type="ColorRect" parent="." unique_id=1777050252]
+offset_left = -19.0
+offset_top = -25.0
+offset_right = 2018.0
+offset_bottom = 1139.0
+color = Color(0.15711999, 0.1312, 0.16, 1)
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1238354561]
+position = Vector2(200, 540)
+scale = Vector2(2, 2)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Player" unique_id=1496796032]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1529861037]
+shape = SubResource("CircleShape2D_8xsaa")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Player" unique_id=783247313]
+scale = Vector2(40, 40)
+mesh = SubResource("SphereMesh_4wpvp")
+
+[node name="Ball" type="RigidBody2D" parent="." unique_id=1292003268]
+position = Vector2(960, 540)
+mass = 0.001
+physics_material_override = SubResource("PhysicsMaterial_e7v3h")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="Ball" unique_id=1796895758]
+modulate = Color(1.92523e-06, 0.8103359, 0.76702076, 1)
+scale = Vector2(50, 50)
+mesh = SubResource("SphereMesh_lhf37")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball" unique_id=2104348753]
+shape = SubResource("CircleShape2D_4wpvp")
+
+[node name="Walls" type="StaticBody2D" parent="." unique_id=691731058]
+
+[node name="top" type="CollisionShape2D" parent="Walls" unique_id=1586538994]
+position = Vector2(960, -25)
+shape = SubResource("RectangleShape2D_lhf37")
+
+[node name="bottom" type="CollisionShape2D" parent="Walls" unique_id=1393622524]
+position = Vector2(960, 1105)
+shape = SubResource("RectangleShape2D_lhf37")
+
+[node name="left" type="CollisionShape2D" parent="Walls" unique_id=352198323]
+position = Vector2(-25, 540)
+shape = SubResource("RectangleShape2D_xmho0")
+
+[node name="right" type="CollisionShape2D" parent="Walls" unique_id=1779990559]
+position = Vector2(1945, 540)
+shape = SubResource("RectangleShape2D_xmho0")

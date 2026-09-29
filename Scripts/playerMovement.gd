@@ -14,6 +14,7 @@ var lunge_timer := 0.0
 var lunge_direction : float
 var is_dashing = false
 var cooldown_timer:= 0.0
+var is_dead : bool = false
 
 func _physics_process(delta: float) -> void:
 	
@@ -45,8 +46,12 @@ func _physics_process(delta: float) -> void:
 	if health <= 0.0 :
 		death()
 	
-	if health < 30:
+	if health < 60:
+		health_lable.label_settings.font_color = Color(1, 1, 0.22, 1)
+	elif health < 30:
 		health_lable.label_settings.font_color = Color(1, 0, 0, 1)
+	else: 
+		health_lable.label_settings.font_color = Color(0, 1, 0.22, 1)
 
 	velocity.x = 0.0
 	position.x = clampf(position.x, 25, 25)
@@ -58,3 +63,4 @@ func _physics_process(delta: float) -> void:
 
 func death():
 	score_lable.text = "You died"
+	is_dead = true

@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 			direction.x = -1
 
 
-		if coll_info.get_collider().name == "WallLeft" or coll_info.get_collider().name == "WallRight" or (coll_info.get_collider().name == "CPU" and !velocity and !is_reset):
+		if coll_info.get_collider().name == "WallLeft" or coll_info.get_collider().name == "WallRight" or (!velocity and !is_reset):
 			trail.clear_points()
 			position = Vector2(960, 540)
 			
@@ -59,15 +59,22 @@ func _physics_process(delta: float) -> void:
 			else :
 				deduct_health(cpu)
 
-			speed = 0
 			score_count = 0
 			score_lable.text = str(score_count)
-			direction = Vector2(-1, randf())
+			speed = 0
 			is_reset = true
 
 
 	if Input.is_action_pressed("Hit") and is_reset:
 		speed = initial_speed
+		score_count = 0
+		score_lable.text = str(score_count)
+		direction = Vector2(-1, randf())
+		if cpu.is_dead or player.is_dead:
+			cpu.health = 100
+			player.health = 100
+			player.is_dead = false
+			cpu.is_dead = false
 		is_reset = false
 	
 

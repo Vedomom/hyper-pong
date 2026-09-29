@@ -10,6 +10,7 @@ var dist : float
 var step_size : float
 var win_height : float
 var paddle_height : float
+var is_dead : bool = false
 
 func _ready() -> void:
 	win_height = get_viewport_rect().size.y
@@ -30,8 +31,12 @@ func _physics_process(delta: float) -> void:
 	if health <= 0.0 :
 		death()
 	
-	if health < 30:
+	if health < 60:
+		health_lable.label_settings.font_color = Color(1, 1, 0.22, 1)
+	elif health < 30:
 		health_lable.label_settings.font_color = Color(1, 0, 0, 1)
+	else: 
+		health_lable.label_settings.font_color = Color(0, 1, 0.22, 1)
 
 	position.y -= step_size
 
@@ -42,3 +47,4 @@ func _physics_process(delta: float) -> void:
 
 func death():
 	ball.score_lable.text = "You Win"
+	is_dead = true

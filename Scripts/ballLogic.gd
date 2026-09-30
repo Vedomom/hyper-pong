@@ -111,19 +111,19 @@ func reset(coll_info, is_stuck = null):
 			var last_pos = position
 			position = Vector2(960, 540)
 
-			player.current_damage = player.initial_damage
-			cpu.current_damage = cpu.initial_damage
-			
 			if coll_info:
 				if coll_info.get_collider().name == "WallLeft":
 					deduct_health(player, cpu.current_damage)
-				else :
+				elif coll_info.get_collider().name == "WallRight" :
 					deduct_health(cpu, player.current_damage)
 			if is_stuck:
 				if last_pos.x >= 1800:
 					deduct_health(cpu, player.current_damage)
 				else :
 					deduct_health(player, cpu.current_damage)
+
+			player.current_damage = player.initial_damage
+			cpu.current_damage = cpu.initial_damage
 			score_count = 0
 			score_lable.text = str(score_count)
 			speed = 0

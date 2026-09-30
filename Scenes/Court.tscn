@@ -124,7 +124,6 @@ scale = Vector2(2, 2)
 script = ExtResource("3_h1ah7")
 ball = NodePath("../Ball")
 paddle_shape = NodePath("CollisionShape2D")
-health = 1.0
 health_lable = NodePath("../CPUHealth")
 initial_damage = 2.0
 damage_label = NodePath("../CPUDamage")

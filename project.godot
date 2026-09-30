@@ -11,6 +11,10 @@ config_version=5
 [application]
 
 config/name="Hyper Pong Ball"
+<<<<<<< HEAD
+=======
+run/main_scene="uid://cs1sbwea32xnk"
+>>>>>>> dev
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -18,8 +22,14 @@ config/icon="res://icon.svg"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+<<<<<<< HEAD
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
+=======
+window/size/mode=2
+window/stretch/mode="canvas_items"
+window/stretch/aspect="ignore"
+>>>>>>> dev
 
 [input]
 

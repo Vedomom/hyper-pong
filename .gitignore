@@ -1,7 +1,4 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
-<<<<<<< HEAD
-=======
 builds/
->>>>>>> dev

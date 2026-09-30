@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://b0etnk6si67ve"]
+
+[ext_resource type="Script" uid="uid://bwe4uh2qfmeex" path="res://Scripts/UI/end_pop_up.gd" id="1_00x74"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ospfn"]
+font_size = 110
+font_color = Color(0.86292744, 0.933358, 0.9301186, 1)
+shadow_color = Color(0.31695512, 0.06341037, 0.34648004, 1)
+shadow_offset = Vector2(8, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ospfn"]
+bg_color = Color(0.2697, 0.419775, 0.87, 1)
+border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.98, 0.245, 0.6982501, 1)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_00x74"]
+bg_color = Color(1, 0.36470166, 0.67780393, 1)
+border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.27058825, 0.41960785, 0.87058824, 1)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gdsgw"]
+bg_color = Color(0.44650003, 0.572375, 0.95, 1)
+border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.98, 0.245, 0.6982501, 1)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[node name="EndPopUp" type="Control" unique_id=1205575577 node_paths=PackedStringArray("restart_btn", "menu_btn", "end_text_lbl")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_00x74")
+restart_btn = NodePath("RestartButton")
+menu_btn = NodePath("MainMenuButton")
+end_text_lbl = NodePath("EndText")
+
+[node name="background" type="ColorRect" parent="." unique_id=1491792923]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -250.0
+offset_right = 500.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.28385666, 0.16739999, 0.31, 1)
+
+[node name="backgroundShadow" type="ColorRect" parent="background" unique_id=1106007865]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -485.0
+offset_top = -235.0
+offset_right = 515.0
+offset_bottom = 265.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.6693935, 0.42651042, 0.7518456, 1)
+
+[node name="EndText" type="Label" parent="." unique_id=874253677]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.0
+offset_top = -190.0
+offset_right = 237.0
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "You Died"
+label_settings = SubResource("LabelSettings_ospfn")
+
+[node name="RestartButton" type="Button" parent="." unique_id=1469244760]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = 60.0
+offset_right = -110.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_ospfn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_00x74")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gdsgw")
+text = "Restart"
+
+[node name="MainMenuButton" type="Button" parent="." unique_id=127246479]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 110.0
+offset_top = 60.0
+offset_right = 382.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_ospfn")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_00x74")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gdsgw")
+text = "Menu"

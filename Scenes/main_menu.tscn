@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://cs1sbwea32xnk"]
+
+[ext_resource type="Script" uid="uid://ddas1hxnuot5u" path="res://Scripts/UI/main_menu.gd" id="1_28flt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_erv1k"]
+line_spacing = 5.0
+font_size = 120
+font_color = Color(1, 0.92, 0.97866666, 1)
+shadow_size = 10
+shadow_color = Color(0.946786, 3.946722e-06, 0.5854412, 1)
+shadow_offset = Vector2(5, 5)
+stacked_shadow_count = 1
+stacked_shadow_0/offset = Vector2(-5, -5)
+stacked_shadow_0/color = Color(0.21850002, 0.401375, 0.95, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xsaa"]
+bg_color = Color(0.2697, 0.419775, 0.87, 1)
+border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.98, 0.245, 0.6982501, 1)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_erv1k"]
+bg_color = Color(1, 0.36470166, 0.67780393, 1)
+border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.27058825, 0.41960785, 0.87058824, 1)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_28flt"]
+bg_color = Color(0.44650003, 0.572375, 0.95, 1)
+border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.98, 0.245, 0.6982501, 1)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[node name="MainMenu" type="Control" unique_id=1412889394 node_paths=PackedStringArray("play_btn", "quit_btn", "title_lbl")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_28flt")
+play_btn = NodePath("Buttons/PlayButton")
+quit_btn = NodePath("Buttons/QuitButton")
+title_lbl = NodePath("Title")
+
+[node name="Background" type="ColorRect" parent="." unique_id=200976755]
+layout_mode = 0
+offset_right = 1951.0
+offset_bottom = 1118.0
+color = Color(0.17874002, 0.10440001, 0.18, 1)
+
+[node name="Title" type="Label" parent="." unique_id=1965841692]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 300.0
+offset_bottom = 465.0
+grow_horizontal = 2
+text = "Pongourney"
+label_settings = SubResource("LabelSettings_erv1k")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Buttons" type="Node" parent="." unique_id=315859510]
+
+[node name="PlayButton" type="Button" parent="Buttons" unique_id=906858874]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -4.0
+offset_right = 250.0
+offset_bottom = 76.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_8xsaa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_erv1k")
+theme_override_styles/hover = SubResource("StyleBoxFlat_28flt")
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="Buttons" unique_id=993721680]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = 181.0
+offset_right = 250.0
+offset_bottom = 291.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_8xsaa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_erv1k")
+theme_override_styles/hover = SubResource("StyleBoxFlat_28flt")
+text = "Quit
+"

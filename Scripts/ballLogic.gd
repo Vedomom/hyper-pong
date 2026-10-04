@@ -9,7 +9,7 @@ extends CharacterBody2D
 @export var trail_length : int = 10
 @export var end_pop : Control
 
-var direction := Vector2(-1, randf())
+var direction :Vector2
 var speed := 0.0
 var score_count := 0
 var is_reset := true
@@ -21,6 +21,7 @@ var future_pos : Vector2
 
 func _ready() -> void:
 	trail.clear_points()
+	direction = Vector2(get_random_direction() ,randf())
 
 func _physics_process(delta: float) -> void:
 
@@ -72,7 +73,7 @@ func _physics_process(delta: float) -> void:
 		speed = initial_speed
 		score_count = 0
 		score_lable.text = str(score_count)
-		direction = Vector2(-1, randf())
+		direction = Vector2(get_random_direction(), randf())
 		if cpu.is_dead or player.is_dead:
 			cpu.health = 100
 			player.health = 100
@@ -129,3 +130,11 @@ func reset(coll_info, is_stuck = null):
 			score_lable.text = str(score_count)
 			speed = 0
 			is_reset = true
+
+func get_random_direction() -> int:
+	var randir = randi_range(-1, 1)
+	
+	if randir != 0:
+		return randir
+	else:
+		return get_random_direction()

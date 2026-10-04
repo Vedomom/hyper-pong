@@ -16,27 +16,30 @@ var step_size : float
 var win_height : float
 var paddle_height : float
 var is_dead : bool = false
+var prev_pos :Vector2
 
 func _ready() -> void:
 	current_damage = initial_damage
 	win_height = get_viewport_rect().size.y
 	paddle_height = paddle_shape.shape.size.y
-	print(paddle_height)
+	prev_pos = position
 
 func _physics_process(delta: float) -> void:
 	dist = position.y - ball.position.y
 	if abs(dist) > speed * delta:
-		#step_size = speed * delta * sign(dist)
-		velocity.y = lerp(velocity.y, speed *  -sign(dist), accel * delta)
-	elif position.y -paddle_height < ball.position.y  and ball.position.y < position.y +paddle_height:
-		#step_size = dist
-		velocity.y = move_toward(velocity.y, 0, accel * delta)
+		step_size = speed * delta * sign(dist)
+
+	else:
+		step_size = dist
+	
+	velocity.y = (position.y - prev_pos.y)
+	prev_pos = position
 	
 	manage_health()
 	manage_damage()
-	move_and_slide()
-	#position.y -= step_size
-	#position.y = clamp(position.y, paddle_height, win_height - paddle_height)
+
+	position.y -= step_size
+	position.y = clamp(position.y, paddle_height, win_height - paddle_height)
 	position.x = clampf(position.x, 1895, 1895)
 
 func death():

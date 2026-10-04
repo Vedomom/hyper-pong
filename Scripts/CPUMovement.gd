@@ -24,21 +24,19 @@ func _ready() -> void:
 	print(paddle_height)
 
 func _physics_process(delta: float) -> void:
-
 	dist = position.y - ball.position.y
 	if abs(dist) > speed * delta:
-		step_size = speed * delta * sign(dist)
-	else:
-		step_size = dist
+		#step_size = speed * delta * sign(dist)
+		velocity.y = lerp(velocity.y, speed *  -sign(dist), accel * delta)
+	elif position.y -paddle_height < ball.position.y  and ball.position.y < position.y +paddle_height:
+		#step_size = dist
+		velocity.y = move_toward(velocity.y, 0, accel * delta)
 	
 	manage_health()
 	manage_damage()
-
-	position.y -= step_size
-
-	position.y = clamp(position.y, paddle_height, win_height - paddle_height)
-	
-
+	move_and_slide()
+	#position.y -= step_size
+	#position.y = clamp(position.y, paddle_height, win_height - paddle_height)
 	position.x = clampf(position.x, 1895, 1895)
 
 func death():
@@ -58,9 +56,9 @@ func manage_health():
 
 func manage_damage():
 	damage_label.text = "%.2f" %current_damage
-	if current_damage > player.health / 2:
-		damage_label.label_settings.font_color = Color(0.94, 1.0, 0.25)
-	elif current_damage > player.health:
+	if current_damage > player.health:
 		damage_label.label_settings.font_color = Color(1, 0.43, 0.73)
+	elif current_damage > player.health / 2:
+		damage_label.label_settings.font_color = Color(0.85, 0.50, 1.0)
 	else:
 		damage_label.label_settings.font_color = Color(0.53, 0.9, 1.0)

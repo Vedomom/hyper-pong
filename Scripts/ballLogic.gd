@@ -16,6 +16,7 @@ var is_reset := true
 var curve : float = 0.0
 var curve_sign : int
 var prev_pos : Vector2
+var future_pos : Vector2
 
 
 func _ready() -> void:

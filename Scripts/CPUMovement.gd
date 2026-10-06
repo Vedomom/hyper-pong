@@ -32,13 +32,15 @@ func _physics_process(delta: float) -> void:
 	else:
 		step_size = dist
 	
-	velocity.y = (position.y - prev_pos.y)
-	prev_pos = position
-	
 	manage_health()
 	manage_damage()
 
-	position.y -= step_size
+	velocity.y = (position.y - prev_pos.y)
+	prev_pos = position
+	
+	
+	if ball.position.x >= get_viewport().size.x/2:
+		position.y -= step_size
 	position.y = clamp(position.y, paddle_height, win_height - paddle_height)
 	position.x = clampf(position.x, 1895, 1895)
 

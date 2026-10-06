@@ -45,7 +45,7 @@ func _physics_process(delta: float) -> void:
 		curve = move_toward(curve, 0, 0.1)
 		curve_sign = sign(curve)
 		if coll_info.get_collider().name == "Player" or coll_info.get_collider().name == "CPU":
-			coll_info.get_collider().current_damage *= 1 + (speed * 0.0005)
+			coll_info.get_collider().current_damage *= 1 + (0.2)
 			speed += speedStep
 			score_count += 1
 			score_lable.text = str(score_count)

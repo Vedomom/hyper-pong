@@ -81,8 +81,7 @@ func manage_damage():
 	damage_label.text = "%.2f" %current_damage
 	if current_damage > cpu.health:
 		damage_label.label_settings.font_color = Color(1, 0.43, 0.73)
-
-	elif current_damage > cpu.health / 2:
-		damage_label.label_settings.font_color = Color(0.94, 1.0, 0.25)
+	elif current_damage > cpu.health/2:
+		damage_label.label_settings.font_color = Color(0.85, 0.50, 1.0)
 	else:
 		damage_label.label_settings.font_color = Color(0.53, 0.9, 1.0)

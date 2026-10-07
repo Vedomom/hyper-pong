@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://te76hysvafge"]
+
+[ext_resource type="Script" uid="uid://dpccadiw2jbj0" path="res://Scripts/Upgrades/Scripts/whiplash.gd" id="1_680ql"]
+
+[node name="Whiplash" type="Node" unique_id=504981259]
+script = ExtResource("1_680ql")
+metadata/_custom_type_script = "uid://kw0yhvi4lx7m"

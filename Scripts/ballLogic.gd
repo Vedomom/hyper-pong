@@ -47,7 +47,7 @@ func _physics_process(delta: float) -> void:
 		curve_sign = sign(curve)
 		if coll_info.get_collider() == player or coll_info.get_collider() == cpu:
 			coll_info.get_collider().current_damage *= 1 + (0.2)
-			if coll_info.get_collider().get_class() == "Player":
+			if coll_info.get_collider() is Player:
 				player.player_shot.emit()
 			speed += speedStep
 			score_count += 1
@@ -118,8 +118,10 @@ func reset(coll_info, is_stuck = null):
 
 			if coll_info:
 				if coll_info.get_collider().name == "WallLeft":
+					player.player_damaged.emit()
 					deduct_health(player, cpu.current_damage)
 				elif coll_info.get_collider().name == "WallRight" :
+					player.player_scored.emit()
 					deduct_health(cpu, player.current_damage)
 			if is_stuck:
 				if last_pos.x >= 1800:

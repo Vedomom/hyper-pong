@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://6gdmw0j4k5vj"]
+
+[ext_resource type="Script" uid="uid://dqx8y0dcimij0" path="res://Scripts/Upgrades/Scripts/dash.gd" id="1_dipvb"]
+
+[node name="Dash" type="Node" unique_id=682302680]
+script = ExtResource("1_dipvb")
+metadata/_custom_type_script = "uid://kw0yhvi4lx7m"

@@ -10,10 +10,14 @@ func _ready() -> void:
 	if player:
 		initialize_power()
 	player.player_shot.connect(player_shot)
+	player.player_damaged.connect(player_damaged)
 
 func player_shot():
 	pass
 
 
 func initialize_power():
+	pass
+
+func player_damaged():
 	pass

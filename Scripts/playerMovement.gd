@@ -21,8 +21,11 @@ var cooldown_timer:= 0.0
 var is_dead : bool = false
 
 var curve_power : float = 0
+var can_dash : bool = false
 
 signal player_shot()  
+signal player_scored()
+signal player_damaged()
 
 func _ready() -> void:
 	current_damage = initial_damage	
@@ -34,7 +37,7 @@ func _physics_process(delta: float) -> void:
 	#var direction_H := Input.get_axis("Left", "Right")
 	var direction_V := Input.get_axis("Up", "Down")
 	if direction_V and (!is_dead and !cpu.is_dead) :
-		if Input.is_action_just_pressed("Roll") and lunge_timer <= 0.0 and cooldown_timer <= 0.0:
+		if Input.is_action_just_pressed("Roll") and lunge_timer <= 0.0 and cooldown_timer <= 0.0 and can_dash:
 			lunge_timer = lunge_time
 			lunge_direction = direction_V
 			cooldown_timer = lunge_cooldown

@@ -1,14 +1,15 @@
 extends CharacterBody2D
+class_name Enemy
 
 @export var speed: float = 500
 @export var accel: float = 10
-@export var ball: CharacterBody2D
+@export var ball: Ball
 @export var paddle_shape : CollisionShape2D    
 @export var health :float = 100.0
 @export var health_lable : Label
 @export var initial_damage: float = 10
 @export var damage_label: Label
-@export var player: CharacterBody2D
+@export var player: Player
 
 var current_damage: float
 var dist : float
@@ -17,6 +18,8 @@ var win_height : float
 var paddle_height : float
 var is_dead : bool = false
 var prev_pos :Vector2
+
+var curve_power : float = 0.5
 
 func _ready() -> void:
 	current_damage = initial_damage

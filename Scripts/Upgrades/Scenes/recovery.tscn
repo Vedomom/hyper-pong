@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://d25iposlnwpi4"]
+
+[ext_resource type="Script" uid="uid://be5gta408a6tu" path="res://Scripts/Upgrades/Scripts/recovery.gd" id="1_asp78"]
+
+[node name="Recovery" type="Node" unique_id=1842724792]
+script = ExtResource("1_asp78")
+metadata/_custom_type_script = "uid://kw0yhvi4lx7m"

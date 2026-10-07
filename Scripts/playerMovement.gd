@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 
 @export var speed :float = 500.0
@@ -10,7 +11,7 @@ extends CharacterBody2D
 @export var health_lable : Label
 @export var initial_damage: float = 10
 @export var damage_label: Label
-@export var cpu: CharacterBody2D
+@export var cpu: Enemy
 
 var current_damage: float
 var lunge_timer := 0.0
@@ -18,6 +19,10 @@ var lunge_direction : float
 var is_dashing = false
 var cooldown_timer:= 0.0
 var is_dead : bool = false
+
+var curve_power : float = 0
+
+signal player_shot()  
 
 func _ready() -> void:
 	current_damage = initial_damage	

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://cxwo6lmbku0ag"]
+
+[ext_resource type="Script" uid="uid://txpkjvrook4q" path="res://Scripts/playerMovement.gd" id="1_v0iea"]
+[ext_resource type="PackedScene" uid="uid://ca4xle4gh51q4" path="res://Scripts/Upgrades/Scenes/curve.tscn" id="2_cvnsp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1ah7"]
+size = Vector2(20, 163)
+
+[sub_resource type="BoxMesh" id="BoxMesh_kpgf4"]
+size = Vector3(0.4, 4, 1)
+
+[node name="Player" type="CharacterBody2D" unique_id=1410247650]
+scale = Vector2(2, 2)
+script = ExtResource("1_v0iea")
+speed = 800.0
+lunge_speed = 2000.0
+lunge_time = 0.5
+lunge_cooldown = 5.0
+initial_damage = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1560789276]
+shape = SubResource("RectangleShape2D_h1ah7")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1790113250]
+scale = Vector2(40, 40)
+mesh = SubResource("BoxMesh_kpgf4")
+
+[node name="Upgrades" type="Node" parent="." unique_id=1549932906]
+
+[node name="Curve" parent="Upgrades" unique_id=1763204711 instance=ExtResource("2_cvnsp")]

@@ -1,10 +1,11 @@
 extends CharacterBody2D
+class_name Ball
 
 @export var initial_speed := 200.0
 @export var score_lable : Label
 @export var speedStep : float
-@export var player: CharacterBody2D
-@export var cpu : CharacterBody2D
+@export var player: Player
+@export var cpu : Enemy
 @export var trail : Line2D
 @export var trail_length : int = 10
 @export var end_pop : Control
@@ -32,7 +33,7 @@ func _physics_process(delta: float) -> void:
 
 	var coll_info = move_and_collide(velocity * delta)	
 
-
+	#hadle if ball stuck
 	if prev_pos:
 		var pos_diff = position - prev_pos
 		if abs(pos_diff) == Vector2.ZERO and !is_reset:
@@ -42,25 +43,27 @@ func _physics_process(delta: float) -> void:
 		direction = direction.bounce(coll_info.get_normal())
 		direction.y = clamp(direction.y, -1, 1)
 		direction.x = 1 * sign(direction.x)
-		curve = move_toward(curve, 0, 0.1)
+		curve = move_toward(curve, 0, 0.5)
 		curve_sign = sign(curve)
-		if coll_info.get_collider().name == "Player" or coll_info.get_collider().name == "CPU":
+		if coll_info.get_collider() == player or coll_info.get_collider() == cpu:
 			coll_info.get_collider().current_damage *= 1 + (0.2)
+			if coll_info.get_collider().get_class() == "Player":
+				player.player_shot.emit()
 			speed += speedStep
 			score_count += 1
 			score_lable.text = str(score_count)
 			if coll_info.get_collider().velocity.y:
 				if coll_info.get_collider().velocity.y > coll_info.get_collider().speed:
-					curve = 0.8
+					curve = coll_info.get_collider().curve_power + 0.2
 				else :
-					curve = 0.5
+					curve = coll_info.get_collider().curve_power
 				curve_sign = -sign(coll_info.get_collider().velocity.y)
 		
-		if coll_info.get_collider().name == "Player" and direction.x != 1:
+		if coll_info.get_collider() == player and direction.x != 1:
 			direction.x = 1
 			
 		
-		if coll_info.get_collider().name == "CPU" and direction.x != -1:
+		if coll_info.get_collider() == cpu and direction.x != -1:
 			direction.x = -1
 
 

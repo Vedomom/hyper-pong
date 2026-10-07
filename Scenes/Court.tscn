@@ -1,24 +1,9 @@
 [gd_scene format=3 uid="uid://dhb710u43w4l"]
 
-[ext_resource type="Script" uid="uid://txpkjvrook4q" path="res://Scripts/playerMovement.gd" id="1_n36lv"]
-[ext_resource type="Script" uid="uid://csxnwhwiii8af" path="res://Scripts/ballLogic.gd" id="2_kpgf4"]
+[ext_resource type="PackedScene" uid="uid://cxwo6lmbku0ag" path="res://Scenes/player.tscn" id="1_hxgs0"]
+[ext_resource type="PackedScene" uid="uid://cst7gu6eyoyta" path="res://Scenes/ball.tscn" id="2_clkqn"]
 [ext_resource type="Script" uid="uid://fakuowg2ohf2" path="res://Scripts/CPUMovement.gd" id="3_h1ah7"]
 [ext_resource type="PackedScene" uid="uid://b0etnk6si67ve" path="res://Scenes/end_pop_up.tscn" id="4_hxgs0"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1ah7"]
-size = Vector2(20, 163)
-
-[sub_resource type="BoxMesh" id="BoxMesh_kpgf4"]
-size = Vector3(0.4, 4, 1)
-
-[sub_resource type="Curve" id="Curve_8xsaa"]
-_data = [Vector2(0, 0), 0.0, 0.79999995, 0, 1, Vector2(1, 0.79999995), 0.79999995, 0.0, 1, 0]
-point_count = 2
-metadata/_snap_enabled = true
-metadata/_snap_count = 100
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_4wpvp"]
-radius = 18.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wpvp"]
 size = Vector2(20, 163)
@@ -56,75 +41,29 @@ offset_right = 2018.0
 offset_bottom = 1139.0
 color = Color(0.15711999, 0.1312, 0.16, 1)
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1238354561 node_paths=PackedStringArray("health_lable", "damage_label", "cpu")]
+[node name="Player" parent="." unique_id=1410247650 node_paths=PackedStringArray("health_lable", "damage_label", "cpu") instance=ExtResource("1_hxgs0")]
 position = Vector2(25, 536)
-scale = Vector2(2, 2)
-script = ExtResource("1_n36lv")
-speed = 1000.0
-lunge_speed = 2500.0
-lunge_time = 0.2
-lunge_cooldown = 3.0
-health_lable = NodePath("../PlayerHealth")
-initial_damage = 1.0
-damage_label = NodePath("../PlayerDamage")
+health_lable = NodePath("../UI/PlayerHealth")
+damage_label = NodePath("../UI/PlayerDamage")
 cpu = NodePath("../CPU")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1529861037]
-shape = SubResource("RectangleShape2D_h1ah7")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="Player" unique_id=783247313]
-scale = Vector2(40, 40)
-mesh = SubResource("BoxMesh_kpgf4")
-
-[node name="Ball" type="CharacterBody2D" parent="." unique_id=554946885 node_paths=PackedStringArray("score_lable", "player", "cpu", "trail", "end_pop")]
-position = Vector2(960, 540)
-scale = Vector2(0.99999994, 0.99999994)
-script = ExtResource("2_kpgf4")
-initial_speed = 400.0
-score_lable = NodePath("../Score")
-speedStep = 5.0
+[node name="Ball" parent="." unique_id=1718199482 node_paths=PackedStringArray("score_lable", "player", "cpu", "end_pop") instance=ExtResource("2_clkqn")]
+score_lable = NodePath("../UI/Score")
 player = NodePath("../Player")
 cpu = NodePath("../CPU")
-trail = NodePath("shape/Trail")
-end_pop = NodePath("../EndPopUp")
-
-[node name="shape" type="ColorRect" parent="Ball" unique_id=1796476045]
-z_index = 2
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -12.5
-offset_top = -12.5
-offset_right = 12.5
-offset_bottom = 12.5
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(1, 0.16400003, 0.120000005, 1)
-
-[node name="Trail" type="Line2D" parent="Ball/shape" unique_id=752516855]
-top_level = true
-z_index = 1
-width = 20.0
-width_curve = SubResource("Curve_8xsaa")
-default_color = Color(1, 1, 1, 0.6156863)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball" unique_id=2104348753]
-position = Vector2(0.5, 0.5)
-shape = SubResource("CircleShape2D_4wpvp")
+end_pop = NodePath("../UI/EndPopUp")
 
 [node name="CPU" type="CharacterBody2D" parent="." unique_id=559363734 node_paths=PackedStringArray("ball", "paddle_shape", "health_lable", "damage_label", "player")]
 modulate = Color(0.4587546, 0.60942096, 1, 1)
 position = Vector2(1895, 540)
 scale = Vector2(2, 2)
 script = ExtResource("3_h1ah7")
-speed = 700.0
+speed = 800.0
 ball = NodePath("../Ball")
 paddle_shape = NodePath("CollisionShape2D")
-health_lable = NodePath("../CPUHealth")
+health_lable = NodePath("../UI/CPUHealth")
 initial_damage = 1.0
-damage_label = NodePath("../CPUDamage")
+damage_label = NodePath("../UI/CPUDamage")
 player = NodePath("../Player")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CPU" unique_id=931201223]
@@ -160,66 +99,9 @@ shape = SubResource("RectangleShape2D_xmho0")
 position = Vector2(1945, 540)
 shape = SubResource("RectangleShape2D_xmho0")
 
-[node name="Score" type="Label" parent="." unique_id=67169919]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 935.0
-offset_right = 1004.0
-offset_bottom = 165.0
-grow_horizontal = 2
-text = "0"
-label_settings = SubResource("LabelSettings_8xsaa")
+[node name="UI" type="Node" parent="." unique_id=1376812831]
 
-[node name="PlayerHealth" type="Label" parent="." unique_id=1717140905]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 48.0
-offset_top = 7.0
-offset_right = 117.0
-offset_bottom = 172.0
-grow_horizontal = 2
-text = "0"
-label_settings = SubResource("LabelSettings_hxgs0")
-
-[node name="PlayerDamage" type="Label" parent="." unique_id=1818984572]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 420.0
-offset_top = 7.0
-offset_right = 489.0
-offset_bottom = 172.0
-grow_horizontal = 2
-text = "0"
-label_settings = SubResource("LabelSettings_8gnj2")
-
-[node name="CPUHealth" type="Label" parent="." unique_id=1774139381]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 1817.0
-offset_top = 7.0
-offset_right = 1886.0
-offset_bottom = 172.0
-grow_horizontal = 2
-text = "0"
-label_settings = SubResource("LabelSettings_h1ah7")
-
-[node name="CPUDamage" type="Label" parent="." unique_id=239488184]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 1500.0
-offset_top = 7.0
-offset_right = 1569.0
-offset_bottom = 172.0
-grow_horizontal = 2
-text = "0"
-label_settings = SubResource("LabelSettings_clkqn")
-
-[node name="EndPopUp" parent="." unique_id=1205575577 instance=ExtResource("4_hxgs0")]
+[node name="EndPopUp" parent="UI" unique_id=1205575577 instance=ExtResource("4_hxgs0")]
 visible = false
 z_index = 3
 anchors_preset = 8
@@ -227,7 +109,62 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 960.0
-offset_top = 540.0
-offset_right = 960.0
-offset_bottom = 540.0
+
+[node name="Score" type="Label" parent="UI" unique_id=67169919]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -25.0
+offset_right = 44.0
+offset_bottom = 165.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_8xsaa")
+
+[node name="PlayerHealth" type="Label" parent="UI" unique_id=1717140905]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -912.0
+offset_top = 7.0
+offset_right = -843.0
+offset_bottom = 172.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_hxgs0")
+
+[node name="PlayerDamage" type="Label" parent="UI" unique_id=1818984572]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -540.0
+offset_top = 7.0
+offset_right = -471.0
+offset_bottom = 172.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_8gnj2")
+
+[node name="CPUHealth" type="Label" parent="UI" unique_id=1774139381]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 857.0
+offset_top = 7.0
+offset_right = 926.0
+offset_bottom = 172.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_h1ah7")
+
+[node name="CPUDamage" type="Label" parent="UI" unique_id=239488184]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 540.0
+offset_top = 7.0
+offset_right = 609.0
+offset_bottom = 172.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_clkqn")

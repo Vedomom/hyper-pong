@@ -24,6 +24,8 @@ var curve_power : float = 0
 var can_dash : bool = false
 var health : float
 
+var whiplash_sleep_timer :float = 0.5
+
 signal player_shot()  
 signal player_scored()
 signal player_damaged()

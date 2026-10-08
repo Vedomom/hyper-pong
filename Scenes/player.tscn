@@ -12,7 +12,6 @@ size = Vector3(0.4, 4, 1)
 scale = Vector2(2, 2)
 script = ExtResource("1_v0iea")
 speed = 800.0
-lunge_speed = 2000.0
 lunge_time = 0.5
 lunge_cooldown = 5.0
 initial_damage = 1.0

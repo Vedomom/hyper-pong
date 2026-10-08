@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Upgrade_selection" format=3 uid="uid://d08jjqwrs4ucx"]
+
+[ext_resource type="Script" uid="uid://cmoagbw6t6b67" path="res://Resources/upgrade_selection.gd" id="1_bs7md"]
+[ext_resource type="PackedScene" uid="uid://te76hysvafge" path="res://Scripts/Upgrades/Scenes/whiplash.tscn" id="1_m4i16"]
+
+[resource]
+script = ExtResource("1_bs7md")
+title = "Whiplash"
+description = "makes the ball change direction 1 second after you hit it"
+scene = ExtResource("1_m4i16")
+metadata/_custom_type_script = "uid://cmoagbw6t6b67"

@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://dgrk82p6lvgg0"]
 
+[ext_resource type="Script" uid="uid://deingq5l05bvo" path="res://Scripts/UI/select_upgrade_menu.gd" id="1_11363"]
+[ext_resource type="Script" uid="uid://dsjynddynfkyu" path="res://Scripts/UI/upgrade_button.gd" id="2_6gn5s"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_le8vw"]
 bg_color = Color(1, 0.8784314, 0.4, 1)
 corner_radius_top_left = 20
@@ -10,35 +13,65 @@ shadow_color = Color(0.92941177, 0.49411765, 0, 1)
 shadow_size = 1
 shadow_offset = Vector2(10, 10)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ltp0x"]
-bg_color = Color(1, 0.56083333, 0.14999998, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5dmy"]
+bg_color = Color(1, 0.8784314, 0.4, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
-shadow_color = Color(1, 0.88000005, 0.39999998, 1)
-shadow_size = 1
+shadow_color = Color(0.252, 0.37146652, 0.7, 1)
+shadow_size = 5
 shadow_offset = Vector2(10, 10)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_11363"]
-bg_color = Color(1, 0.83000004, 0.14999998, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gn5s"]
+bg_color = Color(1, 0.8784314, 0.4, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
-shadow_color = Color(1, 0.56083333, 0.14999998, 1)
-shadow_size = 1
+shadow_color = Color(0.92941177, 0.49411765, 0, 1)
+shadow_size = 10
 shadow_offset = Vector2(10, 10)
 
-[node name="Upgrade Menu" type="Control" unique_id=94360544]
+[sub_resource type="SystemFont" id="SystemFont_f5dmy"]
+
+[sub_resource type="FontVariation" id="FontVariation_6gn5s"]
+base_font = SubResource("SystemFont_f5dmy")
+variation_face_index = 13
+variation_embolden = 1.25
+variation_transform = Transform2D(0.965, -0.385, 0.62, 1.38, 0.065, 0)
+spacing_glyph = 13
+
+[sub_resource type="LabelSettings" id="LabelSettings_le8vw"]
+font = SubResource("FontVariation_6gn5s")
+font_size = 80
+font_color = Color(0.17850001, 0.42712498, 0.51, 1)
+shadow_color = Color(0.047762394, 0.039163005, 0.3132004, 1)
+shadow_offset = Vector2(6, 6)
+
+[sub_resource type="FontVariation" id="FontVariation_le8vw"]
+base_font = SubResource("SystemFont_f5dmy")
+variation_embolden = 0.96
+variation_transform = Transform2D(0.79, 0.35, -0.14, 0.96, 0.065, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ltp0x"]
+font = SubResource("FontVariation_le8vw")
+font_size = 35
+font_color = Color(0.31, 0.31, 0.31, 1)
+
+[node name="Upgrade Menu" type="Control" unique_id=94360544 node_paths=PackedStringArray("upgrade_left", "upgrade_right")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_11363")
+upgrade_left = NodePath("upgradeLeft")
+upgrade_right = NodePath("upgradeRight")
 
 [node name="background" type="ColorRect" parent="." unique_id=1731842540]
+z_index = 5
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -47,17 +80,18 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.18, 0.18, 0.18, 1)
 
-[node name="Item_1" type="Button" parent="." unique_id=160303118]
+[node name="upgradeLeft" type="Button" parent="." unique_id=1531796203 node_paths=PackedStringArray("title", "description")]
+z_index = 5
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -450.0
-offset_top = -150.0
-offset_right = -150.0
-offset_bottom = 150.0
+offset_left = -800.0
+offset_top = -400.0
+offset_right = -200.0
+offset_bottom = 400.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.09620453, 0.09620487, 0.096204616, 1)
@@ -65,21 +99,58 @@ theme_override_colors/font_pressed_color = Color(1, 0.88000005, 0.39999998, 1)
 theme_override_colors/font_hover_color = Color(0.09803922, 0.09803922, 0.09803922, 1)
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_le8vw")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ltp0x")
-theme_override_styles/hover = SubResource("StyleBoxFlat_11363")
-text = "Item1"
+theme_override_styles/pressed = SubResource("StyleBoxFlat_f5dmy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6gn5s")
+script = ExtResource("2_6gn5s")
+title = NodePath("title")
+description = NodePath("desc")
 
-[node name="Item_2" type="Button" parent="." unique_id=1199725539]
+[node name="title" type="Label" parent="upgradeLeft" unique_id=2125547414]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 200.0
+offset_right = 20.0
+offset_bottom = 223.0
+grow_horizontal = 2
+text = "Title
+"
+label_settings = SubResource("LabelSettings_le8vw")
+horizontal_alignment = 1
+
+[node name="desc" type="Label" parent="upgradeLeft" unique_id=2144514179]
+custom_maximum_size = Vector2(469, 400)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 150.0
-offset_top = -150.0
-offset_right = 450.0
-offset_bottom = 150.0
+offset_left = -234.5
+offset_top = -14.0
+offset_right = 234.5
+offset_bottom = 386.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "lorem ipsum de lopez"
+label_settings = SubResource("LabelSettings_ltp0x")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="upgradeRight" type="Button" parent="." unique_id=1037548238 node_paths=PackedStringArray("title", "description")]
+z_index = 5
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 200.0
+offset_top = -400.0
+offset_right = 800.0
+offset_bottom = 400.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.09620453, 0.09620487, 0.096204616, 1)
@@ -87,6 +158,42 @@ theme_override_colors/font_pressed_color = Color(1, 0.88000005, 0.39999998, 1)
 theme_override_colors/font_hover_color = Color(0.09803922, 0.09803922, 0.09803922, 1)
 theme_override_font_sizes/font_size = 40
 theme_override_styles/normal = SubResource("StyleBoxFlat_le8vw")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ltp0x")
-theme_override_styles/hover = SubResource("StyleBoxFlat_11363")
-text = "Item1"
+theme_override_styles/pressed = SubResource("StyleBoxFlat_f5dmy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6gn5s")
+script = ExtResource("2_6gn5s")
+title = NodePath("title")
+description = NodePath("desc")
+
+[node name="title" type="Label" parent="upgradeRight" unique_id=195652025]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 200.0
+offset_right = 20.0
+offset_bottom = 223.0
+grow_horizontal = 2
+text = "Title
+"
+label_settings = SubResource("LabelSettings_le8vw")
+horizontal_alignment = 1
+
+[node name="desc" type="Label" parent="upgradeRight" unique_id=1283781050]
+custom_maximum_size = Vector2(469, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.5
+offset_top = -14.0
+offset_right = 234.5
+offset_bottom = 386.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "lorem ipsum de lopez"
+label_settings = SubResource("LabelSettings_ltp0x")
+horizontal_alignment = 1
+autowrap_mode = 3

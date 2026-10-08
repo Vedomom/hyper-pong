@@ -4,15 +4,15 @@ class_name Player
 
 @export var speed :float = 500.0
 @export var  accel :float = 10
-@export var lunge_speed : float
 @export var lunge_time : float
 @export var lunge_cooldown : float
-@export var health :float = 100.0
+@export var initial_health :float = 100.0
 @export var health_lable : Label
 @export var initial_damage: float = 10
 @export var damage_label: Label
 @export var cpu: Enemy
 
+var lunge_speed : float 
 var current_damage: float
 var lunge_timer := 0.0
 var lunge_direction : float
@@ -22,13 +22,18 @@ var is_dead : bool = false
 
 var curve_power : float = 0
 var can_dash : bool = false
+var health : float
 
 signal player_shot()  
 signal player_scored()
 signal player_damaged()
+signal round_up()
 
 func _ready() -> void:
 	current_damage = initial_damage	
+	lunge_speed = speed
+	health = initial_health
+
 
 
 func _physics_process(delta: float) -> void:

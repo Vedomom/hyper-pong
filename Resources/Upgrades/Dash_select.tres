@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Upgrade_selection" format=3 uid="uid://b1eq2wvdwsqoy"]
+
+[ext_resource type="Script" uid="uid://cmoagbw6t6b67" path="res://Resources/upgrade_selection.gd" id="1_tt7wv"]
+[ext_resource type="PackedScene" uid="uid://6gdmw0j4k5vj" path="res://Scripts/Upgrades/Scenes/dash.tscn" id="1_ynd88"]
+
+[resource]
+script = ExtResource("1_tt7wv")
+title = "Dash"
+description = "gives you the ability to dash by pressing [shift]"
+scene = ExtResource("1_ynd88")
+metadata/_custom_type_script = "uid://cmoagbw6t6b67"

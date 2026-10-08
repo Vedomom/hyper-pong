@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cst7gu6eyoyta" path="res://Scenes/ball.tscn" id="2_clkqn"]
 [ext_resource type="Script" uid="uid://fakuowg2ohf2" path="res://Scripts/CPUMovement.gd" id="3_h1ah7"]
 [ext_resource type="PackedScene" uid="uid://b0etnk6si67ve" path="res://Scenes/end_pop_up.tscn" id="4_hxgs0"]
+[ext_resource type="Script" uid="uid://boaopnmsi2pb6" path="res://Scripts/game_manager.gd" id="5_clkqn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4wpvp"]
 size = Vector2(20, 163)
@@ -32,13 +33,20 @@ font_size = 50
 [sub_resource type="LabelSettings" id="LabelSettings_clkqn"]
 font_size = 50
 
+[sub_resource type="LabelSettings" id="LabelSettings_d8gck"]
+font_size = 50
+font_color = Color(1, 1, 0.61, 1)
+
 [node name="Court" type="Node2D" unique_id=430284900]
 
 [node name="background" type="ColorRect" parent="." unique_id=1777050252]
-offset_left = -19.0
-offset_top = -25.0
-offset_right = 2018.0
-offset_bottom = 1139.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.15711999, 0.1312, 0.16, 1)
 
 [node name="Player" parent="." unique_id=1410247650 node_paths=PackedStringArray("health_lable", "damage_label", "cpu") instance=ExtResource("1_hxgs0")]
@@ -47,20 +55,21 @@ health_lable = NodePath("../UI/PlayerHealth")
 damage_label = NodePath("../UI/PlayerDamage")
 cpu = NodePath("../CPU")
 
-[node name="Ball" parent="." unique_id=1718199482 node_paths=PackedStringArray("score_lable", "player", "cpu", "end_pop") instance=ExtResource("2_clkqn")]
+[node name="Ball" parent="." unique_id=1718199482 node_paths=PackedStringArray("score_lable", "player", "cpu", "end_pop", "ui_container") instance=ExtResource("2_clkqn")]
 score_lable = NodePath("../UI/Score")
 player = NodePath("../Player")
 cpu = NodePath("../CPU")
 end_pop = NodePath("../UI/EndPopUp")
+ui_container = NodePath("../UI")
 
 [node name="CPU" type="CharacterBody2D" parent="." unique_id=559363734 node_paths=PackedStringArray("ball", "paddle_shape", "health_lable", "damage_label", "player")]
 modulate = Color(0.4587546, 0.60942096, 1, 1)
 position = Vector2(1895, 540)
 scale = Vector2(2, 2)
 script = ExtResource("3_h1ah7")
-speed = 800.0
 ball = NodePath("../Ball")
 paddle_shape = NodePath("CollisionShape2D")
+health = 0.0
 health_lable = NodePath("../UI/CPUHealth")
 initial_damage = 1.0
 damage_label = NodePath("../UI/CPUDamage")
@@ -114,8 +123,8 @@ anchor_bottom = 0.5
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -25.0
-offset_right = 44.0
+offset_left = -34.5
+offset_right = 34.5
 offset_bottom = 165.0
 grow_horizontal = 2
 text = "0"
@@ -168,3 +177,22 @@ offset_bottom = 172.0
 grow_horizontal = 2
 text = "0"
 label_settings = SubResource("LabelSettings_clkqn")
+
+[node name="RoundLabel" type="Label" parent="UI" unique_id=1430864121]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -69.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "1"
+label_settings = SubResource("LabelSettings_d8gck")
+horizontal_alignment = 1
+
+[node name="GameManager" type="Node" parent="." unique_id=1780379137 node_paths=PackedStringArray("round_label")]
+script = ExtResource("5_clkqn")
+round_label = NodePath("../UI/RoundLabel")

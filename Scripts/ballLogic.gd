@@ -9,6 +9,7 @@ class_name Ball
 @export var trail : Line2D
 @export var trail_length : int = 10
 @export var end_pop : Control
+@export var ui_container : Node
 
 var direction :Vector2
 var speed := 0.0
@@ -18,6 +19,7 @@ var curve : float = 0.0
 var curve_sign : int
 var prev_pos : Vector2
 var future_pos : Vector2
+var game_won :bool = false
 
 
 func _ready() -> void:
@@ -91,8 +93,14 @@ func _physics_process(delta: float) -> void:
 		end_pop.visible = true
 
 	if cpu.is_dead:
-		end_pop.end_text = "You Win!"
-		end_pop.visible = true
+		if game_won:
+			pass
+		else :
+			var win_pop = load("res://Scenes/win_pop_up.tscn").instantiate()
+			ui_container.add_child(win_pop)
+			game_won = true
+
+
 
 
 

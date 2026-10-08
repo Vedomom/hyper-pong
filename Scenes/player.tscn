@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cxwo6lmbku0ag"]
 
 [ext_resource type="Script" uid="uid://txpkjvrook4q" path="res://Scripts/playerMovement.gd" id="1_v0iea"]
-[ext_resource type="PackedScene" uid="uid://te76hysvafge" path="res://Scripts/Upgrades/Scenes/whiplash.tscn" id="2_cvnsp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h1ah7"]
 size = Vector2(20, 163)
@@ -26,5 +25,3 @@ scale = Vector2(40, 40)
 mesh = SubResource("BoxMesh_kpgf4")
 
 [node name="Upgrades" type="Node" parent="." unique_id=1549932906]
-
-[node name="Whiplash" parent="Upgrades" unique_id=504981259 instance=ExtResource("2_cvnsp")]

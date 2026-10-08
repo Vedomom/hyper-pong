@@ -1,0 +1,124 @@
+[gd_scene format=3 uid="uid://dgex6kj6m6bce"]
+
+[ext_resource type="Script" uid="uid://caawi3ygcinwf" path="res://Scripts/UI/win_pop_up.gd" id="1_es7s0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_076ql"]
+font_size = 110
+font_color = Color(0.86292744, 0.933358, 0.9301186, 1)
+shadow_color = Color(0.31695512, 0.06341037, 0.34648004, 1)
+shadow_offset = Vector2(8, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_es7s0"]
+bg_color = Color(0.116199985, 0.29465002, 0.83, 1)
+border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.87, 0.79692, 0.3219, 1)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dab71"]
+bg_color = Color(0.87, 0.79692, 0.3219, 1)
+border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.27058825, 0.41960785, 0.87058824, 1)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uv71t"]
+bg_color = Color(0.27058825, 0.41960785, 0.87058824, 1)
+border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.87, 0.79692, 0.3219, 1)
+shadow_size = 6
+shadow_offset = Vector2(5, 5)
+
+[node name="WinPopUp" type="Control" unique_id=1467916958 node_paths=PackedStringArray("cont_btn")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_es7s0")
+cont_btn = NodePath("ContButton")
+
+[node name="background" type="ColorRect" parent="." unique_id=436451057]
+z_index = 4
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -250.0
+offset_right = 500.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16, 0.16, 0.16, 1)
+
+[node name="backgroundShadow" type="ColorRect" parent="background" unique_id=1459919735]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -485.0
+offset_top = -235.0
+offset_right = 515.0
+offset_bottom = 265.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.87, 0.79692, 0.3219, 1)
+
+[node name="WinText" type="Label" parent="." unique_id=1619472751]
+z_index = 5
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.0
+offset_top = -190.0
+offset_right = 237.0
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Enemy Defeated"
+label_settings = SubResource("LabelSettings_076ql")
+
+[node name="ContButton" type="Button" parent="." unique_id=472182974]
+z_index = 5
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = 40.0
+offset_right = 175.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_es7s0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dab71")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uv71t")
+text = "Continue"

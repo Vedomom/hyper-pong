@@ -11,4 +11,3 @@ func initialize_power():
 func player_shot():
 	await get_tree().create_timer(1).timeout
 	ball.direction.y *= -1.0
-

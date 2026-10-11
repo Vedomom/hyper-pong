@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://be0c7mdhubb5v"]
+
+[ext_resource type="Script" uid="uid://dt4glnqw6okfv" path="res://Scripts/Upgrades/Enemy/Scripts/e_hard_hit.gd" id="1_aicw5"]
+
+[node name="E_HardHit" type="Node" unique_id=1119566558]
+script = ExtResource("1_aicw5")
+metadata/_custom_type_script = "uid://up4et70cst40"

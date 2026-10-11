@@ -5,9 +5,9 @@ class_name Enemy
 @export var accel: float = 10
 @export var ball: Ball
 @export var paddle_shape : CollisionShape2D    
-@export var health :float = 100.0
+@export var initial_health :float = 100.0
 @export var health_lable : Label
-@export var initial_damage: float = 10
+@export var initial_damage: float = 1
 @export var damage_label: Label
 @export var player: Player
 
@@ -18,11 +18,19 @@ var win_height : float
 var paddle_height : float
 var is_dead : bool = false
 var prev_pos :Vector2
+var detection_range: float = 2
+var curve_power : float 
+var health : float
 
-var curve_power : float = 0.5
+signal enemy_shot()  
+signal enemy_scored()
+signal enemy_damaged()
+
+
 
 func _ready() -> void:
 	current_damage = initial_damage
+	health = initial_health
 	win_height = get_viewport_rect().size.y
 	paddle_height = paddle_shape.shape.size.y
 	prev_pos = position
@@ -42,7 +50,7 @@ func _physics_process(delta: float) -> void:
 	prev_pos = position
 	
 	
-	if ball.position.x >= get_viewport().size.x/2:
+	if ball.position.x >= get_viewport().size.x/detection_range:
 		position.y -= step_size
 	position.y = clamp(position.y, paddle_height, win_height - paddle_height)
 	position.x = clampf(position.x, 1895, 1895)

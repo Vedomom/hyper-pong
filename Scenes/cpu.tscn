@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bxr3xbkrcosf1"]
+
+[ext_resource type="Script" uid="uid://fakuowg2ohf2" path="res://Scripts/CPUMovement.gd" id="1_xwqh3"]
+[ext_resource type="PackedScene" uid="uid://bk1wn1b37j0xw" path="res://Scripts/Upgrades/Enemy/Scenes/e_sudden_accel.tscn" id="2_dopw7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wpvp"]
+size = Vector2(20, 163)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8xsaa"]
+size = Vector3(0.4, 4, 1)
+
+[node name="CPU" type="CharacterBody2D" unique_id=350636408 node_paths=PackedStringArray("paddle_shape")]
+modulate = Color(0.4587546, 0.60942096, 1, 1)
+scale = Vector2(2, 2)
+script = ExtResource("1_xwqh3")
+paddle_shape = NodePath("CollisionShape2D")
+initial_health = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1703698107]
+shape = SubResource("RectangleShape2D_4wpvp")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="." unique_id=1729843314]
+scale = Vector2(40, 40)
+mesh = SubResource("BoxMesh_8xsaa")
+
+[node name="Upgrades" type="Node" parent="." unique_id=422033475]
+
+[node name="E_SuddenAccel" parent="Upgrades" unique_id=1516652281 instance=ExtResource("2_dopw7")]

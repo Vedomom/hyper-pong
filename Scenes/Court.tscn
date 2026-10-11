@@ -2,15 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://cxwo6lmbku0ag" path="res://Scenes/player.tscn" id="1_hxgs0"]
 [ext_resource type="PackedScene" uid="uid://cst7gu6eyoyta" path="res://Scenes/ball.tscn" id="2_clkqn"]
-[ext_resource type="Script" uid="uid://fakuowg2ohf2" path="res://Scripts/CPUMovement.gd" id="3_h1ah7"]
+[ext_resource type="PackedScene" uid="uid://bxr3xbkrcosf1" path="res://Scenes/cpu.tscn" id="3_clkqn"]
 [ext_resource type="PackedScene" uid="uid://b0etnk6si67ve" path="res://Scenes/end_pop_up.tscn" id="4_hxgs0"]
 [ext_resource type="Script" uid="uid://boaopnmsi2pb6" path="res://Scripts/game_manager.gd" id="5_clkqn"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4wpvp"]
-size = Vector2(20, 163)
-
-[sub_resource type="BoxMesh" id="BoxMesh_8xsaa"]
-size = Vector3(0.4, 4, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhf37"]
 size = Vector2(1920, 50)
@@ -62,25 +56,13 @@ cpu = NodePath("../CPU")
 end_pop = NodePath("../UI/EndPopUp")
 ui_container = NodePath("../UI")
 
-[node name="CPU" type="CharacterBody2D" parent="." unique_id=559363734 node_paths=PackedStringArray("ball", "paddle_shape", "health_lable", "damage_label", "player")]
-modulate = Color(0.4587546, 0.60942096, 1, 1)
+[node name="CPU" parent="." unique_id=350636408 node_paths=PackedStringArray("ball", "health_lable", "damage_label", "player") instance=ExtResource("3_clkqn")]
 position = Vector2(1895, 540)
-scale = Vector2(2, 2)
-script = ExtResource("3_h1ah7")
+speed = 300.0
 ball = NodePath("../Ball")
-paddle_shape = NodePath("CollisionShape2D")
-health = 1.0
 health_lable = NodePath("../UI/CPUHealth")
-initial_damage = 1.0
 damage_label = NodePath("../UI/CPUDamage")
 player = NodePath("../Player")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CPU" unique_id=931201223]
-shape = SubResource("RectangleShape2D_4wpvp")
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="CPU" unique_id=212327391]
-scale = Vector2(40, 40)
-mesh = SubResource("BoxMesh_8xsaa")
 
 [node name="Walls" type="Node" parent="." unique_id=767150607]
 

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bv26j7dbhxug7"]
+
+[ext_resource type="Script" uid="uid://chbgpehlcbcw8" path="res://Scripts/Upgrades/Enemy/Scripts/e_invisiball.gd" id="1_dg1s6"]
+
+[node name="E_Invisiball" type="Node" unique_id=1321193783]
+script = ExtResource("1_dg1s6")
+metadata/_custom_type_script = "uid://up4et70cst40"

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://b63godopnq8gb"]
+
+[ext_resource type="Script" uid="uid://dyodp0kvg3hvn" path="res://Scripts/Upgrades/Enemy/Scripts/e_whiplash.gd" id="1_vabwp"]
+
+[node name="E_Whiplash" type="Node" unique_id=2060552805]
+script = ExtResource("1_vabwp")
+metadata/_custom_type_script = "uid://up4et70cst40"

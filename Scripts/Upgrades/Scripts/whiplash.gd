@@ -18,8 +18,5 @@ func player_shot():
 	if sleeptime > 0:
 		tm = sleeptime * 0.2
 	await get_tree().create_timer(0.4 + tm).timeout
-	print(self.name.remove_chars("Whiplash"))
-	print(sleeptime)
-	print(tm)
 	ball.direction.y *= -1.0
 	ball.curve_sign *= -1

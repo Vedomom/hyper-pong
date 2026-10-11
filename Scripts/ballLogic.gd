@@ -20,6 +20,7 @@ var curve_sign : int
 var prev_pos : Vector2
 var future_pos : Vector2
 var game_won :bool = false
+var coll_info
 
 
 func _ready() -> void:
@@ -33,7 +34,7 @@ func _physics_process(delta: float) -> void:
 		trail.remove_point(0)
 
 
-	var coll_info = move_and_collide(velocity * delta)	
+	coll_info = move_and_collide(velocity * delta)	
 
 	#hadle if ball stuck
 	if prev_pos:
@@ -51,6 +52,8 @@ func _physics_process(delta: float) -> void:
 			coll_info.get_collider().current_damage *= 1 + (0.2)
 			if coll_info.get_collider() is Player:
 				player.player_shot.emit()
+			else:
+				cpu.enemy_shot.emit()
 			speed += speedStep
 			score_count += 1
 			score_lable.text = str(score_count)
@@ -127,9 +130,11 @@ func reset(coll_info, is_stuck = null):
 			if coll_info:
 				if coll_info.get_collider().name == "WallLeft":
 					player.player_damaged.emit()
+					cpu.enemy_scored.emit()
 					deduct_health(player, cpu.current_damage)
 				elif coll_info.get_collider().name == "WallRight" :
 					player.player_scored.emit()
+					cpu.enemy_damaged.emit()
 					deduct_health(cpu, player.current_damage)
 			if is_stuck:
 				if last_pos.x >= 1800:

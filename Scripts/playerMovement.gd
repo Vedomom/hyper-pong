@@ -49,15 +49,16 @@ func _physics_process(delta: float) -> void:
 			lunge_direction = direction_V
 			cooldown_timer = lunge_cooldown
 		
-
+		if lunge_timer > 0.0 :
+			velocity.y = lunge_speed * lunge_direction
 		if lunge_timer <= 0.0 :
 			velocity.y = lerp(velocity.y, direction_V * speed, accel * delta)
 	else:
 		if lunge_timer <= 0.0 :
 			velocity.y = move_toward(velocity.y, 0, 250)
+		if lunge_timer > 0.0 :
+			velocity.y = lunge_speed * lunge_direction
 	
-	if lunge_timer > 0.0 :
-		velocity.y = lunge_speed * lunge_direction
 	
 	if cooldown_timer > 0.0:
 		modulate = lerp(modulate, Color(1, 1, 0.22), delta * accel *0.8)
@@ -70,7 +71,7 @@ func _physics_process(delta: float) -> void:
 
 
 	velocity.x = 0.0
-	position.x = clampf(position.x, 25, 25)
+	position.x = clampf(position.x, 15, 15)
 	lunge_timer -= delta
 	cooldown_timer -= delta
 

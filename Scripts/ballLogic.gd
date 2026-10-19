@@ -21,6 +21,7 @@ var prev_pos : Vector2
 var future_pos : Vector2
 var game_won :bool = false
 var coll_info
+var can_move := false
 
 
 func _ready() -> void:
@@ -40,7 +41,7 @@ func _physics_process(delta: float) -> void:
 	if prev_pos:
 		var pos_diff = position - prev_pos
 		if abs(pos_diff) == Vector2.ZERO and !is_reset:
-			reset(coll_info, true)
+			reset(true)
 
 	if coll_info:
 		direction = direction.bounce(coll_info.get_normal())
@@ -73,7 +74,7 @@ func _physics_process(delta: float) -> void:
 
 
 		if coll_info.get_collider().name == "WallLeft" or coll_info.get_collider().name == "WallRight" :
-			reset(coll_info)
+			reset()
 
 
 	if Input.is_action_pressed("Hit") and is_reset and !(player.is_dead or cpu.is_dead):
@@ -81,13 +82,14 @@ func _physics_process(delta: float) -> void:
 		speed = initial_speed
 		score_count = 0
 		score_lable.text = str(score_count)
-		direction = Vector2(get_random_direction(), randf())
+		direction = Vector2(get_random_direction(), randf_range(-1, 1))
 		if cpu.is_dead or player.is_dead:
 			cpu.health = 100
 			player.health = 100
 			player.is_dead = false
 			cpu.is_dead = false
 		is_reset = false
+		can_move = true
 	
 
 
@@ -108,7 +110,9 @@ func _physics_process(delta: float) -> void:
 
 
 	direction.y += curve * delta * curve_sign 
-	velocity = direction * speed 
+
+	if can_move:
+		velocity = direction * speed 
 
 	position = clamp(position, Vector2(18, 18), Vector2(1920 -18, 1080 -18))
 
@@ -122,7 +126,7 @@ func deduct_health(subject, damage):
 	subject.health -= damage
 	subject.health = clampf(subject.health, 0.0, 100.0)
 	
-func reset(coll_info, is_stuck = null):
+func reset(is_stuck : bool = false):
 			trail.clear_points()
 			var last_pos = position
 			position = Vector2(960, 540)
@@ -147,7 +151,9 @@ func reset(coll_info, is_stuck = null):
 			score_count = 0
 			score_lable.text = str(score_count)
 			speed = 0
+			velocity = Vector2.ZERO
 			is_reset = true
+			can_move = false
 
 func get_random_direction() -> int:
 	var randir = randi_range(-1, 1)

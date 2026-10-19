@@ -4,13 +4,22 @@ extends Control
 @export var upgrade_right :UpgradeButton
 
 var upgrades_list : Array
+var player : Player
 
 func _ready() -> void:
 	var folder = DirAccess.open("res://Resources/Upgrades/")
+
+	for node in get_parent().get_parent().get_children():
+		if node is Player:
+			player = node
+
 	if folder != null:
 		folder.list_dir_begin()
 		for file:String in folder.get_files():
-			upgrades_list.append(load(folder.get_current_dir() + "/" + file))
+			if not player.can_dash and "dash" in file.to_lower():
+				pass
+			else :
+				upgrades_list.append(load(folder.get_current_dir() + "/" + file))
 
 	else :
 		print("folder empty")
@@ -19,6 +28,8 @@ func _ready() -> void:
 	
 	if upgrades_list:
 		upgrades_list.shuffle()
+
+		
 
 		var ugd_left = upgrades_list[0]
 		var ugd_right = upgrades_list[1]

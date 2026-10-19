@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bk6edojcrv7do"]
+
+[ext_resource type="Script" uid="uid://wrxs4btjvtgd" path="res://Scripts/Upgrades/Scripts/vitality.gd" id="1_3mxvd"]
+
+[node name="Vitality" type="Node" unique_id=629592593]
+script = ExtResource("1_3mxvd")
+metadata/_custom_type_script = "uid://kw0yhvi4lx7m"

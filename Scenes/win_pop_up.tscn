@@ -65,7 +65,7 @@ offset_right = 500.0
 offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.16, 0.16, 0.16, 1)
+color = Color(0.16078432, 0.16078432, 0.16078432, 1)
 
 [node name="backgroundShadow" type="ColorRect" parent="background" unique_id=1459919735]
 show_behind_parent = true

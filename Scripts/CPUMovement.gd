@@ -34,6 +34,7 @@ func _ready() -> void:
 	win_height = get_viewport_rect().size.y
 	paddle_height = paddle_shape.shape.size.y
 	prev_pos = position
+	modulate = [Color.SILVER, Color.ANTIQUE_WHITE, Color.CORAL, Color.SPRING_GREEN, Color.CRIMSON, Color.ORANGE, Color.PALE_GOLDENROD][randi_range(0, 6)]
 
 func _physics_process(delta: float) -> void:
 	dist = position.y - ball.position.y
@@ -53,7 +54,7 @@ func _physics_process(delta: float) -> void:
 	if ball.position.x >= get_viewport().size.x/detection_range:
 		position.y -= step_size
 	position.y = clamp(position.y, paddle_height, win_height - paddle_height)
-	position.x = clampf(position.x, 1895, 1895)
+	position.x = clampf(position.x, 1920-15, 1920-15)
 
 func death():
 	is_dead = true

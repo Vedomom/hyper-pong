@@ -44,7 +44,8 @@ grow_vertical = 2
 color = Color(0.15711999, 0.1312, 0.16, 1)
 
 [node name="Player" parent="." unique_id=1410247650 node_paths=PackedStringArray("health_lable", "damage_label", "cpu") instance=ExtResource("1_hxgs0")]
-position = Vector2(25, 536)
+position = Vector2(15, 536)
+lunge_time = 0.2
 health_lable = NodePath("../UI/PlayerHealth")
 damage_label = NodePath("../UI/PlayerDamage")
 cpu = NodePath("../CPU")

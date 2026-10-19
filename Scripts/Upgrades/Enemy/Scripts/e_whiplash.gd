@@ -9,6 +9,6 @@ func initialize_power():
 
 
 func enemy_shot():
-	await get_tree().create_timer(randf_range(0.5, 1)).timeout
+	await get_tree().create_timer(randf_range(0.5, 0.7)).timeout
 	ball.direction.y *= -1.0
 	ball.curve_sign *= -1

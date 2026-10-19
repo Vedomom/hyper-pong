@@ -19,7 +19,6 @@ func initialize_power():
 
 
 func enemy_shot():
-	prev_color = ball.modulate
 	ball.modulate = Color.TRANSPARENT
 	ball.trail.modulate = Color(1, 1, 1, 0.1)
 	

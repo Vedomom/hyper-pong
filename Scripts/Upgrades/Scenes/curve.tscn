@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://ca4xle4gh51q4"]
+
+[ext_resource type="Script" uid="uid://hdermsx4ej6f" path="res://Scripts/Upgrades/Scripts/curve.gd" id="1_1mtnh"]
+
+[node name="Curve" type="Node" unique_id=1763204711]
+script = ExtResource("1_1mtnh")
+metadata/_custom_type_script = "uid://6v2bhooc5m2n"

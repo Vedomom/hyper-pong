@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://drpaq6dr2h4e"]
+
+[ext_resource type="Script" uid="uid://bthxay54qwlwx" path="res://Scripts/Upgrades/Scripts/ascend.gd" id="1_ajrmj"]
+
+[node name="Ascend" type="Node" unique_id=225272472]
+script = ExtResource("1_ajrmj")
+metadata/_custom_type_script = "uid://kw0yhvi4lx7m"

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Upgrade_selection" format=3 uid="uid://xwywed02grbt"]
+
+[ext_resource type="Script" uid="uid://cmoagbw6t6b67" path="res://Resources/upgrade_selection.gd" id="1_b8oss"]
+[ext_resource type="PackedScene" uid="uid://boet2t4i504ne" path="res://Scripts/Upgrades/Scenes/power.tscn" id="1_m6ba3"]
+
+[resource]
+script = ExtResource("1_b8oss")
+title = "Power"
+description = "Increases your initial damage by 5"
+scene = ExtResource("1_m6ba3")
+metadata/_custom_type_script = "uid://cmoagbw6t6b67"

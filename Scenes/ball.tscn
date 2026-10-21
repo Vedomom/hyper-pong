@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://cst7gu6eyoyta"]
+
+[ext_resource type="Script" uid="uid://csxnwhwiii8af" path="res://Scripts/ballLogic.gd" id="1_d60mj"]
+
+[sub_resource type="Curve" id="Curve_8xsaa"]
+_data = [Vector2(0, 0), 0.0, 0.79999995, 0, 1, Vector2(1, 0.79999995), 0.79999995, 0.0, 1, 0]
+point_count = 2
+metadata/_snap_enabled = true
+metadata/_snap_count = 100
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4wpvp"]
+radius = 18.0
+
+[node name="Ball" type="CharacterBody2D" unique_id=1718199482 node_paths=PackedStringArray("score_lable", "player", "cpu", "trail", "end_pop")]
+position = Vector2(960, 540)
+scale = Vector2(0.99999994, 0.99999994)
+script = ExtResource("1_d60mj")
+initial_speed = 400.0
+score_lable = NodePath("")
+speedStep = 5.0
+player = NodePath("")
+cpu = NodePath("")
+trail = NodePath("shape/Trail")
+end_pop = NodePath("")
+
+[node name="shape" type="ColorRect" parent="." unique_id=681213421]
+z_index = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -12.5
+offset_top = -12.5
+offset_right = 12.5
+offset_bottom = 12.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.16400003, 0.120000005, 1)
+
+[node name="Trail" type="Line2D" parent="shape" unique_id=1163394677]
+top_level = true
+z_index = 1
+width = 20.0
+width_curve = SubResource("Curve_8xsaa")
+default_color = Color(1, 1, 1, 0.6156863)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=451210642]
+position = Vector2(0.5, 0.5)
+shape = SubResource("CircleShape2D_4wpvp")

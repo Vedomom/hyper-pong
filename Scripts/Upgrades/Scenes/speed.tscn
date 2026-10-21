@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bflqnkoo15iqc"]
+
+[ext_resource type="Script" uid="uid://oq0by83qqugy" path="res://Scripts/Upgrades/Scripts/speed.gd" id="1_q7c03"]
+
+[node name="Speed" type="Node" unique_id=124738960]
+script = ExtResource("1_q7c03")
+metadata/_custom_type_script = "uid://kw0yhvi4lx7m"

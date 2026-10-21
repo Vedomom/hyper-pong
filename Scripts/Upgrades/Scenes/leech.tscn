@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dtiom3rnk38ea"]
+
+[ext_resource type="Script" uid="uid://crp2rxqh65mtg" path="res://Scripts/Upgrades/Scripts/leech.gd" id="1_t4d5l"]
+
+[node name="Leech" type="Node" unique_id=1007060311]
+script = ExtResource("1_t4d5l")
+metadata/_custom_type_script = "uid://kw0yhvi4lx7m"

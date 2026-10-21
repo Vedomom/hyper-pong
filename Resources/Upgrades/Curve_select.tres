@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Upgrade_selection" format=3 uid="uid://c4oi0o7mlk58x"]
+
+[ext_resource type="Script" uid="uid://cmoagbw6t6b67" path="res://Resources/upgrade_selection.gd" id="1_0c0r4"]
+[ext_resource type="PackedScene" uid="uid://ca4xle4gh51q4" path="res://Scripts/Upgrades/Scenes/curve.tscn" id="1_hybwa"]
+
+[resource]
+script = ExtResource("1_0c0r4")
+title = "Curve"
+description = "increases your power to curve the ball"
+scene = ExtResource("1_hybwa")
+metadata/_custom_type_script = "uid://cmoagbw6t6b67"

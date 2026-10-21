@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Upgrade_selection" format=3 uid="uid://bxcs75rxchld2"]
+
+[ext_resource type="PackedScene" uid="uid://d25iposlnwpi4" path="res://Scripts/Upgrades/Scenes/recovery.tscn" id="1_5sxag"]
+[ext_resource type="Script" uid="uid://cmoagbw6t6b67" path="res://Resources/upgrade_selection.gd" id="1_64tnh"]
+
+[resource]
+script = ExtResource("1_64tnh")
+title = "Recovery"
+description = "decreases cooldown time for dashing"
+scene = ExtResource("1_5sxag")
+metadata/_custom_type_script = "uid://cmoagbw6t6b67"

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cmbgl8ovm4xr3"]
+
+[ext_resource type="Script" uid="uid://b0v8vdxrjvtfo" path="res://Scripts/Upgrades/Enemy/Scripts/e_curve.gd" id="1_hrf0k"]
+
+[node name="E_Curve" type="Node" unique_id=1065486546]
+script = ExtResource("1_hrf0k")

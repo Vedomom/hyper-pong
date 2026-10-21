@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Upgrade_selection" format=3 uid="uid://dwh31dyhhx46b"]
+
+[ext_resource type="PackedScene" uid="uid://dtiom3rnk38ea" path="res://Scripts/Upgrades/Scenes/leech.tscn" id="1_owx48"]
+[ext_resource type="Script" uid="uid://cmoagbw6t6b67" path="res://Resources/upgrade_selection.gd" id="1_r2etm"]
+
+[resource]
+script = ExtResource("1_r2etm")
+title = "Leech"
+description = "steal a little bit of the enemy's health when you score"
+scene = ExtResource("1_owx48")
+metadata/_custom_type_script = "uid://cmoagbw6t6b67"

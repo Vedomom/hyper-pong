@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bk1wn1b37j0xw"]
+
+[ext_resource type="Script" uid="uid://fvoq7iya5f0k" path="res://Scripts/Upgrades/Enemy/Scripts/e_sudden_accel.gd" id="1_5e6vx"]
+
+[node name="E_SuddenAccel" type="Node" unique_id=1516652281]
+script = ExtResource("1_5e6vx")
+metadata/_custom_type_script = "uid://up4et70cst40"

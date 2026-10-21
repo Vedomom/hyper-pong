@@ -1,17 +1,20 @@
 extends CharacterBody2D
+class_name Player
 
 
-@export var speed :float = 500.0
+@export var speed :float 
 @export var  accel :float = 10
-@export var lunge_speed : float
 @export var lunge_time : float
 @export var lunge_cooldown : float
-@export var health :float = 100.0
+@export var initial_health :float = 100.0
 @export var health_lable : Label
 @export var initial_damage: float = 10
 @export var damage_label: Label
-@export var cpu: CharacterBody2D
+@export var cpu: Enemy
 
+const MAX_SPEED = 1300
+const MIN_SPEED = 500
+var lunge_speed : float 
 var current_damage: float
 var lunge_timer := 0.0
 var lunge_direction : float
@@ -19,30 +22,47 @@ var is_dashing = false
 var cooldown_timer:= 0.0
 var is_dead : bool = false
 
+var curve_power : float = 0
+var can_dash : bool = false
+var health : float
+
+var whiplash_sleep_timer :float = 0.5
+var damage_mult := 0.2
+var leech_power := 0.0
+
+signal player_shot()  
+signal player_scored()
+signal player_damaged()
+signal round_up()
+
 func _ready() -> void:
 	current_damage = initial_damage	
+	lunge_speed = speed
+	health = initial_health
+
 
 
 func _physics_process(delta: float) -> void:
 	
-
+	speed = clamp(speed, MIN_SPEED, MAX_SPEED)
 	#var direction_H := Input.get_axis("Left", "Right")
 	var direction_V := Input.get_axis("Up", "Down")
 	if direction_V and (!is_dead and !cpu.is_dead) :
-		if Input.is_action_just_pressed("Roll") and lunge_timer <= 0.0 and cooldown_timer <= 0.0:
+		if Input.is_action_just_pressed("Roll") and lunge_timer <= 0.0 and cooldown_timer <= 0.0 and can_dash:
 			lunge_timer = lunge_time
 			lunge_direction = direction_V
 			cooldown_timer = lunge_cooldown
 		
-
+		if lunge_timer > 0.0 :
+			velocity.y = lunge_speed * lunge_direction
 		if lunge_timer <= 0.0 :
 			velocity.y = lerp(velocity.y, direction_V * speed, accel * delta)
 	else:
 		if lunge_timer <= 0.0 :
 			velocity.y = move_toward(velocity.y, 0, 250)
+		if lunge_timer > 0.0 :
+			velocity.y = lunge_speed * lunge_direction
 	
-	if lunge_timer > 0.0 :
-		velocity.y = lunge_speed * lunge_direction
 	
 	if cooldown_timer > 0.0:
 		modulate = lerp(modulate, Color(1, 1, 0.22), delta * accel *0.8)
@@ -55,7 +75,7 @@ func _physics_process(delta: float) -> void:
 
 
 	velocity.x = 0.0
-	position.x = clampf(position.x, 25, 25)
+	position.x = clampf(position.x, 15, 15)
 	lunge_timer -= delta
 	cooldown_timer -= delta
 
@@ -81,8 +101,7 @@ func manage_damage():
 	damage_label.text = "%.2f" %current_damage
 	if current_damage > cpu.health:
 		damage_label.label_settings.font_color = Color(1, 0.43, 0.73)
-
-	elif current_damage > cpu.health / 2:
-		damage_label.label_settings.font_color = Color(0.94, 1.0, 0.25)
+	elif current_damage > cpu.health/2:
+		damage_label.label_settings.font_color = Color(0.85, 0.50, 1.0)
 	else:
 		damage_label.label_settings.font_color = Color(0.53, 0.9, 1.0)

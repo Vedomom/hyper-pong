@@ -41,6 +41,8 @@ func _process(_delta: float) -> void:
 	if ball.game_won and round_number>= 10 and not is_ended:
 		end_game()
 		is_ended = true
+	
+	player.health = clamp(player.health, 0.0, player.initial_health)
 
 
 
@@ -71,7 +73,7 @@ func next_round():
 
 
 func upgrade_enemy():
-	enemy.speed += randf_range(50, 200)
+	enemy.speed += randf_range(20, 100)
 	enemy.speed = clamp(enemy.speed, E_MINSPEED, E_MAXSPEED)
 	print("speed: ",enemy.speed)
 
@@ -86,13 +88,17 @@ func upgrade_enemy():
 
 	if round_number <=  3:
 		amount = 0
+		enemy.damage_mult = 0.1
 	
 	elif  round_number <= 5:
 		amount = 1
+		enemy.damage_mult = 0.2
 	elif round_number <= 7:
 		amount = 2
+		enemy.damage_mult = 0.3
 	else :
 		amount = 3
+		enemy.damage_mult = 0.4
 		
 	
 	add_enemy_upgrades(amount)

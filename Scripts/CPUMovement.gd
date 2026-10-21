@@ -5,7 +5,6 @@ class_name Enemy
 @export var accel: float = 10
 @export var ball: Ball
 @export var paddle_shape : CollisionShape2D    
-@export var initial_health :float = 100.0
 @export var health_lable : Label
 @export var initial_damage: float = 1
 @export var damage_label: Label
@@ -21,6 +20,9 @@ var prev_pos :Vector2
 var detection_range: float = 2
 var curve_power : float 
 var health : float
+var initial_health :float 
+var damage_mult := 0.2
+
 
 signal enemy_shot()  
 signal enemy_scored()
@@ -64,9 +66,9 @@ func manage_health():
 	if health <= 0.0 :
 		death()
 	
-	if health < 30:
+	if health < initial_health/3:
 		health_lable.label_settings.font_color = Color(1, 0, 0, 1)
-	elif health < 60:
+	elif health < initial_health/2:
 		health_lable.label_settings.font_color = Color(1, 1, 0.22, 1)
 	else: 
 		health_lable.label_settings.font_color = Color(0, 1, 0.22, 1)

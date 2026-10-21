@@ -32,6 +32,8 @@ func _ready() -> void:
 	max_rounds = 10
 	round_label.text = "%d / %d" %[round_number ,max_rounds]
 
+	randomize_enemy_health()
+	enemy.health = enemy.initial_health
 	player.round_up.connect(next_round)
 
 
@@ -69,25 +71,41 @@ func next_round():
 
 
 func upgrade_enemy():
-	enemy.speed *= randf_range(1.1, 1.3)
+	enemy.speed += randf_range(50, 200)
 	enemy.speed = clamp(enemy.speed, E_MINSPEED, E_MAXSPEED)
+	print("speed: ",enemy.speed)
 
 	enemy.accel = randf_range(5, 15)
 
-	enemy.modulate = [Color.SILVER, Color.ANTIQUE_WHITE, Color.CORAL, Color.SPRING_GREEN, Color.CRIMSON, Color.ORANGE, Color.PALE_GOLDENROD][randi_range(0, 6)]
+	enemy.modulate = [Color.SILVER, Color.ANTIQUE_WHITE, Color.CORAL, Color.SPRING_GREEN, Color.CRIMSON, Color.ORANGE, Color.PALE_GOLDENROD, Color.BLUE_VIOLET, Color.DEEP_PINK, Color.HONEYDEW][randi_range(0, 6)]
 	enemy.detection_range = randf_range(1.5, 4)
 
 	enemy.initial_damage = randf_range(1, 10)
-	if round_number < 3 :
+	randomize_enemy_health()
+	var amount = 0
+
+	if round_number <=  3:
+		amount = 0
+	
+	elif  round_number <= 5:
+		amount = 1
+	elif round_number <= 7:
+		amount = 2
+	else :
+		amount = 3
+		
+	
+	add_enemy_upgrades(amount)
+
+func randomize_enemy_health():
+	if round_number == 1 :
+		enemy.initial_health = randi_range(1, 10)
+	elif round_number <= 3 :
 		enemy.initial_health = randi_range(20, 50)
-	elif round_number < 6:
+	elif round_number <= 6:
 		enemy.initial_health = randi_range(50, 100)
 	else :
 		enemy.initial_health = randi_range(70, 150)
-	
-
-	add_enemy_upgrades(randi_range(0, 3))
-
 
 func add_enemy_upgrades(amount : int):
 	var upgrades_folder = DirAccess.open("res://Scripts/Upgrades/Enemy/Scenes/")
@@ -108,6 +126,7 @@ func add_enemy_upgrades(amount : int):
 			var ugd = load(upgrades_list.pop_front()).instantiate()
 			var container = enemy.get_child(2)
 			container.add_child(ugd)
+			print("Upgrade: ", ugd.name)
 			
 func end_game():
 	var winscrn = load("res://Scenes/win_screen.tscn").instantiate()

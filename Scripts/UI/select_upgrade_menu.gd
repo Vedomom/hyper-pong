@@ -16,7 +16,9 @@ func _ready() -> void:
 	if folder != null:
 		folder.list_dir_begin()
 		for file:String in folder.get_files():
-			if not player.can_dash and "dash" in file.to_lower():
+			if not player.can_dash and file.contains("Recovery"):
+				pass
+			elif player.speed >= player.MAX_SPEED and file.contains("Speed"):
 				pass
 			else :
 				upgrades_list.append(load(folder.get_current_dir() + "/" + file))

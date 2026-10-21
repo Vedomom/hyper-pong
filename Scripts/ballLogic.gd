@@ -50,7 +50,7 @@ func _physics_process(delta: float) -> void:
 		curve = move_toward(curve, 0, 0.5)
 		curve_sign = sign(curve)
 		if coll_info.get_collider() == player or coll_info.get_collider() == cpu:
-			coll_info.get_collider().current_damage *= 1 + (0.2)
+			coll_info.get_collider().current_damage *= 1 + coll_info.get_collider().damage_mult
 			if coll_info.get_collider() is Player:
 				player.player_shot.emit()
 			else:
@@ -124,7 +124,7 @@ func _physics_process(delta: float) -> void:
 func deduct_health(subject, damage):
 	
 	subject.health -= damage
-	subject.health = clampf(subject.health, 0.0, 100.0)
+	subject.health = clampf(subject.health, 0.0, subject.initial_health)
 	
 func reset(is_stuck : bool = false):
 			trail.clear_points()

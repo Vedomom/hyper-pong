@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Upgrade_selection" format=3 uid="uid://ts5ialyxe77r"]
+
+[ext_resource type="Script" uid="uid://cmoagbw6t6b67" path="res://Resources/upgrade_selection.gd" id="1_mfrm5"]
+[ext_resource type="PackedScene" uid="uid://drpaq6dr2h4e" path="res://Scripts/Upgrades/Scenes/ascend.tscn" id="1_nk2lh"]
+
+[resource]
+script = ExtResource("1_mfrm5")
+title = "Ascend"
+description = "x2 on your damage increase"
+scene = ExtResource("1_nk2lh")
+metadata/_custom_type_script = "uid://cmoagbw6t6b67"

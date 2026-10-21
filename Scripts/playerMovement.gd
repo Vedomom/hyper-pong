@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 
-@export var speed :float = 500.0
+@export var speed :float 
 @export var  accel :float = 10
 @export var lunge_time : float
 @export var lunge_cooldown : float
@@ -12,6 +12,8 @@ class_name Player
 @export var damage_label: Label
 @export var cpu: Enemy
 
+const MAX_SPEED = 1300
+const MIN_SPEED = 500
 var lunge_speed : float 
 var current_damage: float
 var lunge_timer := 0.0
@@ -25,6 +27,8 @@ var can_dash : bool = false
 var health : float
 
 var whiplash_sleep_timer :float = 0.5
+var damage_mult := 0.2
+var leech_power := 0.0
 
 signal player_shot()  
 signal player_scored()
@@ -40,7 +44,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	
-
+	speed = clamp(speed, MIN_SPEED, MAX_SPEED)
 	#var direction_H := Input.get_axis("Left", "Right")
 	var direction_V := Input.get_axis("Up", "Down")
 	if direction_V and (!is_dead and !cpu.is_dead) :

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Upgrade_selection" format=3 uid="uid://cmao3b8hakreq"]
+
+[ext_resource type="Script" uid="uid://cmoagbw6t6b67" path="res://Resources/upgrade_selection.gd" id="1_hnwwf"]
+[ext_resource type="PackedScene" uid="uid://bflqnkoo15iqc" path="res://Scripts/Upgrades/Scenes/speed.tscn" id="1_wotn2"]
+
+[resource]
+script = ExtResource("1_hnwwf")
+title = "Speed"
+description = "increase your movement speed slightly"
+scene = ExtResource("1_wotn2")
+metadata/_custom_type_script = "uid://cmoagbw6t6b67"

@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://b0etnk6si67ve"]
 
 [ext_resource type="Script" uid="uid://bwe4uh2qfmeex" path="res://Scripts/UI/end_pop_up.gd" id="1_00x74"]
+[ext_resource type="Texture2D" uid="uid://btcglpnwcj83s" path="res://Resources/overlapping-diamonds.svg" id="2_gdsgw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ospfn"]
 font_size = 110
 font_color = Color(0.86292744, 0.933358, 0.9301186, 1)
-shadow_color = Color(0.31695512, 0.06341037, 0.34648004, 1)
+shadow_color = Color(0.75, 0, 0.19999981, 0.6509804)
 shadow_offset = Vector2(8, 8)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ospfn"]
@@ -42,6 +43,7 @@ shadow_size = 1
 shadow_offset = Vector2(5, 5)
 
 [node name="EndPopUp" type="Control" unique_id=1205575577 node_paths=PackedStringArray("restart_btn", "menu_btn", "end_text_lbl")]
+z_index = 4
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -66,7 +68,7 @@ offset_right = 500.0
 offset_bottom = 250.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.28385666, 0.16739999, 0.31, 1)
+color = Color(0.1344, 0.14, 0.14, 1)
 
 [node name="backgroundShadow" type="ColorRect" parent="background" unique_id=1106007865]
 show_behind_parent = true
@@ -82,7 +84,18 @@ offset_right = 515.0
 offset_bottom = 265.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.6693935, 0.42651042, 0.7518456, 1)
+color = Color(1, 0.90250003, 0.35000002, 1)
+
+[node name="ui_pattern" type="TextureRect" parent="background" unique_id=1062615376]
+modulate = Color(1, 1, 1, 0.0627451)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_gdsgw")
+stretch_mode = 1
 
 [node name="EndText" type="Label" parent="." unique_id=874253677]
 layout_mode = 1

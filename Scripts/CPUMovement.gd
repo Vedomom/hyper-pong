@@ -8,6 +8,7 @@ class_name Enemy
 @export var health_lable : Label
 @export var initial_damage: float = 1
 @export var damage_label: Label
+@export var health_bar : ProgressBar
 @export var player: Player
 
 var current_damage: float
@@ -22,6 +23,7 @@ var curve_power : float
 var health : float
 var initial_health :float 
 var damage_mult := 0.2
+var health_bar_sb
 
 
 signal enemy_shot()  
@@ -33,6 +35,12 @@ signal enemy_damaged()
 func _ready() -> void:
 	current_damage = initial_damage
 	health = initial_health
+	health_bar.max_value = initial_health
+	health_bar.value = health
+	health_bar_sb = StyleBoxFlat.new()
+	health_bar.add_theme_stylebox_override("fill", health_bar_sb)
+	health_bar_sb.bg_color = Color.LIGHT_GREEN
+
 	win_height = get_viewport_rect().size.y
 	paddle_height = paddle_shape.shape.size.y
 	prev_pos = position
@@ -45,7 +53,7 @@ func _physics_process(delta: float) -> void:
 
 	else:
 		step_size = dist
-	
+
 	manage_health()
 	manage_damage()
 
@@ -55,23 +63,27 @@ func _physics_process(delta: float) -> void:
 	
 	if ball.position.x >= get_viewport().size.x/detection_range:
 		position.y -= step_size
-	position.y = clamp(position.y, paddle_height, win_height - paddle_height)
-	position.x = clampf(position.x, 1920-15, 1920-15)
+	position.y = clamp(position.y, paddle_height*0.8 + 54, win_height - paddle_height*0.8 - 54)
+	position.x = clampf(position.x, 1813, 1813)
 
 func death():
 	is_dead = true
 
 func manage_health():
+	health_bar.value = health
 	health_lable.text = "%.1f" %health
 	if health <= 0.0 :
 		death()
 	
 	if health < initial_health/3:
-		health_lable.label_settings.font_color = Color(1, 0, 0, 1)
+		health_lable.label_settings.font_color = Color.RED
+		health_bar_sb.bg_color = Color.RED
 	elif health < initial_health/2:
-		health_lable.label_settings.font_color = Color(1, 1, 0.22, 1)
+		health_lable.label_settings.font_color = Color.YELLOW
+		health_bar_sb.bg_color = Color.YELLOW
 	else: 
-		health_lable.label_settings.font_color = Color(0, 1, 0.22, 1)
+		health_lable.label_settings.font_color = Color.LIGHT_GREEN
+		health_bar_sb.bg_color = Color.LIGHT_GREEN
 
 func manage_damage():
 	damage_label.text = "%.2f" %current_damage

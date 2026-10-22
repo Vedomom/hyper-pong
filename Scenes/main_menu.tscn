@@ -1,9 +1,19 @@
 [gd_scene format=3 uid="uid://cs1sbwea32xnk"]
 
 [ext_resource type="Script" uid="uid://ddas1hxnuot5u" path="res://Scripts/UI/main_menu.gd" id="1_28flt"]
+[ext_resource type="Texture2D" uid="uid://btcglpnwcj83s" path="res://Resources/overlapping-diamonds.svg" id="2_48xlc"]
+
+[sub_resource type="SystemFont" id="SystemFont_48xlc"]
+
+[sub_resource type="FontVariation" id="FontVariation_28flt"]
+base_font = SubResource("SystemFont_48xlc")
+variation_embolden = 0.5
+variation_transform = Transform2D(1.175, -0.04, 0.04, 1.13, 0.055, 0)
+spacing_glyph = 15
 
 [sub_resource type="LabelSettings" id="LabelSettings_erv1k"]
 line_spacing = 5.0
+font = SubResource("FontVariation_28flt")
 font_size = 120
 font_color = Color(1, 0.92, 0.97866666, 1)
 shadow_size = 10
@@ -62,16 +72,27 @@ title_lbl = NodePath("Title")
 layout_mode = 0
 offset_right = 1951.0
 offset_bottom = 1118.0
-color = Color(0.17874002, 0.10440001, 0.18, 1)
+color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+
+[node name="ui_pattern" type="TextureRect" parent="Background" unique_id=341092247]
+modulate = Color(1, 1, 1, 0.0627451)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_48xlc")
+stretch_mode = 1
 
 [node name="Title" type="Label" parent="." unique_id=1965841692]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 300.0
-offset_bottom = 465.0
+offset_top = 133.0
+offset_bottom = 468.0
 grow_horizontal = 2
-text = "Pongourney"
+text = "Hyper Chaos Pong"
 label_settings = SubResource("LabelSettings_erv1k")
 horizontal_alignment = 1
 vertical_alignment = 1

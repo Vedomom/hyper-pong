@@ -34,6 +34,8 @@ func _ready() -> void:
 
 	randomize_enemy_health()
 	enemy.health = enemy.initial_health
+	enemy.health_bar.value = enemy.health
+	enemy.health_bar.max_value = enemy.initial_health
 	player.round_up.connect(next_round)
 
 
@@ -59,6 +61,9 @@ func next_round():
 		player.health = player.initial_health
 		player.current_damage = player.initial_damage
 
+		player.health_bar.max_value = player.initial_health
+		player.health_bar.value = player.health
+
 		#change map layout
 
 		#enemy - change the enemy into a new random one
@@ -66,6 +71,8 @@ func next_round():
 		enemy.health = enemy.initial_health
 		enemy.current_damage = enemy.initial_damage
 		enemy.is_dead = false
+		enemy.health_bar.max_value = enemy.initial_health
+		enemy.health_bar.value = enemy.health
 		
 
 		#ball

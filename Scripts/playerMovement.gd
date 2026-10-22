@@ -10,6 +10,7 @@ class_name Player
 @export var health_lable : Label
 @export var initial_damage: float = 10
 @export var damage_label: Label
+@export var health_bar : ProgressBar
 @export var cpu: Enemy
 
 const MAX_SPEED = 1300
@@ -30,6 +31,8 @@ var whiplash_sleep_timer :float = 0.5
 var damage_mult := 0.2
 var leech_power := 0.0
 
+var health_bar_sb 
+
 signal player_shot()  
 signal player_scored()
 signal player_damaged()
@@ -39,6 +42,12 @@ func _ready() -> void:
 	current_damage = initial_damage	
 	lunge_speed = speed
 	health = initial_health
+	health_bar.max_value = initial_health
+	health_bar.value = health
+
+	health_bar_sb = StyleBoxFlat.new()
+	health_bar.add_theme_stylebox_override("fill", health_bar_sb)
+	health_bar_sb.bg_color = Color.LIGHT_GREEN
 
 
 
@@ -75,7 +84,7 @@ func _physics_process(delta: float) -> void:
 
 
 	velocity.x = 0.0
-	position.x = clampf(position.x, 15, 15)
+	position.x = clampf(position.x, 107, 107)
 	lunge_timer -= delta
 	cooldown_timer -= delta
 
@@ -86,16 +95,20 @@ func death():
 	is_dead = true
 
 func manage_health():
+	health_bar.value = health
 	health_lable.text = "%.1f" %health
 	if health <= 0.0 :
 		death()
 	
 	if health < 30:
-		health_lable.label_settings.font_color = Color(1, 0, 0, 1)
+		health_lable.label_settings.font_color = Color.RED
+		health_bar_sb.bg_color = Color.RED
 	elif health < 60:
-		health_lable.label_settings.font_color = Color(1, 1, 0.22, 1)
+		health_lable.label_settings.font_color = Color.YELLOW
+		health_bar_sb.bg_color = Color.YELLOW
 	else: 
-		health_lable.label_settings.font_color = Color(0, 1, 0.22, 1)
+		health_lable.label_settings.font_color = Color.LIGHT_GREEN
+		health_bar_sb.bg_color = Color.LIGHT_GREEN
 
 func manage_damage():
 	damage_label.text = "%.2f" %current_damage

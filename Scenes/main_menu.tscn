@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cs1sbwea32xnk"]
 
 [ext_resource type="Script" uid="uid://ddas1hxnuot5u" path="res://Scripts/UI/main_menu.gd" id="1_28flt"]
-[ext_resource type="Texture2D" uid="uid://btcglpnwcj83s" path="res://Resources/overlapping-diamonds.svg" id="2_48xlc"]
 
 [sub_resource type="SystemFont" id="SystemFont_48xlc"]
 
@@ -56,6 +55,36 @@ shadow_color = Color(0.98, 0.245, 0.6982501, 1)
 shadow_size = 1
 shadow_offset = Vector2(5, 5)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48xlc"]
+bg_color = Color(0.2697, 0.419775, 0.87, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.99233335, 0.53999996, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.98, 0.245, 0.6982501, 1)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ehe0"]
+bg_color = Color(0.2697, 0.419775, 0.87, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.99233335, 0.53999996, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.98, 0.245, 0.6982501, 1)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
 [node name="MainMenu" type="Control" unique_id=1412889394 node_paths=PackedStringArray("play_btn", "quit_btn", "title_lbl")]
 layout_mode = 3
 anchors_preset = 15
@@ -82,7 +111,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_48xlc")
 stretch_mode = 1
 
 [node name="Title" type="Label" parent="." unique_id=1965841692]
@@ -119,6 +147,7 @@ theme_override_font_sizes/font_size = 80
 theme_override_styles/normal = SubResource("StyleBoxFlat_8xsaa")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_erv1k")
 theme_override_styles/hover = SubResource("StyleBoxFlat_28flt")
+theme_override_styles/focus = SubResource("StyleBoxFlat_48xlc")
 text = "Play"
 
 [node name="QuitButton" type="Button" parent="Buttons" unique_id=993721680]
@@ -140,5 +169,6 @@ theme_override_font_sizes/font_size = 80
 theme_override_styles/normal = SubResource("StyleBoxFlat_8xsaa")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_erv1k")
 theme_override_styles/hover = SubResource("StyleBoxFlat_28flt")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1ehe0")
 text = "Quit
 "

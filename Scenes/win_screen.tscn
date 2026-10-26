@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bwlo6tp38wx84"]
 
 [ext_resource type="Script" uid="uid://bh4jenp2cnljv" path="res://Scripts/UI/win_screen.gd" id="1_l5sol"]
-[ext_resource type="Texture2D" uid="uid://btcglpnwcj83s" path="res://Resources/overlapping-diamonds.svg" id="2_a00f1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_j0aiw"]
 font_size = 150
@@ -42,6 +41,21 @@ shadow_color = Color(0.87, 0.79692, 0.3219, 1)
 shadow_size = 6
 shadow_offset = Vector2(5, 5)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bwc64"]
+bg_color = Color(0.116199985, 0.29465002, 0.83, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.089999974, 0.37816662, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.87, 0.79692, 0.3219, 1)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
 [node name="WinScreen" type="Control" unique_id=83483473 node_paths=PackedStringArray("MM_Btn", "NR_Btn")]
 process_mode = 3
 layout_mode = 3
@@ -72,7 +86,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_a00f1")
 stretch_mode = 1
 
 [node name="WinText" type="Label" parent="." unique_id=913771032]
@@ -113,6 +126,7 @@ theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxFlat_l5sol")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_a00f1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_awi1s")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bwc64")
 text = "Main Menu"
 
 [node name="NRButton" type="Button" parent="." unique_id=1438605873]
@@ -136,5 +150,6 @@ theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxFlat_l5sol")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_a00f1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_awi1s")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bwc64")
 text = "New Run
 "

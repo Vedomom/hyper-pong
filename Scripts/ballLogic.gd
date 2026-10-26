@@ -93,10 +93,6 @@ func _physics_process(delta: float) -> void:
 	
 
 
-	if player.is_dead:
-		end_pop.end_text = "You Died..."
-		end_pop.visible = true
-
 	if cpu.is_dead:
 		if game_won:
 			pass

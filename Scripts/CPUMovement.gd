@@ -75,7 +75,7 @@ func manage_health():
 	if health <= 0.0 :
 		death()
 	
-	if health < initial_health/3:
+	if health < initial_health/4:
 		health_lable.label_settings.font_color = Color.RED
 		health_bar_sb.bg_color = Color.RED
 	elif health < initial_health/2:

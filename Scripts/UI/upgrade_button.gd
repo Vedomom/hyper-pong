@@ -1,5 +1,5 @@
 extends Button
-class_name UpgradeButton
+
 
 @export var title : Label
 
@@ -11,9 +11,10 @@ var player : Player
 
 func _ready() -> void:
 	pressed.connect(add_upgrade)
-	for node in get_parent().get_parent().get_parent().get_children():
-		if node is Player:
-			player = node
+	if get_parent().get_parent().get_parent():
+		for node in get_parent().get_parent().get_parent().get_children():
+			if node is Player:
+				player = node
 
 
 func add_upgrade():

@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://b0etnk6si67ve"]
 
 [ext_resource type="Script" uid="uid://bwe4uh2qfmeex" path="res://Scripts/UI/end_pop_up.gd" id="1_00x74"]
-[ext_resource type="Texture2D" uid="uid://btcglpnwcj83s" path="res://Resources/overlapping-diamonds.svg" id="2_gdsgw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ospfn"]
 font_size = 110
@@ -42,8 +41,55 @@ shadow_color = Color(0.98, 0.245, 0.6982501, 1)
 shadow_size = 1
 shadow_offset = Vector2(5, 5)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_41xwe"]
+bg_color = Color(0.2697, 0.419775, 0.87, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.99233335, 0.53999996, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.98, 0.245, 0.6982501, 1)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="InputEventKey" id="InputEventKey_00x74"]
+device = -1
+keycode = 82
+unicode = 114
+
+[sub_resource type="Shortcut" id="Shortcut_d8gck"]
+events = [SubResource("InputEventKey_00x74")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gaoin"]
+bg_color = Color(0.2697, 0.419775, 0.87, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.99233335, 0.53999996, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.98, 0.245, 0.6982501, 1)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="InputEventKey" id="InputEventKey_gdsgw"]
+device = -1
+keycode = 4194305
+
+[sub_resource type="Shortcut" id="Shortcut_0xph6"]
+events = [SubResource("InputEventKey_gdsgw")]
+
 [node name="EndPopUp" type="Control" unique_id=1205575577 node_paths=PackedStringArray("restart_btn", "menu_btn", "end_text_lbl")]
-z_index = 4
+process_mode = 3
+z_index = 5
+z_as_relative = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -56,6 +102,7 @@ menu_btn = NodePath("MainMenuButton")
 end_text_lbl = NodePath("EndText")
 
 [node name="background" type="ColorRect" parent="." unique_id=1491792923]
+process_mode = 3
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -94,7 +141,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_gdsgw")
 stretch_mode = 1
 
 [node name="EndText" type="Label" parent="." unique_id=874253677]
@@ -114,6 +160,7 @@ text = "You Died"
 label_settings = SubResource("LabelSettings_ospfn")
 
 [node name="RestartButton" type="Button" parent="." unique_id=1469244760]
+z_index = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -133,9 +180,12 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_ospfn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_00x74")
 theme_override_styles/hover = SubResource("StyleBoxFlat_gdsgw")
+theme_override_styles/focus = SubResource("StyleBoxFlat_41xwe")
+shortcut = SubResource("Shortcut_d8gck")
 text = "Restart"
 
 [node name="MainMenuButton" type="Button" parent="." unique_id=127246479]
+z_index = 2
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -155,4 +205,6 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_ospfn")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_00x74")
 theme_override_styles/hover = SubResource("StyleBoxFlat_gdsgw")
+theme_override_styles/focus = SubResource("StyleBoxFlat_gaoin")
+shortcut = SubResource("Shortcut_0xph6")
 text = "Menu"

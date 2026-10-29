@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dgex6kj6m6bce"]
 
 [ext_resource type="Script" uid="uid://caawi3ygcinwf" path="res://Scripts/UI/win_pop_up.gd" id="1_es7s0"]
+[ext_resource type="Texture2D" uid="uid://btcglpnwcj83s" path="res://Resources/overlapping-diamonds.svg" id="2_dab71"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_076ql"]
 font_size = 110
@@ -103,6 +104,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_dab71")
 stretch_mode = 1
 
 [node name="WinText" type="Label" parent="." unique_id=1619472751]

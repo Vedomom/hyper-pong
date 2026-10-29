@@ -1,12 +1,13 @@
 extends Upgrades
 
-var ball : Ball
+var ball : CharacterBody2D
 
 
 func initialize_power():
 	for node in player.get_parent().get_children():
-		if node is Ball:
+		if node is Ball or node is MultBall:
 			ball = node
+
 	
 
 

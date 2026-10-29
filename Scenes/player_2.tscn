@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dsj8jih16k0d8"]
+
+[ext_resource type="Script" uid="uid://b68e17jrx6bgr" path="res://Scripts/player_2.gd" id="1_mkara"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v0iea"]
+size = Vector2(12, 143)
+
+[node name="Player_2" type="CharacterBody2D" unique_id=1410247650]
+scale = Vector2(2, 2)
+script = ExtResource("1_mkara")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=609284332]
+shape = SubResource("RectangleShape2D_v0iea")
+
+[node name="Shape" type="ColorRect" parent="." unique_id=152137100]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -70.0
+offset_right = 5.0
+offset_bottom = 70.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Upgrades" type="Node" parent="." unique_id=1549932906]

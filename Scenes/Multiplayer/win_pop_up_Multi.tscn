@@ -1,0 +1,169 @@
+[gd_scene format=3 uid="uid://owi8pvo3iii1"]
+
+[ext_resource type="Script" uid="uid://dn2qahntftjpi" path="res://Scripts/Multiplayer/win_pop_mult.gd" id="1_d4w8b"]
+[ext_resource type="Texture2D" uid="uid://btcglpnwcj83s" path="res://Resources/overlapping-diamonds.svg" id="2_d4w8b"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_076ql"]
+font_size = 110
+font_color = Color(0.86292744, 0.933358, 0.9301186, 1)
+shadow_color = Color(1.540184e-06, 0.5119463, 0.41034904, 0.45490196)
+shadow_offset = Vector2(8, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_es7s0"]
+bg_color = Color(0.116199985, 0.29465002, 0.83, 1)
+border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.87, 0.79692, 0.3219, 1)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dab71"]
+bg_color = Color(0.87, 0.79692, 0.3219, 1)
+border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.27058825, 0.41960785, 0.87058824, 1)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uv71t"]
+bg_color = Color(0.27058825, 0.41960785, 0.87058824, 1)
+border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.87, 0.79692, 0.3219, 1)
+shadow_size = 6
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_geg50"]
+bg_color = Color(0.27058825, 0.41960785, 0.87058824, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.5385001, 0.29000002, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.87, 0.79692, 0.3219, 1)
+shadow_size = 6
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="InputEventKey" id="InputEventKey_es7s0"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="InputEventKey" id="InputEventKey_dab71"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_28flt"]
+events = [SubResource("InputEventKey_es7s0"), SubResource("InputEventKey_dab71")]
+
+[node name="WinPopUp" type="Control" unique_id=1467916958 node_paths=PackedStringArray("cont_btn", "winner_label")]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d4w8b")
+cont_btn = NodePath("ContButton")
+winner_label = NodePath("WinText")
+
+[node name="background" type="ColorRect" parent="." unique_id=436451057]
+z_index = 4
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -500.0
+offset_top = -250.0
+offset_right = 500.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 0.16078432, 0.16078432, 1)
+
+[node name="backgroundShadow" type="ColorRect" parent="background" unique_id=1459919735]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -485.0
+offset_top = -235.0
+offset_right = 515.0
+offset_bottom = 265.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.87, 0.79692, 0.3219, 1)
+
+[node name="ui_pattern" type="TextureRect" parent="background" unique_id=755561983]
+modulate = Color(1, 1, 1, 0.0627451)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_d4w8b")
+stretch_mode = 1
+
+[node name="WinText" type="Label" parent="." unique_id=1619472751]
+z_index = 5
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.0
+offset_top = -190.0
+offset_right = 237.0
+offset_bottom = -39.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Round Over"
+label_settings = SubResource("LabelSettings_076ql")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContButton" type="Button" parent="." unique_id=472182974]
+z_index = 5
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -175.0
+offset_top = 40.0
+offset_right = 175.0
+offset_bottom = 160.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_es7s0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_dab71")
+theme_override_styles/hover = SubResource("StyleBoxFlat_uv71t")
+theme_override_styles/focus = SubResource("StyleBoxFlat_geg50")
+shortcut = SubResource("Shortcut_28flt")
+text = "Continue"

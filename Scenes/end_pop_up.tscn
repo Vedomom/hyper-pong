@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b0etnk6si67ve"]
 
 [ext_resource type="Script" uid="uid://bwe4uh2qfmeex" path="res://Scripts/UI/end_pop_up.gd" id="1_00x74"]
+[ext_resource type="Texture2D" uid="uid://btcglpnwcj83s" path="res://Resources/overlapping-diamonds.svg" id="2_gdsgw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ospfn"]
 font_size = 110
@@ -141,6 +142,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_gdsgw")
 stretch_mode = 1
 
 [node name="EndText" type="Label" parent="." unique_id=874253677]

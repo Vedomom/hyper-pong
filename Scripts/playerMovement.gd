@@ -11,7 +11,7 @@ class_name Player
 @export var initial_damage: float = 10
 @export var damage_label: Label
 @export var health_bar : ProgressBar
-@export var cpu: Enemy
+@export var cpu: CharacterBody2D
 
 const MAX_SPEED = 1300
 const MIN_SPEED = 500

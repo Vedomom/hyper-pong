@@ -150,6 +150,7 @@ func add_enemy_upgrades(amount : int):
 			print("Upgrade: ", ugd.name)
 			
 func end_game():
+	ball.win_pop.queue_free()
 	var winscrn = load("res://Scenes/win_screen.tscn").instantiate()
 	ui_container.add_child(winscrn)
 	get_tree().paused = true

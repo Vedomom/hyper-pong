@@ -1,0 +1,417 @@
+[gd_scene format=3 uid="uid://bplh0sk8xwcbl"]
+
+[ext_resource type="Script" uid="uid://buremqcpsg8ke" path="res://Scripts/Multiplayer/upgrade_menu_multi.gd" id="1_e7q07"]
+[ext_resource type="Texture2D" uid="uid://btcglpnwcj83s" path="res://Resources/overlapping-diamonds.svg" id="2_s4fac"]
+[ext_resource type="Script" uid="uid://64n3mhn1njvu" path="res://Scripts/Multiplayer/upgrade_button_multi.gd" id="3_2xseu"]
+
+[sub_resource type="SystemFont" id="SystemFont_e7q07"]
+subpixel_positioning = 0
+
+[sub_resource type="FontVariation" id="FontVariation_2xseu"]
+base_font = SubResource("SystemFont_e7q07")
+variation_face_index = 13
+variation_embolden = 1.25
+variation_transform = Transform2D(0.965, -0.385, 0.62, 1.38, 0.065, 0)
+spacing_glyph = 13
+
+[sub_resource type="LabelSettings" id="LabelSettings_esy2c"]
+font = SubResource("FontVariation_2xseu")
+font_size = 50
+font_color = Color(0.9607843, 1, 0.98039216, 1)
+shadow_color = Color(0, 0, 0.54509807, 1)
+shadow_offset = Vector2(6, 6)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_le8vw"]
+bg_color = Color(1, 0.8784314, 0.4, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.92941177, 0.49411765, 0, 1)
+shadow_size = 1
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f5dmy"]
+bg_color = Color(1, 0.8784314, 0.4, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.252, 0.37146652, 0.7, 1)
+shadow_size = 5
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6gn5s"]
+bg_color = Color(1, 0.8784314, 0.4, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.92941177, 0.49411765, 0, 1)
+shadow_size = 10
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lhh40"]
+bg_color = Color(1, 0.8784314, 0.4, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.17000002, 0.34983337, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.92941177, 0.49411765, 0, 1)
+shadow_size = 1
+shadow_offset = Vector2(10, 10)
+
+[sub_resource type="SystemFont" id="SystemFont_f5dmy"]
+subpixel_positioning = 0
+
+[sub_resource type="FontVariation" id="FontVariation_6gn5s"]
+base_font = SubResource("SystemFont_f5dmy")
+variation_face_index = 13
+variation_embolden = 1.25
+variation_transform = Transform2D(0.965, -0.385, 0.62, 1.38, 0.065, 0)
+spacing_glyph = 13
+
+[sub_resource type="LabelSettings" id="LabelSettings_e7q07"]
+font = SubResource("FontVariation_6gn5s")
+font_size = 30
+font_color = Color(0.17850001, 0.42712498, 0.51, 1)
+shadow_color = Color(0.047762394, 0.039163005, 0.3132004, 1)
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="FontVariation" id="FontVariation_le8vw"]
+base_font = SubResource("SystemFont_f5dmy")
+variation_embolden = 0.96
+variation_transform = Transform2D(0.79, 0.35, -0.14, 0.96, 0.065, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_2xseu"]
+font = SubResource("FontVariation_le8vw")
+font_size = 25
+font_color = Color(0.31, 0.31, 0.31, 1)
+
+[node name="Upgrade Menu" type="Control" unique_id=94360544 node_paths=PackedStringArray("p1_left", "p1_right", "p2_left", "p2_right", "p1_header", "p2_header")]
+process_mode = 3
+z_index = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_e7q07")
+p1_left = NodePath("P1_upgrades/P1_upgradeLeft")
+p1_right = NodePath("P1_upgrades/P1_upgradeRight")
+p2_left = NodePath("P2_upgrades/P2_upgradeLeft")
+p2_right = NodePath("P2_upgrades/P2_upgradeRight")
+p1_header = NodePath("background/p1_header")
+p2_header = NodePath("background/p2_header")
+
+[node name="background" type="ColorRect" parent="." unique_id=1731842540]
+z_index = 5
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.18, 0.18, 0.18, 1)
+
+[node name="Devider" type="ColorRect" parent="background" unique_id=1332470481]
+z_index = 5
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_right = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.9445, 0.63, 1)
+
+[node name="p1_header" type="Label" parent="background" unique_id=1295548393]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 100.0
+offset_right = 796.0
+offset_bottom = 241.0
+text = "Player 1 Upgrades
+"
+label_settings = SubResource("LabelSettings_esy2c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="p2_header" type="Label" parent="background" unique_id=742809084]
+layout_mode = 0
+offset_left = 1124.0
+offset_top = 100.0
+offset_right = 1786.0
+offset_bottom = 241.0
+text = "Player 2 Upgrades
+"
+label_settings = SubResource("LabelSettings_esy2c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ui_pattern" type="TextureRect" parent="background" unique_id=2131175068]
+modulate = Color(1, 1, 1, 0.0627451)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_s4fac")
+stretch_mode = 1
+
+[node name="P1_upgrades" type="Node" parent="." unique_id=95837122]
+
+[node name="P1_upgradeLeft" type="Button" parent="P1_upgrades" unique_id=1531796203 node_paths=PackedStringArray("title", "description")]
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -900.0
+offset_top = -200.0
+offset_right = -600.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.09620453, 0.09620487, 0.096204616, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.88000005, 0.39999998, 1)
+theme_override_colors/font_hover_color = Color(0.09803922, 0.09803922, 0.09803922, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_le8vw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_f5dmy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6gn5s")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lhh40")
+button_mask = 0
+script = ExtResource("3_2xseu")
+title = NodePath("title")
+description = NodePath("desc")
+
+[node name="title" type="Label" parent="P1_upgrades/P1_upgradeLeft" unique_id=2125547414]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -113.5
+offset_top = -14.0
+offset_right = 113.5
+offset_bottom = 209.0
+grow_horizontal = 2
+text = "Title
+"
+label_settings = SubResource("LabelSettings_e7q07")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="desc" type="Label" parent="P1_upgrades/P1_upgradeLeft" unique_id=2144514179]
+custom_maximum_size = Vector2(290, 255)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -66.0
+offset_right = 144.0
+offset_bottom = 189.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "lorem ipsum de lopez"
+label_settings = SubResource("LabelSettings_2xseu")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="P1_upgradeRight" type="Button" parent="P1_upgrades" unique_id=852256868 node_paths=PackedStringArray("title", "description")]
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -360.0
+offset_top = -200.0
+offset_right = -60.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.09620453, 0.09620487, 0.096204616, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.88000005, 0.39999998, 1)
+theme_override_colors/font_hover_color = Color(0.09803922, 0.09803922, 0.09803922, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_le8vw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_f5dmy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6gn5s")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lhh40")
+button_mask = 0
+script = ExtResource("3_2xseu")
+title = NodePath("title")
+description = NodePath("desc")
+
+[node name="title" type="Label" parent="P1_upgrades/P1_upgradeRight" unique_id=655555436]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -113.5
+offset_top = -14.0
+offset_right = 113.5
+offset_bottom = 209.0
+grow_horizontal = 2
+text = "Title
+"
+label_settings = SubResource("LabelSettings_e7q07")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="desc" type="Label" parent="P1_upgrades/P1_upgradeRight" unique_id=309405547]
+custom_maximum_size = Vector2(290, 255)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -66.0
+offset_right = 144.0
+offset_bottom = 189.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "lorem ipsum de lopez"
+label_settings = SubResource("LabelSettings_2xseu")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="P2_upgrades" type="Node" parent="." unique_id=1592975512]
+
+[node name="P2_upgradeLeft" type="Button" parent="P2_upgrades" unique_id=72315609 node_paths=PackedStringArray("title", "description")]
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 60.0
+offset_top = -200.0
+offset_right = 360.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.09620453, 0.09620487, 0.096204616, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.88000005, 0.39999998, 1)
+theme_override_colors/font_hover_color = Color(0.09803922, 0.09803922, 0.09803922, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_le8vw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_f5dmy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6gn5s")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lhh40")
+button_mask = 0
+script = ExtResource("3_2xseu")
+title = NodePath("title")
+description = NodePath("desc")
+
+[node name="title" type="Label" parent="P2_upgrades/P2_upgradeLeft" unique_id=767737893]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -113.5
+offset_top = -14.0
+offset_right = 113.5
+offset_bottom = 209.0
+grow_horizontal = 2
+text = "Title
+"
+label_settings = SubResource("LabelSettings_e7q07")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="desc" type="Label" parent="P2_upgrades/P2_upgradeLeft" unique_id=1288156039]
+custom_maximum_size = Vector2(290, 255)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -66.0
+offset_right = 144.0
+offset_bottom = 189.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "lorem ipsum de lopez"
+label_settings = SubResource("LabelSettings_2xseu")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="P2_upgradeRight" type="Button" parent="P2_upgrades" unique_id=1655349090 node_paths=PackedStringArray("title", "description")]
+z_index = 10
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 600.0
+offset_top = -200.0
+offset_right = 900.0
+offset_bottom = 200.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.09620453, 0.09620487, 0.096204616, 1)
+theme_override_colors/font_pressed_color = Color(1, 0.88000005, 0.39999998, 1)
+theme_override_colors/font_hover_color = Color(0.09803922, 0.09803922, 0.09803922, 1)
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxFlat_le8vw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_f5dmy")
+theme_override_styles/hover = SubResource("StyleBoxFlat_6gn5s")
+theme_override_styles/focus = SubResource("StyleBoxFlat_lhh40")
+button_mask = 0
+script = ExtResource("3_2xseu")
+title = NodePath("title")
+description = NodePath("desc")
+
+[node name="title" type="Label" parent="P2_upgrades/P2_upgradeRight" unique_id=231836710]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -113.5
+offset_top = -14.0
+offset_right = 113.5
+offset_bottom = 209.0
+grow_horizontal = 2
+text = "Title
+"
+label_settings = SubResource("LabelSettings_e7q07")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="desc" type="Label" parent="P2_upgrades/P2_upgradeRight" unique_id=1879295368]
+custom_maximum_size = Vector2(290, 255)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -146.0
+offset_top = -66.0
+offset_right = 144.0
+offset_bottom = 189.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "lorem ipsum de lopez"
+label_settings = SubResource("LabelSettings_2xseu")
+horizontal_alignment = 1
+autowrap_mode = 3

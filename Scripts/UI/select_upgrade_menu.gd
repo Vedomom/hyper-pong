@@ -1,17 +1,17 @@
 extends Control
 
-@export var upgrade_left : UpgradeButton
-@export var upgrade_right :UpgradeButton
+@export var upgrade_left : Button
+@export var upgrade_right :Button
 
 var upgrades_list : Array
 var player : Player
 
 func _ready() -> void:
-	var folder = DirAccess.open("res://Resources/Upgrades/")
-
-	for node in get_parent().get_parent().get_children():
-		if node is Player:
-			player = node
+	var folder = DirAccess.open("Resources/Upgrades/")
+	if get_parent().get_parent():
+		for node in get_parent().get_parent().get_children():
+			if node is Player:
+				player = node
 
 	if folder != null:
 		folder.list_dir_begin()
@@ -43,3 +43,9 @@ func _ready() -> void:
 		upgrade_right.title.text = ugd_right.title
 		upgrade_right.description.text = ugd_right.description
 		upgrade_right.ugd_scene = ugd_right.scene 
+
+func _process(_delta: float) -> void:
+	if Input.is_action_just_pressed("Left"):
+		upgrade_left.call_deferred("grab_focus")
+	elif Input.is_action_just_pressed("Right"):
+		upgrade_right.call_deferred("grab_focus")

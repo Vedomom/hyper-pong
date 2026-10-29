@@ -46,18 +46,26 @@ func _process(_delta: float) -> void:
 	
 	player.health = clamp(player.health, 0.0, player.initial_health)
 
+	if player.is_dead:
+		get_tree().paused = true
+		ball.end_pop.end_text = "You Died..."
+		ball.end_pop.visible = true
+		
+		
+
 
 
 
 
 func next_round():
-	round_number += 1
-	round_label.text = "%d / %d" %[round_number, max_rounds]
-	if round_number > 10:
+
+	if round_number >= 10:
 		end_game()
 	else:
 
 		#player
+		if round_number <= 5 :
+			player.initial_health += 10
 		player.health = player.initial_health
 		player.current_damage = player.initial_damage
 
@@ -77,6 +85,9 @@ func next_round():
 
 		#ball
 		ball.game_won = false
+	
+	round_number += 1
+	round_label.text = "%d / %d" %[round_number, max_rounds]
 
 
 func upgrade_enemy():
@@ -93,7 +104,7 @@ func upgrade_enemy():
 	randomize_enemy_health()
 	var amount = 0
 
-	if round_number <=  3:
+	if round_number <=  2:
 		amount = 0
 		enemy.damage_mult = 0.1
 	
@@ -111,14 +122,11 @@ func upgrade_enemy():
 	add_enemy_upgrades(amount)
 
 func randomize_enemy_health():
-	if round_number == 1 :
-		enemy.initial_health = randi_range(1, 10)
-	elif round_number <= 3 :
-		enemy.initial_health = randi_range(20, 50)
-	elif round_number <= 6:
-		enemy.initial_health = randi_range(50, 100)
+	if round_number <= 5 :
+		enemy.initial_health = randi_range(clamp((round_number*10) - 15, 1, round_number*10), round_number*10)
+
 	else :
-		enemy.initial_health = randi_range(70, 150)
+		enemy.initial_health = randi_range(50, 150)
 
 func add_enemy_upgrades(amount : int):
 	var upgrades_folder = DirAccess.open("res://Scripts/Upgrades/Enemy/Scenes/")
@@ -142,6 +150,7 @@ func add_enemy_upgrades(amount : int):
 			print("Upgrade: ", ugd.name)
 			
 func end_game():
+	ball.win_pop.queue_free()
 	var winscrn = load("res://Scenes/win_screen.tscn").instantiate()
 	ui_container.add_child(winscrn)
 	get_tree().paused = true

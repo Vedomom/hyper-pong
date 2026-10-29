@@ -42,6 +42,18 @@ shadow_color = Color(0.87, 0.79692, 0.3219, 1)
 shadow_size = 6
 shadow_offset = Vector2(5, 5)
 
+[sub_resource type="InputEventKey" id="InputEventKey_es7s0"]
+device = -1
+keycode = 4194309
+
+[sub_resource type="InputEventKey" id="InputEventKey_dab71"]
+device = -1
+keycode = 32
+unicode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_28flt"]
+events = [SubResource("InputEventKey_es7s0"), SubResource("InputEventKey_dab71")]
+
 [node name="WinPopUp" type="Control" unique_id=1467916958 node_paths=PackedStringArray("cont_btn")]
 layout_mode = 3
 anchors_preset = 15
@@ -133,4 +145,5 @@ theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_es7s0")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_dab71")
 theme_override_styles/hover = SubResource("StyleBoxFlat_uv71t")
+shortcut = SubResource("Shortcut_28flt")
 text = "Continue"

@@ -11,7 +11,7 @@ class_name Player
 @export var initial_damage: float = 10
 @export var damage_label: Label
 @export var health_bar : ProgressBar
-@export var cpu: Enemy
+@export var cpu: CharacterBody2D
 
 const MAX_SPEED = 1300
 const MIN_SPEED = 500
@@ -94,16 +94,17 @@ func _physics_process(delta: float) -> void:
 func death():
 	is_dead = true
 
+
 func manage_health():
 	health_bar.value = health
 	health_lable.text = "%.1f" %health
 	if health <= 0.0 :
 		death()
 	
-	if health < 30:
+	if health <= initial_health/4:
 		health_lable.label_settings.font_color = Color.RED
 		health_bar_sb.bg_color = Color.RED
-	elif health < 60:
+	elif health <= initial_health/2:
 		health_lable.label_settings.font_color = Color.YELLOW
 		health_bar_sb.bg_color = Color.YELLOW
 	else: 

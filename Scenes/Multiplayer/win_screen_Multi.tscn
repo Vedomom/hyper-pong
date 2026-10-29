@@ -1,0 +1,224 @@
+[gd_scene format=3 uid="uid://bpwuv1rueyaa"]
+
+[ext_resource type="Script" uid="uid://dbs56evmtqrdp" path="res://Scripts/Multiplayer/win_screen_multi.gd" id="1_s6lnd"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_j0aiw"]
+font_size = 150
+font_color = Color(0.7097232, 1, 0.7550985, 1)
+shadow_color = Color(0.99999994, 0.19044858, 0.60782874, 1)
+shadow_offset = Vector2(8, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l5sol"]
+bg_color = Color(0.116199985, 0.29465002, 0.83, 1)
+border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.87, 0.79692, 0.3219, 1)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a00f1"]
+bg_color = Color(0.87, 0.79692, 0.3219, 1)
+border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.27058825, 0.41960785, 0.87058824, 1)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_awi1s"]
+bg_color = Color(0.27058825, 0.41960785, 0.87058824, 1)
+border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.87, 0.79692, 0.3219, 1)
+shadow_size = 6
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bwc64"]
+bg_color = Color(0.116199985, 0.29465002, 0.83, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.089999974, 0.37816662, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.87, 0.79692, 0.3219, 1)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_s6lnd"]
+font_size = 110
+font_color = Color(0.86292744, 0.933358, 0.9301186, 1)
+shadow_color = Color(1.540184e-06, 0.5119463, 0.41034904, 0.45490196)
+shadow_offset = Vector2(8, 8)
+
+[sub_resource type="LabelSettings" id="LabelSettings_yp3dc"]
+font_size = 150
+
+[sub_resource type="LabelSettings" id="LabelSettings_p1pjm"]
+font_size = 150
+
+[node name="WinScreen" type="Control" unique_id=83483473 node_paths=PackedStringArray("MM_Btn", "NR_Btn", "p1_score_label", "p2_score_label", "winner_label")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s6lnd")
+MM_Btn = NodePath("MMButton")
+NR_Btn = NodePath("NRButton")
+p1_score_label = NodePath("Player_1Score")
+p2_score_label = NodePath("Player_2Score")
+winner_label = NodePath("Winner")
+
+[node name="BG" type="ColorRect" parent="." unique_id=773115964]
+z_index = 10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 0.16078432, 0.16078432, 1)
+
+[node name="ui_pattern" type="TextureRect" parent="BG" unique_id=871909111]
+modulate = Color(1, 1, 1, 0.0627451)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 1
+
+[node name="WinText" type="Label" parent="." unique_id=913771032]
+z_index = 10
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -421.0
+offset_right = 421.0
+offset_bottom = 205.0
+grow_horizontal = 2
+text = "Match Over"
+label_settings = SubResource("LabelSettings_j0aiw")
+horizontal_alignment = 1
+
+[node name="MMButton" type="Button" parent="." unique_id=239989206]
+z_index = 10
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 125.0
+offset_top = 160.0
+offset_right = 525.0
+offset_bottom = 330.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_l5sol")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a00f1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_awi1s")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bwc64")
+text = "Main Menu"
+
+[node name="NRButton" type="Button" parent="." unique_id=1438605873]
+z_index = 10
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -475.0
+offset_top = 160.0
+offset_right = -75.0
+offset_bottom = 330.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_l5sol")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_a00f1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_awi1s")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bwc64")
+text = "New Match
+"
+
+[node name="Winner" type="Label" parent="." unique_id=971198533]
+z_index = 10
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.0
+offset_top = -340.0
+offset_right = 237.0
+offset_bottom = -188.99997
+grow_horizontal = 2
+grow_vertical = 2
+text = "Winner: "
+label_settings = SubResource("LabelSettings_s6lnd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player_1Score" type="Label" parent="." unique_id=1170641895]
+z_index = 10
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -343.0
+offset_top = -140.0
+offset_right = -257.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_yp3dc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player_2Score" type="Label" parent="." unique_id=2079212079]
+z_index = 10
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 257.0
+offset_top = -140.0
+offset_right = 343.0
+offset_bottom = 65.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+label_settings = SubResource("LabelSettings_p1pjm")
+horizontal_alignment = 1
+vertical_alignment = 1

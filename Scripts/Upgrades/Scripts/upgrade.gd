@@ -2,7 +2,7 @@ extends Node
 class_name Upgrades
 
 
-@export var player : Player
+@export var player : CharacterBody2D
 
 
 func _ready() -> void:

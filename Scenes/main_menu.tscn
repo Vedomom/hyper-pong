@@ -56,7 +56,37 @@ shadow_color = Color(0.98, 0.245, 0.6982501, 1)
 shadow_size = 1
 shadow_offset = Vector2(5, 5)
 
-[node name="MainMenu" type="Control" unique_id=1412889394 node_paths=PackedStringArray("play_btn", "quit_btn", "title_lbl")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_48xlc"]
+bg_color = Color(0.2697, 0.419775, 0.87, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.99233335, 0.53999996, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.98, 0.245, 0.6982501, 1)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ehe0"]
+bg_color = Color(0.2697, 0.419775, 0.87, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(1, 0.99233335, 0.53999996, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.98, 0.245, 0.6982501, 1)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[node name="MainMenu" type="Control" unique_id=1412889394 node_paths=PackedStringArray("play_btn", "quit_btn", "title_lbl", "mult_btn")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -67,6 +97,7 @@ script = ExtResource("1_28flt")
 play_btn = NodePath("Buttons/PlayButton")
 quit_btn = NodePath("Buttons/QuitButton")
 title_lbl = NodePath("Title")
+mult_btn = NodePath("Buttons/MultiplayerButton")
 
 [node name="Background" type="ColorRect" parent="." unique_id=200976755]
 layout_mode = 0
@@ -89,8 +120,7 @@ stretch_mode = 1
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_top = 133.0
-offset_bottom = 468.0
+offset_bottom = 335.0
 grow_horizontal = 2
 text = "Hyper Chaos Pong"
 label_settings = SubResource("LabelSettings_erv1k")
@@ -107,19 +137,49 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -250.0
-offset_top = -4.0
+offset_top = -128.0
 offset_right = 250.0
-offset_bottom = 76.0
+offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
+focus_neighbor_bottom = NodePath("../MultiplayerButton")
+focus_next = NodePath("../MultiplayerButton")
+focus_previous = NodePath(".")
 theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
 theme_override_font_sizes/font_size = 80
 theme_override_styles/normal = SubResource("StyleBoxFlat_8xsaa")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_erv1k")
 theme_override_styles/hover = SubResource("StyleBoxFlat_28flt")
+theme_override_styles/focus = SubResource("StyleBoxFlat_48xlc")
 text = "Play"
+
+[node name="MultiplayerButton" type="Button" parent="Buttons" unique_id=1747983629]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = 72.0
+offset_right = 250.0
+offset_bottom = 182.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../PlayButton")
+focus_neighbor_bottom = NodePath("../QuitButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../PlayButton")
+theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_8xsaa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_erv1k")
+theme_override_styles/hover = SubResource("StyleBoxFlat_28flt")
+theme_override_styles/focus = SubResource("StyleBoxFlat_48xlc")
+text = "Multiplayer"
 
 [node name="QuitButton" type="Button" parent="Buttons" unique_id=993721680]
 anchors_preset = 8
@@ -128,17 +188,21 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -250.0
-offset_top = 181.0
+offset_top = 272.0
 offset_right = 250.0
-offset_bottom = 291.0
+offset_bottom = 382.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
+focus_neighbor_top = NodePath("../MultiplayerButton")
+focus_next = NodePath(".")
+focus_previous = NodePath("../MultiplayerButton")
 theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
 theme_override_font_sizes/font_size = 80
 theme_override_styles/normal = SubResource("StyleBoxFlat_8xsaa")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_erv1k")
 theme_override_styles/hover = SubResource("StyleBoxFlat_28flt")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1ehe0")
 text = "Quit
 "

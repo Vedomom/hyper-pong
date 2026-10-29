@@ -22,7 +22,7 @@ var future_pos : Vector2
 var game_won :bool = false
 var coll_info
 var can_move := false
-
+var win_pop
 
 func _ready() -> void:
 	trail.clear_points()
@@ -93,15 +93,11 @@ func _physics_process(delta: float) -> void:
 	
 
 
-	if player.is_dead:
-		end_pop.end_text = "You Died..."
-		end_pop.visible = true
-
 	if cpu.is_dead:
 		if game_won:
 			pass
 		else :
-			var win_pop = load("res://Scenes/win_pop_up.tscn").instantiate()
+			win_pop = load("res://Scenes/win_pop_up.tscn").instantiate()
 			ui_container.add_child(win_pop)
 			game_won = true
 

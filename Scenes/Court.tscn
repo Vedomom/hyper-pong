@@ -79,6 +79,7 @@ health_bar = NodePath("../UI/Player/PlayerHealthBar")
 cpu = NodePath("../CPU")
 
 [node name="Ball" parent="." unique_id=1718199482 node_paths=PackedStringArray("score_lable", "player", "cpu", "end_pop", "ui_container") instance=ExtResource("2_clkqn")]
+position = Vector2(960, 540)
 scale = Vector2(0.7, 0.7)
 initial_speed = 350.0
 score_lable = NodePath("../UI/Score")

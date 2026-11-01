@@ -10,6 +10,8 @@ class_name Ball
 @export var trail_length : int = 10
 @export var end_pop : Control
 @export var ui_container : Node
+@export var bounce_particle : GPUParticles2D
+@export var goal_particle : GPUParticles2D
 
 var direction :Vector2
 var speed := 0.0
@@ -44,11 +46,20 @@ func _physics_process(delta: float) -> void:
 			reset(true)
 
 	if coll_info:
+		
 		direction = direction.bounce(coll_info.get_normal())
 		direction.y = clamp(direction.y, -1, 1)
 		direction.x = 1 * sign(direction.x)
 		curve = move_toward(curve, 0, 0.5)
 		curve_sign = sign(curve)
+
+		if coll_info.get_collider() == player and direction.x != 1:
+			direction.x = 1
+			
+		
+		if coll_info.get_collider() == cpu and direction.x != -1:
+			direction.x = -1
+		
 		if coll_info.get_collider() == player or coll_info.get_collider() == cpu:
 			coll_info.get_collider().current_damage *= 1 + coll_info.get_collider().damage_mult
 			if coll_info.get_collider() is Player:
@@ -64,18 +75,20 @@ func _physics_process(delta: float) -> void:
 				else :
 					curve = coll_info.get_collider().curve_power
 				curve_sign = -sign(coll_info.get_collider().velocity.y)
-		
-		if coll_info.get_collider() == player and direction.x != 1:
-			direction.x = 1
 			
+			if speed > 650:
+				HitStop.hit_stop(0.14)
+			elif speed > 450:
+				HitStop.hit_stop(0.08)
 		
-		if coll_info.get_collider() == cpu and direction.x != -1:
-			direction.x = -1
-
-
-		if coll_info.get_collider().name == "WallLeft" or coll_info.get_collider().name == "WallRight" :
+		elif coll_info.get_collider().name == "WallLeft" or coll_info.get_collider().name == "WallRight" :
 			reset()
-
+		else :
+			if coll_info.get_position().y > 80 :
+				bounce_particle.process_material.emission_shape_offset.y = 15
+			else:
+				bounce_particle.process_material.emission_shape_offset.y = -15
+			bounce_particle.restart()
 
 	if Input.is_action_pressed("Hit") and is_reset and !(player.is_dead or cpu.is_dead):
 
@@ -123,25 +136,35 @@ func deduct_health(subject, damage):
 	subject.health = clampf(subject.health, 0.0, subject.initial_health)
 	
 func reset(is_stuck : bool = false):
-			trail.clear_points()
 			var last_pos = position
-			position = Vector2(960, 540)
-
 			if coll_info:
 				if coll_info.get_collider().name == "WallLeft":
+					goal_particle.process_material.direction.x = 1
+					goal_particle.restart()
+					await get_tree().create_timer(0.02).timeout
 					player.player_damaged.emit()
 					cpu.enemy_scored.emit()
 					deduct_health(player, cpu.current_damage)
 				elif coll_info.get_collider().name == "WallRight" :
+					goal_particle.process_material.direction.x = -1
+					goal_particle.restart()
+					await get_tree().create_timer(0.02).timeout
 					player.player_scored.emit()
 					cpu.enemy_damaged.emit()
 					deduct_health(cpu, player.current_damage)
+			
 			if is_stuck:
 				if last_pos.x >= 1800:
+					goal_particle.process_material.direction.x = -1
+					goal_particle.restart()
+					await get_tree().create_timer(0.02).timeout
 					deduct_health(cpu, player.current_damage)
 				else :
+					goal_particle.process_material.direction.x = 1
+					goal_particle.restart()
+					await get_tree().create_timer(0.02).timeout
 					deduct_health(player, cpu.current_damage)
-
+			trail.clear_points()
 			player.current_damage = player.initial_damage
 			cpu.current_damage = cpu.initial_damage
 			score_count = 0
@@ -150,6 +173,7 @@ func reset(is_stuck : bool = false):
 			velocity = Vector2.ZERO
 			is_reset = true
 			can_move = false
+			position = Vector2(960, 540)
 
 func get_random_direction() -> int:
 	var randir = randi_range(-1, 1)

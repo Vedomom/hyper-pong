@@ -3,7 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://cxwo6lmbku0ag" path="res://Scenes/player.tscn" id="1_hxgs0"]
 [ext_resource type="PackedScene" uid="uid://cst7gu6eyoyta" path="res://Scenes/ball.tscn" id="2_clkqn"]
 [ext_resource type="PackedScene" uid="uid://bxr3xbkrcosf1" path="res://Scenes/cpu.tscn" id="3_clkqn"]
+[ext_resource type="Shader" uid="uid://h5rnab0t5ips" path="res://Scripts/UI/shaders/quantize_pixelate.gdshader" id="4_0xph6"]
 [ext_resource type="PackedScene" uid="uid://b0etnk6si67ve" path="res://Scenes/end_pop_up.tscn" id="4_hxgs0"]
+[ext_resource type="FontFile" uid="uid://bt3gbbw7fayi" path="res://Resources/Margarine-Regular.ttf" id="5_6j87r"]
 [ext_resource type="Texture2D" uid="uid://b3mq2vv4fa0wh" path="res://Resources/jupiter.svg" id="5_8gnj2"]
 [ext_resource type="Script" uid="uid://boaopnmsi2pb6" path="res://Scripts/game_manager.gd" id="5_clkqn"]
 [ext_resource type="Texture2D" uid="uid://pekwh0fwck5t" path="res://Resources/happy-intersection.svg" id="6_d8gck"]
@@ -14,11 +16,24 @@ size = Vector2(1920, 50)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmho0"]
 size = Vector2(50, 1080)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6j87r"]
+shader = ExtResource("4_0xph6")
+shader_parameter/texture_mode = 1
+shader_parameter/quantize_size = 3
+shader_parameter/snap_to_world = false
+shader_parameter/limit_subpixels = true
+
 [sub_resource type="LabelSettings" id="LabelSettings_hxgs0"]
+font = ExtResource("5_6j87r")
 font_size = 30
 
 [sub_resource type="LabelSettings" id="LabelSettings_8gnj2"]
-font_size = 25
+font = ExtResource("5_6j87r")
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_6j87r"]
+font = ExtResource("5_6j87r")
+font_size = 30
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_clkqn"]
 bg_color = Color(0.6, 0.6, 0.6, 0.18039216)
@@ -32,10 +47,16 @@ border_color = Color(0.96, 1, 0.98, 0.5568628)
 bg_color = Color(0.5647059, 0.93333334, 0.5647059, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_h1ah7"]
+font = ExtResource("5_6j87r")
 font_size = 30
 
 [sub_resource type="LabelSettings" id="LabelSettings_clkqn"]
-font_size = 25
+font = ExtResource("5_6j87r")
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_mlxss"]
+font = ExtResource("5_6j87r")
+font_size = 30
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8gck"]
 bg_color = Color(0.6, 0.6, 0.6, 0.18039216)
@@ -49,9 +70,11 @@ border_color = Color(0.96, 1, 0.98, 0.5568628)
 bg_color = Color(0.5647059, 0.93333334, 0.5647059, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_8xsaa"]
+font = ExtResource("5_6j87r")
 font_size = 35
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8gck"]
+font = ExtResource("5_6j87r")
 font_size = 30
 font_color = Color(1, 1, 0.61, 1)
 
@@ -67,7 +90,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.1254902, 0.1254902, 0.1254902, 1)
 
-[node name="Player" parent="." unique_id=1410247650 node_paths=PackedStringArray("health_lable", "damage_label", "health_bar", "cpu") instance=ExtResource("1_hxgs0")]
+[node name="Player" parent="." unique_id=1410247650 node_paths=PackedStringArray("health_lable", "damage_label", "health_bar", "cpu", "dmg_lbl") instance=ExtResource("1_hxgs0")]
 z_index = 2
 position = Vector2(107, 536)
 scale = Vector2(1.6, 1.6)
@@ -77,18 +100,18 @@ health_lable = NodePath("../UI/Player/PlayerHealth")
 damage_label = NodePath("../UI/Player/PlayerDamage")
 health_bar = NodePath("../UI/Player/PlayerHealthBar")
 cpu = NodePath("../CPU")
+dmg_lbl = NodePath("../UI/Player/PlayerDamageIndicator")
 
-[node name="Ball" parent="." unique_id=1718199482 node_paths=PackedStringArray("score_lable", "player", "cpu", "end_pop", "ui_container") instance=ExtResource("2_clkqn")]
+[node name="Ball" parent="." unique_id=1718199482 node_paths=PackedStringArray("score_lable", "player", "cpu", "ui_container") instance=ExtResource("2_clkqn")]
 position = Vector2(960, 540)
 scale = Vector2(0.7, 0.7)
 initial_speed = 350.0
 score_lable = NodePath("../UI/Score")
 player = NodePath("../Player")
 cpu = NodePath("../CPU")
-end_pop = NodePath("../EndPopUp")
 ui_container = NodePath("../UI")
 
-[node name="CPU" parent="." unique_id=350636408 node_paths=PackedStringArray("ball", "health_lable", "damage_label", "health_bar", "player") instance=ExtResource("3_clkqn")]
+[node name="CPU" parent="." unique_id=350636408 node_paths=PackedStringArray("ball", "health_lable", "damage_label", "health_bar", "player", "dmg_lbl") instance=ExtResource("3_clkqn")]
 z_index = 2
 position = Vector2(1813, 540)
 scale = Vector2(1.6, 1.6)
@@ -98,6 +121,7 @@ health_lable = NodePath("../UI/CPU/CPUHealth")
 damage_label = NodePath("../UI/CPU/CPUDamage")
 health_bar = NodePath("../UI/CPU/CPUHealthBar")
 player = NodePath("../Player")
+dmg_lbl = NodePath("../UI/CPU/CPUDamageIndicator")
 
 [node name="Walls" type="Node" parent="." unique_id=767150607]
 
@@ -135,6 +159,15 @@ shape = SubResource("RectangleShape2D_xmho0")
 
 [node name="UI" type="Node" parent="." unique_id=1376812831]
 
+[node name="pixelize" type="ColorRect" parent="UI" unique_id=559637962]
+z_index = 50
+material = SubResource("ShaderMaterial_6j87r")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Player" type="Node" parent="UI" unique_id=684321340]
 
 [node name="PlayerHealth" type="Label" parent="UI/Player" unique_id=1717140905]
@@ -142,28 +175,44 @@ z_index = 2
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -936.0
-offset_top = 100.0
-offset_right = -894.0
-offset_bottom = 142.0
+offset_left = -958.0
+offset_top = 86.0
+offset_right = -870.0
+offset_bottom = 141.0
 grow_horizontal = 2
+pivot_offset = Vector2(44, 27)
 text = "0"
 label_settings = SubResource("LabelSettings_hxgs0")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PlayerDamage" type="Label" parent="UI/Player" unique_id=1818984572]
 z_index = 2
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -936.0
-offset_top = 10.0
-offset_right = -894.0
-offset_bottom = 52.0
+offset_left = -860.0
+offset_top = 2.0
+offset_right = -660.0
+offset_bottom = 50.0
 grow_horizontal = 2
+pivot_offset = Vector2(100, 24)
 text = "0"
 label_settings = SubResource("LabelSettings_8gnj2")
 horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="PlayerDamageIndicator" type="Label" parent="UI/Player" unique_id=784677197]
+z_index = 2
+offset_left = 9.0
+offset_top = 1.0
+offset_right = 64.0
+offset_bottom = 49.0
+text = "dmg :"
+label_settings = SubResource("LabelSettings_6j87r")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="PlayerHealthBar" type="ProgressBar" parent="UI/Player" unique_id=691387748]
 anchors_preset = 4
@@ -189,29 +238,49 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 864.0
-offset_top = -440.0
-offset_right = 960.0
-offset_bottom = -398.0
+offset_left = 871.0
+offset_top = -454.5
+offset_right = 959.0
+offset_bottom = -399.5
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
 text = "0"
 label_settings = SubResource("LabelSettings_h1ah7")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CPUDamage" type="Label" parent="UI/CPU" unique_id=239488184]
 z_index = 2
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 864.0
-offset_top = 10.0
-offset_right = 960.0
-offset_bottom = 45.0
+offset_left = 659.0
+offset_top = 2.0
+offset_right = 859.0
+offset_bottom = 50.0
 grow_horizontal = 2
+pivot_offset = Vector2(100, 24)
 text = "0"
 label_settings = SubResource("LabelSettings_clkqn")
 horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="CPUDamageIndicator" type="Label" parent="UI/CPU" unique_id=2140596799]
+z_index = 2
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -77.0
+offset_top = 1.0
+offset_right = -7.0
+offset_bottom = 49.0
+grow_horizontal = 0
+text = ": dmg"
+label_settings = SubResource("LabelSettings_mlxss")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="CPUHealthBar" type="ProgressBar" parent="UI/CPU" unique_id=202429170]
 anchors_preset = 4
@@ -233,13 +302,15 @@ z_index = 2
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -34.5
-offset_right = 34.5
-offset_bottom = 49.0
+offset_left = -33.0
+offset_right = 33.0
+offset_bottom = 48.0
 grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
 text = "0"
 label_settings = SubResource("LabelSettings_8xsaa")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="RoundLabel" type="Label" parent="UI" unique_id=1430864121]
 z_index = 2
@@ -253,6 +324,7 @@ offset_top = -48.0
 offset_right = 45.5
 grow_horizontal = 2
 grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
 text = "1"
 label_settings = SubResource("LabelSettings_d8gck")
 horizontal_alignment = 1
@@ -327,10 +399,8 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 960.0
-offset_top = 540.0
-offset_right = 960.0
-offset_bottom = 540.0
+offset_right = 1920.0
+offset_bottom = 1080.0
 
 [node name="GameManager" type="Node" parent="." unique_id=1780379137 node_paths=PackedStringArray("round_label")]
 process_mode = 3

@@ -30,8 +30,7 @@ func _ready() -> void:
 
 	round_number = 1
 	max_rounds = 10
-	round_label.text = "%d / %d" %[round_number ,max_rounds]
-
+	round_label.text = "Round : %d / %d" %[round_number ,max_rounds]
 	randomize_enemy_health()
 	enemy.health = enemy.initial_health
 	enemy.health_bar.value = enemy.health
@@ -46,19 +45,15 @@ func _process(_delta: float) -> void:
 	
 	player.health = clamp(player.health, 0.0, player.initial_health)
 
-	if player.is_dead:
-		get_tree().paused = true
-		ball.end_pop.end_text = "You Died..."
-		ball.end_pop.visible = true
-		
-		
-
+	
+	
+	
 
 
 
 
 func next_round():
-
+	round_number += 1
 	if round_number >= 10:
 		end_game()
 	else:
@@ -72,9 +67,9 @@ func next_round():
 		player.health_bar.max_value = player.initial_health
 		player.health_bar.value = player.health
 
-		#change map layout
 
 		#enemy - change the enemy into a new random one
+		
 		upgrade_enemy()
 		enemy.health = enemy.initial_health
 		enemy.current_damage = enemy.initial_damage
@@ -83,11 +78,10 @@ func next_round():
 		enemy.health_bar.value = enemy.health
 		
 
-		#ball
-		ball.game_won = false
+		get_tree().paused = false
 	
-	round_number += 1
-	round_label.text = "%d / %d" %[round_number, max_rounds]
+	
+	round_label.text = "Round : %d / %d" %[round_number, max_rounds]
 
 
 func upgrade_enemy():
@@ -107,17 +101,18 @@ func upgrade_enemy():
 	if round_number <=  2:
 		amount = 0
 		enemy.damage_mult = 0.1
-	
-	elif  round_number <= 5:
+	elif  round_number < 5:
 		amount = 1
 		enemy.damage_mult = 0.2
 	elif round_number <= 7:
 		amount = 2
 		enemy.damage_mult = 0.3
-	else :
+	elif round_number < 10 :
 		amount = 3
 		enemy.damage_mult = 0.4
-		
+	else :
+		amount = 4
+		enemy.damage_mult = 0.4
 	
 	add_enemy_upgrades(amount)
 
@@ -129,18 +124,15 @@ func randomize_enemy_health():
 		enemy.initial_health = randi_range(50, 150)
 
 func add_enemy_upgrades(amount : int):
-	var upgrades_folder = DirAccess.open("res://Scripts/Upgrades/Enemy/Scenes/")
+	var upgrades_folder = DirAccess.open("res://Resources/Enemy/Scenes/")
 	var upgrades_list = []
 
 	for filename:String in upgrades_folder.get_files():
 		upgrades_list.append(upgrades_folder.get_current_dir() + "/" + filename)
 	
 	upgrades_list.shuffle()
-
 	for child in enemy.get_child(2).get_children():
 		child.queue_free()
-
-
 
 	if amount > 0:
 		for i in range(amount):
@@ -151,6 +143,7 @@ func add_enemy_upgrades(amount : int):
 			
 func end_game():
 	ball.win_pop.queue_free()
+	ball.end_pop.queue_free()
 	var winscrn = load("res://Scenes/win_screen.tscn").instantiate()
 	ui_container.add_child(winscrn)
 	get_tree().paused = true

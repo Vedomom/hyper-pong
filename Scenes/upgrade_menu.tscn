@@ -3,6 +3,23 @@
 [ext_resource type="Script" uid="uid://deingq5l05bvo" path="res://Scripts/UI/select_upgrade_menu.gd" id="1_11363"]
 [ext_resource type="Script" uid="uid://dsjynddynfkyu" path="res://Scripts/UI/upgrade_button.gd" id="2_6gn5s"]
 [ext_resource type="Texture2D" uid="uid://btcglpnwcj83s" path="res://Resources/overlapping-diamonds.svg" id="2_f5dmy"]
+[ext_resource type="FontFile" uid="uid://bt3gbbw7fayi" path="res://Resources/Margarine-Regular.ttf" id="4_lhh40"]
+
+[sub_resource type="FontVariation" id="FontVariation_f5dmy"]
+base_font = ExtResource("4_lhh40")
+variation_face_index = 13
+variation_embolden = 1.25
+variation_transform = Transform2D(0.965, -0.37, 0.32, 1.47, 0.015, 0)
+spacing_glyph = 13
+
+[sub_resource type="LabelSettings" id="LabelSettings_lhh40"]
+font = SubResource("FontVariation_f5dmy")
+font_size = 70
+font_color = Color(0.9607843, 1, 0.98039216, 1)
+outline_size = 20
+outline_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+shadow_color = Color(1, 0.9235, 0.49, 0.31764707)
+shadow_offset = Vector2(8, 8)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_le8vw"]
 bg_color = Color(1, 0.8784314, 0.4, 1)
@@ -49,25 +66,24 @@ shadow_color = Color(0.92941177, 0.49411765, 0, 1)
 shadow_size = 1
 shadow_offset = Vector2(10, 10)
 
-[sub_resource type="SystemFont" id="SystemFont_f5dmy"]
-subpixel_positioning = 0
-
 [sub_resource type="FontVariation" id="FontVariation_6gn5s"]
-base_font = SubResource("SystemFont_f5dmy")
+base_font = ExtResource("4_lhh40")
 variation_face_index = 13
 variation_embolden = 1.25
-variation_transform = Transform2D(0.965, -0.385, 0.62, 1.38, 0.065, 0)
+variation_transform = Transform2D(0.965, -0.37, 0.32, 1.47, 0.015, 0)
 spacing_glyph = 13
 
 [sub_resource type="LabelSettings" id="LabelSettings_le8vw"]
 font = SubResource("FontVariation_6gn5s")
-font_size = 80
+font_size = 90
 font_color = Color(0.17850001, 0.42712498, 0.51, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 shadow_color = Color(0.047762394, 0.039163005, 0.3132004, 1)
-shadow_offset = Vector2(6, 6)
+shadow_offset = Vector2(8, 8)
 
 [sub_resource type="FontVariation" id="FontVariation_le8vw"]
-base_font = SubResource("SystemFont_f5dmy")
+base_font = ExtResource("4_lhh40")
 variation_embolden = 0.96
 variation_transform = Transform2D(0.79, 0.35, -0.14, 0.96, 0.065, 0)
 
@@ -77,6 +93,7 @@ font_size = 35
 font_color = Color(0.31, 0.31, 0.31, 1)
 
 [node name="Upgrade Menu" type="Control" unique_id=94360544 node_paths=PackedStringArray("upgrade_left", "upgrade_right")]
+process_mode = 3
 z_index = 3
 layout_mode = 3
 anchors_preset = 15
@@ -109,6 +126,20 @@ grow_vertical = 2
 texture = ExtResource("2_f5dmy")
 stretch_mode = 1
 
+[node name="SelectText" type="Label" parent="background" unique_id=1143092691]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -181.0
+offset_top = 50.0
+offset_right = 181.0
+offset_bottom = 172.0
+grow_horizontal = 2
+text = "Select an Upgrade"
+label_settings = SubResource("LabelSettings_lhh40")
+horizontal_alignment = 1
+
 [node name="upgradeLeft" type="Button" parent="." unique_id=1531796203 node_paths=PackedStringArray("title", "description")]
 z_index = 5
 layout_mode = 1
@@ -118,9 +149,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -800.0
-offset_top = -400.0
+offset_top = -352.0
 offset_right = -200.0
-offset_bottom = 400.0
+offset_bottom = 448.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_next = NodePath("../upgradeRight")
@@ -146,8 +177,7 @@ offset_top = 200.0
 offset_right = 20.0
 offset_bottom = 223.0
 grow_horizontal = 2
-text = "Title
-"
+text = "Title"
 label_settings = SubResource("LabelSettings_le8vw")
 horizontal_alignment = 1
 
@@ -179,9 +209,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = 200.0
-offset_top = -400.0
+offset_top = -352.0
 offset_right = 800.0
-offset_bottom = 400.0
+offset_bottom = 448.0
 grow_horizontal = 2
 grow_vertical = 2
 focus_previous = NodePath("../upgradeLeft")

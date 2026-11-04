@@ -38,7 +38,6 @@ func _ready() -> void:
 	round_number = 1
 	round_label.text = "Round : %d" %[round_number]
 
-	p1_score = 4
 
 	player_1.round_up.connect(next_round)
 	player_1.player_died.connect(update_score.bind(player_2))
@@ -104,10 +103,10 @@ func end_game():
 	get_tree().paused = true
 
 func update_score(scorer : CharacterBody2D):
-	if scorer is Player_1:
+	if scorer == player_1:
 		p1_score += 1
 		manage_score(p1_score, p1_score_label)
-	if scorer is Player_2:
+	if scorer == player_2:
 		p2_score += 1
 		manage_score(p2_score, p2_score_label)
 	

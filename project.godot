@@ -11,20 +11,22 @@ config_version=5
 [application]
 
 config/name="Hyper Chaos Pong"
-config/version="1.2"
+config/version="1.3"
 run/main_scene="uid://cs1sbwea32xnk"
 config/features=PackedStringArray("4.7", "Forward Plus")
 run/max_fps=60
 boot_splash/bg_color=Color(0.08235294, 0.08235294, 0.08235294, 1)
-boot_splash/image="uid://d2tqciickqv1j"
+boot_splash/stretch_mode=0
+boot_splash/image="uid://2haktdu6s4h"
 config/icon="uid://d2tqciickqv1j"
 config/macos_native_icon="uid://d2tqciickqv1j"
-config/windows_native_icon="uid://d2tqciickqv1j"
-boot_splash/minimum_display_time=3
+config/windows_native_icon="res://Resources/HCP_W.ico"
+boot_splash/minimum_display_time=5
 
 [autoload]
 
 HitStop="*uid://dfqpya1j7yx4y"
+TextAnimation="*uid://pdlvulf6ifua"
 
 [display]
 
@@ -32,6 +34,10 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
 window/size/borderless=true
+
+[editor]
+
+export/convert_text_resources_to_binary=false
 
 [input]
 

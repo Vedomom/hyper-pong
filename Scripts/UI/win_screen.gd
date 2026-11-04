@@ -9,6 +9,6 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Left"):
-		NR_Btn.grab_focus()
+		NR_Btn.call_deferred("grab_focus")
 	elif Input.is_action_just_pressed("Right"):
-		MM_Btn.grab_focus()
+		MM_Btn.call_deferred("grab_focus")

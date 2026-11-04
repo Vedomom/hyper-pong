@@ -6,6 +6,7 @@ var parent
 func _ready() -> void:
 	visible = true
 	cont_btn.pressed.connect(show_menu)
+	cont_btn.grab_focus()
 
 func show_menu():
 	hide()

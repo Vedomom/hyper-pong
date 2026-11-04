@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cst7gu6eyoyta"]
 
 [ext_resource type="Script" uid="uid://csxnwhwiii8af" path="res://Scripts/ballLogic.gd" id="1_d60mj"]
+[ext_resource type="Material" uid="uid://ggbdpbdhmn87" path="res://Resources/pixel.tres" id="2_ij5cq"]
 
 [sub_resource type="Curve" id="Curve_8xsaa"]
 _data = [Vector2(0, 0), 0.0, 0.79999995, 0, 1, Vector2(1, 0.79999995), 0.79999995, 0.0, 1, 0]
@@ -43,7 +44,21 @@ scale_max = 7.0
 hue_variation_min = -0.020000022
 hue_variation_max = 0.019999977
 
-[node name="Ball" type="CharacterBody2D" unique_id=1718199482 node_paths=PackedStringArray("trail", "bounce_particle", "goal_particle")]
+[sub_resource type="Gradient" id="Gradient_ij5cq"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.33894232)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_aw2wy"]
+gradient = SubResource("Gradient_ij5cq")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[node name="Ball" type="CharacterBody2D" unique_id=1718199482 node_paths=PackedStringArray("trail", "bounce_particle", "goal_particle", "ball_light", "shape")]
+material = ExtResource("2_ij5cq")
 scale = Vector2(0.99999994, 0.99999994)
 script = ExtResource("1_d60mj")
 initial_speed = 400.0
@@ -51,6 +66,8 @@ speedStep = 5.0
 trail = NodePath("shape/Trail")
 bounce_particle = NodePath("bounceParticle")
 goal_particle = NodePath("goalParticle")
+ball_light = NodePath("ballLight")
+shape = NodePath("shape")
 
 [node name="shape" type="ColorRect" parent="." unique_id=681213421]
 z_index = 2
@@ -65,11 +82,14 @@ offset_right = 12.5
 offset_bottom = 12.5
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0.16400003, 0.120000005, 1)
+color = Color(0.8627451, 0.078431375, 0.23529412, 1)
 
 [node name="Trail" type="Line2D" parent="shape" unique_id=1163394677]
+process_mode = 3
+show_behind_parent = true
 top_level = true
-z_index = 3
+z_index = 2
+use_parent_material = true
 width = 20.0
 width_curve = SubResource("Curve_8xsaa")
 default_color = Color(1, 1, 1, 0.6156863)
@@ -91,6 +111,9 @@ randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_d60mj")
 
 [node name="goalParticle" type="GPUParticles2D" parent="." unique_id=441442441]
+process_mode = 3
+process_physics_priority = 1
+physics_interpolation_mode = 1
 z_index = 4
 emitting = false
 amount = 30
@@ -98,3 +121,9 @@ lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_ij5cq")
+
+[node name="ballLight" type="PointLight2D" parent="." unique_id=1237336714]
+show_behind_parent = true
+z_as_relative = false
+color = Color(1, 0, 0, 1)
+texture = SubResource("GradientTexture2D_aw2wy")

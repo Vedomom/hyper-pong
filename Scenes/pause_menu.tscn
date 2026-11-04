@@ -1,0 +1,337 @@
+[gd_scene format=3 uid="uid://dmw1fho18l7mp"]
+
+[ext_resource type="Texture2D" uid="uid://btcglpnwcj83s" path="res://Resources/overlapping-diamonds.svg" id="1_k0w1u"]
+[ext_resource type="Script" uid="uid://cvvvsdovglq2x" path="res://Scripts/UI/pause_menu.gd" id="1_vmyb1"]
+[ext_resource type="FontFile" uid="uid://bt3gbbw7fayi" path="res://Resources/Margarine-Regular.ttf" id="2_1och7"]
+[ext_resource type="Texture2D" uid="uid://wvbjh38jqgpe" path="res://Resources/icons/volume-full_big.svg" id="3_1och7"]
+[ext_resource type="Texture2D" uid="uid://cftwu2bswbegd" path="res://Resources/icons/music.svg" id="4_bpi0q"]
+[ext_resource type="Script" uid="uid://2j5dovfbc2l0" path="res://Scripts/UI/audio_slider.gd" id="4_myy0f"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_k0w1u"]
+font = ExtResource("2_1och7")
+font_size = 70
+font_color = Color(0.86292744, 0.933358, 0.9301186, 1)
+shadow_color = Color(0.31695512, 0.06341037, 0.34648004, 1)
+shadow_offset = Vector2(8, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bpi0q"]
+bg_color = Color(0.116199985, 0.29465002, 0.83, 1)
+border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.87, 0.79692, 0.3219, 1)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vmyb1"]
+bg_color = Color(0.87, 0.79692, 0.3219, 1)
+border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.27058825, 0.41960785, 0.87058824, 1)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_myy0f"]
+bg_color = Color(0.27058825, 0.41960785, 0.87058824, 1)
+border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.87, 0.79692, 0.3219, 1)
+shadow_size = 6
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sjs17"]
+bg_color = Color(0.27058825, 0.41960785, 0.87058824, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8627451, 0.078431375, 0.23529412, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.87, 0.79692, 0.3219, 1)
+shadow_size = 6
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xsaa"]
+bg_color = Color(0.11, 0.11, 0.11, 0.9019608)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 0.44, 0.62352943)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 2.0
+expand_margin_top = 3.0
+expand_margin_right = 2.0
+expand_margin_bottom = 3.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k0w1u"]
+bg_color = Color(0.87058824, 0.79607844, 0.32156864, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+
+[node name="PauseMenu" type="Control" unique_id=529654255 node_paths=PackedStringArray("resume_btn", "restart_btn", "quit_btn", "sfx_slider", "music_slider")]
+process_mode = 2
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vmyb1")
+resume_btn = NodePath("background/ResButton")
+restart_btn = NodePath("background/RestartButton")
+quit_btn = NodePath("background/QuitButton")
+sfx_slider = NodePath("background/SFXSlider")
+music_slider = NodePath("background/MusicSlider")
+
+[node name="background" type="ColorRect" parent="." unique_id=1785552783]
+z_index = 4
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -400.0
+offset_right = 300.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 0.16078432, 0.16078432, 1)
+
+[node name="backgroundShadow" type="ColorRect" parent="background" unique_id=1041260889]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -285.0
+offset_top = -385.0
+offset_right = 315.0
+offset_bottom = 415.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.87, 0.79692, 0.3219, 1)
+
+[node name="ui_pattern" type="TextureRect" parent="background" unique_id=887222720]
+modulate = Color(1, 1, 1, 0.0627451)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_k0w1u")
+stretch_mode = 1
+
+[node name="pauseText" type="Label" parent="background" unique_id=1013870380]
+z_index = 5
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.0
+offset_top = 10.0
+offset_right = 390.0
+offset_bottom = 161.0
+grow_horizontal = 2
+text = "Game Paused"
+label_settings = SubResource("LabelSettings_k0w1u")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResButton" type="Button" parent="background" unique_id=164122716]
+z_index = 5
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.5
+offset_top = -250.0
+offset_right = 166.5
+offset_bottom = -155.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+focus_next = NodePath("../RestartButton")
+focus_previous = NodePath(".")
+theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
+theme_override_fonts/font = ExtResource("2_1och7")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_bpi0q")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vmyb1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_myy0f")
+theme_override_styles/focus = SubResource("StyleBoxFlat_sjs17")
+text = "Resume
+"
+
+[node name="RestartButton" type="Button" parent="background" unique_id=70638205]
+z_index = 5
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.5
+offset_top = -100.0
+offset_right = 166.5
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../ResButton")
+theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
+theme_override_fonts/font = ExtResource("2_1och7")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_bpi0q")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vmyb1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_myy0f")
+theme_override_styles/focus = SubResource("StyleBoxFlat_sjs17")
+text = "Restart"
+
+[node name="QuitButton" type="Button" parent="background" unique_id=1522294517]
+process_mode = 2
+z_index = 5
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -166.5
+offset_top = 50.0
+offset_right = 166.5
+offset_bottom = 145.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+focus_next = NodePath("../SFXSlider")
+focus_previous = NodePath("../RestartButton")
+theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
+theme_override_fonts/font = ExtResource("2_1och7")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_bpi0q")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_vmyb1")
+theme_override_styles/hover = SubResource("StyleBoxFlat_myy0f")
+theme_override_styles/focus = SubResource("StyleBoxFlat_sjs17")
+text = "Main Menu"
+
+[node name="SFXSlider" type="HSlider" parent="background" unique_id=174242113]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 213.0
+offset_right = 150.0
+offset_bottom = 229.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+focus_next = NodePath("../Music")
+focus_previous = NodePath("../QuitButton")
+theme_override_styles/slider = SubResource("StyleBoxFlat_8xsaa")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_k0w1u")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_k0w1u")
+max_value = 1.0
+step = 0.001
+value = 1.0
+tick_count = 15
+ticks_position = 3
+script = ExtResource("4_myy0f")
+bus_name = "sfx"
+
+[node name="MusicSlider" type="HSlider" parent="background" unique_id=1028517402]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = 304.0
+offset_right = 150.0
+offset_bottom = 320.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset_ratio = Vector2(0.5, 0.5)
+focus_next = NodePath(".")
+focus_previous = NodePath("../SFXSlider")
+theme_override_styles/slider = SubResource("StyleBoxFlat_8xsaa")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_k0w1u")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_k0w1u")
+max_value = 1.0
+step = 0.001
+value = 1.0
+tick_count = 15
+ticks_position = 3
+script = ExtResource("4_myy0f")
+bus_name = "Music"
+
+[node name="Volume" type="TextureRect" parent="background" unique_id=1000124738]
+modulate = Color(0.87, 0.82824004, 0.4524, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -278.0
+offset_top = 182.0
+offset_right = -206.0
+offset_bottom = 254.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("3_1och7")
+
+[node name="Music" type="TextureRect" parent="background" unique_id=983583775]
+modulate = Color(0.87, 0.82824004, 0.4524, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -278.0
+offset_top = 276.0
+offset_right = -206.0
+offset_bottom = 348.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("4_bpi0q")

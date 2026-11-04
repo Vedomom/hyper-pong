@@ -2,8 +2,12 @@
 
 [ext_resource type="Script" uid="uid://bh4jenp2cnljv" path="res://Scripts/UI/win_screen.gd" id="1_l5sol"]
 [ext_resource type="Texture2D" uid="uid://btcglpnwcj83s" path="res://Resources/overlapping-diamonds.svg" id="2_a00f1"]
+[ext_resource type="FontFile" uid="uid://bt3gbbw7fayi" path="res://Resources/Margarine-Regular.ttf" id="3_awi1s"]
+[ext_resource type="AudioStream" uid="uid://c5mk6ooorkx1j" path="res://Resources/SFX/UI buttons.wav" id="4_85imr"]
+[ext_resource type="AudioStream" uid="uid://bscmllhha0l87" path="res://Resources/SFX/UI press.wav" id="5_mf36t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_j0aiw"]
+font = ExtResource("3_awi1s")
 font_size = 150
 font_color = Color(0.7097232, 1, 0.7550985, 1)
 shadow_color = Color(0.99999994, 0.19044858, 0.60782874, 1)
@@ -57,7 +61,7 @@ shadow_color = Color(0.87, 0.79692, 0.3219, 1)
 shadow_size = 1
 shadow_offset = Vector2(5, 5)
 
-[node name="WinScreen" type="Control" unique_id=83483473 node_paths=PackedStringArray("MM_Btn", "NR_Btn")]
+[node name="WinScreen" type="Control" unique_id=83483473 node_paths=PackedStringArray("MM_Btn", "NR_Btn", "focus_sfx", "press_sfx")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -68,6 +72,8 @@ grow_vertical = 2
 script = ExtResource("1_l5sol")
 MM_Btn = NodePath("MMButton")
 NR_Btn = NodePath("NRButton")
+focus_sfx = NodePath("UIfocusSFX")
+press_sfx = NodePath("UIpressSFX")
 
 [node name="BG" type="ColorRect" parent="." unique_id=773115964]
 z_index = 10
@@ -124,7 +130,8 @@ grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
-theme_override_font_sizes/font_size = 60
+theme_override_fonts/font = ExtResource("3_awi1s")
+theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_l5sol")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_a00f1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_awi1s")
@@ -148,10 +155,21 @@ grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
-theme_override_font_sizes/font_size = 60
+theme_override_fonts/font = ExtResource("3_awi1s")
+theme_override_font_sizes/font_size = 75
 theme_override_styles/normal = SubResource("StyleBoxFlat_l5sol")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_a00f1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_awi1s")
 theme_override_styles/focus = SubResource("StyleBoxFlat_bwc64")
 text = "New Run
 "
+
+[node name="UIfocusSFX" type="AudioStreamPlayer" parent="." unique_id=1424065763]
+process_mode = 3
+stream = ExtResource("4_85imr")
+volume_db = -15.0
+
+[node name="UIpressSFX" type="AudioStreamPlayer" parent="." unique_id=1009182730]
+process_mode = 3
+stream = ExtResource("5_mf36t")
+volume_db = -15.0

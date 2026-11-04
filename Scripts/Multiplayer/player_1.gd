@@ -13,6 +13,7 @@ class_name Player_1
 @export var damage_label: Label
 @export var health_bar : ProgressBar
 @export var player_2: Player_2
+@export var dmg_lbl : Label
 
 const MAX_SPEED = 1300
 const MIN_SPEED = 500
@@ -34,6 +35,9 @@ var leech_power := 0.0
 
 var health_bar_sb 
 
+var initial_label_font_size : int
+var initial_damage_font_size : int
+
 signal player_shot()  
 signal player_scored()
 signal player_damaged()
@@ -46,6 +50,9 @@ func _ready() -> void:
 	health = initial_health
 	health_bar.max_value = initial_health
 	health_bar.value = health
+
+	initial_label_font_size = health_lable.label_settings.font_size
+	initial_damage_font_size = damage_label.label_settings.font_size
 
 	health_bar_sb = StyleBoxFlat.new()
 	health_bar.add_theme_stylebox_override("fill", health_bar_sb)
@@ -103,7 +110,7 @@ func manage_health():
 	health_bar.value = health
 	health_lable.text = "%.1f" %health
 	health = clamp(health, 0.0, initial_health)
-	if health <= 0.0 :
+	if health <= 0.0 and !is_dead:
 		death()
 	
 	if health <= initial_health/4:
@@ -120,7 +127,10 @@ func manage_damage():
 	damage_label.text = "%.2f" %current_damage
 	if current_damage > player_2.health:
 		damage_label.label_settings.font_color = Color(1, 0.43, 0.73)
+		dmg_lbl.label_settings.font_color = Color(1, 0.43, 0.73)
 	elif current_damage > player_2.health/2:
 		damage_label.label_settings.font_color = Color(0.85, 0.50, 1.0)
+		dmg_lbl.label_settings.font_color = Color(0.85, 0.50, 1.0)
 	else:
 		damage_label.label_settings.font_color = Color(0.53, 0.9, 1.0)
+		dmg_lbl.label_settings.font_color = Color(0.53, 0.9, 1.0)

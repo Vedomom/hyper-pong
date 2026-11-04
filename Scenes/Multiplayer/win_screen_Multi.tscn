@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://bpwuv1rueyaa"]
 
 [ext_resource type="Script" uid="uid://dbs56evmtqrdp" path="res://Scripts/Multiplayer/win_screen_multi.gd" id="1_s6lnd"]
+[ext_resource type="FontFile" uid="uid://bt3gbbw7fayi" path="res://Resources/Margarine-Regular.ttf" id="2_yp3dc"]
+[ext_resource type="AudioStream" uid="uid://c5mk6ooorkx1j" path="res://Resources/SFX/UI buttons.wav" id="4_a4aap"]
+[ext_resource type="AudioStream" uid="uid://bscmllhha0l87" path="res://Resources/SFX/UI press.wav" id="5_i3g5b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_j0aiw"]
-font_size = 150
+font = ExtResource("2_yp3dc")
+font_size = 160
 font_color = Color(0.7097232, 1, 0.7550985, 1)
 shadow_color = Color(0.99999994, 0.19044858, 0.60782874, 1)
 shadow_offset = Vector2(8, 8)
@@ -57,18 +61,21 @@ shadow_size = 1
 shadow_offset = Vector2(5, 5)
 
 [sub_resource type="LabelSettings" id="LabelSettings_s6lnd"]
-font_size = 110
+font = ExtResource("2_yp3dc")
+font_size = 120
 font_color = Color(0.86292744, 0.933358, 0.9301186, 1)
 shadow_color = Color(1.540184e-06, 0.5119463, 0.41034904, 0.45490196)
 shadow_offset = Vector2(8, 8)
 
 [sub_resource type="LabelSettings" id="LabelSettings_yp3dc"]
-font_size = 150
+font = ExtResource("2_yp3dc")
+font_size = 170
 
 [sub_resource type="LabelSettings" id="LabelSettings_p1pjm"]
-font_size = 150
+font = ExtResource("2_yp3dc")
+font_size = 170
 
-[node name="WinScreen" type="Control" unique_id=83483473 node_paths=PackedStringArray("MM_Btn", "NR_Btn", "p1_score_label", "p2_score_label", "winner_label")]
+[node name="WinScreen" type="Control" unique_id=83483473 node_paths=PackedStringArray("MM_Btn", "NR_Btn", "p1_score_label", "p2_score_label", "winner_label", "focus_sfx", "press_sfx")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -82,6 +89,8 @@ NR_Btn = NodePath("NRButton")
 p1_score_label = NodePath("Player_1Score")
 p2_score_label = NodePath("Player_2Score")
 winner_label = NodePath("Winner")
+focus_sfx = NodePath("UIfocusSFX")
+press_sfx = NodePath("UIpressSFX")
 
 [node name="BG" type="ColorRect" parent="." unique_id=773115964]
 z_index = 10
@@ -134,7 +143,8 @@ grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
-theme_override_font_sizes/font_size = 60
+theme_override_fonts/font = ExtResource("2_yp3dc")
+theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_l5sol")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_a00f1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_awi1s")
@@ -158,7 +168,8 @@ grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
-theme_override_font_sizes/font_size = 60
+theme_override_fonts/font = ExtResource("2_yp3dc")
+theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_l5sol")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_a00f1")
 theme_override_styles/hover = SubResource("StyleBoxFlat_awi1s")
@@ -222,3 +233,13 @@ text = "0"
 label_settings = SubResource("LabelSettings_p1pjm")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="UIfocusSFX" type="AudioStreamPlayer" parent="." unique_id=991986863]
+process_mode = 3
+stream = ExtResource("4_a4aap")
+volume_db = -15.0
+
+[node name="UIpressSFX" type="AudioStreamPlayer" parent="." unique_id=2047791741]
+process_mode = 3
+stream = ExtResource("5_i3g5b")
+volume_db = -15.0

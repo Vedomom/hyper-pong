@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://ggbdpbdhmn87"]
+
+[ext_resource type="Shader" uid="uid://pwikr56j8cqr" path="res://Scripts/UI/shaders/pixelate.gdshader" id="1_6y76j"]
+
+[resource]
+shader = ExtResource("1_6y76j")
+shader_parameter/amount = 3.0

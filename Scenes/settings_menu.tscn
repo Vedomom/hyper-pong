@@ -1,0 +1,230 @@
+[gd_scene format=3 uid="uid://s38jnweheb7u"]
+
+[ext_resource type="Texture2D" uid="uid://btcglpnwcj83s" path="res://Resources/overlapping-diamonds.svg" id="1_3etfd"]
+[ext_resource type="Script" uid="uid://47hqjvuhwux2" path="res://Scripts/UI/settings_menu.gd" id="1_rahb6"]
+[ext_resource type="FontFile" uid="uid://bt3gbbw7fayi" path="res://Resources/Margarine-Regular.ttf" id="2_rahb6"]
+[ext_resource type="Script" uid="uid://2j5dovfbc2l0" path="res://Scripts/UI/audio_slider.gd" id="3_fe37x"]
+[ext_resource type="Texture2D" uid="uid://wvbjh38jqgpe" path="res://Resources/icons/volume-full_big.svg" id="4_jjs6x"]
+[ext_resource type="Texture2D" uid="uid://cftwu2bswbegd" path="res://Resources/icons/music.svg" id="5_fsgis"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ssx55"]
+bg_color = Color(0.11, 0.11, 0.11, 0.9019608)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 0.44, 0.62352943)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 2.0
+expand_margin_top = 3.0
+expand_margin_right = 2.0
+expand_margin_bottom = 3.0
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aun78"]
+bg_color = Color(0.87058824, 0.79607844, 0.32156864, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_top = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hmele"]
+bg_color = Color(0.116199985, 0.29465002, 0.83, 1)
+border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.87, 0.79692, 0.3219, 1)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n0ctm"]
+bg_color = Color(0.87, 0.79692, 0.3219, 1)
+border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.27058825, 0.41960785, 0.87058824, 1)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rkth2"]
+bg_color = Color(0.27058825, 0.41960785, 0.87058824, 1)
+border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.87, 0.79692, 0.3219, 1)
+shadow_size = 6
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cdah7"]
+bg_color = Color(0.27058825, 0.41960785, 0.87058824, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8627451, 0.078431375, 0.23529412, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.87, 0.79692, 0.3219, 1)
+shadow_size = 6
+shadow_offset = Vector2(5, 5)
+
+[node name="SettingsMenu" type="Control" unique_id=816104311 node_paths=PackedStringArray("sfx_slider", "music_slider", "back_btn")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rahb6")
+sfx_slider = NodePath("background/mainframe/SFXSlider")
+music_slider = NodePath("background/mainframe/MusicSlider")
+back_btn = NodePath("background/mainframe/QuitButton")
+
+[node name="background" type="ColorRect" parent="." unique_id=324221346]
+z_index = 4
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 0.16078432, 0.16078432, 1)
+
+[node name="backgroundShadow" type="ColorRect" parent="background" unique_id=808649586]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.87, 0.79692, 0.3219, 1)
+
+[node name="ui_pattern" type="TextureRect" parent="background" unique_id=799857433]
+modulate = Color(1, 1, 1, 0.0627451)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_3etfd")
+stretch_mode = 1
+
+[node name="mainframe" type="VBoxContainer" parent="background" unique_id=1406299023]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -300.0
+offset_right = 250.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="background/mainframe" unique_id=1338444406]
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.5
+offset_transform_enabled = true
+focus_next = NodePath("../MusicSlider")
+theme_override_styles/slider = SubResource("StyleBoxFlat_ssx55")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_aun78")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_aun78")
+max_value = 1.0
+step = 0.001
+value = 1.0
+tick_count = 15
+ticks_position = 3
+script = ExtResource("3_fe37x")
+bus_name = "sfx"
+
+[node name="Volume" type="TextureRect" parent="background/mainframe/SFXSlider" unique_id=998496778]
+modulate = Color(0.87, 0.82824004, 0.4524, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+offset_transform_enabled = true
+offset_transform_position = Vector2(-300, 0)
+texture = ExtResource("4_jjs6x")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="MusicSlider" type="HSlider" parent="background/mainframe" unique_id=1537621988]
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.5
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../SFXSlider")
+theme_override_styles/slider = SubResource("StyleBoxFlat_ssx55")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_aun78")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_aun78")
+max_value = 1.0
+step = 0.001
+value = 1.0
+tick_count = 15
+ticks_position = 3
+script = ExtResource("3_fe37x")
+bus_name = "Music"
+
+[node name="Music" type="TextureRect" parent="background/mainframe/MusicSlider" unique_id=193679511]
+modulate = Color(0.87, 0.82824004, 0.4524, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -36.0
+offset_right = 36.0
+offset_bottom = 36.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+offset_transform_enabled = true
+offset_transform_position = Vector2(-300, 0)
+texture = ExtResource("5_fsgis")
+
+[node name="QuitButton" type="Button" parent="background/mainframe" unique_id=1622378027]
+z_index = 5
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.5
+focus_previous = NodePath("../MusicSlider")
+theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
+theme_override_fonts/font = ExtResource("2_rahb6")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_hmele")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_n0ctm")
+theme_override_styles/hover = SubResource("StyleBoxFlat_rkth2")
+theme_override_styles/focus = SubResource("StyleBoxFlat_cdah7")
+text = "Back to Menu"

@@ -1,0 +1,11 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://e5elrrrvuv3a"]
+
+[ext_resource type="Shader" uid="uid://brjfgmi8q4swp" path="res://Resources/NewCrt.gdshader" id="1_unymg"]
+
+[resource]
+shader = ExtResource("1_unymg")
+shader_parameter/mask_type = 1
+shader_parameter/curve = 0.0
+shader_parameter/color_offset = 0.0
+shader_parameter/mask_brightness = 1.0
+shader_parameter/aspect = 0.75

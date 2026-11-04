@@ -2,8 +2,12 @@
 
 [ext_resource type="Script" uid="uid://dn2qahntftjpi" path="res://Scripts/Multiplayer/win_pop_mult.gd" id="1_d4w8b"]
 [ext_resource type="Texture2D" uid="uid://btcglpnwcj83s" path="res://Resources/overlapping-diamonds.svg" id="2_d4w8b"]
+[ext_resource type="FontFile" uid="uid://bt3gbbw7fayi" path="res://Resources/Margarine-Regular.ttf" id="3_7ws1n"]
+[ext_resource type="AudioStream" uid="uid://c5mk6ooorkx1j" path="res://Resources/SFX/UI buttons.wav" id="4_mvxca"]
+[ext_resource type="AudioStream" uid="uid://bscmllhha0l87" path="res://Resources/SFX/UI press.wav" id="5_2e12m"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_076ql"]
+font = ExtResource("3_7ws1n")
 font_size = 110
 font_color = Color(0.86292744, 0.933358, 0.9301186, 1)
 shadow_color = Color(1.540184e-06, 0.5119463, 0.41034904, 0.45490196)
@@ -69,7 +73,7 @@ unicode = 32
 [sub_resource type="Shortcut" id="Shortcut_28flt"]
 events = [SubResource("InputEventKey_es7s0"), SubResource("InputEventKey_dab71")]
 
-[node name="WinPopUp" type="Control" unique_id=1467916958 node_paths=PackedStringArray("cont_btn", "winner_label")]
+[node name="WinPopUp" type="Control" unique_id=1467916958 node_paths=PackedStringArray("cont_btn", "winner_label", "focus_sfx", "press_sfx")]
 process_mode = 2
 layout_mode = 3
 anchors_preset = 15
@@ -80,6 +84,8 @@ grow_vertical = 2
 script = ExtResource("1_d4w8b")
 cont_btn = NodePath("ContButton")
 winner_label = NodePath("WinText")
+focus_sfx = NodePath("UIfocusSFX")
+press_sfx = NodePath("UIpressSFX")
 
 [node name="background" type="ColorRect" parent="." unique_id=436451057]
 z_index = 4
@@ -160,10 +166,21 @@ grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
-theme_override_font_sizes/font_size = 50
+theme_override_fonts/font = ExtResource("3_7ws1n")
+theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_es7s0")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_dab71")
 theme_override_styles/hover = SubResource("StyleBoxFlat_uv71t")
 theme_override_styles/focus = SubResource("StyleBoxFlat_geg50")
 shortcut = SubResource("Shortcut_28flt")
 text = "Continue"
+
+[node name="UIfocusSFX" type="AudioStreamPlayer" parent="." unique_id=1124484809]
+process_mode = 3
+stream = ExtResource("4_mvxca")
+volume_db = -15.0
+
+[node name="UIpressSFX" type="AudioStreamPlayer" parent="." unique_id=12470047]
+process_mode = 3
+stream = ExtResource("5_2e12m")
+volume_db = -15.0

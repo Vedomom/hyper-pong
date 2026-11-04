@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://cpb80uvquggn2"]
+
+[ext_resource type="AudioStream" uid="uid://c5mk6ooorkx1j" path="res://Resources/SFX/UI buttons.wav" id="1_nnus4"]
+
+[node name="UIfocusSFX" type="AudioStreamPlayer" unique_id=52517656]
+process_mode = 3
+stream = ExtResource("1_nnus4")
+volume_db = -15.0
+bus = &"sfx"

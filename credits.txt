@@ -1,0 +1,3 @@
+https://godotshaders.com/shader/pixel-quantization/
+https://kenney.nl/assets/input-prompts
+https://kenney.nl/assets/input-prompts-pixel

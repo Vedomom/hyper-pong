@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://xh8tcdxm2ju8"]
+
+[ext_resource type="AudioStream" uid="uid://bscmllhha0l87" path="res://Resources/SFX/UI press.wav" id="1_nwv77"]
+
+[node name="UIpressSFX" type="AudioStreamPlayer" unique_id=820878791]
+process_mode = 3
+stream = ExtResource("1_nwv77")
+volume_db = -25.0
+bus = &"sfx"

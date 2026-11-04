@@ -7,6 +7,7 @@ extends Control
 @export var p1_header : Label
 @export var p2_header : Label
 
+
 var p1_list : Array
 var p2_list : Array
 var player_1 : Player_1
@@ -21,6 +22,15 @@ func _ready() -> void:
 	p2_left.finished_job.connect(p2_ready)
 	p2_right.finished_job.connect(p2_ready)
 
+	p1_left.pressed.connect(UIpressSfx.play)
+	p1_right.pressed.connect(UIpressSfx.play)
+	p2_left.pressed.connect(UIpressSfx.play)
+	p2_right.pressed.connect(UIpressSfx.play)
+	
+	p1_left.focus_entered.connect(UIfocusSfx.play)
+	p1_right.focus_entered.connect(UIfocusSfx.play)
+	p2_left.focus_entered.connect(UIfocusSfx.play)
+	p2_right.focus_entered.connect(UIfocusSfx.play)
 
 	
 	var folder = DirAccess.open("Resources/Upgrades/")

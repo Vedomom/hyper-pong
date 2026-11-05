@@ -21,7 +21,7 @@ boot_splash/image="uid://2haktdu6s4h"
 config/icon="uid://d2tqciickqv1j"
 config/macos_native_icon="uid://d2tqciickqv1j"
 config/windows_native_icon="res://Resources/HCP_W.ico"
-boot_splash/minimum_display_time=5
+boot_splash/minimum_display_time=1000
 
 [autoload]
 

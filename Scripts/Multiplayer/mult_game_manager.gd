@@ -38,7 +38,7 @@ func _ready() -> void:
 	round_number = 1
 	round_label.text = "Round : %d" %[round_number]
 
-
+	
 	player_1.round_up.connect(next_round)
 	player_1.player_died.connect(update_score.bind(player_2))
 	player_2.player_died.connect(update_score.bind(player_1))
@@ -47,7 +47,13 @@ func _process(_delta: float) -> void:
 	if (p1_score >= 5 or p2_score >= 5) and not is_ended:
 		end_game()
 		is_ended = true
-	
+	if is_ended and ball.end_pop:
+		ball.end_pop.queue_free()
+	manage_health(player_1)
+	manage_health(player_2)
+
+	manage_damage(player_1, player_2)
+	manage_damage(player_2, player_1)
 
 
 func next_round():
@@ -78,15 +84,14 @@ func next_round():
 		
 
 		#ball
-		ball.game_won = false
+		ball.shape.show()
 		get_tree().paused = false
-		print("Game state : ", get_tree().paused)
+
 	
 		round_number += 1
 		round_label.text = "Round : %d" %[round_number]
 
 func end_game():
-	ball.end_pop.queue_free()
 	var winscrn = load("res://Scenes/Multiplayer/win_screen_Multi.tscn").instantiate()
 	ui_container.add_child(winscrn)
 	winscrn.p1_score_label.text = str(clamp(p1_score, 0, 5))
@@ -119,3 +124,38 @@ func manage_score(score : int,score_lbl: Label):
 		score_lbl.label_settings.font_color = Color.MAGENTA
 	else:
 		score_lbl.label_settings.font_color = Color.PALE_TURQUOISE
+
+
+func manage_health(player):
+	player.health_bar.value = move_toward(player.health_bar.value, player.health, 0.2*abs(player.health_bar.value - player.health))
+	player.health_lable.text = "%.1f" %player.health
+	player.health = clamp(player.health, 0.0, player.initial_health)
+	if player.health <= 0.0 and !player.is_dead:
+		player.death()
+	
+	if player.health <= player.initial_health/4:
+		player.health_lable.label_settings.font_color = lerp(player.health_lable.label_settings.font_color, Color.RED, 0.1)
+		player.health_bar_sb.bg_color = lerp(player.health_bar_sb.bg_color, Color.RED, 0.1)
+	elif player.health <= player.initial_health/2:
+		player.health_lable.label_settings.font_color = lerp(player.health_lable.label_settings.font_color, Color.YELLOW, 0.1)
+		player.health_bar_sb.bg_color = lerp(player.health_bar_sb.bg_color, Color.YELLOW, 0.1)
+	else: 
+		player.health_lable.label_settings.font_color = lerp(player.health_lable.label_settings.font_color, Color.LIGHT_GREEN, 0.1)
+		player.health_bar_sb.bg_color = lerp(player.health_bar_sb.bg_color, Color.LIGHT_GREEN, 0.1)
+
+
+
+
+func manage_damage(player, opponent):
+	player.damage_label.text = "%.2f" %move_toward(float(player.damage_label.text), player.current_damage, 0.5*abs(player.current_damage-float(player.damage_label.text)))
+	if abs(player.current_damage-float(player.damage_label.text)) <= 0.05:
+		player.damage_label.text = "%.2f" %player.current_damage
+	if player.current_damage > opponent.health:
+		player.damage_label.label_settings.font_color = lerp(player.damage_label.label_settings.font_color, Color(1, 0.43, 0.73), 0.1)
+		player.dmg_lbl.label_settings.font_color = lerp(player.dmg_lbl.label_settings.font_color, Color(1, 0.43, 0.73), 0.1)
+	elif player.current_damage > opponent.health/2:
+		player.damage_label.label_settings.font_color = lerp(player.damage_label.label_settings.font_color, Color(0.85, 0.50, 1.0), 0.1)
+		player.dmg_lbl.label_settings.font_color = lerp(player.dmg_lbl.label_settings.font_color, Color(0.85, 0.50, 1.0), 0.1)
+	else:
+		player.damage_label.label_settings.font_color = lerp(player.damage_label.label_settings.font_color, Color(0.53, 0.9, 1.0), 0.1)
+		player.dmg_lbl.label_settings.font_color = lerp(player.dmg_lbl.label_settings.font_color, Color(0.53, 0.9, 1.0), 0.1)

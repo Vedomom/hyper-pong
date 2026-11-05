@@ -190,6 +190,7 @@ offset_right = 5.0
 offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.11764706, 0.5647059, 1, 1)
 
 [node name="Upgrades" type="Node" parent="Player1" unique_id=1549932906]
 
@@ -271,7 +272,7 @@ script = ExtResource("3_1qaal")
 speed = 800.0
 lunge_time = 0.2
 lunge_cooldown = 5.0
-initial_health = 1.0
+initial_health = 10.0
 health_lable = NodePath("../UI/Player2/P2Health")
 initial_damage = 1.0
 damage_label = NodePath("../UI/Player2/P2Damage")
@@ -294,6 +295,7 @@ offset_right = 5.0
 offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(1, 0.4117647, 0.7058824, 1)
 
 [node name="Upgrades" type="Node" parent="Player_2" unique_id=1745516966]
 

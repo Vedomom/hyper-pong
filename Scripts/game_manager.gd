@@ -39,11 +39,22 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if ball.game_won and round_number>= 10 and not is_ended:
+	if ball.game_won and round_number >= 10 and not is_ended:
 		end_game()
 		is_ended = true
 	
 	player.health = clamp(player.health, 0.0, player.initial_health)
+
+	if is_ended and ball.end_pop:
+		ball.end_pop.queue_free()
+	if is_ended and ball.win_pop:
+		ball.win_pop.queue_free()
+	
+	manage_damage(player, enemy)
+	manage_damage(enemy, player)
+	manage_health(player)
+	manage_health(enemy)
+	
 
 	
 	
@@ -54,7 +65,7 @@ func _process(_delta: float) -> void:
 
 func next_round():
 	round_number += 1
-	if round_number >= 10:
+	if round_number > 10:
 		end_game()
 	else:
 
@@ -77,9 +88,10 @@ func next_round():
 		enemy.health_bar.max_value = enemy.initial_health
 		enemy.health_bar.value = enemy.health
 		
-
+		ball.game_won = false
+		ball.shape.show()
 		get_tree().paused = false
-	
+
 	
 	round_label.text = "Round : %d / %d" %[round_number, max_rounds]
 
@@ -142,8 +154,42 @@ func add_enemy_upgrades(amount : int):
 			print("Upgrade: ", ugd.name)
 			
 func end_game():
-	ball.win_pop.queue_free()
-	ball.end_pop.queue_free()
 	var winscrn = load("res://Scenes/win_screen.tscn").instantiate()
 	ui_container.add_child(winscrn)
 	get_tree().paused = true
+
+
+
+func manage_health(entity):
+	entity.health_bar.value = move_toward(entity.health_bar.value, entity.health, 0.2*abs(entity.health_bar.value - entity.health))
+	entity.health_lable.text = "%.1f" %entity.health
+	entity.health = clamp(entity.health, 0.0, entity.initial_health)
+	if entity.health <= 0.0 and !entity.is_dead:
+		entity.death()
+	
+	if entity.health <= entity.initial_health/4:
+		entity.health_lable.label_settings.font_color = lerp(entity.health_lable.label_settings.font_color, Color.RED, 0.1)
+		entity.health_bar_sb.bg_color = lerp(entity.health_bar_sb.bg_color, Color.RED, 0.1)
+	elif entity.health <= entity.initial_health/2:
+		entity.health_lable.label_settings.font_color = lerp(entity.health_lable.label_settings.font_color, Color.YELLOW, 0.1)
+		entity.health_bar_sb.bg_color = lerp(entity.health_bar_sb.bg_color, Color.YELLOW, 0.1)
+	else: 
+		entity.health_lable.label_settings.font_color = lerp(entity.health_lable.label_settings.font_color, Color.LIGHT_GREEN, 0.1)
+		entity.health_bar_sb.bg_color = lerp(entity.health_bar_sb.bg_color, Color.LIGHT_GREEN, 0.1)
+
+
+
+
+func manage_damage(entity, opponent):
+	entity.damage_label.text = "%.2f" %move_toward(float(entity.damage_label.text), entity.current_damage, 0.5*abs(entity.current_damage-float(entity.damage_label.text)))
+	if abs(entity.current_damage-float(entity.damage_label.text)) <= 0.05:
+		entity.damage_label.text = "%.2f" %entity.current_damage
+	if entity.current_damage > opponent.health:
+		entity.damage_label.label_settings.font_color = lerp(entity.damage_label.label_settings.font_color, Color(1, 0.43, 0.73), 0.1)
+		entity.dmg_lbl.label_settings.font_color = lerp(entity.dmg_lbl.label_settings.font_color, Color(1, 0.43, 0.73), 0.1)
+	elif entity.current_damage > opponent.health/2:
+		entity.damage_label.label_settings.font_color = lerp(entity.damage_label.label_settings.font_color, Color(0.85, 0.50, 1.0), 0.1)
+		entity.dmg_lbl.label_settings.font_color = lerp(entity.dmg_lbl.label_settings.font_color, Color(0.85, 0.50, 1.0), 0.1)
+	else:
+		entity.damage_label.label_settings.font_color = lerp(entity.damage_label.label_settings.font_color, Color(0.53, 0.9, 1.0), 0.1)
+		entity.dmg_lbl.label_settings.font_color = lerp(entity.dmg_lbl.label_settings.font_color, Color(0.53, 0.9, 1.0), 0.1)

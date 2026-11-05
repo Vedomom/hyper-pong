@@ -174,7 +174,8 @@ func reset(is_stuck : bool = false):
 			position = Vector2(960, 540)
 			shape.hide()
 			await get_tree().create_timer(0.4).timeout
-			shape.show()
+			if !player.is_dead and !player2.is_dead:
+				shape.show()
 			
 			
 

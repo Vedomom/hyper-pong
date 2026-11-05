@@ -43,6 +43,9 @@ func _ready() -> void:
 		upgrade_right.title.text = ugd_right.title
 		upgrade_right.description.text = ugd_right.description
 		upgrade_right.ugd_scene = ugd_right.scene 
+	
+	TextAnimation.slide_in(self, Vector2(0, 3000), 2.7)
+
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Left"):

@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://caawi3ygcinwf" path="res://Scripts/UI/win_pop_up.gd" id="1_es7s0"]
 [ext_resource type="Texture2D" uid="uid://btcglpnwcj83s" path="res://Resources/overlapping-diamonds.svg" id="2_dab71"]
+[ext_resource type="FontFile" uid="uid://bt3gbbw7fayi" path="res://Resources/Margarine-Regular.ttf" id="3_uv71t"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_076ql"]
+font = ExtResource("3_uv71t")
 font_size = 110
 font_color = Color(0.86292744, 0.933358, 0.9301186, 1)
 shadow_color = Color(0.31695512, 0.06341037, 0.34648004, 1)
@@ -42,6 +44,21 @@ shadow_color = Color(0.87, 0.79692, 0.3219, 1)
 shadow_size = 6
 shadow_offset = Vector2(5, 5)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kgugm"]
+bg_color = Color(0.27058825, 0.41960785, 0.87058824, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8627451, 0.078431375, 0.23529412, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.87, 0.79692, 0.3219, 1)
+shadow_size = 6
+shadow_offset = Vector2(5, 5)
+
 [sub_resource type="InputEventKey" id="InputEventKey_es7s0"]
 device = -1
 keycode = 4194309
@@ -55,6 +72,7 @@ unicode = 32
 events = [SubResource("InputEventKey_es7s0"), SubResource("InputEventKey_dab71")]
 
 [node name="WinPopUp" type="Control" unique_id=1467916958 node_paths=PackedStringArray("cont_btn")]
+process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -141,9 +159,11 @@ grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
-theme_override_font_sizes/font_size = 50
+theme_override_fonts/font = ExtResource("3_uv71t")
+theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_es7s0")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_dab71")
 theme_override_styles/hover = SubResource("StyleBoxFlat_uv71t")
+theme_override_styles/focus = SubResource("StyleBoxFlat_kgugm")
 shortcut = SubResource("Shortcut_28flt")
 text = "Continue"

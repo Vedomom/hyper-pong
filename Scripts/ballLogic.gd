@@ -8,8 +8,11 @@ class_name Ball
 @export var cpu : Enemy
 @export var trail : Line2D
 @export var trail_length : int = 10
-@export var end_pop : Control
 @export var ui_container : Node
+@export var bounce_particle : GPUParticles2D
+@export var goal_particle : GPUParticles2D
+@export var ball_light : PointLight2D
+@export var shape : ColorRect
 
 var direction :Vector2
 var speed := 0.0
@@ -23,10 +26,16 @@ var game_won :bool = false
 var coll_info
 var can_move := false
 var win_pop
+var end_pop
 
 func _ready() -> void:
 	trail.clear_points()
 	direction = Vector2(get_random_direction() ,randf())
+	cpu.enemy_scored.connect(TextAnimation.goal_particle_animation.bind(goal_particle, 1))
+	player.player_scored.connect(TextAnimation.goal_particle_animation.bind(goal_particle, -1))
+	player.player_died.connect(round_over.bind(player))
+	cpu.enemy_died.connect(round_over.bind(cpu))
+	ball_light.energy = 0.0
 
 func _physics_process(delta: float) -> void:
 
@@ -44,13 +53,24 @@ func _physics_process(delta: float) -> void:
 			reset(true)
 
 	if coll_info:
+		
 		direction = direction.bounce(coll_info.get_normal())
 		direction.y = clamp(direction.y, -1, 1)
 		direction.x = 1 * sign(direction.x)
 		curve = move_toward(curve, 0, 0.5)
 		curve_sign = sign(curve)
+
+		if coll_info.get_collider() == player and direction.x != 1:
+			direction.x = 1
+			
+		
+		if coll_info.get_collider() == cpu and direction.x != -1:
+			direction.x = -1
+		
 		if coll_info.get_collider() == player or coll_info.get_collider() == cpu:
 			coll_info.get_collider().current_damage *= 1 + coll_info.get_collider().damage_mult
+			TextAnimation.pop_animation(coll_info.get_collider().damage_label, -20, coll_info.get_collider().initial_damage_font_size)
+			TextAnimation.rot_animation(coll_info.get_collider().damage_label, -0.8)
 			if coll_info.get_collider() is Player:
 				player.player_shot.emit()
 			else:
@@ -64,18 +84,22 @@ func _physics_process(delta: float) -> void:
 				else :
 					curve = coll_info.get_collider().curve_power
 				curve_sign = -sign(coll_info.get_collider().velocity.y)
-		
-		if coll_info.get_collider() == player and direction.x != 1:
-			direction.x = 1
 			
+			if speed > 650:
+				HitStop.hit_stop(0.24)
+				ball_light.energy = lerp(ball_light.energy, 5.0, 5*delta)
+			elif speed > 450:
+				HitStop.hit_stop(0.14)
+				ball_light.energy = lerp(ball_light.energy, 3.0, 5*delta)
 		
-		if coll_info.get_collider() == cpu and direction.x != -1:
-			direction.x = -1
-
-
-		if coll_info.get_collider().name == "WallLeft" or coll_info.get_collider().name == "WallRight" :
+		elif coll_info.get_collider().name == "WallLeft" or coll_info.get_collider().name == "WallRight" :
 			reset()
-
+		else :
+			if coll_info.get_position().y > 80 :
+				bounce_particle.process_material.emission_shape_offset.y = 15
+			else:
+				bounce_particle.process_material.emission_shape_offset.y = -15
+			bounce_particle.restart()
 
 	if Input.is_action_pressed("Hit") and is_reset and !(player.is_dead or cpu.is_dead):
 
@@ -91,18 +115,6 @@ func _physics_process(delta: float) -> void:
 		is_reset = false
 		can_move = true
 	
-
-
-	if cpu.is_dead:
-		if game_won:
-			pass
-		else :
-			win_pop = load("res://Scenes/win_pop_up.tscn").instantiate()
-			ui_container.add_child(win_pop)
-			game_won = true
-
-
-
 
 
 	direction.y += curve * delta * curve_sign 
@@ -121,27 +133,36 @@ func deduct_health(subject, damage):
 	
 	subject.health -= damage
 	subject.health = clampf(subject.health, 0.0, subject.initial_health)
+	TextAnimation.pop_animation(subject.health_lable, 15, subject.initial_label_font_size)
+	TextAnimation.rot_animation(subject.health_lable, -0.8)
+
 	
 func reset(is_stuck : bool = false):
-			trail.clear_points()
 			var last_pos = position
-			position = Vector2(960, 540)
-
 			if coll_info:
 				if coll_info.get_collider().name == "WallLeft":
 					player.player_damaged.emit()
 					cpu.enemy_scored.emit()
+					await get_tree().create_timer(0.02).timeout
 					deduct_health(player, cpu.current_damage)
 				elif coll_info.get_collider().name == "WallRight" :
 					player.player_scored.emit()
 					cpu.enemy_damaged.emit()
+					await get_tree().create_timer(0.02).timeout
 					deduct_health(cpu, player.current_damage)
+			
 			if is_stuck:
 				if last_pos.x >= 1800:
+					player.player_scored.emit()
+					cpu.enemy_damaged.emit()
+					await get_tree().create_timer(0.03).timeout
 					deduct_health(cpu, player.current_damage)
 				else :
+					player.player_damaged.emit()
+					cpu.enemy_scored.emit()
+					await get_tree().create_timer(0.03).timeout
 					deduct_health(player, cpu.current_damage)
-
+			trail.clear_points()
 			player.current_damage = player.initial_damage
 			cpu.current_damage = cpu.initial_damage
 			score_count = 0
@@ -150,11 +171,35 @@ func reset(is_stuck : bool = false):
 			velocity = Vector2.ZERO
 			is_reset = true
 			can_move = false
+			ball_light.energy = 0
+			position = Vector2(960, 540)
+			shape.hide()
+			await get_tree().create_timer(0.4).timeout
+			if !player.is_dead and !cpu.is_dead:
+				shape.show()
 
 func get_random_direction() -> int:
 	var randir = randi_range(-1, 1)
 	
 	if randir != 0:
-		return randir
+		return sign(randir)
 	else:
 		return get_random_direction()
+
+func round_over(deceased):
+	TextAnimation.pop_animation(deceased.health_lable, 15, deceased.initial_label_font_size)
+	TextAnimation.rot_animation(deceased.health_lable, -0.8)
+	Engine.time_scale *= 0.1
+	await get_tree().create_timer(0.4).timeout
+	Engine.time_scale = 1.0
+	if deceased is Enemy:
+		get_tree().paused = true
+		win_pop = load("res://Scenes/win_pop_up.tscn").instantiate()
+		ui_container.add_child(win_pop)
+		game_won = true
+	elif deceased is Player:
+		get_tree().paused = true
+		end_pop = load("res://Scenes/end_pop_up.tscn").instantiate()
+		ui_container.add_child(end_pop)
+		end_pop.end_text = "You Died..."
+		end_pop.visible = true

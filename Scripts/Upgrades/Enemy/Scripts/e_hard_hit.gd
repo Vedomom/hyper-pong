@@ -17,7 +17,7 @@ func initialize_power():
 
 
 func enemy_shot():
-	
+	HitStop.hit_stop(0.14)
 	prev_speed = ball.speed
 	ball.speed = ball.initial_speed * mult
 

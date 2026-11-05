@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dn2qahntftjpi" path="res://Scripts/Multiplayer/win_pop_mult.gd" id="1_d4w8b"]
 [ext_resource type="Texture2D" uid="uid://btcglpnwcj83s" path="res://Resources/overlapping-diamonds.svg" id="2_d4w8b"]
+[ext_resource type="FontFile" uid="uid://bt3gbbw7fayi" path="res://Resources/Margarine-Regular.ttf" id="3_7ws1n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_076ql"]
+font = ExtResource("3_7ws1n")
 font_size = 110
 font_color = Color(0.86292744, 0.933358, 0.9301186, 1)
 shadow_color = Color(1.540184e-06, 0.5119463, 0.41034904, 0.45490196)
@@ -160,7 +162,8 @@ grow_vertical = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
-theme_override_font_sizes/font_size = 50
+theme_override_fonts/font = ExtResource("3_7ws1n")
+theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_es7s0")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_dab71")
 theme_override_styles/hover = SubResource("StyleBoxFlat_uv71t")

@@ -3,8 +3,10 @@
 [ext_resource type="Script" uid="uid://mio7sun1o3vx" path="res://Scripts/Multiplayer/player_1.gd" id="1_jidar"]
 [ext_resource type="Script" uid="uid://bqgxwbobd26l4" path="res://Scripts/Multiplayer/mult_ball_logic.gd" id="2_jidar"]
 [ext_resource type="Script" uid="uid://b68e17jrx6bgr" path="res://Scripts/Multiplayer/player_2.gd" id="3_1qaal"]
+[ext_resource type="Shader" uid="uid://h5rnab0t5ips" path="res://Scripts/UI/shaders/quantize_pixelate.gdshader" id="4_1qaal"]
 [ext_resource type="Texture2D" uid="uid://b3mq2vv4fa0wh" path="res://Resources/jupiter.svg" id="4_nauh8"]
 [ext_resource type="Texture2D" uid="uid://pekwh0fwck5t" path="res://Resources/happy-intersection.svg" id="5_0fo6d"]
+[ext_resource type="FontFile" uid="uid://bt3gbbw7fayi" path="res://Resources/Margarine-Regular.ttf" id="5_pi2ll"]
 [ext_resource type="Script" uid="uid://dibwbk2c60s1b" path="res://Scripts/Multiplayer/mult_game_manager.gd" id="7_pi2ll"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v0iea"]
@@ -19,6 +21,51 @@ metadata/_snap_count = 100
 [sub_resource type="CircleShape2D" id="CircleShape2D_4wpvp"]
 radius = 18.0
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1qaal"]
+lifetime_randomness = 0.41
+particle_flag_disable_z = true
+inherit_velocity_ratio = 0.1
+direction = Vector3(0, 0, 0)
+spread = 10.0
+initial_velocity_max = 100.0
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = 49.99998
+gravity = Vector3(0, 0, 0)
+damping_max = 6.0090003
+scale_min = 2.0
+scale_max = 5.0
+collision_mode = 1
+collision_friction = 0.2
+collision_bounce = 0.3
+collision_use_scale = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pi2ll"]
+lifetime_randomness = 0.5
+particle_flag_disable_z = true
+spread = 40.0
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+radial_velocity_min = -100.00002
+radial_velocity_max = 99.99998
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 7.0
+hue_variation_min = -0.020000022
+hue_variation_max = 0.019999977
+
+[sub_resource type="Gradient" id="Gradient_ij5cq"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0, 0.33894232)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1qaal"]
+gradient = SubResource("Gradient_ij5cq")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pi2ll"]
 size = Vector2(12, 143)
 
@@ -28,11 +75,12 @@ size = Vector2(1920, 50)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xmho0"]
 size = Vector2(50, 1080)
 
-[sub_resource type="LabelSettings" id="LabelSettings_hxgs0"]
-font_size = 30
-
-[sub_resource type="LabelSettings" id="LabelSettings_8gnj2"]
-font_size = 25
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1qaal"]
+shader = ExtResource("4_1qaal")
+shader_parameter/texture_mode = 1
+shader_parameter/quantize_size = 3
+shader_parameter/snap_to_world = false
+shader_parameter/limit_subpixels = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_clkqn"]
 bg_color = Color(0.6, 0.6, 0.6, 0.18039216)
@@ -46,13 +94,20 @@ border_color = Color(0.96, 1, 0.98, 0.5568628)
 bg_color = Color(0.5647059, 0.93333334, 0.5647059, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_hessm"]
+font = ExtResource("5_pi2ll")
 font_size = 60
 
-[sub_resource type="LabelSettings" id="LabelSettings_h1ah7"]
+[sub_resource type="LabelSettings" id="LabelSettings_1qaal"]
+font = ExtResource("5_pi2ll")
 font_size = 30
 
-[sub_resource type="LabelSettings" id="LabelSettings_clkqn"]
-font_size = 25
+[sub_resource type="LabelSettings" id="LabelSettings_pi2ll"]
+font = ExtResource("5_pi2ll")
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_nauh8"]
+font = ExtResource("5_pi2ll")
+font_size = 30
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d8gck"]
 bg_color = Color(0.6, 0.6, 0.6, 0.18039216)
@@ -66,12 +121,27 @@ border_color = Color(0.96, 1, 0.98, 0.5568628)
 bg_color = Color(0.5647059, 0.93333334, 0.5647059, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_jidar"]
+font = ExtResource("5_pi2ll")
 font_size = 60
 
+[sub_resource type="LabelSettings" id="LabelSettings_0fo6d"]
+font = ExtResource("5_pi2ll")
+font_size = 30
+
+[sub_resource type="LabelSettings" id="LabelSettings_vitkk"]
+font = ExtResource("5_pi2ll")
+font_size = 35
+
+[sub_resource type="LabelSettings" id="LabelSettings_527l2"]
+font = ExtResource("5_pi2ll")
+font_size = 30
+
 [sub_resource type="LabelSettings" id="LabelSettings_8xsaa"]
+font = ExtResource("5_pi2ll")
 font_size = 35
 
 [sub_resource type="LabelSettings" id="LabelSettings_d8gck"]
+font = ExtResource("5_pi2ll")
 font_size = 30
 font_color = Color(1, 1, 0.61, 1)
 
@@ -81,13 +151,15 @@ font_color = Color(1, 1, 0.61, 1)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1920.0
-offset_bottom = 1080.0
+offset_left = -73.0
+offset_top = -109.0
+offset_right = 1993.0
+offset_bottom = 1189.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.1254902, 0.1254902, 0.1254902, 1)
 
-[node name="Player1" type="CharacterBody2D" parent="." unique_id=1410247650 node_paths=PackedStringArray("health_lable", "damage_label", "health_bar", "player_2")]
+[node name="Player1" type="CharacterBody2D" parent="." unique_id=1410247650 node_paths=PackedStringArray("health_lable", "damage_label", "health_bar", "player_2", "dmg_lbl")]
 z_index = 2
 position = Vector2(107, 536)
 scale = Vector2(1.6, 1.6)
@@ -101,6 +173,7 @@ initial_damage = 1.0
 damage_label = NodePath("../UI/Player1/PlayerDamage")
 health_bar = NodePath("../UI/Player1/PlayerHealthBar")
 player_2 = NodePath("../Player_2")
+dmg_lbl = NodePath("../UI/Player1/PlayerDamageIndicator")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player1" unique_id=609284332]
 shape = SubResource("RectangleShape2D_v0iea")
@@ -117,18 +190,24 @@ offset_right = 5.0
 offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(0.11764706, 0.5647059, 1, 1)
 
 [node name="Upgrades" type="Node" parent="Player1" unique_id=1549932906]
 
-[node name="Ball" type="CharacterBody2D" parent="." unique_id=1718199482 node_paths=PackedStringArray("score_lable", "player", "player2", "trail", "ui_container")]
+[node name="Ball" type="CharacterBody2D" parent="." unique_id=1718199482 node_paths=PackedStringArray("score_lable", "player", "player2", "trail", "ui_container", "bounce_particle", "goal_particle", "ball_light", "shape")]
 position = Vector2(960, 540)
 scale = Vector2(0.7, 0.7)
 script = ExtResource("2_jidar")
 score_lable = NodePath("../UI/Score")
+speedStep = 5.0
 player = NodePath("../Player1")
 player2 = NodePath("../Player_2")
 trail = NodePath("shape/Trail")
 ui_container = NodePath("../UI")
+bounce_particle = NodePath("bounceParticle")
+goal_particle = NodePath("goalParticle")
+ball_light = NodePath("ballLight")
+shape = NodePath("shape")
 
 [node name="shape" type="ColorRect" parent="Ball" unique_id=681213421]
 z_index = 2
@@ -156,7 +235,36 @@ default_color = Color(1, 1, 1, 0.6156863)
 position = Vector2(0.5, 0.5)
 shape = SubResource("CircleShape2D_4wpvp")
 
-[node name="Player_2" type="CharacterBody2D" parent="." unique_id=1327540116 node_paths=PackedStringArray("health_lable", "damage_label", "health_bar", "player_1")]
+[node name="bounceParticle" type="GPUParticles2D" parent="Ball" unique_id=99556828]
+show_behind_parent = true
+z_index = 2
+emitting = false
+amount = 5
+lifetime = 0.3
+one_shot = true
+speed_scale = 0.8
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_1qaal")
+
+[node name="goalParticle" type="GPUParticles2D" parent="Ball" unique_id=1737200051]
+process_mode = 3
+z_index = 4
+emitting = false
+amount = 30
+lifetime = 0.8
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_pi2ll")
+
+[node name="ballLight" type="PointLight2D" parent="Ball" unique_id=1799191351]
+show_behind_parent = true
+z_as_relative = false
+color = Color(1, 0, 0, 1)
+energy = 0.0
+texture = SubResource("GradientTexture2D_1qaal")
+
+[node name="Player_2" type="CharacterBody2D" parent="." unique_id=1327540116 node_paths=PackedStringArray("health_lable", "damage_label", "health_bar", "player_1", "dmg_lbl")]
 z_index = 2
 position = Vector2(1813, 540)
 scale = Vector2(1.6, 1.6)
@@ -165,11 +273,12 @@ speed = 800.0
 lunge_time = 0.2
 lunge_cooldown = 5.0
 initial_health = 10.0
-health_lable = NodePath("../UI/Player2/Player2Health")
+health_lable = NodePath("../UI/Player2/P2Health")
 initial_damage = 1.0
 damage_label = NodePath("../UI/Player2/P2Damage")
 health_bar = NodePath("../UI/Player2/P2HealthBar")
 player_1 = NodePath("../Player1")
+dmg_lbl = NodePath("../UI/Player2/P2DamageIndicator")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_2" unique_id=341033645]
 shape = SubResource("RectangleShape2D_pi2ll")
@@ -186,6 +295,7 @@ offset_right = 5.0
 offset_bottom = 70.0
 grow_horizontal = 2
 grow_vertical = 2
+color = Color(1, 0.4117647, 0.7058824, 1)
 
 [node name="Upgrades" type="Node" parent="Player_2" unique_id=1745516966]
 
@@ -225,35 +335,16 @@ shape = SubResource("RectangleShape2D_xmho0")
 
 [node name="UI" type="Node" parent="." unique_id=1376812831]
 
+[node name="pixelize" type="ColorRect" parent="UI" unique_id=1593727508]
+z_index = 50
+material = SubResource("ShaderMaterial_1qaal")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="Player1" type="Node" parent="UI" unique_id=684321340]
-
-[node name="PlayerHealth" type="Label" parent="UI/Player1" unique_id=1717140905]
-z_index = 2
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -936.0
-offset_top = 100.0
-offset_right = -894.0
-offset_bottom = 142.0
-grow_horizontal = 2
-text = "0"
-label_settings = SubResource("LabelSettings_hxgs0")
-horizontal_alignment = 1
-
-[node name="PlayerDamage" type="Label" parent="UI/Player1" unique_id=1818984572]
-z_index = 2
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -936.0
-offset_top = 10.0
-offset_right = -894.0
-offset_bottom = 52.0
-grow_horizontal = 2
-text = "0"
-label_settings = SubResource("LabelSettings_8gnj2")
-horizontal_alignment = 1
 
 [node name="PlayerHealthBar" type="ProgressBar" parent="UI/Player1" unique_id=691387748]
 anchors_preset = 4
@@ -271,6 +362,7 @@ fill_mode = 3
 show_percentage = false
 
 [node name="Player_1Score" type="Label" parent="UI/Player1" unique_id=18255840]
+z_index = 4
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -284,38 +376,50 @@ label_settings = SubResource("LabelSettings_hessm")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Player2" type="Node" parent="UI" unique_id=144190386]
-
-[node name="Player2Health" type="Label" parent="UI/Player2" unique_id=1774139381]
-z_index = 2
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 864.0
-offset_top = -440.0
-offset_right = 960.0
-offset_bottom = -398.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "0"
-label_settings = SubResource("LabelSettings_h1ah7")
-horizontal_alignment = 1
-
-[node name="P2Damage" type="Label" parent="UI/Player2" unique_id=239488184]
+[node name="PlayerHealth" type="Label" parent="UI/Player1" unique_id=1258352082]
 z_index = 2
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 864.0
-offset_top = 10.0
-offset_right = 960.0
-offset_bottom = 45.0
+offset_left = -958.0
+offset_top = 86.0
+offset_right = -870.0
+offset_bottom = 141.0
 grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
 text = "0"
-label_settings = SubResource("LabelSettings_clkqn")
+label_settings = SubResource("LabelSettings_1qaal")
 horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerDamage" type="Label" parent="UI/Player1" unique_id=29251750]
+z_index = 2
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -860.0
+offset_top = 2.0
+offset_right = -660.0
+offset_bottom = 50.0
+grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "0"
+label_settings = SubResource("LabelSettings_pi2ll")
+horizontal_alignment = 1
+clip_text = true
+
+[node name="PlayerDamageIndicator" type="Label" parent="UI/Player1" unique_id=753225909]
+z_index = 2
+offset_left = 9.0
+offset_top = 1.0
+offset_right = 64.0
+offset_bottom = 49.0
+text = "dmg :"
+label_settings = SubResource("LabelSettings_nauh8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2" type="Node" parent="UI" unique_id=144190386]
 
 [node name="P2HealthBar" type="ProgressBar" parent="UI/Player2" unique_id=202429170]
 anchors_preset = 4
@@ -333,6 +437,7 @@ fill_mode = 3
 show_percentage = false
 
 [node name="Player_2Score" type="Label" parent="UI/Player2" unique_id=1112713827]
+z_index = 4
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
@@ -346,8 +451,58 @@ label_settings = SubResource("LabelSettings_jidar")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Score" type="Label" parent="UI" unique_id=67169919]
+[node name="P2Health" type="Label" parent="UI/Player2" unique_id=793937514]
 z_index = 2
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 871.0
+offset_top = -454.5
+offset_right = 959.0
+offset_bottom = -399.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "0"
+label_settings = SubResource("LabelSettings_0fo6d")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="P2Damage" type="Label" parent="UI/Player2" unique_id=2131587409]
+z_index = 2
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 659.0
+offset_top = 2.0
+offset_right = 859.0
+offset_bottom = 50.0
+grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "0"
+label_settings = SubResource("LabelSettings_vitkk")
+horizontal_alignment = 1
+clip_text = true
+
+[node name="P2DamageIndicator" type="Label" parent="UI/Player2" unique_id=349733480]
+z_index = 2
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -77.0
+offset_top = 1.0
+offset_right = -7.0
+offset_bottom = 49.0
+grow_horizontal = 0
+text = ": dmg"
+label_settings = SubResource("LabelSettings_527l2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="UI" unique_id=67169919]
+z_index = 4
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -355,12 +510,14 @@ offset_left = -34.5
 offset_right = 34.5
 offset_bottom = 49.0
 grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
 text = "0"
 label_settings = SubResource("LabelSettings_8xsaa")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="RoundLabel" type="Label" parent="UI" unique_id=1430864121]
-z_index = 2
+z_index = 4
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -417,6 +574,10 @@ modulate = Color(1, 1, 1, 0.03529412)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -79.0
+offset_top = -118.0
+offset_right = 79.0
+offset_bottom = 118.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("5_0fo6d")

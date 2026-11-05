@@ -10,6 +10,7 @@ class_name Enemy
 @export var damage_label: Label
 @export var health_bar : ProgressBar
 @export var player: Player
+@export var dmg_lbl : Label
 
 var current_damage: float
 var dist : float
@@ -24,11 +25,13 @@ var health : float
 var initial_health :float 
 var damage_mult := 0.2
 var health_bar_sb
-
+var initial_label_font_size : int
+var initial_damage_font_size: int 
 
 signal enemy_shot()  
 signal enemy_scored()
 signal enemy_damaged()
+signal enemy_died()
 
 
 
@@ -41,6 +44,9 @@ func _ready() -> void:
 	health_bar.add_theme_stylebox_override("fill", health_bar_sb)
 	health_bar_sb.bg_color = Color.LIGHT_GREEN
 
+	initial_label_font_size = health_lable.label_settings.font_size
+	initial_damage_font_size = damage_label.label_settings.font_size
+	
 	win_height = get_viewport_rect().size.y
 	paddle_height = paddle_shape.shape.size.y
 	prev_pos = position
@@ -54,9 +60,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		step_size = dist
 
-	manage_health()
-	manage_damage()
-
 	velocity.y = (position.y - prev_pos.y)
 	prev_pos = position
 	
@@ -68,28 +71,4 @@ func _physics_process(delta: float) -> void:
 
 func death():
 	is_dead = true
-
-func manage_health():
-	health_bar.value = health
-	health_lable.text = "%.1f" %health
-	if health <= 0.0 :
-		death()
-	
-	if health < initial_health/4:
-		health_lable.label_settings.font_color = Color.RED
-		health_bar_sb.bg_color = Color.RED
-	elif health < initial_health/2:
-		health_lable.label_settings.font_color = Color.YELLOW
-		health_bar_sb.bg_color = Color.YELLOW
-	else: 
-		health_lable.label_settings.font_color = Color.LIGHT_GREEN
-		health_bar_sb.bg_color = Color.LIGHT_GREEN
-
-func manage_damage():
-	damage_label.text = "%.2f" %current_damage
-	if current_damage > player.health:
-		damage_label.label_settings.font_color = Color(1, 0.43, 0.73)
-	elif current_damage > player.health / 2:
-		damage_label.label_settings.font_color = Color(0.85, 0.50, 1.0)
-	else:
-		damage_label.label_settings.font_color = Color(0.53, 0.9, 1.0)
+	enemy_died.emit()

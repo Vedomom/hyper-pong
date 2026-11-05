@@ -8,6 +8,7 @@ func _ready() -> void:
 	visible = true
 	cont_btn.pressed.connect(show_menu)
 	cont_btn.grab_focus()
+	TextAnimation.slide_in(self, Vector2(0, 2000))
 
 func _process(_delta: float) -> void:
 	if winner_text:

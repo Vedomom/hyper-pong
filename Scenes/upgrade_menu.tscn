@@ -104,8 +104,6 @@ grow_vertical = 2
 script = ExtResource("1_11363")
 upgrade_left = NodePath("upgradeLeft")
 upgrade_right = NodePath("upgradeRight")
-focus_sfx = NodePath("UIfocusSFX")
-press_sfx = NodePath("UIpressSFX")
 
 [node name="background" type="ColorRect" parent="." unique_id=1731842540]
 z_index = 5
@@ -262,13 +260,3 @@ text = "lorem ipsum de lopez"
 label_settings = SubResource("LabelSettings_ltp0x")
 horizontal_alignment = 1
 autowrap_mode = 3
-
-[node name="UIfocusSFX" type="AudioStreamPlayer" parent="." unique_id=107772893]
-process_mode = 3
-stream = ExtResource("5_2hr16")
-volume_db = -15.0
-
-[node name="UIpressSFX" type="AudioStreamPlayer" parent="." unique_id=1241793132]
-process_mode = 3
-stream = ExtResource("6_lpopj")
-volume_db = -15.0

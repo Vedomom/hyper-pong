@@ -420,7 +420,3 @@ text = "lorem ipsum de lopez"
 label_settings = SubResource("LabelSettings_2xseu")
 horizontal_alignment = 1
 autowrap_mode = 3
-
-[node name="UIfocusSFX" parent="." unique_id=52517656 instance=ExtResource("5_rrfky")]
-
-[node name="UIpressSFX" parent="." unique_id=820878791 instance=ExtResource("6_rrfky")]

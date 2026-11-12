@@ -1,0 +1,306 @@
+[gd_scene format=3 uid="uid://cj66emtodv12c"]
+
+[ext_resource type="Script" uid="uid://vbba8kjxssos" path="res://Scripts/controls_select.gd" id="1_ciw7g"]
+[ext_resource type="Texture2D" uid="uid://btcglpnwcj83s" path="res://Resources/overlapping-diamonds.svg" id="1_wwxhi"]
+[ext_resource type="FontFile" uid="uid://bt3gbbw7fayi" path="res://Resources/Margarine-Regular.ttf" id="2_f7122"]
+
+
+[sub_resource type="LabelSettings" id="LabelSettings_ht16y"]
+font = ExtResource("2_f7122")
+font_size = 90
+font_color = Color(0.86292744, 0.933358, 0.9301186, 1)
+shadow_color = Color(0.31695512, 0.06341037, 0.34648004, 1)
+shadow_offset = Vector2(8, 8)
+
+[sub_resource type="LabelSettings" id="LabelSettings_rovmm"]
+font = ExtResource("2_f7122")
+font_size = 45
+font_color = Color(0.8627451, 0.078431375, 0.23529412, 1)
+shadow_color = Color(0.11016001, 0.0216, 0.12, 1)
+shadow_offset = Vector2(3, 3)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ciw7g"]
+font = ExtResource("2_f7122")
+font_size = 70
+font_color = Color(0.86292744, 0.933358, 0.9301186, 1)
+shadow_color = Color(0.31695512, 0.06341037, 0.34648004, 1)
+shadow_offset = Vector2(8, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wwxhi"]
+bg_color = Color(0.07, 0.07, 0.07, 0.53333336)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.85, 0.81345004, 0.48450002, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ht16y"]
+bg_color = Color(0, 0, 0, 0.53333336)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.85, 0.81345004, 0.48450002, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ciw7g"]
+bg_color = Color(0.2, 0.2, 0.2, 0.53333336)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.85, 0.81345004, 0.48450002, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f7122"]
+bg_color = Color(0.07, 0.07, 0.07, 0.53333336)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.9098966, 0.9271944, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+
+[node name="SelectControls" type="Control" unique_id=642974031 node_paths=PackedStringArray("p1_joy_options", "p2_joy_options", "cont_btn", "warning_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ciw7g")
+p1_kb_options = NodePath("Mainframe/Player1Controls/keyboardOptions")
+p2_kb_options = NodePath("Mainframe/Player2Controls/keyboardOptions")
+p1_joy_options = NodePath("Mainframe/Player1Controls/ControllerOptions")
+p2_joy_options = NodePath("Mainframe/Player2Controls/ControllerOptions")
+cont_btn = NodePath("ContButton")
+warning_label = NodePath("background/warning")
+
+[node name="background" type="ColorRect" parent="." unique_id=122988242]
+z_index = 4
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 0.16078432, 0.16078432, 1)
+
+[node name="ui_pattern" type="TextureRect" parent="background" unique_id=248760637]
+modulate = Color(1, 1, 1, 0.0627451)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wwxhi")
+stretch_mode = 1
+
+
+[node name="header" type="Label" parent="background" unique_id=2051861316]
+z_index = 5
+
+
+[node name="warning" type="Label" parent="background" unique_id=864628198]
+visible = false
+z_index = 5
+custom_maximum_size = Vector2(400, 200)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = -19.5
+offset_right = 204.0
+offset_bottom = 119.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 10
+size_flags_stretch_ratio = 0.5
+offset_transform_enabled = true
+text = "No controller detected"
+label_settings = SubResource("LabelSettings_rovmm")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Mainframe" type="HBoxContainer" parent="." unique_id=1852577687]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -768.0
+offset_top = 50.0
+offset_right = 768.0
+offset_bottom = 914.0
+grow_horizontal = 2
+offset_left = -768.0
+offset_top = 50.0
+offset_right = 768.0
+offset_bottom = 914.0
+grow_horizontal = 2
+
+
+[node name="Player1Controls" type="VBoxContainer" parent="Mainframe" unique_id=1880803608]
+custom_minimum_size = Vector2(0, 800)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Title" type="Label" parent="Mainframe/Player1Controls" unique_id=1282718095]
+z_index = 5
+layout_mode = 2
+size_flags_vertical = 10
+size_flags_stretch_ratio = 0.5
+offset_transform_enabled = true
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.5
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(0, -1)
+text = "Player - 1"
+label_settings = SubResource("LabelSettings_ciw7g")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+
+
+[node name="ControllerOptions" type="OptionButton" parent="Mainframe/Player1Controls" unique_id=15103383 node_paths=PackedStringArray("opposite_btn")]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2_f7122")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_wwxhi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ht16y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ciw7g")
+theme_override_styles/focus = SubResource("StyleBoxFlat_f7122")
+alignment = 1
+script = ExtResource("4_ht16y")
+opposite_btn = NodePath("../../Player2Controls/ControllerOptions")
+item_count = 1
+popup/item_0/text = "TEST"
+popup/item_0/id = 0
+
+[node name="Ci" type="Label" parent="Mainframe/Player1Controls/ControllerOptions" unique_id=2061074907]
+z_index = 5
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -126.0
+offset_right = 126.0
+offset_bottom = 48.0
+grow_horizontal = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.5
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(0, -1.5)
+text = "Controller-Input"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Player2Controls" type="VBoxContainer" parent="Mainframe" unique_id=195543577]
+custom_minimum_size = Vector2(0, 800)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+alignment = 1
+
+[node name="Title" type="Label" parent="Mainframe/Player2Controls" unique_id=547005820]
+z_index = 5
+layout_mode = 2
+size_flags_vertical = 10
+size_flags_stretch_ratio = 0.5
+offset_transform_enabled = true
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.5
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(0, -1)
+text = "Player - 2"
+label_settings = SubResource("LabelSettings_ciw7g")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ControllerOptions" type="OptionButton" parent="Mainframe/Player2Controls" unique_id=1548410778 node_paths=PackedStringArray("opposite_btn")]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("2_f7122")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxFlat_wwxhi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ht16y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ciw7g")
+theme_override_styles/focus = SubResource("StyleBoxFlat_f7122")
+alignment = 1
+opposite_btn = NodePath("../../Player1Controls/ControllerOptions")
+item_count = 1
+popup/item_0/text = "TEST"
+popup/item_0/id = 0
+
+[node name="Ci" type="Label" parent="Mainframe/Player2Controls/ControllerOptions" unique_id=1328751392]
+z_index = 5
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -126.0
+offset_right = 126.0
+offset_bottom = 48.0
+grow_horizontal = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.5
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(0, -1.5)
+text = "Controller-Input"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ContButton" type="Button" parent="." unique_id=664189802]
+z_index = 5
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+anchor_bottom = 1.0
+offset_left = -106.0
+offset_top = -205.0
+offset_right = 106.0
+offset_bottom = -130.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+size_flags_horizontal = 6
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
+theme_override_fonts/font = ExtResource("2_f7122")
+theme_override_font_sizes/font_size = 40
+shortcut_feedback = false
+shortcut_in_tooltip = false
+text = "Continue"
+

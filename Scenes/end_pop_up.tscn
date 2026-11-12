@@ -89,7 +89,7 @@ keycode = 4194305
 [sub_resource type="Shortcut" id="Shortcut_0xph6"]
 events = [SubResource("InputEventKey_gdsgw")]
 
-[node name="EndPopUp" type="Control" unique_id=1205575577 node_paths=PackedStringArray("restart_btn", "menu_btn", "end_text_lbl", "focus_sfx", "press_sfx")]
+[node name="EndPopUp" type="Control" unique_id=1205575577 node_paths=PackedStringArray("restart_btn", "menu_btn", "end_text_lbl")]
 process_mode = 3
 z_index = 5
 z_as_relative = false
@@ -103,8 +103,6 @@ script = ExtResource("1_00x74")
 restart_btn = NodePath("RestartButton")
 menu_btn = NodePath("MainMenuButton")
 end_text_lbl = NodePath("EndText")
-focus_sfx = NodePath("UIfocusSFX")
-press_sfx = NodePath("UIpressSFX")
 
 [node name="background" type="ColorRect" parent="." unique_id=1491792923]
 process_mode = 3
@@ -216,13 +214,3 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_gdsgw")
 theme_override_styles/focus = SubResource("StyleBoxFlat_gaoin")
 shortcut = SubResource("Shortcut_0xph6")
 text = "Menu"
-
-[node name="UIfocusSFX" type="AudioStreamPlayer" parent="." unique_id=135163258]
-process_mode = 3
-stream = ExtResource("4_k8lhu")
-volume_db = -15.0
-
-[node name="UIpressSFX" type="AudioStreamPlayer" parent="." unique_id=1203982346]
-process_mode = 3
-stream = ExtResource("5_sjmqv")
-volume_db = -15.0

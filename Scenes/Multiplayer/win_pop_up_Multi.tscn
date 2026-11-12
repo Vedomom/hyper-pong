@@ -71,7 +71,7 @@ unicode = 32
 [sub_resource type="Shortcut" id="Shortcut_28flt"]
 events = [SubResource("InputEventKey_es7s0"), SubResource("InputEventKey_dab71")]
 
-[node name="WinPopUp" type="Control" unique_id=1467916958 node_paths=PackedStringArray("cont_btn", "winner_label", "focus_sfx", "press_sfx")]
+[node name="WinPopUp" type="Control" unique_id=1467916958 node_paths=PackedStringArray("cont_btn", "winner_label")]
 process_mode = 2
 layout_mode = 3
 anchors_preset = 15
@@ -82,8 +82,6 @@ grow_vertical = 2
 script = ExtResource("1_d4w8b")
 cont_btn = NodePath("ContButton")
 winner_label = NodePath("WinText")
-focus_sfx = NodePath("UIfocusSFX")
-press_sfx = NodePath("UIpressSFX")
 
 [node name="background" type="ColorRect" parent="." unique_id=436451057]
 z_index = 4
@@ -172,13 +170,3 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_uv71t")
 theme_override_styles/focus = SubResource("StyleBoxFlat_geg50")
 shortcut = SubResource("Shortcut_28flt")
 text = "Continue"
-
-[node name="UIfocusSFX" type="AudioStreamPlayer" parent="." unique_id=1124484809]
-process_mode = 3
-stream = ExtResource("4_mvxca")
-volume_db = -15.0
-
-[node name="UIpressSFX" type="AudioStreamPlayer" parent="." unique_id=12470047]
-process_mode = 3
-stream = ExtResource("5_2e12m")
-volume_db = -15.0

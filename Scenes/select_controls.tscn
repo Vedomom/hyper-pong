@@ -3,138 +3,18 @@
 [ext_resource type="Script" uid="uid://vbba8kjxssos" path="res://Scripts/controls_select.gd" id="1_ciw7g"]
 [ext_resource type="Texture2D" uid="uid://btcglpnwcj83s" path="res://Resources/overlapping-diamonds.svg" id="1_wwxhi"]
 [ext_resource type="FontFile" uid="uid://bt3gbbw7fayi" path="res://Resources/Margarine-Regular.ttf" id="2_f7122"]
+[ext_resource type="Shader" uid="uid://h5rnab0t5ips" path="res://Scripts/UI/shaders/quantize_pixelate.gdshader" id="4_ht16y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rovmm"]
+shader = ExtResource("4_ht16y")
+shader_parameter/texture_mode = 1
+shader_parameter/quantize_size = 3
+shader_parameter/snap_to_world = false
+shader_parameter/limit_subpixels = true
 
 [sub_resource type="LabelSettings" id="LabelSettings_ciw7g"]
 font = ExtResource("2_f7122")
 font_size = 70
-font_color = Color(0.86292744, 0.933358, 0.9301186, 1)
-shadow_color = Color(0.31695512, 0.06341037, 0.34648004, 1)
-shadow_offset = Vector2(8, 8)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wwxhi"]
-bg_color = Color(0.07, 0.07, 0.07, 0.53333336)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.85, 0.81345004, 0.48450002, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ht16y"]
-bg_color = Color(0, 0, 0, 0.53333336)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.85, 0.81345004, 0.48450002, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ciw7g"]
-bg_color = Color(0.2, 0.2, 0.2, 0.53333336)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.85, 0.81345004, 0.48450002, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f7122"]
-bg_color = Color(0.07, 0.07, 0.07, 0.53333336)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0, 0.9098966, 0.9271944, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="LabelSettings" id="LabelSettings_f7122"]
-font = ExtResource("2_f7122")
-font_size = 35
-font_color = Color(0.86292744, 0.933358, 0.9301186, 1)
-shadow_color = Color(0.31695512, 0.06341037, 0.34648004, 1)
-shadow_offset = Vector2(8, 8)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rovmm"]
-bg_color = Color(0.116199985, 0.29465002, 0.83, 1)
-border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-shadow_color = Color(0.87, 0.79692, 0.3219, 1)
-shadow_size = 1
-shadow_offset = Vector2(5, 5)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6b50"]
-bg_color = Color(0.87, 0.79692, 0.3219, 1)
-border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-shadow_color = Color(0.27058825, 0.41960785, 0.87058824, 1)
-shadow_size = 1
-shadow_offset = Vector2(5, 5)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25k8i"]
-bg_color = Color(0.27058825, 0.41960785, 0.87058824, 1)
-border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-shadow_color = Color(0.87, 0.79692, 0.3219, 1)
-shadow_size = 6
-shadow_offset = Vector2(5, 5)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3rho3"]
-bg_color = Color(0.27058825, 0.41960785, 0.87058824, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.8627451, 0.078431375, 0.23529412, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-shadow_color = Color(0.87, 0.79692, 0.3219, 1)
-shadow_size = 6
-shadow_offset = Vector2(5, 5)
-
-[sub_resource type="InputEventKey" id="InputEventKey_es7s0"]
-device = -1
-keycode = 4194309
-
-[sub_resource type="InputEventKey" id="InputEventKey_dab71"]
-device = -1
-keycode = 32
-unicode = 32
-
-[sub_resource type="Shortcut" id="Shortcut_8vrm8"]
-events = [SubResource("InputEventKey_es7s0"), SubResource("InputEventKey_dab71")]
-
-
-[node name="SelectControls" type="Control" unique_id=642974031]
-
-[ext_resource type="FontFile" uid="uid://bt3gbbw7fayi" path="res://Resources/Margarine-Regular.ttf" id="2_f7122"]
-[ext_resource type="Script" uid="uid://b65xi6f4ql0gk" path="res://Scripts/option_select_btn.gd" id="4_ht16y"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_ht16y"]
-font = ExtResource("2_f7122")
-font_size = 90
 font_color = Color(0.86292744, 0.933358, 0.9301186, 1)
 shadow_color = Color(0.31695512, 0.06341037, 0.34648004, 1)
 shadow_offset = Vector2(8, 8)
@@ -146,13 +26,6 @@ font_color = Color(0.8627451, 0.078431375, 0.23529412, 1)
 shadow_color = Color(0.11016001, 0.0216, 0.12, 1)
 shadow_offset = Vector2(3, 3)
 
-[sub_resource type="LabelSettings" id="LabelSettings_ciw7g"]
-font = ExtResource("2_f7122")
-font_size = 70
-font_color = Color(0.86292744, 0.933358, 0.9301186, 1)
-shadow_color = Color(0.31695512, 0.06341037, 0.34648004, 1)
-shadow_offset = Vector2(8, 8)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wwxhi"]
 bg_color = Color(0.07, 0.07, 0.07, 0.53333336)
 border_width_left = 4
@@ -201,12 +74,12 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[sub_resource type="LabelSettings" id="LabelSettings_f7122"]
+[sub_resource type="LabelSettings" id="LabelSettings_ht16y"]
 font = ExtResource("2_f7122")
 font_size = 35
-font_color = Color(0.86292744, 0.933358, 0.9301186, 1)
-shadow_color = Color(0.31695512, 0.06341037, 0.34648004, 1)
-shadow_offset = Vector2(8, 8)
+font_color = Color(0.85, 0.81345004, 0.48450002, 1)
+shadow_color = Color(0.11016001, 0.0216, 0.12, 1)
+shadow_offset = Vector2(3, 3)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rovmm"]
 bg_color = Color(0.116199985, 0.29465002, 0.83, 1)
@@ -247,7 +120,7 @@ border_width_left = 4
 border_width_top = 4
 border_width_right = 4
 border_width_bottom = 4
-border_color = Color(0.8627451, 0.078431375, 0.23529412, 1)
+border_color = Color(1, 0.5385001, 0.29000002, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -256,7 +129,7 @@ shadow_color = Color(0.87, 0.79692, 0.3219, 1)
 shadow_size = 6
 shadow_offset = Vector2(5, 5)
 
-[node name="SelectControls" type="Control" unique_id=642974031 node_paths=PackedStringArray("p1_kb_options", "p2_kb_options", "p1_joy_options", "p2_joy_options", "cont_btn", "warning_label")]
+[node name="SelectControls" type="Control" unique_id=642974031 node_paths=PackedStringArray("p1_joy_options", "p2_joy_options", "cont_btn", "warning_label")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -264,12 +137,20 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ciw7g")
-p1_kb_options = NodePath("Mainframe/Player1Controls/keyboardOptions")
-p2_kb_options = NodePath("Mainframe/Player2Controls/keyboardOptions")
 p1_joy_options = NodePath("Mainframe/Player1Controls/ControllerOptions")
 p2_joy_options = NodePath("Mainframe/Player2Controls/ControllerOptions")
 cont_btn = NodePath("ContButton")
 warning_label = NodePath("background/warning")
+
+[node name="pixelize" type="ColorRect" parent="." unique_id=458608443]
+z_index = 50
+material = SubResource("ShaderMaterial_rovmm")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="background" type="ColorRect" parent="." unique_id=122988242]
 z_index = 4
@@ -292,27 +173,18 @@ grow_vertical = 2
 texture = ExtResource("1_wwxhi")
 stretch_mode = 1
 
-
 [node name="header" type="Label" parent="background" unique_id=2051861316]
 z_index = 5
-[node name="Mainframe" type="HBoxContainer" parent="." unique_id=1852577687]
-z_index = 4
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -366.5
-offset_top = 50.0
-offset_right = 366.5
-offset_bottom = 172.0
+offset_left = -326.0
+offset_right = 326.0
+offset_bottom = 109.0
 grow_horizontal = 2
-size_flags_vertical = 10
-size_flags_stretch_ratio = 0.5
-offset_transform_enabled = true
 text = "Select Controllers"
-label_settings = SubResource("LabelSettings_ht16y")
-horizontal_alignment = 1
-vertical_alignment = 1
+label_settings = SubResource("LabelSettings_ciw7g")
 
 [node name="warning" type="Label" parent="background" unique_id=864628198]
 visible = false
@@ -341,8 +213,6 @@ autowrap_mode = 2
 
 [node name="Mainframe" type="HBoxContainer" parent="." unique_id=1852577687]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -351,12 +221,6 @@ offset_top = 50.0
 offset_right = 768.0
 offset_bottom = 914.0
 grow_horizontal = 2
-offset_left = -768.0
-offset_top = 50.0
-offset_right = 768.0
-offset_bottom = 914.0
-grow_horizontal = 2
-
 
 [node name="Player1Controls" type="VBoxContainer" parent="Mainframe" unique_id=1880803608]
 custom_minimum_size = Vector2(0, 800)
@@ -369,67 +233,18 @@ alignment = 1
 z_index = 5
 layout_mode = 2
 size_flags_vertical = 10
-size_flags_stretch_ratio = 0.5
-offset_transform_enabled = true
-size_flags_vertical = 6
-size_flags_stretch_ratio = 0.5
-offset_transform_enabled = true
 offset_transform_position_ratio = Vector2(0, -1)
 text = "Player - 1"
 label_settings = SubResource("LabelSettings_ciw7g")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="keyboardOptions" type="OptionButton" parent="Mainframe/Player1Controls" unique_id=789060406 node_paths=PackedStringArray("opposite_btn")]
-visible = false
-[node name="keyboardOptions" type="OptionButton" parent="Mainframe/Player1Controls" unique_id=789060406]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 2
-size_flags_stretch_ratio = 0.0
-theme_override_fonts/font = ExtResource("2_f7122")
-theme_override_font_sizes/font_size = 80
-theme_override_styles/normal = SubResource("StyleBoxFlat_wwxhi")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ht16y")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ciw7g")
-theme_override_styles/focus = SubResource("StyleBoxFlat_f7122")
-alignment = 1
-item_count = 2
-popup/item_0/text = "Keyboard-1"
-popup/item_0/id = 0
-popup/item_1/text = "Keyboard-2"
-popup/item_1/id = 1
-script = ExtResource("4_ht16y")
-opposite_btn = NodePath("../../Player2Controls/keyboardOptions")
-
-[node name="kbi" type="Label" parent="Mainframe/Player1Controls/keyboardOptions" unique_id=1773577593]
-z_index = 5
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -126.0
-offset_right = 126.0
-offset_bottom = 48.0
-grow_horizontal = 2
-size_flags_vertical = 6
-size_flags_stretch_ratio = 0.5
-offset_transform_enabled = true
-offset_transform_position_ratio = Vector2(0, -1.5)
-text = "Keyboard-Input"
-label_settings = SubResource("LabelSettings_f7122")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ControllerOptions" type="OptionButton" parent="Mainframe/Player1Controls" unique_id=15103383 node_paths=PackedStringArray("opposite_btn")]
+[node name="ControllerOptions" type="OptionButton" parent="Mainframe/Player1Controls" unique_id=15103383]
+z_index = 4
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-[node name="ControllerOptions" type="OptionButton" parent="Mainframe/Player1Controls" unique_id=15103383]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 10
 theme_override_fonts/font = ExtResource("2_f7122")
 theme_override_font_sizes/font_size = 80
 theme_override_styles/normal = SubResource("StyleBoxFlat_wwxhi")
@@ -437,11 +252,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ht16y")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ciw7g")
 theme_override_styles/focus = SubResource("StyleBoxFlat_f7122")
 alignment = 1
-script = ExtResource("4_ht16y")
-opposite_btn = NodePath("../../Player2Controls/ControllerOptions")
-item_count = 1
-popup/item_0/text = "TEST"
-popup/item_0/id = 0
 
 [node name="Ci" type="Label" parent="Mainframe/Player1Controls/ControllerOptions" unique_id=2061074907]
 z_index = 5
@@ -458,7 +268,7 @@ size_flags_stretch_ratio = 0.5
 offset_transform_enabled = true
 offset_transform_position_ratio = Vector2(0, -1.5)
 text = "Controller-Input"
-label_settings = SubResource("LabelSettings_f7122")
+label_settings = SubResource("LabelSettings_ht16y")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -469,71 +279,22 @@ size_flags_horizontal = 3
 size_flags_vertical = 4
 alignment = 1
 
-[node name="Title" type="Label" parent="Mainframe/Player2Controls" unique_id=547005820]
+[node name="Title" type="Label" parent="Mainframe/Player2Controls" unique_id=548632049]
 z_index = 5
 layout_mode = 2
 size_flags_vertical = 10
-size_flags_stretch_ratio = 0.5
-offset_transform_enabled = true
-size_flags_vertical = 6
-size_flags_stretch_ratio = 0.5
-offset_transform_enabled = true
 offset_transform_position_ratio = Vector2(0, -1)
 text = "Player - 2"
 label_settings = SubResource("LabelSettings_ciw7g")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="keyboardOptions" type="OptionButton" parent="Mainframe/Player2Controls" unique_id=1831100748 node_paths=PackedStringArray("opposite_btn")]
-visible = false
-[node name="keyboardOptions" type="OptionButton" parent="Mainframe/Player2Controls" unique_id=1831100748]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 2
-size_flags_stretch_ratio = 0.0
-theme_override_fonts/font = ExtResource("2_f7122")
-theme_override_font_sizes/font_size = 80
-theme_override_styles/normal = SubResource("StyleBoxFlat_wwxhi")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_ht16y")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ciw7g")
-theme_override_styles/focus = SubResource("StyleBoxFlat_f7122")
-alignment = 1
-item_count = 2
-popup/item_0/text = "Keyboard-1"
-popup/item_0/id = 0
-popup/item_1/text = "Keyboard-2"
-popup/item_1/id = 1
-script = ExtResource("4_ht16y")
-opposite_btn = NodePath("../../Player1Controls/keyboardOptions")
-
-[node name="kbi" type="Label" parent="Mainframe/Player2Controls/keyboardOptions" unique_id=274988708]
-z_index = 5
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -126.0
-offset_right = 126.0
-offset_bottom = 48.0
-grow_horizontal = 2
-size_flags_vertical = 6
-size_flags_stretch_ratio = 0.5
-offset_transform_enabled = true
-offset_transform_position_ratio = Vector2(0, -1.5)
-text = "Keyboard-Input"
-label_settings = SubResource("LabelSettings_f7122")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="ControllerOptions" type="OptionButton" parent="Mainframe/Player2Controls" unique_id=1548410778 node_paths=PackedStringArray("opposite_btn")]
+[node name="ControllerOptions" type="OptionButton" parent="Mainframe/Player2Controls" unique_id=1548410778]
+z_index = 4
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-[node name="ControllerOptions" type="OptionButton" parent="Mainframe/Player2Controls" unique_id=1548410778]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 10
 theme_override_fonts/font = ExtResource("2_f7122")
 theme_override_font_sizes/font_size = 80
 theme_override_styles/normal = SubResource("StyleBoxFlat_wwxhi")
@@ -541,13 +302,8 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ht16y")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ciw7g")
 theme_override_styles/focus = SubResource("StyleBoxFlat_f7122")
 alignment = 1
-script = ExtResource("4_ht16y")
-opposite_btn = NodePath("../../Player1Controls/ControllerOptions")
-item_count = 1
-popup/item_0/text = "TEST"
-popup/item_0/id = 0
 
-[node name="Ci" type="Label" parent="Mainframe/Player2Controls/ControllerOptions" unique_id=1328751392]
+[node name="Ci" type="Label" parent="Mainframe/Player2Controls/ControllerOptions" unique_id=160315219]
 z_index = 5
 layout_mode = 1
 anchors_preset = 5
@@ -562,11 +318,11 @@ size_flags_stretch_ratio = 0.5
 offset_transform_enabled = true
 offset_transform_position_ratio = Vector2(0, -1.5)
 text = "Controller-Input"
-label_settings = SubResource("LabelSettings_f7122")
+label_settings = SubResource("LabelSettings_ht16y")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ContButton" type="Button" parent="." unique_id=664189802]
+[node name="ContButton" type="Button" parent="." unique_id=1917489491]
 z_index = 5
 layout_mode = 1
 anchors_preset = 7
@@ -574,13 +330,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-anchor_bottom = 1.0
-offset_left = -106.0
-offset_top = -205.0
-offset_right = 106.0
-offset_bottom = -130.0
+offset_left = -100.0
+offset_top = -280.0
+offset_right = 100.0
+offset_bottom = -185.0
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
@@ -588,13 +341,9 @@ size_flags_horizontal = 6
 size_flags_vertical = 4
 theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
 theme_override_fonts/font = ExtResource("2_f7122")
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 70
 theme_override_styles/normal = SubResource("StyleBoxFlat_rovmm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_l6b50")
 theme_override_styles/hover = SubResource("StyleBoxFlat_25k8i")
 theme_override_styles/focus = SubResource("StyleBoxFlat_3rho3")
-shortcut_feedback = false
-shortcut_in_tooltip = false
-text = "Continue"
-shortcut = SubResource("Shortcut_8vrm8")
-text = "Continue"
+text = "Play"

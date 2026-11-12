@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://2j5dovfbc2l0" path="res://Scripts/UI/audio_slider.gd" id="3_fe37x"]
 [ext_resource type="Texture2D" uid="uid://wvbjh38jqgpe" path="res://Resources/icons/volume-full_big.svg" id="4_jjs6x"]
 [ext_resource type="Texture2D" uid="uid://cftwu2bswbegd" path="res://Resources/icons/music.svg" id="5_fsgis"]
+[ext_resource type="Shader" uid="uid://h5rnab0t5ips" path="res://Scripts/UI/shaders/quantize_pixelate.gdshader" id="7_fe37x"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ssx55"]
 bg_color = Color(0.11, 0.11, 0.11, 0.9019608)
@@ -81,6 +82,13 @@ shadow_color = Color(0.87, 0.79692, 0.3219, 1)
 shadow_size = 6
 shadow_offset = Vector2(5, 5)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jjs6x"]
+shader = ExtResource("7_fe37x")
+shader_parameter/texture_mode = 1
+shader_parameter/quantize_size = 3
+shader_parameter/snap_to_world = false
+shader_parameter/limit_subpixels = true
+
 [node name="SettingsMenu" type="Control" unique_id=816104311 node_paths=PackedStringArray("sfx_slider", "music_slider", "back_btn")]
 layout_mode = 3
 anchors_preset = 15
@@ -144,6 +152,8 @@ layout_mode = 2
 size_flags_vertical = 6
 size_flags_stretch_ratio = 0.5
 offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(0.2, 0)
+offset_transform_scale = Vector2(2, 2)
 focus_next = NodePath("../MusicSlider")
 theme_override_styles/slider = SubResource("StyleBoxFlat_ssx55")
 theme_override_styles/grabber_area = SubResource("StyleBoxFlat_aun78")
@@ -181,6 +191,9 @@ stretch_mode = 4
 layout_mode = 2
 size_flags_vertical = 6
 size_flags_stretch_ratio = 0.5
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(0.2, 0)
+offset_transform_scale = Vector2(2, 2)
 focus_next = NodePath("../QuitButton")
 focus_previous = NodePath("../SFXSlider")
 theme_override_styles/slider = SubResource("StyleBoxFlat_ssx55")
@@ -228,3 +241,13 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_n0ctm")
 theme_override_styles/hover = SubResource("StyleBoxFlat_rkth2")
 theme_override_styles/focus = SubResource("StyleBoxFlat_cdah7")
 text = "Back to Menu"
+
+[node name="pixelize" type="ColorRect" parent="." unique_id=1032811855]
+z_index = 50
+material = SubResource("ShaderMaterial_jjs6x")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

@@ -74,7 +74,7 @@ font_size = 170
 font = ExtResource("2_yp3dc")
 font_size = 170
 
-[node name="WinScreen" type="Control" unique_id=83483473 node_paths=PackedStringArray("MM_Btn", "NR_Btn", "p1_score_label", "p2_score_label", "winner_label", "focus_sfx", "press_sfx")]
+[node name="WinScreen" type="Control" unique_id=83483473 node_paths=PackedStringArray("MM_Btn", "NR_Btn", "p1_score_label", "p2_score_label", "winner_label")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -88,8 +88,6 @@ NR_Btn = NodePath("NRButton")
 p1_score_label = NodePath("Player_1Score")
 p2_score_label = NodePath("Player_2Score")
 winner_label = NodePath("Winner")
-focus_sfx = NodePath("UIfocusSFX")
-press_sfx = NodePath("UIpressSFX")
 
 [node name="BG" type="ColorRect" parent="." unique_id=773115964]
 z_index = 10
@@ -233,13 +231,3 @@ text = "0"
 label_settings = SubResource("LabelSettings_p1pjm")
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="UIfocusSFX" type="AudioStreamPlayer" parent="." unique_id=991986863]
-process_mode = 3
-stream = ExtResource("4_a4aap")
-volume_db = -15.0
-
-[node name="UIpressSFX" type="AudioStreamPlayer" parent="." unique_id=2047791741]
-process_mode = 3
-stream = ExtResource("5_i3g5b")
-volume_db = -15.0

@@ -1,7 +1,5 @@
 extends Control
 
-@export var p1_kb_options : OptionButton
-@export var p2_kb_options : OptionButton
 @export var p1_joy_options : OptionButton
 @export var p2_joy_options : OptionButton
 
@@ -40,12 +38,12 @@ func assign_mult_controls():
 			for event in range(actionEventList.size()):
 				if actionEventList[event] is InputEventJoypadButton or actionEventList[event] is InputEventJoypadMotion:
 					actionEventList[event].set_device(int(p1_joy_options.get_item_text(p1_joy_options.selected)))
-					print(actionList[act],":",actionEventList[event]," : ",actionEventList[event].device)
+					
 		if actionList[act].begins_with("P2") and p2_joy_options.selected != -1:
 			var actionEventList: = InputMap.action_get_events(actionList[act])
 			for event in range(actionEventList.size()):
 					if actionEventList[event] is InputEventJoypadButton or actionEventList[event] is InputEventJoypadMotion:
 						actionEventList[event].set_device(int(p2_joy_options.get_item_text(p2_joy_options.selected)))
-						print(actionList[act],":",actionEventList[event]," : ",actionEventList[event].device)
+
 
 	get_tree().change_scene_to_file("res://Scenes/multiplayer_court.tscn")

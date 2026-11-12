@@ -26,7 +26,7 @@ func _ready() -> void:
 	mult_btn.focus_entered.connect(UIfocusSfx.play)
 	quit_btn.focus_entered.connect(UIfocusSfx.play)
 	setting_btn.focus_entered.connect(UIfocusSfx.play)
-	
+	MusicPlayer.stop()
 
 
 func play_game():

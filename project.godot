@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Hyper Chaos Pong"
-config/version="1.3"
+config/version="1.4"
 run/main_scene="uid://cs1sbwea32xnk"
 config/features=PackedStringArray("4.7", "Forward Plus")
 run/max_fps=60

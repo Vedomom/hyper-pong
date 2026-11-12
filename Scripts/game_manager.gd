@@ -54,7 +54,7 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	if ball.game_won and round_number>= 10 and not is_ended:
+	if ball.game_won and round_number >= 10 and not is_ended:
 		end_game()
 		is_ended = true
 	
@@ -70,6 +70,9 @@ func _process(_delta: float) -> void:
 	manage_health(player)
 	manage_health(enemy)
 
+	
+	
+	
 
 	if Input.is_action_just_pressed("pause"):
 		print(get_tree().paused)
@@ -86,7 +89,7 @@ func _process(_delta: float) -> void:
 
 func next_round():
 	round_number += 1
-	if round_number >= 10:
+	if round_number > 10:
 		end_game()
 	else:
 
@@ -108,7 +111,7 @@ func next_round():
 		enemy.is_dead = false
 		enemy.health_bar.max_value = enemy.initial_health
 		enemy.health_bar.value = enemy.health
-
+		
 		ball.game_won = false
 		ball.shape.show()
 		get_tree().paused = false

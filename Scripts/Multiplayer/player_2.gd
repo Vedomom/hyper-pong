@@ -88,10 +88,6 @@ func _physics_process(delta: float) -> void:
 		modulate = lerp(modulate, Color(1, 1, 1), delta * accel* 0.8)
 	
 
-	manage_health()
-	manage_damage()
-
-
 	velocity.x = 0.0
 	position.x = clampf(position.x, 1813, 1813)
 	lunge_timer -= delta

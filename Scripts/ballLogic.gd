@@ -166,12 +166,12 @@ func reset(is_stuck : bool = false):
 				if last_pos.x >= 1800:
 					player.player_scored.emit()
 					cpu.enemy_damaged.emit()
-					await get_tree().create_timer(0.02).timeout
+					await get_tree().create_timer(0.03).timeout
 					deduct_health(cpu, player.current_damage)
 				else :
 					player.player_damaged.emit()
 					cpu.enemy_scored.emit()
-					await get_tree().create_timer(0.02).timeout
+					await get_tree().create_timer(0.03).timeout
 					deduct_health(player, cpu.current_damage)
 			trail.clear_points()
 			player.current_damage = player.initial_damage
@@ -186,7 +186,8 @@ func reset(is_stuck : bool = false):
 			position = Vector2(960, 540)
 			shape.hide()
 			await get_tree().create_timer(0.4).timeout
-			shape.show()
+			if !player.is_dead and !cpu.is_dead:
+				shape.show()
 
 func get_random_direction() -> int:
 	var randir = randi_range(-1, 1)

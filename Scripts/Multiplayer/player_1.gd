@@ -86,10 +86,6 @@ func _physics_process(delta: float) -> void:
 		modulate = lerp(modulate, Color(1, 1, 0.22), delta * accel *0.8)
 	else:
 		modulate = lerp(modulate, Color(1, 1, 1), delta * accel* 0.8)
-	
-
-	manage_health()
-	manage_damage()
 
 
 	velocity.x = 0.0

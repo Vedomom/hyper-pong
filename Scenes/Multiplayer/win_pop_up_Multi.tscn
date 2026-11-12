@@ -3,8 +3,6 @@
 [ext_resource type="Script" uid="uid://dn2qahntftjpi" path="res://Scripts/Multiplayer/win_pop_mult.gd" id="1_d4w8b"]
 [ext_resource type="Texture2D" uid="uid://btcglpnwcj83s" path="res://Resources/overlapping-diamonds.svg" id="2_d4w8b"]
 [ext_resource type="FontFile" uid="uid://bt3gbbw7fayi" path="res://Resources/Margarine-Regular.ttf" id="3_7ws1n"]
-[ext_resource type="AudioStream" uid="uid://c5mk6ooorkx1j" path="res://Resources/SFX/UI buttons.wav" id="4_mvxca"]
-[ext_resource type="AudioStream" uid="uid://bscmllhha0l87" path="res://Resources/SFX/UI press.wav" id="5_2e12m"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_076ql"]
 font = ExtResource("3_7ws1n")

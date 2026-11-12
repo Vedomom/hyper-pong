@@ -36,13 +36,13 @@ func rot_animation(subject : Label, amount : float):
 func goal_particle_animation(gp: GPUParticles2D, direction : int):
 	gp.process_material.direction.x = direction
 	gp.restart()
-	
 
 func slide_in(subject: Node, amount:Vector2, weight : float = 0.0):
 	subject.position -= amount
 	slide_array.append(subject)
 	slide_weight = weight
 
+#bonus funcs
 
 
 func _process(_delta: float) -> void:
@@ -67,14 +67,15 @@ func execute_pop_animation():
 	
 	if subject_array.size() > 0:
 		for index in  range(subject_array.size()):
-			if subject_array[index].label_settings.font_size > initial_font_size_array[index]:
-				subject_array[index].label_settings.font_size -= 1
-			if subject_array[index].label_settings.font_size < initial_font_size_array[index]:
-				subject_array[index].label_settings.font_size += 1
-			if subject_array[index].label_settings.font_size <= initial_font_size_array[index] + 2 and subject_array[index].label_settings.font_size >= initial_font_size_array[index] - 2:
-				subject_array[index].label_settings.font_size = initial_font_size_array[index]
-				subject_array.remove_at(index)
-				initial_font_size_array.remove_at(index)
+			if subject_array[index]:
+				if subject_array[index].label_settings.font_size > initial_font_size_array[index]:
+					subject_array[index].label_settings.font_size -= 1
+				if subject_array[index].label_settings.font_size < initial_font_size_array[index]:
+					subject_array[index].label_settings.font_size += 1
+				if subject_array[index].label_settings.font_size <= initial_font_size_array[index] + 2 and subject_array[index].label_settings.font_size >= initial_font_size_array[index] - 2:
+					subject_array[index].label_settings.font_size = initial_font_size_array[index]
+					subject_array.remove_at(index)
+					initial_font_size_array.remove_at(index)
 	return OK
 
 func round_end_release():
@@ -87,10 +88,10 @@ func round_end_release():
 func execute_rot_animation(_delta):
 	if !rot_array.is_empty():
 		for subject in rot_array:
-			subject.rotation = lerp(subject.rotation, 0.0, _delta)
-			if subject.rotation == 0.0 :
-				rot_array.erase(subject)
-
+			if subject:
+				subject.rotation = lerp(subject.rotation, 0.0, _delta)
+				if subject.rotation == 0.0 :
+					rot_array.erase(subject)
 
 func execute_slide_in(_delta):
 	if !slide_array.is_empty():

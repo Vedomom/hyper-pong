@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://bpwuv1rueyaa"]
 
 [ext_resource type="Script" uid="uid://dbs56evmtqrdp" path="res://Scripts/Multiplayer/win_screen_multi.gd" id="1_s6lnd"]
+[ext_resource type="Texture2D" uid="uid://btcglpnwcj83s" path="res://Resources/overlapping-diamonds.svg" id="2_vqmkl"]
 [ext_resource type="FontFile" uid="uid://bt3gbbw7fayi" path="res://Resources/Margarine-Regular.ttf" id="2_yp3dc"]
-[ext_resource type="AudioStream" uid="uid://c5mk6ooorkx1j" path="res://Resources/SFX/UI buttons.wav" id="4_a4aap"]
-[ext_resource type="AudioStream" uid="uid://bscmllhha0l87" path="res://Resources/SFX/UI press.wav" id="5_i3g5b"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_j0aiw"]
 font = ExtResource("2_yp3dc")
@@ -110,6 +109,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_vqmkl")
 stretch_mode = 1
 
 [node name="WinText" type="Label" parent="." unique_id=913771032]

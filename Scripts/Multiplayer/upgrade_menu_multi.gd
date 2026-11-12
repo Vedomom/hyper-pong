@@ -94,13 +94,13 @@ func get_random_upgrades(upgrade_left:Button, upgrade_right:Button, list):
 
 func get_upgrades_list(player, folder, player_list):
 	for file:String in folder.get_files():
-		if player:
-			if not player.can_dash and file.contains("Recovery"):
-				pass
-			elif player.speed >= player.MAX_SPEED and file.contains("Speed"):
-				pass
-			else :
-				player_list.append(load(folder.get_current_dir() + "/" + file))
+		if player:	
+			player_list.append(load(folder.get_current_dir() + "/" + file))
+	for ugd:Upgrade_selection in player_list:
+		if not player.can_dash and ugd.title.to_lower().contains("recovery"):
+			player_list.erase(ugd)
+		elif player.speed >= player.MAX_SPEED and ugd.title.to_lower().contains("speed"):
+			player_list.erase(ugd)		
 
 
 func p1_ready():

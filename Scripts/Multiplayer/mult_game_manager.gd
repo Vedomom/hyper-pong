@@ -42,7 +42,7 @@ func _ready() -> void:
 	round_number = 1
 	round_label.text = "Round : %d" %[round_number]
 
-
+	
 	player_1.round_up.connect(next_round)
 	player_1.player_died.connect(update_score.bind(player_2))
 	player_2.player_died.connect(update_score.bind(player_1))
@@ -62,7 +62,13 @@ func _process(_delta: float) -> void:
 	if (p1_score >= 5 or p2_score >= 5) and not is_ended:
 		end_game()
 		is_ended = true
-	
+	if is_ended and ball.end_pop:
+		ball.end_pop.queue_free()
+	manage_health(player_1)
+	manage_health(player_2)
+
+	manage_damage(player_1, player_2)
+	manage_damage(player_2, player_1)
 
 	if Input.is_action_just_pressed("pause"):
 		if !get_tree().paused:
@@ -99,7 +105,7 @@ func next_round():
 		
 
 		#ball
-		ball.game_won = false
+		ball.shape.show()
 		get_tree().paused = false
 		MusicPlayer.stream_paused = false
 
@@ -108,7 +114,6 @@ func next_round():
 		
 
 func end_game():
-	ball.end_pop.queue_free()
 	var winscrn = load("res://Scenes/Multiplayer/win_screen_Multi.tscn").instantiate()
 	ui_container.add_child(winscrn)
 	winscrn.p1_score_label.text = str(clamp(p1_score, 0, 5))
@@ -141,7 +146,6 @@ func manage_score(score : int,score_lbl: Label):
 		score_lbl.label_settings.font_color = Color.MAGENTA
 	else:
 		score_lbl.label_settings.font_color = Color.PALE_TURQUOISE
-
 
 
 func manage_health(player):

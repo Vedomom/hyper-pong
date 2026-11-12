@@ -60,9 +60,6 @@ func _physics_process(delta: float) -> void:
 	else:
 		step_size = dist
 
-	manage_health()
-	manage_damage()
-
 	velocity.y = (position.y - prev_pos.y)
 	prev_pos = position
 	
@@ -75,31 +72,3 @@ func _physics_process(delta: float) -> void:
 func death():
 	is_dead = true
 	enemy_died.emit()
-
-func manage_health():
-	health_bar.value = health
-	health_lable.text = "%.1f" %health
-	if health <= 0.0 and !is_dead:
-		death()
-	
-	if health < initial_health/4:
-		health_lable.label_settings.font_color = Color.RED
-		health_bar_sb.bg_color = Color.RED
-	elif health < initial_health/2:
-		health_lable.label_settings.font_color = Color.YELLOW
-		health_bar_sb.bg_color = Color.YELLOW
-	else: 
-		health_lable.label_settings.font_color = Color.LIGHT_GREEN
-		health_bar_sb.bg_color = Color.LIGHT_GREEN
-
-func manage_damage():
-	damage_label.text = "%.2f" %current_damage
-	if current_damage > player.health:
-		damage_label.label_settings.font_color = Color(1, 0.43, 0.73)
-		dmg_lbl.label_settings.font_color = Color(1, 0.43, 0.73)
-	elif current_damage > player.health / 2:
-		damage_label.label_settings.font_color = Color(0.85, 0.50, 1.0)
-		dmg_lbl.label_settings.font_color = Color(0.85, 0.50, 1.0)
-	else:
-		damage_label.label_settings.font_color = Color(0.53, 0.9, 1.0)
-		dmg_lbl.label_settings.font_color = Color(0.53, 0.9, 1.0)

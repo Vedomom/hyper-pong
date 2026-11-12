@@ -17,6 +17,7 @@ func initialize_power():
 
 func enemy_shot():
 	ball.shape.hide()
+	ball.trail.show()
 	ball.trail.modulate.a = 0.1
 	
 

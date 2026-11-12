@@ -4,11 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cst7gu6eyoyta" path="res://Scenes/ball.tscn" id="2_clkqn"]
 [ext_resource type="PackedScene" uid="uid://bxr3xbkrcosf1" path="res://Scenes/cpu.tscn" id="3_clkqn"]
 [ext_resource type="Shader" uid="uid://h5rnab0t5ips" path="res://Scripts/UI/shaders/quantize_pixelate.gdshader" id="4_0xph6"]
-<<<<<<< HEAD
-[ext_resource type="PackedScene" uid="uid://b0etnk6si67ve" path="res://Scenes/end_pop_up.tscn" id="4_hxgs0"]
-=======
 [ext_resource type="PackedScene" uid="uid://dmw1fho18l7mp" path="res://Scenes/pause_menu.tscn" id="4_mlxss"]
->>>>>>> 1b7ed48 (added sound effects , and a pause menu)
 [ext_resource type="FontFile" uid="uid://bt3gbbw7fayi" path="res://Resources/Margarine-Regular.ttf" id="5_6j87r"]
 [ext_resource type="Texture2D" uid="uid://b3mq2vv4fa0wh" path="res://Resources/jupiter.svg" id="5_8gnj2"]
 [ext_resource type="Script" uid="uid://boaopnmsi2pb6" path="res://Scripts/game_manager.gd" id="5_clkqn"]
@@ -392,27 +388,12 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.9607843, 1, 0.98039216, 1)
 
-<<<<<<< HEAD
-[node name="EndPopUp" parent="." unique_id=1205575577 instance=ExtResource("4_hxgs0")]
-visible = false
-z_index = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_right = 1920.0
-offset_bottom = 1080.0
-
-[node name="GameManager" type="Node" parent="." unique_id=1780379137 node_paths=PackedStringArray("round_label")]
-=======
 [node name="PauseMenu" parent="." unique_id=529654255 instance=ExtResource("4_mlxss")]
 process_priority = 1
 visible = false
 top_level = true
 
 [node name="GameManager" type="Node" parent="." unique_id=1780379137 node_paths=PackedStringArray("round_label", "bounce_sfx", "goal_sfx", "pause_menu")]
->>>>>>> 1b7ed48 (added sound effects , and a pause menu)
 process_mode = 3
 script = ExtResource("5_clkqn")
 round_label = NodePath("../UI/RoundLabel")

@@ -45,15 +45,12 @@ func _ready() -> void:
 		upgrade_right.title.text = ugd_right.title
 		upgrade_right.description.text = ugd_right.description
 		upgrade_right.ugd_scene = ugd_right.scene 
-<<<<<<< HEAD
-=======
 	
 	TextAnimation.slide_in(self, Vector2(0, 3000), 2.7)
 
 	upgrade_left.pressed.connect(UIpressSfx.play)
 	upgrade_right.pressed.connect(UIpressSfx.play)
 
->>>>>>> 1b7ed48 (added sound effects , and a pause menu)
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Left"):

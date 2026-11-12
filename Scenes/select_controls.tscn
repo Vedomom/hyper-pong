@@ -2,9 +2,6 @@
 
 [ext_resource type="Script" uid="uid://vbba8kjxssos" path="res://Scripts/controls_select.gd" id="1_ciw7g"]
 [ext_resource type="Texture2D" uid="uid://btcglpnwcj83s" path="res://Resources/overlapping-diamonds.svg" id="1_wwxhi"]
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 [ext_resource type="FontFile" uid="uid://bt3gbbw7fayi" path="res://Resources/Margarine-Regular.ttf" id="2_f7122"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ciw7g"]
@@ -128,10 +125,10 @@ unicode = 32
 
 [sub_resource type="Shortcut" id="Shortcut_8vrm8"]
 events = [SubResource("InputEventKey_es7s0"), SubResource("InputEventKey_dab71")]
->>>>>>> 14d2809 (added general music)
+
 
 [node name="SelectControls" type="Control" unique_id=642974031]
-=======
+
 [ext_resource type="FontFile" uid="uid://bt3gbbw7fayi" path="res://Resources/Margarine-Regular.ttf" id="2_f7122"]
 [ext_resource type="Script" uid="uid://b65xi6f4ql0gk" path="res://Scripts/option_select_btn.gd" id="4_ht16y"]
 
@@ -260,7 +257,6 @@ shadow_size = 6
 shadow_offset = Vector2(5, 5)
 
 [node name="SelectControls" type="Control" unique_id=642974031 node_paths=PackedStringArray("p1_kb_options", "p2_kb_options", "p1_joy_options", "p2_joy_options", "cont_btn", "warning_label")]
->>>>>>> 7d03d15 (added a controller select menue before a multiplayer match)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -296,18 +292,15 @@ grow_vertical = 2
 texture = ExtResource("1_wwxhi")
 stretch_mode = 1
 
-<<<<<<< HEAD
+
 [node name="header" type="Label" parent="background" unique_id=2051861316]
 z_index = 5
-=======
 [node name="Mainframe" type="HBoxContainer" parent="." unique_id=1852577687]
 z_index = 4
->>>>>>> 14d2809 (added general music)
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-<<<<<<< HEAD
 offset_left = -366.5
 offset_top = 50.0
 offset_right = 366.5
@@ -348,10 +341,8 @@ autowrap_mode = 2
 
 [node name="Mainframe" type="HBoxContainer" parent="." unique_id=1852577687]
 layout_mode = 1
-<<<<<<< HEAD
 anchors_preset = 15
 anchor_right = 1.0
-=======
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -360,13 +351,12 @@ offset_top = 50.0
 offset_right = 768.0
 offset_bottom = 914.0
 grow_horizontal = 2
-=======
 offset_left = -768.0
 offset_top = 50.0
 offset_right = 768.0
 offset_bottom = 914.0
 grow_horizontal = 2
->>>>>>> 14d2809 (added general music)
+
 
 [node name="Player1Controls" type="VBoxContainer" parent="Mainframe" unique_id=1880803608]
 custom_minimum_size = Vector2(0, 800)
@@ -378,27 +368,21 @@ alignment = 1
 [node name="Title" type="Label" parent="Mainframe/Player1Controls" unique_id=1282718095]
 z_index = 5
 layout_mode = 2
-<<<<<<< HEAD
 size_flags_vertical = 10
 size_flags_stretch_ratio = 0.5
 offset_transform_enabled = true
-=======
 size_flags_vertical = 6
 size_flags_stretch_ratio = 0.5
 offset_transform_enabled = true
 offset_transform_position_ratio = Vector2(0, -1)
->>>>>>> 14d2809 (added general music)
 text = "Player - 1"
 label_settings = SubResource("LabelSettings_ciw7g")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-<<<<<<< HEAD
 [node name="keyboardOptions" type="OptionButton" parent="Mainframe/Player1Controls" unique_id=789060406 node_paths=PackedStringArray("opposite_btn")]
 visible = false
-=======
 [node name="keyboardOptions" type="OptionButton" parent="Mainframe/Player1Controls" unique_id=789060406]
->>>>>>> 14d2809 (added general music)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
@@ -415,11 +399,8 @@ popup/item_0/text = "Keyboard-1"
 popup/item_0/id = 0
 popup/item_1/text = "Keyboard-2"
 popup/item_1/id = 1
-<<<<<<< HEAD
 script = ExtResource("4_ht16y")
 opposite_btn = NodePath("../../Player2Controls/keyboardOptions")
-=======
->>>>>>> 14d2809 (added general music)
 
 [node name="kbi" type="Label" parent="Mainframe/Player1Controls/keyboardOptions" unique_id=1773577593]
 z_index = 5
@@ -440,18 +421,15 @@ label_settings = SubResource("LabelSettings_f7122")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-<<<<<<< HEAD
 [node name="ControllerOptions" type="OptionButton" parent="Mainframe/Player1Controls" unique_id=15103383 node_paths=PackedStringArray("opposite_btn")]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-=======
 [node name="ControllerOptions" type="OptionButton" parent="Mainframe/Player1Controls" unique_id=15103383]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
->>>>>>> 14d2809 (added general music)
 theme_override_fonts/font = ExtResource("2_f7122")
 theme_override_font_sizes/font_size = 80
 theme_override_styles/normal = SubResource("StyleBoxFlat_wwxhi")
@@ -459,14 +437,11 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ht16y")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ciw7g")
 theme_override_styles/focus = SubResource("StyleBoxFlat_f7122")
 alignment = 1
-<<<<<<< HEAD
 script = ExtResource("4_ht16y")
 opposite_btn = NodePath("../../Player2Controls/ControllerOptions")
-=======
 item_count = 1
 popup/item_0/text = "TEST"
 popup/item_0/id = 0
->>>>>>> 14d2809 (added general music)
 
 [node name="Ci" type="Label" parent="Mainframe/Player1Controls/ControllerOptions" unique_id=2061074907]
 z_index = 5
@@ -497,27 +472,21 @@ alignment = 1
 [node name="Title" type="Label" parent="Mainframe/Player2Controls" unique_id=547005820]
 z_index = 5
 layout_mode = 2
-<<<<<<< HEAD
 size_flags_vertical = 10
 size_flags_stretch_ratio = 0.5
 offset_transform_enabled = true
-=======
 size_flags_vertical = 6
 size_flags_stretch_ratio = 0.5
 offset_transform_enabled = true
 offset_transform_position_ratio = Vector2(0, -1)
->>>>>>> 14d2809 (added general music)
 text = "Player - 2"
 label_settings = SubResource("LabelSettings_ciw7g")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-<<<<<<< HEAD
 [node name="keyboardOptions" type="OptionButton" parent="Mainframe/Player2Controls" unique_id=1831100748 node_paths=PackedStringArray("opposite_btn")]
 visible = false
-=======
 [node name="keyboardOptions" type="OptionButton" parent="Mainframe/Player2Controls" unique_id=1831100748]
->>>>>>> 14d2809 (added general music)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 2
@@ -534,11 +503,8 @@ popup/item_0/text = "Keyboard-1"
 popup/item_0/id = 0
 popup/item_1/text = "Keyboard-2"
 popup/item_1/id = 1
-<<<<<<< HEAD
 script = ExtResource("4_ht16y")
 opposite_btn = NodePath("../../Player1Controls/keyboardOptions")
-=======
->>>>>>> 14d2809 (added general music)
 
 [node name="kbi" type="Label" parent="Mainframe/Player2Controls/keyboardOptions" unique_id=274988708]
 z_index = 5
@@ -559,18 +525,15 @@ label_settings = SubResource("LabelSettings_f7122")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-<<<<<<< HEAD
 [node name="ControllerOptions" type="OptionButton" parent="Mainframe/Player2Controls" unique_id=1548410778 node_paths=PackedStringArray("opposite_btn")]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
-=======
 [node name="ControllerOptions" type="OptionButton" parent="Mainframe/Player2Controls" unique_id=1548410778]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
->>>>>>> 14d2809 (added general music)
 theme_override_fonts/font = ExtResource("2_f7122")
 theme_override_font_sizes/font_size = 80
 theme_override_styles/normal = SubResource("StyleBoxFlat_wwxhi")
@@ -578,14 +541,11 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_ht16y")
 theme_override_styles/hover = SubResource("StyleBoxFlat_ciw7g")
 theme_override_styles/focus = SubResource("StyleBoxFlat_f7122")
 alignment = 1
-<<<<<<< HEAD
 script = ExtResource("4_ht16y")
 opposite_btn = NodePath("../../Player1Controls/ControllerOptions")
-=======
 item_count = 1
 popup/item_0/text = "TEST"
 popup/item_0/id = 0
->>>>>>> 14d2809 (added general music)
 
 [node name="Ci" type="Label" parent="Mainframe/Player2Controls/ControllerOptions" unique_id=1328751392]
 z_index = 5
@@ -613,21 +573,15 @@ anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
-<<<<<<< HEAD
->>>>>>> 7d03d15 (added a controller select menue before a multiplayer match)
 anchor_bottom = 1.0
 grow_horizontal = 2
-<<<<<<< HEAD
 grow_vertical = 2
-=======
-=======
 anchor_bottom = 1.0
 offset_left = -106.0
 offset_top = -205.0
 offset_right = 106.0
 offset_bottom = -130.0
 grow_horizontal = 2
->>>>>>> 14d2809 (added general music)
 grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 0.5)
 size_flags_horizontal = 6
@@ -639,12 +593,8 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_rovmm")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_l6b50")
 theme_override_styles/hover = SubResource("StyleBoxFlat_25k8i")
 theme_override_styles/focus = SubResource("StyleBoxFlat_3rho3")
-<<<<<<< HEAD
 shortcut_feedback = false
 shortcut_in_tooltip = false
 text = "Continue"
->>>>>>> 7d03d15 (added a controller select menue before a multiplayer match)
-=======
 shortcut = SubResource("Shortcut_8vrm8")
 text = "Continue"
->>>>>>> 14d2809 (added general music)

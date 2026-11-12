@@ -61,6 +61,7 @@ func _ready() -> void:
 	p2_left.hide()
 	p2_right.hide()
 	p2_header.text = "Waiting for P1"
+	TextAnimation.slide_in(self, Vector2(0, 3000), 2.7)
 
 		
 

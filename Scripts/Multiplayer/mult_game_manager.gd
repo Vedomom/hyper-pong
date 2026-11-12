@@ -101,20 +101,8 @@ func next_round():
 		#ball
 		ball.game_won = false
 		get_tree().paused = false
-<<<<<<< HEAD
-		print("Game state : ", get_tree().paused)
-=======
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-=======
 		MusicPlayer.stream_paused = false
->>>>>>> 7d03d15 (added a controller select menue before a multiplayer match)
-=======
-		MusicPlayer.play()
->>>>>>> 14d2809 (added general music)
->>>>>>> 1b7ed48 (added sound effects , and a pause menu)
-	
+
 		round_number += 1
 		round_label.text = "Round : %d" %[round_number]
 		
@@ -153,8 +141,7 @@ func manage_score(score : int,score_lbl: Label):
 		score_lbl.label_settings.font_color = Color.MAGENTA
 	else:
 		score_lbl.label_settings.font_color = Color.PALE_TURQUOISE
-<<<<<<< HEAD
-=======
+
 
 
 func manage_health(player):
@@ -196,29 +183,10 @@ func play_bounce_sfx():
 	bounce_sfx.play()
 
 func play_goal_sfx():
-<<<<<<< HEAD
-<<<<<<< HEAD
-	if !player_1.is_dead and !player_2.is_dead:
-		goal_sfx.stream = AudioStreamWAV.load_from_file("res://Resources/SFX/goal.wav")
-		goal_sfx.play()
-	else :
-		goal_sfx.stream = AudioStreamWAV.load_from_file("res://Resources/SFX/goal_short.wav")
-		goal_sfx.play()
-=======
-=======
->>>>>>> 14d2809 (added general music)
 	goal_sfx.stream = AudioStreamWAV.load_from_file("res://Resources/SFX/goal.wav")
 	goal_sfx.play()
 
 func play_long_goal_sfx():
-<<<<<<< HEAD
 	MusicPlayer.stream_paused = true
 	goal_sfx.stream = AudioStreamWAV.load_from_file("res://Resources/SFX/goal_short.wav")
 	goal_sfx.play()
->>>>>>> 7d03d15 (added a controller select menue before a multiplayer match)
-=======
-	MusicPlayer.stop()
-	goal_sfx.stream = AudioStreamWAV.load_from_file("res://Resources/SFX/goal_short.wav")
-	goal_sfx.play()
->>>>>>> 14d2809 (added general music)
->>>>>>> 1b7ed48 (added sound effects , and a pause menu)

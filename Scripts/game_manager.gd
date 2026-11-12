@@ -60,8 +60,6 @@ func _process(_delta: float) -> void:
 	
 	player.health = clamp(player.health, 0.0, player.initial_health)
 
-<<<<<<< HEAD
-=======
 	if is_ended and ball.end_pop:
 		ball.end_pop.queue_free()
 	if is_ended and ball.win_pop:
@@ -79,9 +77,6 @@ func _process(_delta: float) -> void:
 			get_tree().paused = true
 			pause_menu.show()
 
-	
-
->>>>>>> 1b7ed48 (added sound effects , and a pause menu)
 	
 	
 	
@@ -113,21 +108,13 @@ func next_round():
 		enemy.is_dead = false
 		enemy.health_bar.max_value = enemy.initial_health
 		enemy.health_bar.value = enemy.health
-		
-<<<<<<< HEAD
-=======
+
 		ball.game_won = false
 		ball.shape.show()
 		get_tree().paused = false
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
+
 		MusicPlayer.stream_paused = false
->>>>>>> 7d03d15 (added a controller select menue before a multiplayer match)
-=======
-		MusicPlayer.play()
->>>>>>> 14d2809 (added general music)
->>>>>>> 1b7ed48 (added sound effects , and a pause menu)
+
 
 		get_tree().paused = false
 	
@@ -198,10 +185,6 @@ func end_game():
 	var winscrn = load("res://Scenes/win_screen.tscn").instantiate()
 	ui_container.add_child(winscrn)
 	get_tree().paused = true
-<<<<<<< HEAD
-=======
-
-
 
 func manage_health(entity):
 	entity.health_bar.value = move_toward(entity.health_bar.value, entity.health, 0.2*abs(entity.health_bar.value - entity.health))
@@ -248,14 +231,7 @@ func play_goal_sfx():
 	goal_sfx.play()
 
 func play_long_goal_sfx():
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
 	MusicPlayer.stream_paused = true
->>>>>>> 7d03d15 (added a controller select menue before a multiplayer match)
-=======
-	MusicPlayer.stop()
->>>>>>> 14d2809 (added general music)
+
 	goal_sfx.stream = AudioStreamWAV.load_from_file("res://Resources/SFX/goal_short.wav")
 	goal_sfx.play()
->>>>>>> 1b7ed48 (added sound effects , and a pause menu)

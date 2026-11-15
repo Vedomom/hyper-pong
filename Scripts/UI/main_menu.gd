@@ -16,7 +16,7 @@ func _ready() -> void:
 	play_btn.pressed.connect(play_game)
 	mult_btn.pressed.connect(play_mult_match)
 	quit_btn.pressed.connect(get_tree().quit)
-	setting_btn.pressed.connect(get_tree().change_scene_to_file.bind("res://Scenes/settings_menu.tscn"))
+	setting_btn.pressed.connect(Transition.change_scene.bind("res://Scenes/settings_menu.tscn"))
 	play_btn.pressed.connect(UIpressSfx.play)
 	mult_btn.pressed.connect(UIpressSfx.play)
 	quit_btn.pressed.connect(UIpressSfx.play)
@@ -30,7 +30,7 @@ func _ready() -> void:
 
 
 func play_game():
-	get_tree().change_scene_to_file("res://Scenes/Court.tscn")
+	Transition.change_scene("res://Scenes/Court.tscn")
 
 func play_mult_match():
-	get_tree().change_scene_to_file("res://Scenes/select_controls.tscn")
+	Transition.change_scene("res://Scenes/select_controls.tscn")

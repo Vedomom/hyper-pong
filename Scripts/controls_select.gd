@@ -46,4 +46,4 @@ func assign_mult_controls():
 						actionEventList[event].set_device(int(p2_joy_options.get_item_text(p2_joy_options.selected)))
 
 
-	get_tree().change_scene_to_file("res://Scenes/multiplayer_court.tscn")
+	Transition.change_scene("res://Scenes/multiplayer_court.tscn")

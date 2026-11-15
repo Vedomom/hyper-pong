@@ -12,8 +12,6 @@ var slide_array : Array
 
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
-
-	Input.set_custom_mouse_cursor(load("res://Resources/images/tile_0026.png"))
 	
 
 #animation

@@ -12,6 +12,7 @@ func _ready() -> void:
 	cont_btn.grab_focus()
 	UIfocusSfx.play()
 	TextAnimation.slide_in(self, Vector2(0, 2000))
+	MenuPlayer.fade_in()
 
 func show_menu():
 	var menu = load("res://Scenes/upgrade_menu.tscn").instantiate()

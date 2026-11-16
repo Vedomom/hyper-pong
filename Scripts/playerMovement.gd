@@ -35,6 +35,8 @@ var leech_power := 0.0
 var health_bar_sb 
 var initial_label_font_size : int
 var initial_damage_font_size : int
+var can_downsize := false
+
 signal player_shot()  
 signal player_scored()
 signal player_damaged()

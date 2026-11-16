@@ -40,6 +40,7 @@ var _transition_effect_parameter_call = func(value : float):
 	)
 
 
+#modifications made to enable transitions on scene reload
 func change_scene(scene_path : String = ""):
 	if _transition_effect == null:
 		push_warning("Transition effect not found.")
@@ -55,6 +56,8 @@ func change_scene(scene_path : String = ""):
 	_transition_effect.set_visible(true)
 	_transition_tween = create_tween()
 	_transition_tween.tween_method(_transition_effect_parameter_call, 0.0, 0.5, 0.5)
+	
+	# checking if there is a path , otherwise reload scene
 	if scene_path != "":
 		_transition_tween.tween_callback(get_tree().change_scene_to_file.bind(scene_path))
 	else:

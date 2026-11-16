@@ -27,6 +27,9 @@ func _ready() -> void:
 	quit_btn.focus_entered.connect(UIfocusSfx.play)
 	setting_btn.focus_entered.connect(UIfocusSfx.play)
 	MusicPlayer.stop()
+	MenuPlayer.stream = AudioStreamMP3.load_from_file("res://Resources/SFX/HCP_Menu.mp3")
+	MenuPlayer.fade_in()
+
 
 
 func play_game():

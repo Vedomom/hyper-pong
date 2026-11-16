@@ -24,6 +24,7 @@ func _ready() -> void:
 	p2_joy_options.focus_entered.connect(UIfocusSfx.play)
 	p1_joy_options.pressed.connect(UIpressSfx.play)
 	p2_joy_options.pressed.connect(UIpressSfx.play)
+	cont_btn.grab_focus()
 
 
 

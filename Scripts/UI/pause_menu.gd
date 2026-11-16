@@ -22,8 +22,11 @@ func _ready() -> void:
 	hide()
 	visibility_changed.connect(resume_btn.grab_focus)
 	
+	
 
 
 func resume():
 	get_tree().paused = false
+	MusicPlayer.fade_in()
+	MenuPlayer.fade_out()
 	hide()

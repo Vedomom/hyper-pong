@@ -4,10 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://btcglpnwcj83s" path="res://Resources/overlapping-diamonds.svg" id="2_48xlc"]
 [ext_resource type="Shader" uid="uid://cf4mkib6pt43m" path="res://Scripts/UI/shaders/Fractals_bg.gdshader" id="2_opfnp"]
 [ext_resource type="FontFile" uid="uid://bt3gbbw7fayi" path="res://Resources/Margarine-Regular.ttf" id="3_ce3w2"]
+[ext_resource type="Script" uid="uid://4whv2penysyu" path="res://Scripts/UI/bg_autoOn.gd" id="3_cp0ys"]
 [ext_resource type="Shader" uid="uid://h5rnab0t5ips" path="res://Scripts/UI/shaders/quantize_pixelate.gdshader" id="4_ce3w2"]
-[ext_resource type="Shader" uid="uid://dpdxexjbrn3il" path="res://Scripts/UI/shaders/rays.gdshader" id="5_n45e2"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_opfnp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yhxw7"]
 shader = ExtResource("2_opfnp")
 shader_parameter/speed = 0.1
 shader_parameter/pixelation = 8.0
@@ -120,20 +120,6 @@ shader_parameter/quantize_size = 3
 shader_parameter/snap_to_world = false
 shader_parameter/limit_subpixels = true
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ce3w2"]
-shader = ExtResource("5_n45e2")
-shader_parameter/pixelation = Vector2(64, 64)
-shader_parameter/gradient_steps = 5.0
-shader_parameter/spread = 0.28100001264898
-shader_parameter/size = 0.5000000712500001
-shader_parameter/speed = 2.0
-shader_parameter/ray1_density = 0.30000001425
-shader_parameter/ray2_density = 0.400000019
-shader_parameter/ray2_intensity = 0.20000010449999994
-shader_parameter/core_intensity = 4.7499999933364734e-08
-shader_parameter/hdr = false
-shader_parameter/seed = 2.0
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xsaa"]
 bg_color = Color(0.2697, 0.419775, 0.87, 1)
 border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
@@ -212,9 +198,9 @@ title_lbl = NodePath("Title")
 mult_btn = NodePath("ButtonFrame/MultiplayerButton")
 setting_btn = NodePath("ButtonFrame/SettingButton")
 
-[node name="bg" type="ColorRect" parent="." unique_id=114667060]
+[node name="bg" type="ColorRect" parent="." unique_id=944114447]
 visible = false
-material = SubResource("ShaderMaterial_opfnp")
+material = SubResource("ShaderMaterial_yhxw7")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -225,6 +211,7 @@ offset_right = 14.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("3_cp0ys")
 
 [node name="Background" type="ColorRect" parent="." unique_id=200976755]
 visible = false
@@ -247,9 +234,10 @@ stretch_mode = 1
 [node name="Title" type="Label" parent="." unique_id=1965841692]
 z_index = 1
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = -1
 anchor_right = 1.0
-offset_bottom = 335.0
+anchor_bottom = 0.31
+offset_bottom = 0.2000122
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 120
 text = "Hyper Chaos Pong"
@@ -272,17 +260,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Shine" type="ColorRect" parent="." unique_id=1930240893]
-visible = false
-material = SubResource("ShaderMaterial_ce3w2")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.74548507, 0.4058262, 1, 1)
-
 [node name="ButtonFrame" type="VBoxContainer" parent="." unique_id=835841819]
 layout_mode = 1
 anchors_preset = 8
@@ -291,9 +268,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -273.0
-offset_top = -205.0
+offset_top = -240.0
 offset_right = 273.0
-offset_bottom = 443.0
+offset_bottom = 408.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)

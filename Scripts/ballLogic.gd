@@ -106,7 +106,7 @@ func _physics_process(delta: float) -> void:
 			bounce_particle.restart()
 			bounced.emit()
 
-	if Input.is_action_pressed("Hit") and is_reset and !(player.is_dead or cpu.is_dead):
+	if Input.is_action_pressed("Hit") and is_reset and !(player.is_dead or cpu.is_dead) and shape.visible:
 
 		speed = initial_speed
 		score_count = 0

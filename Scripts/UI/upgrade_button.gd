@@ -23,4 +23,4 @@ func add_upgrade():
 		var container = player.get_child(2)
 		container.add_child(scene)
 		player.round_up.emit()
-		get_parent().queue_free()
+		TextAnimation.slide_out(get_parent(), Vector2(get_parent().position.x, -2000))

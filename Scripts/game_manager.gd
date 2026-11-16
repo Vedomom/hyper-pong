@@ -47,8 +47,13 @@ func _ready() -> void:
 	enemy.enemy_scored.connect(play_goal_sfx)
 	player.player_died.connect(play_long_goal_sfx)
 	enemy.enemy_died.connect(play_long_goal_sfx)
+	
+	MenuPlayer.stream = AudioStreamMP3.load_from_file("res://Resources/SFX/HCP_Menu_continious.mp3")
+	MenuPlayer.play()
+	MenuPlayer.stream_paused = true
+	MenuPlayer.volume_linear = 0.0
 
-	MusicPlayer.play()
+	MusicPlayer.fade_in(1.0)
 
 
 
@@ -79,6 +84,8 @@ func _process(_delta: float) -> void:
 		if !get_tree().paused:
 			get_tree().paused = true
 			pause_menu.show()
+			MusicPlayer.fade_out()
+			MenuPlayer.fade_in()
 
 	
 	
@@ -115,8 +122,8 @@ func next_round():
 		ball.game_won = false
 		ball.shape.show()
 		get_tree().paused = false
-
-		MusicPlayer.stream_paused = false
+		MenuPlayer.fade_out()
+		MusicPlayer.fade_in()
 
 
 		get_tree().paused = false
@@ -234,7 +241,7 @@ func play_goal_sfx():
 	goal_sfx.play()
 
 func play_long_goal_sfx():
-	MusicPlayer.stream_paused = true
+	MusicPlayer.fade_out(0.2)
 
 	goal_sfx.stream = AudioStreamWAV.load_from_file("res://Resources/SFX/goal_short.wav")
 	goal_sfx.play()

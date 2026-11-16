@@ -12,6 +12,7 @@ func _ready() -> void:
 	cont_btn.grab_focus()
 	UIfocusSfx.play()
 	TextAnimation.slide_in(self, Vector2(0, 2000))
+	MenuPlayer.fade_in()
 
 func _process(_delta: float) -> void:
 	if winner_text:

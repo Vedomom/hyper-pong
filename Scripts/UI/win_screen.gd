@@ -10,6 +10,7 @@ func _ready() -> void:
 	NR_Btn.pressed.connect(Transition.change_scene.bind(get_tree().current_scene.get_path()))
 	NR_Btn.pressed.connect(UIpressSfx.play)
 	TextAnimation.slide_in(self, Vector2(0, 3000), 2.8)
+	MenuPlayer.fade_in()
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("Left"):

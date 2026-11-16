@@ -90,7 +90,7 @@ show_behind_parent = true
 top_level = true
 z_index = 2
 use_parent_material = true
-width = 20.0
+width = 16.0
 width_curve = SubResource("Curve_8xsaa")
 default_color = Color(1, 1, 1, 0.6156863)
 

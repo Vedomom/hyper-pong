@@ -2,11 +2,26 @@
 
 [ext_resource type="Texture2D" uid="uid://btcglpnwcj83s" path="res://Resources/overlapping-diamonds.svg" id="1_3etfd"]
 [ext_resource type="Script" uid="uid://47hqjvuhwux2" path="res://Scripts/UI/settings_menu.gd" id="1_rahb6"]
+[ext_resource type="Shader" uid="uid://cf4mkib6pt43m" path="res://Scripts/UI/shaders/Fractals_bg.gdshader" id="2_jjs6x"]
 [ext_resource type="FontFile" uid="uid://bt3gbbw7fayi" path="res://Resources/Margarine-Regular.ttf" id="2_rahb6"]
 [ext_resource type="Script" uid="uid://2j5dovfbc2l0" path="res://Scripts/UI/audio_slider.gd" id="3_fe37x"]
-[ext_resource type="Texture2D" uid="uid://wvbjh38jqgpe" path="res://builds/debug/Resources/icons/volume-full_big.svg" id="4_jjs6x"]
-[ext_resource type="Texture2D" uid="uid://cftwu2bswbegd" path="res://builds/debug/Resources/icons/music.svg" id="5_fsgis"]
+[ext_resource type="Script" uid="uid://4whv2penysyu" path="res://Scripts/UI/bg_autoOn.gd" id="3_fsgis"]
+[ext_resource type="Texture2D" uid="uid://wvbjh38jqgpe" path="res://Resources/icons/volume-full_big.svg" id="4_jjs6x"]
+[ext_resource type="Texture2D" uid="uid://cftwu2bswbegd" path="res://Resources/icons/music.svg" id="5_fsgis"]
 [ext_resource type="Shader" uid="uid://h5rnab0t5ips" path="res://Scripts/UI/shaders/quantize_pixelate.gdshader" id="7_fe37x"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fsgis"]
+shader = ExtResource("2_jjs6x")
+shader_parameter/speed = 0.1
+shader_parameter/pixelation = 8.0
+shader_parameter/zoom = 2.0
+shader_parameter/gradient_pixelation = 0.2
+shader_parameter/background_threshold = 0.0
+shader_parameter/color_low_threshold = 0.0
+shader_parameter/color_mid_threshold = 0.7550000358625
+shader_parameter/color_low = Color(0.1254902, 0.1254902, 0.1254902, 1)
+shader_parameter/color_mid = Color(0.74509805, 0.74509805, 0.74509805, 1)
+shader_parameter/color_high = Color(0.9607843, 1, 0.98039216, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_jjs6x"]
 shader = ExtResource("7_fe37x")
@@ -40,6 +55,61 @@ corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 expand_margin_top = 1.0
 expand_margin_bottom = 1.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_fsgis"]
+font = ExtResource("2_rahb6")
+font_size = 50
+font_color = Color(0.86292744, 0.933358, 0.9301186, 1)
+shadow_color = Color(0.31695512, 0.06341037, 0.34648004, 1)
+shadow_offset = Vector2(8, 8)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wwxhi"]
+bg_color = Color(0.07, 0.07, 0.07, 0.53333336)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.85, 0.81345004, 0.48450002, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ht16y"]
+bg_color = Color(0, 0, 0, 0.53333336)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.85, 0.81345004, 0.48450002, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ciw7g"]
+bg_color = Color(0.2, 0.2, 0.2, 0.53333336)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.85, 0.81345004, 0.48450002, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f7122"]
+bg_color = Color(0.07, 0.07, 0.07, 0.53333336)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0.9098966, 0.9271944, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hmele"]
 bg_color = Color(0.116199985, 0.29465002, 0.83, 1)
@@ -89,7 +159,7 @@ shadow_color = Color(0.87, 0.79692, 0.3219, 1)
 shadow_size = 6
 shadow_offset = Vector2(5, 5)
 
-[node name="SettingsMenu" type="Control" unique_id=816104311 node_paths=PackedStringArray("sfx_slider", "music_slider", "back_btn")]
+[node name="SettingsMenu" type="Control" unique_id=816104311 node_paths=PackedStringArray("sfx_slider", "music_slider", "back_btn", "disp_options")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,8 +170,25 @@ script = ExtResource("1_rahb6")
 sfx_slider = NodePath("mainframe/SFXSlider")
 music_slider = NodePath("mainframe/MusicSlider")
 back_btn = NodePath("mainframe/QuitButton")
+disp_options = NodePath("mainframe/DisplayContainer/displayOptions")
+
+[node name="bg" type="ColorRect" parent="." unique_id=1275182805]
+visible = false
+material = SubResource("ShaderMaterial_fsgis")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -14.0
+offset_top = -4.0
+offset_right = 14.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_fsgis")
 
 [node name="background" type="ColorRect" parent="." unique_id=324221346]
+visible = false
 z_index = 4
 layout_mode = 1
 anchors_preset = 15
@@ -142,6 +229,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="backlight" type="ColorRect" parent="." unique_id=900516015]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -400.0
+offset_right = 400.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.39215687)
+
 [node name="mainframe" type="VBoxContainer" parent="." unique_id=1406299023]
 z_index = 3
 layout_mode = 1
@@ -160,7 +262,7 @@ mouse_filter = 0
 alignment = 1
 
 [node name="SFXSlider" type="HSlider" parent="mainframe" unique_id=1338444406]
-z_index = 5
+z_index = 4
 layout_mode = 2
 size_flags_vertical = 6
 size_flags_stretch_ratio = 0.5
@@ -237,6 +339,31 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 offset_transform_enabled = true
 offset_transform_position = Vector2(-300, 0)
 texture = ExtResource("5_fsgis")
+
+[node name="DisplayContainer" type="HBoxContainer" parent="mainframe" unique_id=1083807540]
+layout_mode = 2
+alignment = 1
+
+[node name="display" type="Label" parent="mainframe/DisplayContainer" unique_id=1630887631]
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Display Mode"
+label_settings = SubResource("LabelSettings_fsgis")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="displayOptions" type="OptionButton" parent="mainframe/DisplayContainer" unique_id=1882152410]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.55
+theme_override_fonts/font = ExtResource("2_rahb6")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_wwxhi")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ht16y")
+theme_override_styles/hover = SubResource("StyleBoxFlat_ciw7g")
+theme_override_styles/focus = SubResource("StyleBoxFlat_f7122")
+alignment = 1
 
 [node name="QuitButton" type="Button" parent="mainframe" unique_id=1622378027]
 z_index = 5

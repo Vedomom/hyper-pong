@@ -40,9 +40,14 @@ func slide_in(subject: Node, amount:Vector2, weight : float = 0.0):
 	slide_array.append(subject)
 	slide_weight = weight
 
-#bonus funcs
+func slide_out(subject:Control, direction : Vector2, duration:float = 0.5):
+	var down_tween = create_tween()
+	var down_tmethod = func dtm(value: Vector2):
+		subject.position = value
+	down_tween.tween_method(down_tmethod, subject.position, direction, duration)
+	down_tween.tween_callback(subject.queue_free)
 
-
+#process
 func _process(_delta: float) -> void:
 	var exec = execute_pop_animation()
 	execute_rot_animation(10*_delta)
@@ -55,6 +60,11 @@ func _process(_delta: float) -> void:
 			subject_array[index].label_settings.font_size = initial_font_size_array[index]
 			subject_array.remove_at(index)
 			initial_font_size_array.remove_at(index)
+
+
+#bonus funcs
+
+
 
 
 
@@ -99,3 +109,6 @@ func execute_slide_in(_delta):
 				if slide_subject.position == Vector2.ZERO:
 					slide_subject.position = Vector2.ZERO
 					slide_subject = null
+
+
+	

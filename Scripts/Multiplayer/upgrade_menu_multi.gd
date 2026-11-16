@@ -101,6 +101,8 @@ func get_upgrades_list(player, folder, player_list):
 			player_list.erase(ugd)
 		elif player.speed >= player.MAX_SPEED and ugd.title.to_lower().contains("speed"):
 			player_list.erase(ugd)		
+		elif ugd.title.to_lower().contains("downsize") and player.can_downsize:
+			player_list.erase(ugd)	
 
 
 func p1_ready():
@@ -115,4 +117,4 @@ func p1_ready():
 
 func p2_ready():
 	player_1.round_up.emit()
-	queue_free()
+	TextAnimation.slide_out(self, Vector2(position.x, -2000))

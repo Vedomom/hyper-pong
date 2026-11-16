@@ -1,4 +1,9 @@
 [gd_scene format=3 uid="uid://cw75rdwl26h22"]
 
+[ext_resource type="Script" uid="uid://djtnuu70c0of8" path="res://Scripts/music_player.gd" id="1_bs3f0"]
+
 [node name="MenuPlayer" type="AudioStreamPlayer" unique_id=419137656]
+process_mode = 3
+volume_db = 5.0
 bus = &"Music"
+script = ExtResource("1_bs3f0")

@@ -82,11 +82,6 @@ font_color = Color(1, 1, 0.61, 1)
 
 [node name="Court" type="Node2D" unique_id=430284900]
 
-[node name="background" type="ColorRect" parent="." unique_id=1777050252]
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.1254902, 0.1254902, 0.1254902, 1)
-
 [node name="Player" parent="." unique_id=1410247650 node_paths=PackedStringArray("health_lable", "damage_label", "health_bar", "cpu", "dmg_lbl") instance=ExtResource("1_hxgs0")]
 z_index = 2
 position = Vector2(107, 536)
@@ -169,13 +164,14 @@ grow_vertical = 2
 
 [node name="PlayerHealth" type="Label" parent="UI/Player" unique_id=1717140905]
 z_index = 2
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -958.0
-offset_top = 86.0
-offset_right = -870.0
-offset_bottom = 141.0
+anchors_preset = -1
+anchor_top = 0.080000006
+anchor_right = 0.047000002
+anchor_bottom = 0.13100001
+offset_left = 2.0
+offset_top = -0.40000916
+offset_right = -0.2400055
+offset_bottom = -0.480011
 grow_horizontal = 2
 pivot_offset = Vector2(44, 27)
 text = "0"
@@ -185,13 +181,15 @@ vertical_alignment = 1
 
 [node name="PlayerDamage" type="Label" parent="UI/Player" unique_id=1818984572]
 z_index = 2
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -860.0
-offset_top = 2.0
-offset_right = -660.0
-offset_bottom = 50.0
+anchors_preset = -1
+anchor_left = 0.052
+anchor_top = 0.002
+anchor_right = 0.156
+anchor_bottom = 0.046000004
+offset_left = 0.15999603
+offset_top = -0.16000009
+offset_right = 0.47998047
+offset_bottom = 0.31999588
 grow_horizontal = 2
 pivot_offset = Vector2(100, 24)
 text = "0"
@@ -202,23 +200,29 @@ clip_text = true
 
 [node name="PlayerDamageIndicator" type="Label" parent="UI/Player" unique_id=784677197]
 z_index = 2
-offset_left = 9.0
+anchors_preset = -1
+anchor_left = 0.0050000004
+anchor_right = 0.041
+anchor_bottom = 0.045
+offset_left = -0.6000004
 offset_top = 1.0
-offset_right = 64.0
-offset_bottom = 49.0
+offset_right = -14.720001
+offset_bottom = 0.3999977
 text = "dmg :"
 label_settings = SubResource("LabelSettings_6j87r")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="PlayerHealthBar" type="ProgressBar" parent="UI/Player" unique_id=691387748]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 21.0
-offset_top = -401.0
-offset_right = 71.0
-offset_bottom = -151.0
+anchors_preset = -1
+anchor_left = 0.011000001
+anchor_top = 0.12900001
+anchor_right = 0.037
+anchor_bottom = 0.36
+offset_left = -0.12000084
+offset_top = -0.32000732
+offset_right = -0.040000916
+offset_bottom = 0.19998169
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_clkqn")
 theme_override_styles/fill = SubResource("StyleBoxFlat_8gnj2")
@@ -230,15 +234,15 @@ show_percentage = false
 
 [node name="CPUHealth" type="Label" parent="UI/CPU" unique_id=1774139381]
 z_index = 2
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 871.0
-offset_top = -454.5
-offset_right = 959.0
-offset_bottom = -399.5
+anchors_preset = -1
+anchor_left = 0.95400006
+anchor_top = 0.079
+anchor_right = 1.0
+anchor_bottom = 0.13000001
+offset_left = -0.6800537
+offset_top = 0.17999268
+offset_right = -1.0
+offset_bottom = 0.099990845
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
@@ -249,13 +253,14 @@ vertical_alignment = 1
 
 [node name="CPUDamage" type="Label" parent="UI/CPU" unique_id=239488184]
 z_index = 2
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = 659.0
+anchors_preset = -1
+anchor_left = 0.84300005
+anchor_right = 0.947
+anchor_bottom = 0.046000004
+offset_left = 0.4399414
 offset_top = 2.0
-offset_right = 859.0
-offset_bottom = 50.0
+offset_right = 0.76000977
+offset_bottom = 0.31999588
 grow_horizontal = 2
 pivot_offset = Vector2(100, 24)
 text = "0"
@@ -266,13 +271,14 @@ clip_text = true
 
 [node name="CPUDamageIndicator" type="Label" parent="UI/CPU" unique_id=2140596799]
 z_index = 2
-anchors_preset = 1
-anchor_left = 1.0
+anchors_preset = -1
+anchor_left = 0.96000004
 anchor_right = 1.0
-offset_left = -77.0
+anchor_bottom = 0.045
+offset_left = -0.20007324
 offset_top = 1.0
 offset_right = -7.0
-offset_bottom = 49.0
+offset_bottom = 0.3999977
 grow_horizontal = 0
 text = ": dmg"
 label_settings = SubResource("LabelSettings_mlxss")
@@ -280,13 +286,15 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CPUHealthBar" type="ProgressBar" parent="UI/CPU" unique_id=202429170]
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 1849.0
-offset_top = -401.0
-offset_right = 1899.0
-offset_bottom = -151.0
+anchors_preset = -1
+anchor_left = 0.96300006
+anchor_top = 0.12900001
+anchor_right = 0.989
+anchor_bottom = 0.36
+offset_left = 0.039916992
+offset_top = -0.32000732
+offset_right = 0.11999512
+offset_bottom = 0.19998169
 grow_vertical = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_d8gck")
 theme_override_styles/fill = SubResource("StyleBoxFlat_fcib3")
@@ -329,18 +337,27 @@ vertical_alignment = 1
 
 [node name="bg" type="Node" parent="UI" unique_id=879551604]
 
+[node name="Background" type="ColorRect" parent="UI/bg" unique_id=1634602227]
+z_index = -2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+
 [node name="court pattern" type="TextureRect" parent="UI/bg" unique_id=1020778149]
 modulate = Color(1, 1, 1, 0.02745098)
 z_index = 2
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -865.0
-offset_top = -485.0
-offset_right = 1055.0
-offset_bottom = 595.0
+anchors_preset = -1
+anchor_left = 0.049000002
+anchor_top = 0.051000003
+anchor_right = 0.94900006
+anchor_bottom = 0.95100003
+offset_left = 0.91999817
+offset_top = -0.08000183
+offset_right = 192.91992
+offset_bottom = 107.91992
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.9, 0.9)
@@ -350,15 +367,12 @@ stretch_mode = 1
 [node name="Court" type="ColorRect" parent="UI/bg" unique_id=362636804]
 z_index = 1
 z_as_relative = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -864.0
-offset_top = -486.0
-offset_right = 864.0
-offset_bottom = 486.0
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95000005
+anchor_bottom = 0.95000005
+offset_right = -0.00012207031
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.08235294, 0.08235294, 0.08235294, 1)
@@ -375,15 +389,15 @@ stretch_mode = 1
 
 [node name="Courtborder" type="ColorRect" parent="UI/bg" unique_id=1817002062]
 z_as_relative = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -869.0
-offset_top = -491.0
-offset_right = 869.0
-offset_bottom = 491.0
+anchors_preset = -1
+anchor_left = 0.047000002
+anchor_top = 0.045
+anchor_right = 0.95300007
+anchor_bottom = 0.95500004
+offset_left = 0.7599945
+offset_top = 0.3999977
+offset_right = -0.76013184
+offset_bottom = -0.4000244
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.9607843, 1, 0.98039216, 1)

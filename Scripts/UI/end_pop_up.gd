@@ -10,7 +10,7 @@ var end_text : String
 
 func _ready() -> void:
 	visible = false
-	restart_btn.pressed.connect(Transition.change_scene.bind(get_tree().current_scene.get_path()))
+	restart_btn.pressed.connect(Transition.change_scene)
 	menu_btn.pressed.connect(Transition.change_scene.bind("res://Scenes/main_menu.tscn"))
 	restart_btn.pressed.connect(UIpressSfx.play)
 	menu_btn.pressed.connect(UIpressSfx.play)

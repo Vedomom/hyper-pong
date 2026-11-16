@@ -166,12 +166,12 @@ func reset(is_stuck : bool = false):
 				if last_pos.x >= 1800:
 					player.player_scored.emit()
 					cpu.enemy_damaged.emit()
-					await get_tree().create_timer(0.03).timeout
+					await get_tree().create_timer(0.04).timeout
 					deduct_health(cpu, player.current_damage)
 				else :
 					player.player_damaged.emit()
 					cpu.enemy_scored.emit()
-					await get_tree().create_timer(0.03).timeout
+					await get_tree().create_timer(0.04).timeout
 					deduct_health(player, cpu.current_damage)
 			trail.clear_points()
 			player.current_damage = player.initial_damage

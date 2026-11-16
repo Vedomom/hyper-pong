@@ -10,7 +10,6 @@ modulate = Color(0.4587546, 0.60942096, 1, 1)
 scale = Vector2(2, 2)
 script = ExtResource("1_xwqh3")
 paddle_shape = NodePath("CollisionShape2D")
-initial_health = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1703698107]
 shape = SubResource("RectangleShape2D_4wpvp")

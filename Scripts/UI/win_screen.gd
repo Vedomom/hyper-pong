@@ -7,7 +7,7 @@ extends Control
 func _ready() -> void:
 	MM_Btn.pressed.connect(Transition.change_scene.bind("res://Scenes/main_menu.tscn"))
 	MM_Btn.pressed.connect(UIpressSfx.play)
-	NR_Btn.pressed.connect(Transition.change_scene.bind(get_tree().current_scene.get_path()))
+	NR_Btn.pressed.connect(Transition.change_scene)
 	NR_Btn.pressed.connect(UIpressSfx.play)
 	TextAnimation.slide_in(self, Vector2(0, 3000), 2.8)
 	MenuPlayer.fade_in()

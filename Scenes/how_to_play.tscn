@@ -215,14 +215,14 @@ size_flags_stretch_ratio = 2.0
 text = "
 Your goal is simple, To WIN , how do you do that?  by beating your opponents ,  and how do you beat them? by scoring on them, silly! move your paddle and try to score on them before they get you first , beat 10 of them and you'll be a WINNER , be careful though these opponents get stronger as you progress, so be sure to get a good upgrade after each round . choose wisely and may luck be on your side. 
 
-also you'll need a therapist after this cause just yo be clear , you are killing people by scoring on them.
+also you'll need a therapist after this cause just to be clear , you ARE killing people by scoring on them.
 "
 label_settings = SubResource("LabelSettings_wpr6w")
 vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="ControlsHeader" type="Label" parent="ScrollContainer/Mainframe" unique_id=2007369572]
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 text = "Controls:"
 label_settings = SubResource("LabelSettings_lonyb")

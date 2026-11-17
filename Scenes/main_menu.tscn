@@ -183,7 +183,7 @@ shadow_color = Color(0.98, 0.245, 0.6982501, 1)
 shadow_size = 1
 shadow_offset = Vector2(5, 5)
 
-[node name="MainMenu" type="Control" unique_id=1412889394 node_paths=PackedStringArray("play_btn", "quit_btn", "title_lbl", "mult_btn", "setting_btn")]
+[node name="MainMenu" type="Control" unique_id=1412889394 node_paths=PackedStringArray("play_btn", "quit_btn", "title_lbl", "mult_btn", "setting_btn", "htp_btn")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -197,6 +197,7 @@ quit_btn = NodePath("ButtonFrame/QuitButton")
 title_lbl = NodePath("Title")
 mult_btn = NodePath("ButtonFrame/MultiplayerButton")
 setting_btn = NodePath("ButtonFrame/SettingButton")
+htp_btn = NodePath("ButtonFrame/HTPButton")
 
 [node name="bg" type="ColorRect" parent="." unique_id=944114447]
 visible = false
@@ -270,7 +271,7 @@ anchor_bottom = 0.5
 offset_left = -273.0
 offset_top = -240.0
 offset_right = 273.0
-offset_bottom = 408.0
+offset_bottom = 458.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
@@ -328,6 +329,23 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_28flt")
 theme_override_styles/focus = SubResource("StyleBoxFlat_1ehe0")
 text = "Settings
 "
+
+[node name="HTPButton" type="Button" parent="ButtonFrame" unique_id=777565415]
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.05
+focus_neighbor_top = NodePath("../MultiplayerButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../MultiplayerButton")
+theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
+theme_override_fonts/font = ExtResource("3_ce3w2")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_8xsaa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_erv1k")
+theme_override_styles/hover = SubResource("StyleBoxFlat_28flt")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1ehe0")
+text = "How To Play"
 
 [node name="QuitButton" type="Button" parent="ButtonFrame" unique_id=993721680]
 layout_mode = 2

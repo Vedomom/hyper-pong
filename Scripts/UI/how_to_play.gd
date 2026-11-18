@@ -8,7 +8,7 @@ func _ready() -> void:
 	quit_btn.pressed.connect(UIpressSfx.play)
 	quit_btn.focus_entered.connect(UIfocusSfx.play)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_pressed("Down"):
 		scroll_area.scroll_vertical += 2
 	elif Input.is_action_pressed("Up"):

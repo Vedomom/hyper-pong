@@ -9,8 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://b3mq2vv4fa0wh" path="res://Resources/jupiter.svg" id="5_8gnj2"]
 [ext_resource type="Script" uid="uid://boaopnmsi2pb6" path="res://Scripts/game_manager.gd" id="5_clkqn"]
 [ext_resource type="Texture2D" uid="uid://pekwh0fwck5t" path="res://Resources/happy-intersection.svg" id="6_d8gck"]
-[ext_resource type="AudioStream" uid="uid://c64llkljkcicp" path="res://Resources/SFX/bounce.wav" id="9_6j87r"]
-[ext_resource type="AudioStream" uid="uid://cf4segr3m7n67" path="res://Resources/SFX/goal.wav" id="10_6j87r"]
+[ext_resource type="AudioStream" uid="uid://c64llkljkcicp" path="res://builds/debug/Resources/SFX/bounce.wav" id="9_6j87r"]
+[ext_resource type="AudioStream" uid="uid://cf4segr3m7n67" path="res://builds/debug/Resources/SFX/goal.wav" id="10_6j87r"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhf37"]
 size = Vector2(1920, 50)

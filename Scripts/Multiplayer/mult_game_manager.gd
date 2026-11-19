@@ -79,6 +79,9 @@ func _process(_delta: float) -> void:
 			get_tree().paused = true
 			pause_menu.show()
 			MusicPlayer.fade_out()
+			MenuPlayer.stream = AudioStreamMP3.load_from_file("res://Resources/SFX/HCP_Pause.mp3")
+			MenuPlayer.volume_db = -2
+			MenuPlayer.initial_volume = MenuPlayer.volume_linear
 			MenuPlayer.fade_in()
 
 
@@ -201,3 +204,6 @@ func play_long_goal_sfx():
 	MusicPlayer.fade_out(0.2)
 	goal_sfx.stream = AudioStreamWAV.load_from_file("res://Resources/SFX/goal_short.wav")
 	goal_sfx.play()
+	MenuPlayer.stream = AudioStreamMP3.load_from_file("res://Resources/SFX/HCP_Menu_continious.mp3")
+	MenuPlayer.volume_db = 5
+	MenuPlayer.initial_volume = MenuPlayer.volume_linear

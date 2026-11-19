@@ -41,4 +41,13 @@ func player_scored():
 		ball.scale = Vector2(0.7, 0.7)
 		ball.trail.width *= 2
 		ball.speed -= 50
+
+
+func player_damaged():
+	if is_downsized:
+		is_downsized = false
+		await get_tree().create_timer(0.03).timeout
+		ball.scale = Vector2(0.7, 0.7)
+		ball.trail.width *= 2
+		ball.speed -= 50
 		

@@ -6,6 +6,8 @@ var mult
 var is_hard_hit := false
 
 func initialize_power():
+	titel = "HardHit"
+	description = "Hits the ball hard"
 	for node in enemy.get_parent().get_children():
 		if node is Ball:
 			ball = node

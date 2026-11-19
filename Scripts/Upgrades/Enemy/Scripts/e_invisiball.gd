@@ -6,6 +6,8 @@ var player : Player
 var is_invisiball := false
 
 func initialize_power():
+	titel = "Invisiball"
+	description = "you can't see it"
 	for node in enemy.get_parent().get_children():
 		if node is Ball:
 			ball = node

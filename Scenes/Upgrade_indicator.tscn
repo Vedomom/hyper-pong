@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://btfvtlpvp3ino"]
+
+[ext_resource type="FontFile" uid="uid://bt3gbbw7fayi" path="res://Resources/Margarine-Regular.ttf" id="1_11udt"]
+[ext_resource type="Script" uid="uid://c8ixy6is2506k" path="res://Scripts/UI/upgrade_indicator.gd" id="2_hbdtt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_le8vw"]
+bg_color = Color(1, 0.8784314, 0.4, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.92941177, 0.49411765, 0, 1)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_08sgf"]
+bg_color = Color(0.92941177, 0.49411765, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(1, 0.8784314, 0.4, 1)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hbdtt"]
+bg_color = Color(0.92941177, 0.49411765, 0, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(1, 0.8784314, 0.4, 1)
+shadow_size = 1
+shadow_offset = Vector2(1, 1)
+
+[node name="UpgradeIcon" type="Button" unique_id=1446224259]
+z_index = 5
+custom_minimum_size = Vector2(36, 36)
+offset_right = 36.0
+offset_bottom = 36.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+tooltip_text = "asdasdasd"
+focus_mode = 0
+theme_override_colors/font_color = Color(0.2509804, 0.2509804, 0.2509804, 1)
+theme_override_fonts/font = ExtResource("1_11udt")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_le8vw")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_08sgf")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hbdtt")
+text = "C"
+script = ExtResource("2_hbdtt")

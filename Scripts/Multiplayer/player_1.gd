@@ -14,6 +14,8 @@ class_name Player_1
 @export var health_bar : ProgressBar
 @export var player_2: Player_2
 @export var dmg_lbl : Label
+@export var court : ColorRect
+@export var upgrades_container : HBoxContainer
 
 const MAX_SPEED = 1300
 const MIN_SPEED = 500
@@ -90,7 +92,7 @@ func _physics_process(delta: float) -> void:
 
 
 	velocity.x = 0.0
-	position.x = clampf(position.x, 107, 107)
+	position.x = clampf(position.x, court.position.x + 10, court.position.x + 10)
 	lunge_timer -= delta
 	cooldown_timer -= delta
 

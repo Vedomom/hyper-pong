@@ -34,7 +34,7 @@ func _ready() -> void:
 			ui_container = node
 	
 
-	round_number = 2
+	round_number = 1
 	max_rounds = 10
 	round_label.text = "Round : %d / %d" %[round_number ,max_rounds]
 	randomize_enemy_health()
@@ -169,8 +169,8 @@ func upgrade_enemy():
 
 func randomize_enemy_health():
 	if round_number <= 5 :
-		#enemy.initial_health = randi_range(clamp((round_number*10) - 15, 1, round_number*10), round_number*10)
-		enemy.initial_health =1
+		enemy.initial_health = randi_range(clamp((round_number*10) - 15, 1, round_number*10), round_number*10)
+
 	else :
 		enemy.initial_health = randi_range(50, 150)
 

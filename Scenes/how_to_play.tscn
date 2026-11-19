@@ -1,0 +1,673 @@
+[gd_scene format=3 uid="uid://3blvghiiyite"]
+
+[ext_resource type="Script" uid="uid://8h2swn3whlin" path="res://Scripts/UI/how_to_play.gd" id="1_4lfeh"]
+[ext_resource type="Texture2D" uid="uid://btcglpnwcj83s" path="res://Resources/overlapping-diamonds.svg" id="1_hl01w"]
+[ext_resource type="Shader" uid="uid://h5rnab0t5ips" path="res://Scripts/UI/shaders/quantize_pixelate.gdshader" id="2_auoi8"]
+[ext_resource type="FontFile" uid="uid://bt3gbbw7fayi" path="res://Resources/Margarine-Regular.ttf" id="2_wpr6w"]
+[ext_resource type="Texture2D" uid="uid://hqgrbagap4d4" path="res://Resources/Input_Tiles/tile_0086.png" id="3_dlnx3"]
+[ext_resource type="Texture2D" uid="uid://bvyutwt0743qc" path="res://Resources/Input_Tiles/tile_0121.png" id="4_i0xi1"]
+[ext_resource type="Texture2D" uid="uid://b6iubi30ro5ff" path="res://Resources/Input_Tiles/tile_0120.png" id="5_sf1gv"]
+[ext_resource type="Texture2D" uid="uid://ctwuejiwsuh3b" path="res://Resources/Input_Tiles/tile_0122.png" id="6_fvnpy"]
+[ext_resource type="Texture2D" uid="uid://bmfyx2vrcdomr" path="res://Resources/Input_Tiles/tile_0235.png" id="7_spxys"]
+[ext_resource type="Texture2D" uid="uid://w6dudolyar5b" path="res://Resources/Input_Tiles/tile_0236.png" id="8_27c06"]
+[ext_resource type="Texture2D" uid="uid://bbj3umsli1xlr" path="res://Resources/Input_Tiles/tile_0237.png" id="9_2wkvt"]
+[ext_resource type="Texture2D" uid="uid://ba3yxwbwl4j34" path="res://Resources/Input_Tiles/tile_0255.png" id="10_2wkvt"]
+[ext_resource type="Texture2D" uid="uid://dy7rq12mf7lsm" path="res://Resources/Input_Tiles/tile_0256.png" id="11_tk1tp"]
+[ext_resource type="Texture2D" uid="uid://bn8tkrjmqtn5j" path="res://Resources/Input_Tiles/tile_0166.png" id="12_o8x83"]
+[ext_resource type="Texture2D" uid="uid://5bugv3kloa3c" path="res://Resources/Input_Tiles/tile_0017.png" id="12_vimhe"]
+[ext_resource type="Texture2D" uid="uid://dlenpjwerm56y" path="res://Resources/Input_Tiles/tile_0168.png" id="13_35c8b"]
+[ext_resource type="Texture2D" uid="uid://bpiufy5mgrr3x" path="res://Resources/Input_Tiles/tile_0169.png" id="14_o3gpe"]
+[ext_resource type="Texture2D" uid="uid://erx3yni3ptpi" path="res://Resources/Input_Tiles/tile_0167.png" id="15_ipq1q"]
+[ext_resource type="Texture2D" uid="uid://b6k0sd7ja0xxw" path="res://Resources/Input_Tiles/tile_0060.png" id="16_35c8b"]
+[ext_resource type="Texture2D" uid="uid://cmlxqxa8uff5i" path="res://Resources/Input_Tiles/tile_0035.png" id="17_yw3jm"]
+[ext_resource type="Texture2D" uid="uid://gn8ferd226oa" path="res://Resources/Input_Tiles/tile_0037.png" id="18_ikvrm"]
+[ext_resource type="Texture2D" uid="uid://drwlgglo884qf" path="res://Resources/Input_Tiles/tile_0038.png" id="19_e4xtn"]
+[ext_resource type="Texture2D" uid="uid://dk7qtakiuwwxf" path="res://Resources/Input_Tiles/tile_0036.png" id="20_0uh23"]
+[ext_resource type="Texture2D" uid="uid://bspee5wl0ja1q" path="res://Resources/Input_Tiles/tile_0004.png" id="21_uak87"]
+[ext_resource type="Texture2D" uid="uid://c78lk2ue5137w" path="res://Resources/Input_Tiles/tile_0006.png" id="22_ikvrm"]
+[ext_resource type="Texture2D" uid="uid://d1henhygr4041" path="res://Resources/Input_Tiles/tile_0005.png" id="23_0uh23"]
+[ext_resource type="Texture2D" uid="uid://cg8ywtcwhhotj" path="res://Resources/Input_Tiles/tile_0145.png" id="23_b3joh"]
+[ext_resource type="Texture2D" uid="uid://dgtt6gm4gyvei" path="res://Resources/Input_Tiles/tile_0617.png" id="24_auoi8"]
+[ext_resource type="Texture2D" uid="uid://cu35ye4llf7xy" path="res://Resources/Input_Tiles/tile_0147.png" id="24_rfscc"]
+[ext_resource type="Texture2D" uid="uid://cs6b6yrvnhc0c" path="res://Resources/Input_Tiles/tile_0007.png" id="24_uak87"]
+[ext_resource type="Texture2D" uid="uid://ba58muc3xxq62" path="res://Resources/Input_Tiles/tile_0148.png" id="25_vimhe"]
+[ext_resource type="Texture2D" uid="uid://2gk4y7ecxg1l" path="res://Resources/Input_Tiles/tile_0146.png" id="26_auoi8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4lfeh"]
+shader = ExtResource("2_auoi8")
+shader_parameter/texture_mode = 1
+shader_parameter/quantize_size = 3
+shader_parameter/snap_to_world = false
+shader_parameter/limit_subpixels = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_dlnx3"]
+font = ExtResource("2_wpr6w")
+font_size = 110
+font_color = Color(0.86292744, 0.933358, 0.9301186, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(1, 0.41000003, 0.70500004, 0.4509804)
+shadow_offset = Vector2(8, 8)
+stacked_shadow_count = 1
+stacked_shadow_0/offset = Vector2(-8, -8)
+stacked_shadow_0/color = Color(0.120000005, 0.56, 1, 0.7019608)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wpr6w"]
+font = ExtResource("2_wpr6w")
+font_size = 40
+font_color = Color(0.86292744, 0.933358, 0.9301186, 1)
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0.13725491, 0.02745098, 0.14901961, 1)
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lonyb"]
+font = ExtResource("2_wpr6w")
+font_size = 100
+font_color = Color(0.86292744, 0.933358, 0.9301186, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(1, 0.41000003, 0.70500004, 0.4509804)
+shadow_offset = Vector2(8, 8)
+stacked_shadow_count = 1
+stacked_shadow_0/offset = Vector2(-8, -8)
+stacked_shadow_0/color = Color(0.120000005, 0.56, 1, 0.7019608)
+
+[sub_resource type="LabelSettings" id="LabelSettings_7d32w"]
+font = ExtResource("2_wpr6w")
+font_size = 80
+font_color = Color(0.86292744, 0.933358, 0.9301186, 1)
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0.13725491, 0.02745098, 0.14901961, 1)
+shadow_offset = Vector2(4, 4)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4lfeh"]
+font = ExtResource("2_wpr6w")
+font_size = 5
+font_color = Color(0.86292744, 0.933358, 0.9301186, 1)
+outline_size = 8
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(1, 0.41000003, 0.70500004, 0.4509804)
+shadow_offset = Vector2(8, 8)
+stacked_shadow_count = 1
+stacked_shadow_0/offset = Vector2(-8, -8)
+stacked_shadow_0/color = Color(0.120000005, 0.56, 1, 0.7019608)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_auoi8"]
+bg_color = Color(0.116199985, 0.29465002, 0.83, 1)
+border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.87, 0.79692, 0.3219, 1)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4lfeh"]
+bg_color = Color(0.87, 0.79692, 0.3219, 1)
+border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.27058825, 0.41960785, 0.87058824, 1)
+shadow_size = 1
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqiwl"]
+bg_color = Color(0.27058825, 0.41960785, 0.87058824, 1)
+border_color = Color(0.9350695, 0.7947694, 0.9311, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.87, 0.79692, 0.3219, 1)
+shadow_size = 6
+shadow_offset = Vector2(5, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bw5kb"]
+bg_color = Color(0.27058825, 0.41960785, 0.87058824, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8627451, 0.078431375, 0.23529412, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_color = Color(0.87, 0.79692, 0.3219, 1)
+shadow_size = 6
+shadow_offset = Vector2(5, 5)
+
+[node name="HowToPlay" type="Control" unique_id=1628759281 node_paths=PackedStringArray("quit_btn", "scroll_area")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4lfeh")
+quit_btn = NodePath("ScrollContainer/Mainframe/QuitButton")
+scroll_area = NodePath("ScrollContainer")
+
+[node name="BG" type="ColorRect" parent="." unique_id=515977900]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.16078432, 0.16078432, 0.16078432, 1)
+
+[node name="ui_pattern" type="TextureRect" parent="BG" unique_id=1831646921]
+modulate = Color(1, 1, 1, 0.0627451)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_hl01w")
+stretch_mode = 1
+
+[node name="pixelize" type="ColorRect" parent="." unique_id=153627616]
+z_index = 50
+material = SubResource("ShaderMaterial_4lfeh")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=27663567]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/scroll_hint_horizontal_color = Color(0.9607843, 1, 0.98039216, 1)
+follow_focus = true
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="Mainframe" type="VBoxContainer" parent="ScrollContainer" unique_id=226747800]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 2
+
+[node name="Header" type="Label" parent="ScrollContainer/Mainframe" unique_id=2023533853]
+layout_mode = 2
+text = "How To Play"
+label_settings = SubResource("LabelSettings_dlnx3")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HTP" type="Label" parent="ScrollContainer/Mainframe" unique_id=57951074]
+custom_minimum_size = Vector2(1220, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+size_flags_stretch_ratio = 2.0
+text = "
+Your goal is simple, To WIN , how do you do that?  by beating your opponents ,  and how do you beat them? by scoring on them, silly! move your paddle and try to score on them before they get you first , beat 10 of them and you'll be a WINNER , be careful though these opponents get stronger as you progress, so be sure to get a good upgrade after each round . choose wisely and may luck be on your side. 
+
+also you'll need a therapist after this cause just to be clear , you ARE killing people by scoring on them.
+"
+label_settings = SubResource("LabelSettings_wpr6w")
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="ControlsHeader" type="Label" parent="ScrollContainer/Mainframe" unique_id=2007369572]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+text = "Controls:"
+label_settings = SubResource("LabelSettings_lonyb")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ControlsMainframe" type="HBoxContainer" parent="ScrollContainer/Mainframe" unique_id=1968023820]
+layout_mode = 2
+
+[node name="Actions" type="VBoxContainer" parent="ScrollContainer/Mainframe/ControlsMainframe" unique_id=1240821468]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_stretch_ratio = 1.45
+alignment = 1
+
+[node name="Up" type="Label" parent="ScrollContainer/Mainframe/ControlsMainframe/Actions" unique_id=2109079733]
+layout_mode = 2
+text = "Up :"
+label_settings = SubResource("LabelSettings_7d32w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Down" type="Label" parent="ScrollContainer/Mainframe/ControlsMainframe/Actions" unique_id=393244793]
+layout_mode = 2
+text = "Down : "
+label_settings = SubResource("LabelSettings_7d32w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Left" type="Label" parent="ScrollContainer/Mainframe/ControlsMainframe/Actions" unique_id=1791324049]
+layout_mode = 2
+text = "Left :"
+label_settings = SubResource("LabelSettings_7d32w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Right" type="Label" parent="ScrollContainer/Mainframe/ControlsMainframe/Actions" unique_id=160696362]
+layout_mode = 2
+text = "Right :"
+label_settings = SubResource("LabelSettings_7d32w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Accept" type="Label" parent="ScrollContainer/Mainframe/ControlsMainframe/Actions" unique_id=635346970]
+layout_mode = 2
+text = "Accept/Serve Ball:"
+label_settings = SubResource("LabelSettings_7d32w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Dash" type="Label" parent="ScrollContainer/Mainframe/ControlsMainframe/Actions" unique_id=1345577651]
+layout_mode = 2
+text = "Dash :"
+label_settings = SubResource("LabelSettings_7d32w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pause" type="Label" parent="ScrollContainer/Mainframe/ControlsMainframe/Actions" unique_id=1533946594]
+layout_mode = 2
+text = "Pause :"
+label_settings = SubResource("LabelSettings_7d32w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ControlsKB1" type="VBoxContainer" parent="ScrollContainer/Mainframe/ControlsMainframe" unique_id=1664176558]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+alignment = 1
+
+[node name="KB11" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsKB1" unique_id=195087932]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_dlnx3")
+expand_mode = 4
+
+[node name="KB12" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsKB1" unique_id=1336714962]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("4_i0xi1")
+expand_mode = 4
+
+[node name="KB13" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsKB1" unique_id=357217977]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("5_sf1gv")
+expand_mode = 4
+
+[node name="KB14" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsKB1" unique_id=700807624]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("6_fvnpy")
+expand_mode = 4
+
+[node name="KB17" type="HBoxContainer" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsKB1" unique_id=1992328006]
+layout_mode = 2
+alignment = 1
+
+[node name="KB15" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsKB1/KB17" unique_id=1199207623]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(4, 0)
+texture = ExtResource("7_spxys")
+expand_mode = 4
+
+[node name="KB16" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsKB1/KB17" unique_id=418386979]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("8_27c06")
+expand_mode = 4
+
+[node name="KB17" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsKB1/KB17" unique_id=1578237270]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(-4, 0)
+texture = ExtResource("9_2wkvt")
+expand_mode = 4
+
+[node name="KB18" type="HBoxContainer" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsKB1" unique_id=1355007250]
+layout_mode = 2
+alignment = 1
+
+[node name="KB15" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsKB1/KB18" unique_id=179607139]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(4, 0)
+texture = ExtResource("10_2wkvt")
+expand_mode = 4
+
+[node name="KB16" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsKB1/KB18" unique_id=1744459755]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("11_tk1tp")
+expand_mode = 4
+
+[node name="KB15" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsKB1" unique_id=823976406]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("12_vimhe")
+expand_mode = 4
+
+[node name="ControlsKB2" type="VBoxContainer" parent="ScrollContainer/Mainframe/ControlsMainframe" unique_id=431775112]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+alignment = 1
+
+[node name="KB11" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsKB2" unique_id=1517428079]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("12_o8x83")
+expand_mode = 4
+
+[node name="KB12" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsKB2" unique_id=577896648]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("13_35c8b")
+expand_mode = 4
+
+[node name="KB13" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsKB2" unique_id=1429588317]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("14_o3gpe")
+expand_mode = 4
+
+[node name="KB14" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsKB2" unique_id=1764150502]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("15_ipq1q")
+expand_mode = 4
+
+[node name="KB15" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsKB2" unique_id=1106888038]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(4, 0)
+texture = ExtResource("16_35c8b")
+expand_mode = 4
+
+[node name="KB18" type="HBoxContainer" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsKB2" unique_id=1016244960]
+layout_mode = 2
+alignment = 1
+
+[node name="KB15" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsKB2/KB18" unique_id=104526312]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(4, 0)
+texture = ExtResource("10_2wkvt")
+expand_mode = 4
+
+[node name="KB16" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsKB2/KB18" unique_id=1389775603]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+texture = ExtResource("11_tk1tp")
+expand_mode = 4
+
+[node name="KB16" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsKB2" unique_id=40727088]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("12_vimhe")
+expand_mode = 4
+
+[node name="ControlsJC1" type="VBoxContainer" parent="ScrollContainer/Mainframe/ControlsMainframe" unique_id=1404522926]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+alignment = 1
+
+[node name="JC11" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsJC1" unique_id=581799418]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("17_yw3jm")
+expand_mode = 4
+
+[node name="JC12" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsJC1" unique_id=863265655]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("18_ikvrm")
+expand_mode = 4
+
+[node name="JC13" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsJC1" unique_id=659587788]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("19_e4xtn")
+expand_mode = 4
+
+[node name="JC14" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsJC1" unique_id=1263274776]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("20_0uh23")
+expand_mode = 4
+
+[node name="JC15" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsJC1" unique_id=1202110875]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(4, 0)
+texture = ExtResource("21_uak87")
+expand_mode = 4
+
+[node name="JC16" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsJC1" unique_id=1188987613]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(4, 0)
+texture = ExtResource("22_ikvrm")
+expand_mode = 4
+
+[node name="KB15" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsJC1" unique_id=1099216978]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("24_auoi8")
+expand_mode = 4
+
+[node name="ControlsJC2" type="VBoxContainer" parent="ScrollContainer/Mainframe/ControlsMainframe" unique_id=1164584972]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+alignment = 1
+
+[node name="JC11" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsJC2" unique_id=1110908492]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("23_b3joh")
+expand_mode = 4
+
+[node name="JC12" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsJC2" unique_id=1857077790]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("24_rfscc")
+expand_mode = 4
+
+[node name="JC13" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsJC2" unique_id=1376003231]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("25_vimhe")
+expand_mode = 4
+
+[node name="JC14" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsJC2" unique_id=1844914877]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("26_auoi8")
+expand_mode = 4
+
+[node name="JC15" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsJC2" unique_id=758469661]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(4, 0)
+texture = ExtResource("23_0uh23")
+expand_mode = 4
+
+[node name="JC16" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsJC2" unique_id=1179152115]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+size_flags_stretch_ratio = 0.0
+offset_transform_enabled = true
+offset_transform_position = Vector2(4, 0)
+texture = ExtResource("24_uak87")
+expand_mode = 4
+
+[node name="KB15" type="TextureRect" parent="ScrollContainer/Mainframe/ControlsMainframe/ControlsJC2" unique_id=336307980]
+custom_minimum_size = Vector2(109, 109)
+custom_maximum_size = Vector2(109, 109)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("24_auoi8")
+expand_mode = 4
+
+[node name="spacer" type="Label" parent="ScrollContainer/Mainframe" unique_id=2044532888]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_4lfeh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="QuitButton" type="Button" parent="ScrollContainer/Mainframe" unique_id=446727293]
+z_index = 5
+custom_minimum_size = Vector2(400, 80)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+focus_previous = NodePath("../MusicSlider")
+mouse_behavior_recursive = 2
+theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
+theme_override_fonts/font = ExtResource("2_wpr6w")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_auoi8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4lfeh")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jqiwl")
+theme_override_styles/focus = SubResource("StyleBoxFlat_bw5kb")
+text = "Back to Menu"
+
+[node name="spacer2" type="Label" parent="ScrollContainer/Mainframe" unique_id=1419727784]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+label_settings = SubResource("LabelSettings_lonyb")
+horizontal_alignment = 1
+vertical_alignment = 1

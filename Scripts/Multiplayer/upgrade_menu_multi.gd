@@ -60,7 +60,7 @@ func _ready() -> void:
 	
 	p2_left.hide()
 	p2_right.hide()
-	p2_header.text = "Waiting for P1"
+	p2_header.hide()
 	TextAnimation.slide_in(self, Vector2(0, 3000), 2.7)
 
 		
@@ -101,18 +101,20 @@ func get_upgrades_list(player, folder, player_list):
 			player_list.erase(ugd)
 		elif player.speed >= player.MAX_SPEED and ugd.title.to_lower().contains("speed"):
 			player_list.erase(ugd)		
+		elif ugd.title.to_lower().contains("downsize") and player.can_downsize:
+			player_list.erase(ugd)	
 
 
 func p1_ready():
-	p1_header.text = "Ready"
+	p1_header.hide()
 	p1_left.hide()
 	p1_right.hide()
 
-	p2_header.text = "Player 2 Upgrades"
+	p2_header.show()
 	p2_left.show()
 	p2_right.show()
 	p2_can_move = true
 
 func p2_ready():
 	player_1.round_up.emit()
-	queue_free()
+	TextAnimation.slide_out(self, Vector2(position.x, -2000))

@@ -10,11 +10,12 @@ var end_text : String
 
 func _ready() -> void:
 	visible = false
-	restart_btn.pressed.connect(get_tree().reload_current_scene)
-	menu_btn.pressed.connect(get_tree().change_scene_to_packed.bind(load("res://Scenes/main_menu.tscn")))
+	restart_btn.pressed.connect(Transition.change_scene)
+	menu_btn.pressed.connect(Transition.change_scene.bind("res://Scenes/main_menu.tscn"))
 	restart_btn.pressed.connect(UIpressSfx.play)
 	menu_btn.pressed.connect(UIpressSfx.play)
 	TextAnimation.slide_in(self, Vector2(0, 2000))
+	MenuPlayer.fade_in()
 
 # Called every fra	me. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:

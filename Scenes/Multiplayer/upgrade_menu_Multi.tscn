@@ -12,10 +12,21 @@ variation_embolden = 1.25
 variation_transform = Transform2D(0.965, -0.385, 0.62, 1.38, 0.065, 0)
 spacing_glyph = 13
 
+[sub_resource type="LabelSettings" id="LabelSettings_rrfky"]
+font = SubResource("FontVariation_2xseu")
+font_size = 50
+font_color = Color(0.11764706, 0.5647059, 1, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(1, 0.4117647, 0.7058824, 1)
+shadow_offset = Vector2(6, 6)
+
 [sub_resource type="LabelSettings" id="LabelSettings_esy2c"]
 font = SubResource("FontVariation_2xseu")
 font_size = 50
-font_color = Color(0.9607843, 1, 0.98039216, 1)
+font_color = Color(1, 0.4117647, 0.7058824, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 shadow_color = Color(0, 0, 0.54509807, 1)
 shadow_offset = Vector2(6, 6)
 
@@ -68,15 +79,17 @@ shadow_offset = Vector2(10, 10)
 base_font = ExtResource("2_esy2c")
 variation_face_index = 13
 variation_embolden = 1.25
-variation_transform = Transform2D(0.965, -0.465, 0.465, 1.56, 0.065, 0)
+variation_transform = Transform2D(0.965, -0.37, 0.32, 1.47, 0.015, 0)
 spacing_glyph = 13
 
-[sub_resource type="LabelSettings" id="LabelSettings_e7q07"]
+[sub_resource type="LabelSettings" id="LabelSettings_xfnm5"]
 font = SubResource("FontVariation_6gn5s")
-font_size = 40
+font_size = 70
 font_color = Color(0.17850001, 0.42712498, 0.51, 1)
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
 shadow_color = Color(0.047762394, 0.039163005, 0.3132004, 1)
-shadow_offset = Vector2(3, 3)
+shadow_offset = Vector2(8, 8)
 
 [sub_resource type="FontVariation" id="FontVariation_le8vw"]
 base_font = ExtResource("2_esy2c")
@@ -98,24 +111,46 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_e7q07")
-p1_left = NodePath("P1_upgrades/P1_upgradeLeft")
-p1_right = NodePath("P1_upgrades/P1_upgradeRight")
-p2_left = NodePath("P2_upgrades/P2_upgradeLeft")
-p2_right = NodePath("P2_upgrades/P2_upgradeRight")
+p1_left = NodePath("background/P1_upgrades/P1_upgradeLeft")
+p1_right = NodePath("background/P1_upgrades/P1_upgradeRight")
+p2_left = NodePath("background/P2_upgrades/P2_upgradeLeft")
+p2_right = NodePath("background/P2_upgrades/P2_upgradeRight")
 p1_header = NodePath("background/p1_header")
 p2_header = NodePath("background/p2_header")
 
 [node name="background" type="ColorRect" parent="." unique_id=1731842540]
 z_index = 5
 layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -400.0
+offset_right = 750.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+color = Color(0.18, 0.18, 0.18, 1)
+
+[node name="backgroundShadow" type="ColorRect" parent="background" unique_id=1912096888]
+show_behind_parent = true
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 15.0
+offset_bottom = 15.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.18, 0.18, 0.18, 1)
+color = Color(1, 0.90250003, 0.35000002, 1)
 
 [node name="Devider" type="ColorRect" parent="background" unique_id=1332470481]
+visible = false
 z_index = 5
 layout_mode = 1
 anchors_preset = 13
@@ -129,23 +164,32 @@ grow_vertical = 2
 color = Color(1, 0.9445, 0.63, 1)
 
 [node name="p1_header" type="Label" parent="background" unique_id=1295548393]
-layout_mode = 0
-offset_left = 134.0
-offset_top = 100.0
-offset_right = 796.0
-offset_bottom = 241.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -331.0
+offset_top = 50.0
+offset_right = 331.0
+offset_bottom = 189.0
+grow_horizontal = 2
 text = "Player 1 Upgrades
 "
-label_settings = SubResource("LabelSettings_esy2c")
+label_settings = SubResource("LabelSettings_rrfky")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="p2_header" type="Label" parent="background" unique_id=742809084]
-layout_mode = 0
-offset_left = 1124.0
-offset_top = 100.0
-offset_right = 1786.0
-offset_bottom = 241.0
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -331.0
+offset_top = 50.0
+offset_right = 331.0
+offset_bottom = 191.0
+grow_horizontal = 2
 text = "Player 2 Upgrades
 "
 label_settings = SubResource("LabelSettings_esy2c")
@@ -163,12 +207,15 @@ grow_vertical = 2
 texture = ExtResource("2_s4fac")
 stretch_mode = 1
 
-[node name="P1_upgrades" type="Control" parent="." unique_id=1733428404]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="P1_upgrades" type="Control" parent="background" unique_id=1733428404]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="P1_upgradeLeft" type="Button" parent="P1_upgrades" unique_id=1531796203 node_paths=PackedStringArray("title", "description")]
+[node name="P1_upgradeLeft" type="Button" parent="background/P1_upgrades" unique_id=1531796203 node_paths=PackedStringArray("title", "description")]
 z_index = 10
 layout_mode = 1
 anchors_preset = 8
@@ -176,10 +223,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 40.0
-offset_top = 320.0
-offset_right = 340.0
-offset_bottom = 720.0
+offset_left = -610.0
+offset_top = -230.0
+offset_right = -190.0
+offset_bottom = 330.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.09620453, 0.09620487, 0.096204616, 1)
@@ -195,42 +242,40 @@ script = ExtResource("3_2xseu")
 title = NodePath("title")
 description = NodePath("desc")
 
-[node name="title" type="Label" parent="P1_upgrades/P1_upgradeLeft" unique_id=2125547414]
+[node name="title" type="Label" parent="background/P1_upgrades/P1_upgradeLeft" unique_id=1720056916]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -113.5
-offset_top = -14.0
-offset_right = 113.5
-offset_bottom = 209.0
+offset_left = -117.0
+offset_top = 100.0
+offset_right = 117.0
+offset_bottom = 222.0
 grow_horizontal = 2
-text = "Title
-"
-label_settings = SubResource("LabelSettings_e7q07")
+text = "Title"
+label_settings = SubResource("LabelSettings_xfnm5")
 horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="desc" type="Label" parent="P1_upgrades/P1_upgradeLeft" unique_id=2144514179]
-custom_maximum_size = Vector2(290, 255)
+[node name="desc" type="Label" parent="background/P1_upgrades/P1_upgradeLeft" unique_id=2144514179]
+custom_maximum_size = Vector2(400, 299)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -146.0
-offset_top = -66.0
-offset_right = 144.0
-offset_bottom = 189.0
+offset_left = -208.0
+offset_top = -35.0
+offset_right = 206.0
+offset_bottom = 264.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "lorem ipsum de lopez"
 label_settings = SubResource("LabelSettings_2xseu")
 horizontal_alignment = 1
-autowrap_mode = 3
+autowrap_mode = 2
 
-[node name="P1_upgradeRight" type="Button" parent="P1_upgrades" unique_id=852256868 node_paths=PackedStringArray("title", "description")]
+[node name="P1_upgradeRight" type="Button" parent="background/P1_upgrades" unique_id=1503738118 node_paths=PackedStringArray("title", "description")]
 z_index = 10
 layout_mode = 1
 anchors_preset = 8
@@ -238,10 +283,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 580.0
-offset_top = 320.0
-offset_right = 880.0
-offset_bottom = 720.0
+offset_left = 190.0
+offset_top = -230.0
+offset_right = 610.0
+offset_bottom = 330.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.09620453, 0.09620487, 0.096204616, 1)
@@ -257,47 +302,49 @@ script = ExtResource("3_2xseu")
 title = NodePath("title")
 description = NodePath("desc")
 
-[node name="title" type="Label" parent="P1_upgrades/P1_upgradeRight" unique_id=655555436]
+[node name="title" type="Label" parent="background/P1_upgrades/P1_upgradeRight" unique_id=1399337057]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -113.5
-offset_top = -14.0
-offset_right = 113.5
-offset_bottom = 209.0
+offset_left = -117.0
+offset_top = 100.0
+offset_right = 117.0
+offset_bottom = 222.0
 grow_horizontal = 2
-text = "Title
-"
-label_settings = SubResource("LabelSettings_e7q07")
+text = "Title"
+label_settings = SubResource("LabelSettings_xfnm5")
 horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="desc" type="Label" parent="P1_upgrades/P1_upgradeRight" unique_id=309405547]
-custom_maximum_size = Vector2(290, 255)
+[node name="desc" type="Label" parent="background/P1_upgrades/P1_upgradeRight" unique_id=1273403900]
+custom_maximum_size = Vector2(400, 299)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -146.0
-offset_top = -66.0
-offset_right = 144.0
-offset_bottom = 189.0
+offset_left = -208.0
+offset_top = -35.0
+offset_right = 206.0
+offset_bottom = 264.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "lorem ipsum de lopez"
 label_settings = SubResource("LabelSettings_2xseu")
 horizontal_alignment = 1
-autowrap_mode = 3
+autowrap_mode = 2
 
-[node name="P2_upgrades" type="Control" parent="." unique_id=918045058]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="P2_upgrades" type="Control" parent="background" unique_id=918045058]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="P2_upgradeLeft" type="Button" parent="P2_upgrades" unique_id=72315609 node_paths=PackedStringArray("title", "description")]
+[node name="P2_upgradeLeft" type="Button" parent="background/P2_upgrades" unique_id=1511470592 node_paths=PackedStringArray("title", "description")]
+visible = false
 z_index = 10
 layout_mode = 1
 anchors_preset = 8
@@ -305,10 +352,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1000.0
-offset_top = 320.0
-offset_right = 1300.0
-offset_bottom = 720.0
+offset_left = -610.0
+offset_top = -230.0
+offset_right = -190.0
+offset_bottom = 330.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.09620453, 0.09620487, 0.096204616, 1)
@@ -324,42 +371,41 @@ script = ExtResource("3_2xseu")
 title = NodePath("title")
 description = NodePath("desc")
 
-[node name="title" type="Label" parent="P2_upgrades/P2_upgradeLeft" unique_id=767737893]
+[node name="title" type="Label" parent="background/P2_upgrades/P2_upgradeLeft" unique_id=1609971891]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -113.5
-offset_top = -14.0
-offset_right = 113.5
-offset_bottom = 209.0
+offset_left = -117.0
+offset_top = 100.0
+offset_right = 117.0
+offset_bottom = 222.0
 grow_horizontal = 2
-text = "Title
-"
-label_settings = SubResource("LabelSettings_e7q07")
+text = "Title"
+label_settings = SubResource("LabelSettings_xfnm5")
 horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="desc" type="Label" parent="P2_upgrades/P2_upgradeLeft" unique_id=1288156039]
-custom_maximum_size = Vector2(290, 255)
+[node name="desc" type="Label" parent="background/P2_upgrades/P2_upgradeLeft" unique_id=1694545017]
+custom_maximum_size = Vector2(400, 299)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -146.0
-offset_top = -66.0
-offset_right = 144.0
-offset_bottom = 189.0
+offset_left = -208.0
+offset_top = -35.0
+offset_right = 206.0
+offset_bottom = 264.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "lorem ipsum de lopez"
 label_settings = SubResource("LabelSettings_2xseu")
 horizontal_alignment = 1
-autowrap_mode = 3
+autowrap_mode = 2
 
-[node name="P2_upgradeRight" type="Button" parent="P2_upgrades" unique_id=1655349090 node_paths=PackedStringArray("title", "description")]
+[node name="P2_upgradeRight" type="Button" parent="background/P2_upgrades" unique_id=2002555039 node_paths=PackedStringArray("title", "description")]
+visible = false
 z_index = 10
 layout_mode = 1
 anchors_preset = 8
@@ -367,10 +413,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1540.0
-offset_top = 320.0
-offset_right = 1840.0
-offset_bottom = 720.0
+offset_left = 190.0
+offset_top = -230.0
+offset_right = 610.0
+offset_bottom = 330.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0.09620453, 0.09620487, 0.096204616, 1)
@@ -386,37 +432,35 @@ script = ExtResource("3_2xseu")
 title = NodePath("title")
 description = NodePath("desc")
 
-[node name="title" type="Label" parent="P2_upgrades/P2_upgradeRight" unique_id=231836710]
+[node name="title" type="Label" parent="background/P2_upgrades/P2_upgradeRight" unique_id=1572412495]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -113.5
-offset_top = -14.0
-offset_right = 113.5
-offset_bottom = 209.0
+offset_left = -117.0
+offset_top = 100.0
+offset_right = 117.0
+offset_bottom = 222.0
 grow_horizontal = 2
-text = "Title
-"
-label_settings = SubResource("LabelSettings_e7q07")
+text = "Title"
+label_settings = SubResource("LabelSettings_xfnm5")
 horizontal_alignment = 1
-vertical_alignment = 1
 
-[node name="desc" type="Label" parent="P2_upgrades/P2_upgradeRight" unique_id=1879295368]
-custom_maximum_size = Vector2(290, 255)
+[node name="desc" type="Label" parent="background/P2_upgrades/P2_upgradeRight" unique_id=1229813463]
+custom_maximum_size = Vector2(400, 299)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -146.0
-offset_top = -66.0
-offset_right = 144.0
-offset_bottom = 189.0
+offset_left = -208.0
+offset_top = -35.0
+offset_right = 206.0
+offset_bottom = 264.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "lorem ipsum de lopez"
 label_settings = SubResource("LabelSettings_2xseu")
 horizontal_alignment = 1
-autowrap_mode = 3
+autowrap_mode = 2

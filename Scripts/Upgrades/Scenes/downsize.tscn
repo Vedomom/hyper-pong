@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dox1i03qvrtxx"]
+
+[ext_resource type="Script" uid="uid://b2cn4jv66lpy8" path="res://Scripts/Upgrades/Scripts/downsize.gd" id="1_32joi"]
+
+[node name="Downsize" type="Node" unique_id=207337398]
+script = ExtResource("1_32joi")
+metadata/_custom_type_script = "uid://kw0yhvi4lx7m"

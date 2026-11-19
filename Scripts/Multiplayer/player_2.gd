@@ -13,6 +13,8 @@ class_name Player_2
 @export var health_bar : ProgressBar
 @export var player_1: Player_1
 @export var dmg_lbl : Label
+@export var court : ColorRect
+@export var upgrades_container : HBoxContainer
 
 
 const MAX_SPEED = 1300
@@ -37,6 +39,8 @@ var health_bar_sb
 
 var initial_label_font_size : int
 var initial_damage_font_size : int
+var can_downsize := false
+
 
 signal player_shot()  
 signal player_scored()
@@ -89,7 +93,7 @@ func _physics_process(delta: float) -> void:
 	
 
 	velocity.x = 0.0
-	position.x = clampf(position.x, 1813, 1813)
+	position.x = clampf(position.x, (court.position.x + court.size.x) - 10, (court.position.x + court.size.x) - 10)
 	lunge_timer -= delta
 	cooldown_timer -= delta
 

@@ -34,7 +34,7 @@ func _ready() -> void:
 			ui_container = node
 	
 
-	round_number = 1
+	round_number = 2
 	max_rounds = 10
 	round_label.text = "Round : %d / %d" %[round_number ,max_rounds]
 	randomize_enemy_health()
@@ -47,8 +47,13 @@ func _ready() -> void:
 	enemy.enemy_scored.connect(play_goal_sfx)
 	player.player_died.connect(play_long_goal_sfx)
 	enemy.enemy_died.connect(play_long_goal_sfx)
+	
+	MenuPlayer.stream = AudioStreamMP3.load_from_file("res://Resources/SFX/HCP_Menu_continious.mp3")
+	MenuPlayer.play()
+	MenuPlayer.stream_paused = true
+	MenuPlayer.volume_linear = 0.0
 
-	MusicPlayer.play()
+	MusicPlayer.fade_in(1.0)
 
 
 
@@ -79,6 +84,11 @@ func _process(_delta: float) -> void:
 		if !get_tree().paused:
 			get_tree().paused = true
 			pause_menu.show()
+			MusicPlayer.fade_out()
+			MenuPlayer.stream = AudioStreamMP3.load_from_file("res://Resources/SFX/HCP_Pause.mp3")
+			MenuPlayer.volume_db = -2
+			MenuPlayer.initial_volume = MenuPlayer.volume_linear
+			MenuPlayer.fade_in()
 
 	
 	
@@ -115,8 +125,8 @@ func next_round():
 		ball.game_won = false
 		ball.shape.show()
 		get_tree().paused = false
-
-		MusicPlayer.stream_paused = false
+		MenuPlayer.fade_out()
+		MusicPlayer.fade_in()
 
 
 		get_tree().paused = false
@@ -159,8 +169,8 @@ func upgrade_enemy():
 
 func randomize_enemy_health():
 	if round_number <= 5 :
-		enemy.initial_health = randi_range(clamp((round_number*10) - 15, 1, round_number*10), round_number*10)
-
+		#enemy.initial_health = randi_range(clamp((round_number*10) - 15, 1, round_number*10), round_number*10)
+		enemy.initial_health =1
 	else :
 		enemy.initial_health = randi_range(50, 150)
 
@@ -175,11 +185,20 @@ func add_enemy_upgrades(amount : int):
 	for child in enemy.get_child(2).get_children():
 		child.queue_free()
 
+	for child in enemy.upgrades_container.get_children():
+		child.queue_free()
+
+
 	if amount > 0:
 		for i in range(amount):
 			var ugd = load(upgrades_list.pop_front()).instantiate()
 			var container = enemy.get_child(2)
 			container.add_child(ugd)
+			var indicator = load("res://Scenes/Upgrade_indicator.tscn").instantiate()
+			enemy.upgrades_container.add_child(indicator)
+			indicator.indicator = ugd.titel[0]
+			indicator.tool_tip = ugd.titel + "\n\n" + ugd.description
+			indicator.size_flags_horizontal = Control.SizeFlags.SIZE_SHRINK_BEGIN
 			print("Upgrade: ", ugd.name)
 			
 func end_game():
@@ -234,7 +253,11 @@ func play_goal_sfx():
 	goal_sfx.play()
 
 func play_long_goal_sfx():
-	MusicPlayer.stream_paused = true
+	MusicPlayer.fade_out(0.2)
 
 	goal_sfx.stream = AudioStreamWAV.load_from_file("res://Resources/SFX/goal_short.wav")
 	goal_sfx.play()
+
+	MenuPlayer.stream = AudioStreamMP3.load_from_file("res://Resources/SFX/HCP_Menu_continious.mp3")
+	MenuPlayer.volume_db = 5
+	MenuPlayer.initial_volume = MenuPlayer.volume_linear

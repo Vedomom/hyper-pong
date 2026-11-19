@@ -8,8 +8,8 @@ extends Control
 
 func _ready() -> void:
 	resume_btn.pressed.connect(resume)
-	restart_btn.pressed.connect(get_tree().reload_current_scene)
-	quit_btn.pressed.connect(get_tree().change_scene_to_file.bind("res://Scenes/main_menu.tscn"))
+	restart_btn.pressed.connect(Transition.change_scene)
+	quit_btn.pressed.connect(Transition.change_scene.bind("res://Scenes/main_menu.tscn"))
 
 	resume_btn.pressed.connect(UIpressSfx.play)
 	restart_btn.pressed.connect(UIpressSfx.play)
@@ -22,8 +22,11 @@ func _ready() -> void:
 	hide()
 	visibility_changed.connect(resume_btn.grab_focus)
 	
+	
 
 
 func resume():
 	get_tree().paused = false
+	MusicPlayer.fade_in()
+	MenuPlayer.fade_out()
 	hide()

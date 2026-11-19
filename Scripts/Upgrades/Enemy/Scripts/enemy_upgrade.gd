@@ -3,6 +3,8 @@ class_name EnemyUpgrade
 
 
 @export var enemy : Enemy
+var titel := ""
+var description := ""
 
 
 func _ready() -> void:

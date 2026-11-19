@@ -2,13 +2,28 @@
 
 [ext_resource type="Script" uid="uid://ddas1hxnuot5u" path="res://Scripts/UI/main_menu.gd" id="1_28flt"]
 [ext_resource type="Texture2D" uid="uid://btcglpnwcj83s" path="res://Resources/overlapping-diamonds.svg" id="2_48xlc"]
+[ext_resource type="Shader" uid="uid://cf4mkib6pt43m" path="res://Scripts/UI/shaders/Fractals_bg.gdshader" id="2_opfnp"]
 [ext_resource type="FontFile" uid="uid://bt3gbbw7fayi" path="res://Resources/Margarine-Regular.ttf" id="3_ce3w2"]
+[ext_resource type="Script" uid="uid://4whv2penysyu" path="res://Scripts/UI/bg_autoOn.gd" id="3_cp0ys"]
 [ext_resource type="Shader" uid="uid://h5rnab0t5ips" path="res://Scripts/UI/shaders/quantize_pixelate.gdshader" id="4_ce3w2"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yhxw7"]
+shader = ExtResource("2_opfnp")
+shader_parameter/speed = 0.1
+shader_parameter/pixelation = 8.0
+shader_parameter/zoom = 2.0
+shader_parameter/gradient_pixelation = 0.2
+shader_parameter/background_threshold = 0.0
+shader_parameter/color_low_threshold = 0.0
+shader_parameter/color_mid_threshold = 0.7550000358625
+shader_parameter/color_low = Color(0.1254902, 0.1254902, 0.1254902, 1)
+shader_parameter/color_mid = Color(0.74509805, 0.74509805, 0.74509805, 1)
+shader_parameter/color_high = Color(0.9607843, 1, 0.98039216, 1)
 
 [sub_resource type="FontVariation" id="FontVariation_28flt"]
 base_font = ExtResource("3_ce3w2")
 variation_embolden = 0.5
-variation_transform = Transform2D(1.175, -0.04, -0.05, 1.13, 0.055, 0)
+variation_transform = Transform2D(1.1449999, -0.39999995, -0.049999993, 1.1299999, 0.055, 0)
 spacing_glyph = 34
 
 [sub_resource type="LabelSettings" id="LabelSettings_erv1k"]
@@ -16,12 +31,94 @@ line_spacing = 5.0
 font = SubResource("FontVariation_28flt")
 font_size = 120
 font_color = Color(1, 0.92, 0.97866666, 1)
+outline_color = Color(0.1254902, 0.1254902, 0.1254902, 1)
 shadow_size = 10
 shadow_color = Color(0.946786, 3.946722e-06, 0.5854412, 1)
 shadow_offset = Vector2(5, 5)
-stacked_shadow_count = 1
+stacked_shadow_count = 2
 stacked_shadow_0/offset = Vector2(-5, -5)
 stacked_shadow_0/color = Color(0.21850002, 0.401375, 0.95, 1)
+stacked_shadow_1/offset = Vector2(5, 20)
+stacked_shadow_1/color = Color(0, 0, 0, 0.7372549)
+
+[sub_resource type="Animation" id="Animation_trj04"]
+resource_name = "Main"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:label_settings:font:variation_transform")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 10),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Transform2D(1.145, -0.4, -0.05, 1.13, 0.055, 0), Transform2D(1.145, 0.4, -0.05, 1.13, 0.055, 0), Transform2D(1.145, -0.4, -0.05, 1.13, 0.055, 0)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:label_settings:font_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(120, -0.25, 0, 0.25, 0, 140, -0.625, -5, 0.625, 5, 120, -0.625, 5, 0.625, -5, 140, -0.625, -5, 0.625, 5, 120, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 2.5, 5, 7.5, 10)
+}
+
+[sub_resource type="Animation" id="Animation_cp0ys"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:label_settings:font_size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(120, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:label_settings:font:variation_transform")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Transform2D(1.145, -0.4, -0.05, 1.13, 0.055, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yhxw7"]
+resource_name = "rotation"
+length = 10.0
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_opfnp"]
+resource_name = "size"
+length = 5.0
+loop_mode = 1
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cp0ys"]
+_data = {
+&"Main": SubResource("Animation_trj04"),
+&"RESET": SubResource("Animation_cp0ys"),
+&"rotation": SubResource("Animation_yhxw7"),
+&"size": SubResource("Animation_opfnp")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n45e2"]
+shader = ExtResource("4_ce3w2")
+shader_parameter/texture_mode = 1
+shader_parameter/quantize_size = 3
+shader_parameter/snap_to_world = false
+shader_parameter/limit_subpixels = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8xsaa"]
 bg_color = Color(0.2697, 0.419775, 0.87, 1)
@@ -86,14 +183,7 @@ shadow_color = Color(0.98, 0.245, 0.6982501, 1)
 shadow_size = 1
 shadow_offset = Vector2(5, 5)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_n45e2"]
-shader = ExtResource("4_ce3w2")
-shader_parameter/texture_mode = 1
-shader_parameter/quantize_size = 3
-shader_parameter/snap_to_world = false
-shader_parameter/limit_subpixels = true
-
-[node name="MainMenu" type="Control" unique_id=1412889394 node_paths=PackedStringArray("play_btn", "quit_btn", "title_lbl", "mult_btn", "setting_btn")]
+[node name="MainMenu" type="Control" unique_id=1412889394 node_paths=PackedStringArray("play_btn", "quit_btn", "title_lbl", "mult_btn", "setting_btn", "htp_btn")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -102,13 +192,30 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_28flt")
-play_btn = NodePath("Buttons/ButtonFrame/PlayButton")
-quit_btn = NodePath("Buttons/ButtonFrame/QuitButton")
+play_btn = NodePath("ButtonFrame/PlayButton")
+quit_btn = NodePath("ButtonFrame/QuitButton")
 title_lbl = NodePath("Title")
-mult_btn = NodePath("Buttons/ButtonFrame/MultiplayerButton")
-setting_btn = NodePath("Buttons/ButtonFrame/SettingButton")
+mult_btn = NodePath("ButtonFrame/MultiplayerButton")
+setting_btn = NodePath("ButtonFrame/SettingButton")
+htp_btn = NodePath("ButtonFrame/HTPButton")
+
+[node name="bg" type="ColorRect" parent="." unique_id=944114447]
+visible = false
+material = SubResource("ShaderMaterial_yhxw7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -14.0
+offset_top = -4.0
+offset_right = 14.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_cp0ys")
 
 [node name="Background" type="ColorRect" parent="." unique_id=200976755]
+visible = false
 layout_mode = 0
 offset_right = 1951.0
 offset_bottom = 1118.0
@@ -126,35 +233,51 @@ texture = ExtResource("2_48xlc")
 stretch_mode = 1
 
 [node name="Title" type="Label" parent="." unique_id=1965841692]
+z_index = 1
 layout_mode = 1
-anchors_preset = 10
+anchors_preset = -1
 anchor_right = 1.0
-offset_bottom = 335.0
+anchor_bottom = 0.31
+offset_bottom = 0.2000122
 grow_horizontal = 2
+theme_override_font_sizes/font_size = 120
 text = "Hyper Chaos Pong"
 label_settings = SubResource("LabelSettings_erv1k")
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
-[node name="Buttons" type="Node" parent="." unique_id=315859510]
+[node name="titleAnimations" type="AnimationPlayer" parent="Title" unique_id=2125670325]
+libraries/ = SubResource("AnimationLibrary_cp0ys")
+autoplay = &"Main"
 
-[node name="ButtonFrame" type="VBoxContainer" parent="Buttons" unique_id=835841819]
+[node name="pixelize" type="ColorRect" parent="." unique_id=1535511377]
+z_index = 50
+material = SubResource("ShaderMaterial_n45e2")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ButtonFrame" type="VBoxContainer" parent="." unique_id=835841819]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -273.0
-offset_top = -205.0
+offset_top = -240.0
 offset_right = 273.0
-offset_bottom = 443.0
+offset_bottom = 458.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 alignment = 1
 
-[node name="PlayButton" type="Button" parent="Buttons/ButtonFrame" unique_id=906858874]
+[node name="PlayButton" type="Button" parent="ButtonFrame" unique_id=906858874]
 layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 6
@@ -171,7 +294,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_28flt")
 theme_override_styles/focus = SubResource("StyleBoxFlat_48xlc")
 text = "Play"
 
-[node name="MultiplayerButton" type="Button" parent="Buttons/ButtonFrame" unique_id=1747983629]
+[node name="MultiplayerButton" type="Button" parent="ButtonFrame" unique_id=1747983629]
 layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 6
@@ -189,7 +312,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_28flt")
 theme_override_styles/focus = SubResource("StyleBoxFlat_48xlc")
 text = "Multiplayer"
 
-[node name="SettingButton" type="Button" parent="Buttons/ButtonFrame" unique_id=819433941]
+[node name="SettingButton" type="Button" parent="ButtonFrame" unique_id=819433941]
 layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 6
@@ -207,7 +330,24 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_1ehe0")
 text = "Settings
 "
 
-[node name="QuitButton" type="Button" parent="Buttons/ButtonFrame" unique_id=993721680]
+[node name="HTPButton" type="Button" parent="ButtonFrame" unique_id=777565415]
+layout_mode = 2
+size_flags_horizontal = 7
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.05
+focus_neighbor_top = NodePath("../MultiplayerButton")
+focus_next = NodePath("../QuitButton")
+focus_previous = NodePath("../MultiplayerButton")
+theme_override_colors/font_color = Color(0.97881764, 0.97881764, 0.97881764, 1)
+theme_override_fonts/font = ExtResource("3_ce3w2")
+theme_override_font_sizes/font_size = 90
+theme_override_styles/normal = SubResource("StyleBoxFlat_8xsaa")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_erv1k")
+theme_override_styles/hover = SubResource("StyleBoxFlat_28flt")
+theme_override_styles/focus = SubResource("StyleBoxFlat_1ehe0")
+text = "How To Play"
+
+[node name="QuitButton" type="Button" parent="ButtonFrame" unique_id=993721680]
 layout_mode = 2
 size_flags_horizontal = 7
 size_flags_vertical = 6
@@ -224,13 +364,3 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_28flt")
 theme_override_styles/focus = SubResource("StyleBoxFlat_1ehe0")
 text = "Quit
 "
-
-[node name="pixelize" type="ColorRect" parent="." unique_id=1535511377]
-z_index = 50
-material = SubResource("ShaderMaterial_n45e2")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2

@@ -66,7 +66,7 @@ shadow_color = Color(0.92941177, 0.49411765, 0, 1)
 shadow_size = 1
 shadow_offset = Vector2(10, 10)
 
-[sub_resource type="FontVariation" id="FontVariation_6gn5s"]
+[sub_resource type="FontVariation" id="FontVariation_lhh40"]
 base_font = ExtResource("4_lhh40")
 variation_face_index = 13
 variation_embolden = 1.25
@@ -74,8 +74,8 @@ variation_transform = Transform2D(0.965, -0.37, 0.32, 1.47, 0.015, 0)
 spacing_glyph = 13
 
 [sub_resource type="LabelSettings" id="LabelSettings_le8vw"]
-font = SubResource("FontVariation_6gn5s")
-font_size = 90
+font = SubResource("FontVariation_lhh40")
+font_size = 70
 font_color = Color(0.17850001, 0.42712498, 0.51, 1)
 outline_size = 10
 outline_color = Color(0, 0, 0, 1)
@@ -102,18 +102,38 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_11363")
-upgrade_left = NodePath("upgradeLeft")
-upgrade_right = NodePath("upgradeRight")
+upgrade_left = NodePath("background/upgradeLeft")
+upgrade_right = NodePath("background/upgradeRight")
 
 [node name="background" type="ColorRect" parent="." unique_id=1731842540]
 z_index = 5
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -750.0
+offset_top = -400.0
+offset_right = 750.0
+offset_bottom = 400.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.18, 0.18, 0.18, 1)
+
+[node name="backgroundShadow" type="ColorRect" parent="background" unique_id=805560471]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 15.0
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 0.90250003, 0.35000002, 1)
 
 [node name="ui_pattern" type="TextureRect" parent="background" unique_id=2131175068]
 modulate = Color(1, 1, 1, 0.0627451)
@@ -140,7 +160,7 @@ text = "Select an Upgrade"
 label_settings = SubResource("LabelSettings_lhh40")
 horizontal_alignment = 1
 
-[node name="upgradeLeft" type="Button" parent="." unique_id=1531796203 node_paths=PackedStringArray("title", "description")]
+[node name="upgradeLeft" type="Button" parent="background" unique_id=1531796203 node_paths=PackedStringArray("title", "description")]
 z_index = 5
 layout_mode = 1
 anchors_preset = 8
@@ -148,13 +168,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -800.0
-offset_top = -352.0
-offset_right = -200.0
-offset_bottom = 448.0
+offset_left = -610.0
+offset_top = -230.0
+offset_right = -190.0
+offset_bottom = 330.0
 grow_horizontal = 2
 grow_vertical = 2
-focus_next = NodePath("../upgradeRight")
 theme_override_colors/font_color = Color(0.09620453, 0.09620487, 0.096204616, 1)
 theme_override_colors/font_pressed_color = Color(1, 0.88000005, 0.39999998, 1)
 theme_override_colors/font_hover_color = Color(0.09803922, 0.09803922, 0.09803922, 1)
@@ -167,40 +186,41 @@ script = ExtResource("2_6gn5s")
 title = NodePath("title")
 description = NodePath("desc")
 
-[node name="title" type="Label" parent="upgradeLeft" unique_id=2125547414]
+[node name="title" type="Label" parent="background/upgradeLeft" unique_id=2125547414]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_top = 200.0
-offset_right = 20.0
-offset_bottom = 223.0
+offset_left = -117.0
+offset_top = 100.0
+offset_right = 117.0
+offset_bottom = 222.0
 grow_horizontal = 2
 text = "Title"
 label_settings = SubResource("LabelSettings_le8vw")
 horizontal_alignment = 1
 
-[node name="desc" type="Label" parent="upgradeLeft" unique_id=2144514179]
-custom_maximum_size = Vector2(469, 400)
+[node name="desc" type="Label" parent="background/upgradeLeft" unique_id=2144514179]
+custom_maximum_size = Vector2(400, 200)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -234.5
-offset_top = -14.0
-offset_right = 234.5
-offset_bottom = 386.0
+offset_left = -200.0
+offset_top = -30.0
+offset_right = 200.0
+offset_bottom = 170.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "lorem ipsum de lopez"
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "Description"
 label_settings = SubResource("LabelSettings_ltp0x")
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="upgradeRight" type="Button" parent="." unique_id=1037548238 node_paths=PackedStringArray("title", "description")]
+[node name="upgradeRight" type="Button" parent="background" unique_id=1995103614 node_paths=PackedStringArray("title", "description")]
 z_index = 5
 layout_mode = 1
 anchors_preset = 8
@@ -208,13 +228,12 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 200.0
-offset_top = -352.0
-offset_right = 800.0
-offset_bottom = 448.0
+offset_left = 190.0
+offset_top = -230.0
+offset_right = 610.0
+offset_bottom = 330.0
 grow_horizontal = 2
 grow_vertical = 2
-focus_previous = NodePath("../upgradeLeft")
 theme_override_colors/font_color = Color(0.09620453, 0.09620487, 0.096204616, 1)
 theme_override_colors/font_pressed_color = Color(1, 0.88000005, 0.39999998, 1)
 theme_override_colors/font_hover_color = Color(0.09803922, 0.09803922, 0.09803922, 1)
@@ -227,36 +246,36 @@ script = ExtResource("2_6gn5s")
 title = NodePath("title")
 description = NodePath("desc")
 
-[node name="title" type="Label" parent="upgradeRight" unique_id=195652025]
+[node name="title" type="Label" parent="background/upgradeRight" unique_id=1193634143]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_top = 200.0
-offset_right = 20.0
-offset_bottom = 223.0
+offset_left = -117.0
+offset_top = 100.0
+offset_right = 117.0
+offset_bottom = 222.0
 grow_horizontal = 2
-text = "Title
-"
+text = "Title"
 label_settings = SubResource("LabelSettings_le8vw")
 horizontal_alignment = 1
 
-[node name="desc" type="Label" parent="upgradeRight" unique_id=1283781050]
-custom_maximum_size = Vector2(469, 400)
+[node name="desc" type="Label" parent="background/upgradeRight" unique_id=76638625]
+custom_maximum_size = Vector2(400, 200)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -234.5
-offset_top = -14.0
-offset_right = 234.5
-offset_bottom = 386.0
+offset_left = -200.0
+offset_top = -30.0
+offset_right = 200.0
+offset_bottom = 170.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "lorem ipsum de lopez"
+pivot_offset_ratio = Vector2(0.5, 0.5)
+text = "description"
 label_settings = SubResource("LabelSettings_ltp0x")
 horizontal_alignment = 1
 autowrap_mode = 3

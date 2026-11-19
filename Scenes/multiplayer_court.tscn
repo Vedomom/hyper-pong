@@ -150,19 +150,7 @@ size = Vector2(50, 1080)
 
 [node name="Court" type="Node2D" unique_id=430284900]
 
-[node name="background" type="ColorRect" parent="." unique_id=1777050252]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -73.0
-offset_top = -109.0
-offset_right = 1993.0
-offset_bottom = 1189.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.1254902, 0.1254902, 0.1254902, 1)
-
-[node name="Player1" type="CharacterBody2D" parent="." unique_id=1410247650 node_paths=PackedStringArray("health_lable", "damage_label", "health_bar", "player_2", "dmg_lbl")]
+[node name="Player1" type="CharacterBody2D" parent="." unique_id=1410247650 node_paths=PackedStringArray("health_lable", "damage_label", "health_bar", "player_2", "dmg_lbl", "court", "upgrades_container")]
 z_index = 2
 position = Vector2(107, 536)
 scale = Vector2(1.6, 1.6)
@@ -177,6 +165,8 @@ damage_label = NodePath("../UI/Player1/PlayerDamage")
 health_bar = NodePath("../UI/Player1/PlayerHealthBar")
 player_2 = NodePath("../Player_2")
 dmg_lbl = NodePath("../UI/Player1/PlayerDamageIndicator")
+court = NodePath("../UI/bg/Court")
+upgrades_container = NodePath("../Player1UpgradesContainer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player1" unique_id=609284332]
 shape = SubResource("RectangleShape2D_v0iea")
@@ -230,7 +220,7 @@ color = Color(1, 0.16400003, 0.120000005, 1)
 [node name="Trail" type="Line2D" parent="Ball/shape" unique_id=1163394677]
 top_level = true
 z_index = 3
-width = 20.0
+width = 14.0
 width_curve = SubResource("Curve_8xsaa")
 default_color = Color(1, 1, 1, 0.6156863)
 
@@ -267,7 +257,7 @@ color = Color(1, 0, 0, 1)
 energy = 0.0
 texture = SubResource("GradientTexture2D_1qaal")
 
-[node name="Player_2" type="CharacterBody2D" parent="." unique_id=1327540116 node_paths=PackedStringArray("health_lable", "damage_label", "health_bar", "player_1", "dmg_lbl")]
+[node name="Player_2" type="CharacterBody2D" parent="." unique_id=1327540116 node_paths=PackedStringArray("health_lable", "damage_label", "health_bar", "player_1", "dmg_lbl", "court", "upgrades_container")]
 z_index = 2
 position = Vector2(1813, 540)
 scale = Vector2(1.6, 1.6)
@@ -282,6 +272,8 @@ damage_label = NodePath("../UI/Player2/P2Damage")
 health_bar = NodePath("../UI/Player2/P2HealthBar")
 player_1 = NodePath("../Player1")
 dmg_lbl = NodePath("../UI/Player2/P2DamageIndicator")
+court = NodePath("../UI/bg/Court")
+upgrades_container = NodePath("../Player2UpgradesContainer")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_2" unique_id=341033645]
 shape = SubResource("RectangleShape2D_pi2ll")
@@ -316,6 +308,7 @@ grow_vertical = 2
 [node name="Player1" type="Node" parent="UI" unique_id=684321340]
 
 [node name="PlayerHealthBar" type="ProgressBar" parent="UI/Player1" unique_id=691387748]
+z_index = 1
 anchors_preset = -1
 anchor_top = 0.12900001
 anchor_bottom = 0.36
@@ -399,6 +392,7 @@ vertical_alignment = 1
 [node name="Player2" type="Node" parent="UI" unique_id=144190386]
 
 [node name="P2HealthBar" type="ProgressBar" parent="UI/Player2" unique_id=202429170]
+z_index = 1
 anchors_preset = -1
 anchor_left = 0.96300006
 anchor_top = 0.12900001
@@ -521,6 +515,24 @@ vertical_alignment = 1
 
 [node name="bg" type="Node" parent="UI" unique_id=879551604]
 
+[node name="background" type="ColorRect" parent="UI/bg" unique_id=127559929]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.1254902, 0.1254902, 0.1254902, 1)
+
+[node name="bg" type="TextureRect" parent="UI/bg" unique_id=1111839229]
+modulate = Color(1, 1, 1, 0.03529412)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_0fo6d")
+stretch_mode = 1
+
 [node name="court pattern" type="TextureRect" parent="UI/bg" unique_id=1020778149]
 modulate = Color(1, 1, 1, 0.02745098)
 z_index = 2
@@ -586,20 +598,6 @@ z_index = -1
 position = Vector2(1849, 540)
 shape = SubResource("RectangleShape2D_xmho0")
 
-[node name="bg" type="TextureRect" parent="UI/bg" unique_id=1111839229]
-modulate = Color(1, 1, 1, 0.03529412)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -79.0
-offset_top = -118.0
-offset_right = 79.0
-offset_bottom = 118.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("5_0fo6d")
-stretch_mode = 1
-
 [node name="Courtborder" type="ColorRect" parent="UI/bg" unique_id=1817002062]
 z_as_relative = false
 anchors_preset = -1
@@ -619,6 +617,39 @@ color = Color(0.9607843, 1, 0.98039216, 1)
 process_priority = 1
 visible = false
 top_level = true
+
+[node name="Player1UpgradesContainer" type="HBoxContainer" parent="." unique_id=1148760024]
+z_index = 11
+custom_minimum_size = Vector2(0, 40)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 172.5
+offset_top = 1036.0
+offset_right = 472.5
+offset_bottom = 1076.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="Player2UpgradesContainer" type="HBoxContainer" parent="." unique_id=1359426243]
+z_index = 11
+custom_minimum_size = Vector2(0, 40)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 1440.0
+offset_top = 1036.0
+offset_right = 1740.0
+offset_bottom = 1076.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+alignment = 2
 
 [node name="GameManager" type="Node" parent="." unique_id=1780379137 node_paths=PackedStringArray("p1_score_label", "p2_score_label", "bounce_sfx", "goal_sfx", "pause_menu", "round_label")]
 process_mode = 3

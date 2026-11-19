@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://7pkhv68txw7k"]
+
+[ext_resource type="Shader" uid="uid://btnc4w7tlhf32" path="res://Scripts/UI/shaders/fractal_transition.gdshader" id="1_jnsx0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jxdek"]
+shader = ExtResource("1_jnsx0")
+shader_parameter/progress = 0.5
+shader_parameter/speed = 0.2
+shader_parameter/pixelation = Vector2(20, 20)
+shader_parameter/zoom = 2.0
+shader_parameter/background_threshold = 0.0
+shader_parameter/color_threshold = 0.24
+shader_parameter/color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+shader_parameter/seed = 36.0
+
+[node name="Transition" type="Control" unique_id=1633392009]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TransitionEffect" type="ColorRect" parent="." unique_id=1191479367]
+unique_name_in_owner = true
+material = SubResource("ShaderMaterial_jxdek")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.1254902, 0.1254902, 0.1254902, 1)

@@ -5,6 +5,8 @@ var prev_speed
 
 
 func initialize_power():
+	titel = "Sudden Acceleration"
+	description = "???????"
 	for node in enemy.get_parent().get_children():
 		if node is Ball:
 			ball = node

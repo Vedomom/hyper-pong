@@ -11,6 +11,8 @@ class_name Enemy
 @export var health_bar : ProgressBar
 @export var player: Player
 @export var dmg_lbl : Label
+@export var court : ColorRect
+@export var upgrades_container : HBoxContainer
 
 var current_damage: float
 var dist : float
@@ -66,8 +68,8 @@ func _physics_process(delta: float) -> void:
 	
 	if ball.position.x >= get_viewport().size.x/detection_range:
 		position.y -= step_size
-	position.y = clamp(position.y, paddle_height*0.8 + 54, win_height - paddle_height*0.8 - 54)
-	position.x = clampf(position.x, 1813, 1813)
+	position.y = clamp(position.y, paddle_height*0.8 + court.position.y, win_height - paddle_height*0.8  - court.position.y)
+	position.x = clampf(position.x, (court.position.x + court.size.x) - 10, (court.position.x + court.size.x) - 10)
 
 func death():
 	is_dead = true

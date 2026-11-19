@@ -3,6 +3,8 @@ extends EnemyUpgrade
 var ball : Ball
 
 func initialize_power():
+	titel = "Whiplash"
+	description = "Makes the ball change direction Halfway"
 	for node in enemy.get_parent().get_children():
 		if node is Ball:
 			ball = node

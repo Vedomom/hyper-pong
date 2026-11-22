@@ -9,9 +9,6 @@ this is a small game where you play pong for 10 rounds while getting upgrades be
   - Local Multiplayer Mode
   - Several Upgrades
 
-## Making Custom Upgrades
-you can make your custom upgrades by making new scripts inheriting the [Upgrades](https://github.com/Vedomom/hyper-pong/blob/main/Scripts/Upgrades/Scripts/upgrade.gd) class for the Player , or the [EnemyUpgrades](https://github.com/Vedomom/hyper-pong/blob/main/Scripts/Upgrades/Enemy/Scripts/enemy_upgrade.gd) for the CPU Upgrades.
-after coding the upgrade script , assign it to an empty *Node* scene and save it, then make a new Resource inheriting the [Upgrade_selection](https://github.com/Vedomom/hyper-pong/blob/main/Resources/upgrade_selection.gd) class , and assign the upgrade scene to the *scene* property , then give it a title and a description and save it.
 
 all you have to do is to put the resource in "Resources/Upgrades" and build the game
 I am currently working on an external ability maker to make this process easy

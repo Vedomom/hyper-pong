@@ -52,7 +52,7 @@ func _ready() -> void:
 	player_1.player_died.connect(play_long_goal_sfx)
 	player_2.player_died.connect(play_long_goal_sfx)
 	
-	MenuPlayer.stream = AudioStreamMP3.load_from_file("res://Resources/SFX/HCP_Menu_continious.mp3")
+	MenuPlayer.stream = ResourceLoader.load("res://Resources/SFX/HCP_Menu_continious.mp3")
 	MenuPlayer.play()
 	MenuPlayer.stream_paused = true
 	MenuPlayer.volume_linear = 0.0
@@ -79,7 +79,7 @@ func _process(_delta: float) -> void:
 			get_tree().paused = true
 			pause_menu.show()
 			MusicPlayer.fade_out()
-			MenuPlayer.stream = AudioStreamMP3.load_from_file("res://Resources/SFX/HCP_Pause.mp3")
+			MenuPlayer.stream = ResourceLoader.load("res://Resources/SFX/HCP_Pause.mp3")
 			MenuPlayer.volume_db = -2
 			MenuPlayer.initial_volume = MenuPlayer.volume_linear
 			MenuPlayer.fade_in()
@@ -197,13 +197,13 @@ func play_bounce_sfx():
 	bounce_sfx.play()
 
 func play_goal_sfx():
-	goal_sfx.stream = AudioStreamWAV.load_from_file("res://Resources/SFX/goal.wav")
+	goal_sfx.stream = ResourceLoader.load("res://Resources/SFX/goal.wav")
 	goal_sfx.play()
 
 func play_long_goal_sfx():
 	MusicPlayer.fade_out(0.2)
-	goal_sfx.stream = AudioStreamWAV.load_from_file("res://Resources/SFX/goal_short.wav")
+	goal_sfx.stream = ResourceLoader.load("res://Resources/SFX/goal_short.wav")
 	goal_sfx.play()
-	MenuPlayer.stream = AudioStreamMP3.load_from_file("res://Resources/SFX/HCP_Menu_continious.mp3")
+	MenuPlayer.stream = ResourceLoader.load("res://Resources/SFX/HCP_Menu_continious.mp3")
 	MenuPlayer.volume_db = 5
 	MenuPlayer.initial_volume = MenuPlayer.volume_linear

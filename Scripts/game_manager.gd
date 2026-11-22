@@ -48,7 +48,7 @@ func _ready() -> void:
 	player.player_died.connect(play_long_goal_sfx)
 	enemy.enemy_died.connect(play_long_goal_sfx)
 	
-	MenuPlayer.stream = AudioStreamMP3.load_from_file("res://Resources/SFX/HCP_Menu_continious.mp3")
+	MenuPlayer.stream = ResourceLoader.load("res://Resources/SFX/HCP_Menu_continious.mp3")
 	MenuPlayer.play()
 	MenuPlayer.stream_paused = true
 	MenuPlayer.volume_linear = 0.0
@@ -85,7 +85,7 @@ func _process(_delta: float) -> void:
 			get_tree().paused = true
 			pause_menu.show()
 			MusicPlayer.fade_out()
-			MenuPlayer.stream = AudioStreamMP3.load_from_file("res://Resources/SFX/HCP_Pause.mp3")
+			MenuPlayer.stream = ResourceLoader.load("res://Resources/SFX/HCP_Pause.mp3")
 			MenuPlayer.volume_db = -2
 			MenuPlayer.initial_volume = MenuPlayer.volume_linear
 			MenuPlayer.fade_in()
@@ -115,6 +115,7 @@ func next_round():
 
 		#enemy - change the enemy into a new random one
 		
+		enemy.curve_power = 0.0
 		upgrade_enemy()
 		enemy.health = enemy.initial_health
 		enemy.current_damage = enemy.initial_damage
@@ -175,11 +176,10 @@ func randomize_enemy_health():
 		enemy.initial_health = randi_range(50, 150)
 
 func add_enemy_upgrades(amount : int):
-	var upgrades_folder = DirAccess.open("res://Resources/Enemy/Scenes/")
 	var upgrades_list = []
 
-	for filename:String in upgrades_folder.get_files():
-		upgrades_list.append(upgrades_folder.get_current_dir() + "/" + filename)
+	for filename:String in Resources.ENEMY_UPGRADES:
+		upgrades_list.append("res://Resources/Enemy/Scenes/" + filename)
 	
 	upgrades_list.shuffle()
 	for child in enemy.get_child(2).get_children():
@@ -191,7 +191,7 @@ func add_enemy_upgrades(amount : int):
 
 	if amount > 0:
 		for i in range(amount):
-			var ugd = load(upgrades_list.pop_front()).instantiate()
+			var ugd = ResourceLoader.load(upgrades_list.pop_front()).instantiate()
 			var container = enemy.get_child(2)
 			container.add_child(ugd)
 			var indicator = load("res://Scenes/Upgrade_indicator.tscn").instantiate()
@@ -249,15 +249,15 @@ func play_bounce_sfx():
 	bounce_sfx.play()
 
 func play_goal_sfx():
-	goal_sfx.stream = AudioStreamWAV.load_from_file("res://Resources/SFX/goal.wav")
+	goal_sfx.stream = ResourceLoader.load("res://Resources/SFX/goal.wav")
 	goal_sfx.play()
 
 func play_long_goal_sfx():
 	MusicPlayer.fade_out(0.2)
 
-	goal_sfx.stream = AudioStreamWAV.load_from_file("res://Resources/SFX/goal_short.wav")
+	goal_sfx.stream = ResourceLoader.load("res://Resources/SFX/goal_short.wav")
 	goal_sfx.play()
 
-	MenuPlayer.stream = AudioStreamMP3.load_from_file("res://Resources/SFX/HCP_Menu_continious.mp3")
+	MenuPlayer.stream = ResourceLoader.load("res://Resources/SFX/HCP_Menu_continious.mp3")
 	MenuPlayer.volume_db = 5
 	MenuPlayer.initial_volume = MenuPlayer.volume_linear

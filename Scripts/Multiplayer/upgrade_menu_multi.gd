@@ -33,7 +33,7 @@ func _ready() -> void:
 	p2_right.focus_entered.connect(UIfocusSfx.play)
 
 	
-	var folder = DirAccess.open("Resources/Upgrades/")
+	var folder = ResourceLoader.list_directory("Resources/Upgrades/")
 	if get_parent().get_parent():
 		for node in get_parent().get_parent().get_children():
 			if node is Player_1:
@@ -42,9 +42,8 @@ func _ready() -> void:
 				player_2 = node
 
 	if folder != null:
-		folder.list_dir_begin()
-		get_upgrades_list(player_1, folder, p1_list)
-		get_upgrades_list(player_2, folder, p2_list)
+		get_upgrades_list(player_1, p1_list)
+		get_upgrades_list(player_2, p2_list)
 
 	else :
 		print("folder empty")
@@ -92,10 +91,10 @@ func get_random_upgrades(upgrade_left:Button, upgrade_right:Button, list):
 		upgrade_right.description.text = ugd_right.description
 		upgrade_right.ugd_scene = ugd_right.scene 
 
-func get_upgrades_list(player, folder, player_list):
-	for file:String in folder.get_files():
+func get_upgrades_list(player, player_list):
+	for file:String in Resources.PLAYER_UPGRADES:
 		if player:	
-			player_list.append(load(folder.get_current_dir() + "/" + file))
+			player_list.append(ResourceLoader.load("Resources/Upgrades/" + file))
 	for ugd:Upgrade_selection in player_list:
 		if not player.can_dash and ugd.title.to_lower().contains("recovery"):
 			player_list.erase(ugd)

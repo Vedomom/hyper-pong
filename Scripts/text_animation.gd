@@ -9,10 +9,12 @@ var slide_weight : float
 var slide_array : Array
 
 
+#Music Vars
+
+
 
 func _ready() -> void:
-	process_mode = Node.PROCESS_MODE_ALWAYS
-	
+	process_mode = Node.PROCESS_MODE_ALWAYS	
 
 #animation
 
